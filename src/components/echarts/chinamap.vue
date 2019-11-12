@@ -1,0 +1,197 @@
+
+<!--地图图表-->
+<template>
+  <div>
+    <div class="map">
+      <div id="chartmainline" ref="myEchart"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import vue from "../../main";
+import echarts from "echarts";
+import "../../../node_modules/echarts/map/js/china.js"; // 引入中国地图数据      (注意路径容易报错)
+export default {
+  data() {
+    return {
+      // chart: null
+      list: [],
+  //  list1: [      //需要单独上色的城市，  value只可控制颜色
+  //           {             
+  //             "businessFee": 9.43,
+  //             "garageFee": 9.96,
+  //             "highRiseFee": 9.64,
+  //             "name": "四川",
+  //             "value": "20",
+  //             "villaFee": 9.38,
+  //             "westernFee": 9.59,
+  //           }, 
+  //           {
+  //             "businessFee": 9.85,
+  //             "garageFee": 9.24,
+  //             "highRiseFee": 9.52,
+  //             "name": "重庆",
+  //             "value": "50",
+  //             "villaFee": 9.96,
+  //             "westernFee": 9.72,
+  //           }, 
+          
+  //    ]
+    };
+  },
+  created(){
+     this.axios.get("/api/cityData10").then(res => {
+      // console.log(res.data.data)
+      this.list = res.data.data;
+       if(this.list.length==0){
+        return false
+    }else{
+       this.chinaConfigure();
+    }
+    });
+  },
+
+  mounted() {
+
+   
+  },
+  beforeDestroy() {
+    if (!this.chart) {
+      return;
+    }
+    this.chart.dispose();
+    this.chart = null;
+  },
+  methods: {
+    chinaConfigure() {
+      let myChart = echarts.init(this.$refs.myEchart); //这里是为了获得容器所在位置
+      window.onresize = myChart.resize; // 让图表自适应
+      myChart.setOption({
+        // 进行相关配置
+        backgroundColor: "transparent", //图表背景图
+        tooltip: {
+          //提示框浮层内容格式器，支持字符串模板和回调函数两种形式,模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等
+          formatter: function(a) {
+            if (a.data == undefined) {
+              return "该区域暂无信息";
+            } else {
+              return (
+                "高层：" +
+                a.data.businessFee +
+                "<br/>" +
+                "洋房：" +
+                a.data.garageFee +
+                "<br/>" +
+                "别墅：" +
+                a.data.highRiseFee +
+                "<br/>" +
+                "商业：" +
+                a.data.villaFee +
+                "<br/>" +
+                "车库：" +
+                a.data.westernFee
+              );
+            }
+          },
+
+          backgroundColor: "#ccc", //标题背景色
+          borderColor: "#ccc", //边框颜色
+          borderWidth: 0 //边框线宽
+          // textStyle:[{}],                          //文本样式
+        }, 
+      
+        dataRange: {
+          show: false,
+          // min: 0,
+          // max: 100,
+          realtime: true,
+          color: ["skyblue"]      //固定单色
+          // 设置范围颜色
+          // x: 'left',
+          // y: 'center',
+          // splitList: [
+          // {start: 0.8, label: '80%以上', color: '#FF6699'},
+          // {start: 0.6, end: 0.8, label: '60-80%', color: '#CC3300'},
+          // {start: 0.4, end: 0.6, label: '40-60%', color: '#F7BB37'},
+          // {start: 0.3, end: 0.4, label: '30-40%', color: '#3BAE56'},
+          // {start: 0.2, end: 0.3, label: '20-30%', color: '#92D050'},
+          // {start: 0.1, end: 0.2, label: '10-20%', color: '#3899FF'},
+          // {start: 0, end: 0.1, label: '0-10%', color: '#BFBFBF'}
+          // ],
+        },
+        geo: {
+          // 这个是重点配置区
+          map: "china", // 表示中国地图
+          roam: false, //是否允许放大或者拖拽
+          label: {
+            normal: {
+              show: true, // 是否显示对应地名
+              textStyle: {
+                color: "#fff", //字体颜色
+                fontSize: 12
+                 //字体大小
+                // fontWeight:600                     //字体加粗
+              }
+            }
+          },
+
+          itemStyle: {
+            normal: {
+              borderColor: "#fff", //省份边界线
+              borderWidth: 1,
+              areaColor: "#3474b5" //省份区域默认显示颜色
+            },
+            emphasis: {
+              shadowOffsetX: 0,
+              shadowOffsetY: 0,
+              shadowBlur: 20,
+              borderWidth: 0,
+              shadowColor: "rgba(0, 0, 0, 0.3)",
+              areaColor: "#12c0ff", //鼠标经过显示的颜色
+              color: "#333"
+            }
+          }
+        },
+        series: [
+          {
+            type: "scatter",
+            coordinateSystem: "geo" // 对应上方配置
+          },
+
+          {
+            name: "中国地图", // 浮动框的标题
+            type: "map",
+            geoIndex: 0,
+            data: 
+            this.list
+          }
+        ]
+      });
+
+      //点击事件
+      myChart.on("click", function(params) {
+        //点击事件
+        let name = params.name; //当前点击的名称
+        vue.$router.push({path:"/city",query:{name:name}})
+      });
+    }
+  }
+};
+</script>
+
+
+
+<style >
+.map {
+  height: 100%;
+  /* background: pink */
+}
+#chartmainline {
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+
+
