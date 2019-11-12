@@ -6,17 +6,17 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="companyName" label="区域" min-width="106px" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="city" label="城市" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="partyA" label="甲方公司名称" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="appointCompany" label="合同约定的管理公司" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="actualCompany" label="实际管理公司" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="firsthand" label="项目首次交房时间" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="ItemFormat" label="项目业态" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="accessoryBasic" label="相关附件" :show-overflow-tooltip="true">
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="companyName" label="区域" min-width="106px" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="city" label="城市" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="partyA" label="甲方公司名称" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="appointCompany" label="合同约定的管理公司" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="actualCompany" label="实际管理公司" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="firsthand" label="项目首次交房时间" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="ItemFormat" label="项目业态" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="accessoryBasic" label="相关附件" :show-overflow-tooltip="true" align="center">
                     <span  @click="download()" class="download">下载</span>
         </el-table-column>
         <!-- <el-table-column label="操作"> -->

@@ -8,11 +8,11 @@
           <h1>收并购信息</h1>
           <div class="container_left_header_tab">
             <el-table :data="Merger" style="width: auto" fit:true > 
-              <el-table-column prop="acquiringfirm" label="收购方" min-width="80px" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="acquiree" label="被收购方" min-width="80px" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="capital" label="资金" min-width="60px" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="ratio" label="占股比例" min-width="60px" :show-overflow-tooltip="true"></el-table-column>
+              <el-table-column prop="acquiringfirm" label="收购方" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="acquiree" label="被收购方" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="capital" label="资金" min-width="60px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="ratio" label="占股比例" min-width="60px" :show-overflow-tooltip="true" align="center"></el-table-column>
             </el-table>
           </div>
           <div class="h2position">
@@ -329,9 +329,9 @@ background: #ffffff
 .el-table--scrollable-x .el-table__body-wrapper {
   overflow-x: hidden !important;
 }
-.el-table .cell {
+/* .cell {
   text-align: center;
-}
+} */
 .el-table__header{
   width: 100% !important;
 }

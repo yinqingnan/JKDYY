@@ -48,7 +48,7 @@ export default {
     mounted(){
         //获取上市公司列表数据
         this.axios.get("/api/listedCompany12").then((res)=>{
-            console.log(res.data.data)
+            // console.log(res.data.data)
             this.list=res.data.data
 
            

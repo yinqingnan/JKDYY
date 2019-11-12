@@ -6,17 +6,17 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="isBidding" label="是否招投标" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="noTenderReason" label="未招投标原因" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="recordPrice" label="备案价格" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="actualPrice" label="实际收费价格" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="exceedRecordPrice" label="是否超出备案价格" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="exceedRecordPriceReason" label="若超出备案价格，说明原因 " :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="supervisoryReceipt" label="监制回执是否取得" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="accessoryTenderee" label="相关附件" :show-overflow-tooltip="true">
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="isBidding" label="是否招投标" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="noTenderReason" label="未招投标原因" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="recordPrice" label="备案价格" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="actualPrice" label="实际收费价格" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="exceedRecordPrice" label="是否超出备案价格" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="exceedRecordPriceReason" label="若超出备案价格，说明原因 " :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="supervisoryReceipt" label="监制回执是否取得" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="accessoryTenderee" label="相关附件" :show-overflow-tooltip="true" align="center">
          <span  @click="download()" class="download">下载</span>
         </el-table-column>
      

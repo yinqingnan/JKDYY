@@ -3,13 +3,13 @@
     <div>
         <div>
              <div class="box"> 
-                <el-table :data="Merger1" style="width: auto" fit:true  >
-                <el-table-column prop="acquiringfirm" label="收购方" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="acquiree" label="被收购方" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="acquisitiontime" label="日期" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="capital" label="资金" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="ratio" label="占股比例" :show-overflow-tooltip="true" ></el-table-column>
-                <el-table-column prop="remark"  label="备注"   :show-overflow-tooltip="true"></el-table-column>
+                <el-table :data="Merger1" style="width: auto" fit:true  :cell-style="cellStyle" >
+                <el-table-column prop="acquiringfirm" label="收购方" :show-overflow-tooltip="true"  align="center"></el-table-column>
+                <el-table-column prop="acquiree" label="被收购方" :show-overflow-tooltip="true" align="center"></el-table-column>
+                <el-table-column prop="acquisitiontime" label="日期" :show-overflow-tooltip="true" align="center"></el-table-column>
+                <el-table-column prop="capital" label="资金" :show-overflow-tooltip="true" align="center"></el-table-column>
+                <el-table-column prop="ratio" label="占股比例" :show-overflow-tooltip="true"  align="center"></el-table-column>
+                <el-table-column prop="remark"  label="备注"   :show-overflow-tooltip="true" class="beizhu" align="center"></el-table-column>
                 </el-table>
             </div>
         </div>
@@ -41,43 +41,23 @@ export default {
      
     }, 
     methods:{
-        
-        // cellStyle({row, column, rowIndex, columnIndex}){
-        //     if(rowIndex === 2 && columnIndex === 11){ //指定坐标
-        //         return 'background:pink'
-        //     }else{
-        //         return ''
-        //     }
-        // }
-
+        cellStyle({row, column, rowIndex, columnIndex}){
+        //   console.log(row)           //-------------------对象形式，填入的当列所有数据      
+        //   console.log(column)            
+        //   console.log(rowIndex)      //--------行
+        //   console.log(columnIndex)   //--------列
+          console.log(columnIndex)
+            if(columnIndex === 5){ //指定坐标
+                return 'text-align:left'
+            }else{
+                return ''
+            }
+        }
     },
 
-    created(){
-    
-    }
 }
 </script>
 
 <style scoped>
-    .box{
-        /* width: 100%; */
-        /* margin: 12px; */
-        
-    }
-</style>
-<style>
-/* .el-table_2_column_11> .cell{
-    text-align: left !important
-} */
-/* .el-table_2_column_11> .cell{
-    text-align: left !important
-} */
-/* .el-table_2_column_11:nth-of-type(1)> .call{ */
-     /* text-align: center !important */
-    /* color: red  !important */
-    /* } */
-/* .el-table_2_column_11{
-    color: red
-} */
 
 </style>

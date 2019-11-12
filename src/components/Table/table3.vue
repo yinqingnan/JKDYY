@@ -6,17 +6,17 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="isParkingBusiness" label="是否开展停车场经营业务" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="recordNumber" label="备案编号" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="parkingRecordValidity" label="有效期" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="noRecord" label="停车备案规定名称" :show-overflow-tooltip="true" ></el-table-column>
-        <el-table-column prop="recordingOrgan" label="备案机关" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="supervisoryDocuments" label="是否取得监制文件" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="publicSigns" label="是否有价格公示牌" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="accessoryPark" label="相关附件" :show-overflow-tooltip="true">
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="isParkingBusiness" label="是否开展停车场经营业务" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="recordNumber" label="备案编号" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="parkingRecordValidity" label="有效期" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="noRecord" label="停车备案规定名称" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="recordingOrgan" label="备案机关" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="supervisoryDocuments" label="是否取得监制文件" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="publicSigns" label="是否有价格公示牌" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="accessoryPark" label="相关附件" :show-overflow-tooltip="true" align="center">
           <span @click="download()" class="download">下载</span>
         </el-table-column>
 
