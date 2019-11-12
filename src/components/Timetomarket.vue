@@ -6,14 +6,18 @@
         <div class="box">
             <h1>上市时间图</h1>
                 <div class="line">
-                    <div class="sjx"></div> <div class="sjx1"></div>
+                    <div class="sjx" @click="rightbtn"></div> 
                     <div class="box_header">
-                        <ul v-for="(item,index) in list" :key="index" >
-                            <li class="year">{{item.year}}</li>
-                            <li>{{item.companyName.split(",")[0]}}</li>
-                            <li>{{item.companyName.split(",")[1]}}</li>
-                        </ul>
+                        <div  ref="tabs">
+                            <ul v-for="(item,index) in list" :key="index"  >
+                                <li class="year">{{item.year}}</li>
+                                <li>{{item.companyName.split(",")[0]}}</li>
+                                <li>{{item.companyName.split(",")[1]}}</li>
+                            </ul>
+                        </div>
+                      
                     </div>
+                    <div class="sjx1" @click="leftbtn"></div>
                 </div>
         </div>
                
@@ -28,6 +32,7 @@ export default {
     data(){
         return{
            list:[],
+           number:0
 
         }
     },
@@ -36,10 +41,30 @@ export default {
 
         this.axios.get("/api/listedCompany12").then((res)=>{
             // console.log(res.data.data)   
+            // res.data.data.shift()
             this.list=res.data.data
-            // console.log(res.data.data)
+
            
         })
+    },
+    methods:{
+        leftbtn(){
+            this.number++
+             this.number++
+            if(this.number>=0){
+                  this.$refs.tabs.style="left:0px"
+            }else if(this.number<0){
+                this.$refs.tabs.style.left=(this.number*80)+"px"
+            }
+        },
+        rightbtn(){
+            this.number--
+           if(this.number>=-7){
+                this.$refs.tabs.style.left=(this.number*80)+"px"
+            }else{
+               this.number=-7
+            }
+        }
     }
 }
 </script>
@@ -79,14 +104,24 @@ export default {
     top: -10px
 }
 .box_header{
-    display: flex;
-    width: 100%;
     position: absolute;
     top: -15px;
+    width: 100%;
     height: 90px;
     overflow-y: hidden;
 }
-.box_header>ul{
+.box_header::-webkit-scrollbar{
+      display: none;
+  }
+.box_header>div{
+    display: flex;
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    top: 0px;
+    left: 0
+}
+.box_header>div>ul{
     display: flex;
     justify-content: space-between;
     width: 60%;
@@ -94,9 +129,9 @@ export default {
     flex-wrap: wrap;
     text-align: center;
     position: relative;
-        margin:0 20px;
+    margin:0 20px;
 }
-.box_header>ul>li{
+.box_header>div>ul>li{
     font-size: 12px;
     white-space: nowrap;
     line-height:20px;
