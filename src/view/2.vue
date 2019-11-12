@@ -14,7 +14,7 @@
         <div>
             <Listedcompany v-if="show" ></Listedcompany>
             <Companylist v-if="isshow" :nameid="nameid"></Companylist>
-            <!-- <Companylist  :nameid="nameid"></Companylist>  -->
+
 
         </div>
     </div>
@@ -67,13 +67,15 @@ export default {
  
         },
         leftbtn(){
-            this.number++
-            if(this.number>=0){
-                  this.$refs.tabs.style="left:12px"
-            }else if(this.number<0){
-                this.$refs.tabs.style.left=(this.number*80)+"px"
-            }
-          
+            // this.number++
+            // if(this.number>=0){
+            //       this.$refs.tabs.style="left:12px"
+            // }else if(this.number<0){
+            //     this.$refs.tabs.style.left=(this.number*80)+"px"
+            // }
+             this.number=0
+            // this.$refs.tabs.style="left:12px"
+            this.$refs.tabs.style.left=12+"px"
         },
         rightbtn(){
              this.number--
@@ -85,11 +87,6 @@ export default {
         }
     },
     mounted() {
-        
-        // console.log(this.$refs.tabs.offsetWidth)
-
-
-        
         // 获取上市公示列表数据
         this.axios.get('/api/listedCompany01')
         .then((res)=>{
@@ -121,7 +118,8 @@ export default {
     /* min-width: 1136px; */
     box-sizing: border-box;
     position: absolute;
-    left:12px
+    left:12px;
+    transition: all 1s
     /*   最大412px */
 }
 

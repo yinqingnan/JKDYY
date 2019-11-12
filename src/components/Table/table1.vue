@@ -6,17 +6,19 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50"></el-table-column>
-        <el-table-column prop="companyName" label="区域" min-width="106px"></el-table-column>
-        <el-table-column prop="city" label="城市"></el-table-column>
-        <el-table-column prop="partyA" label="甲方公司名称"></el-table-column>
-        <el-table-column prop="appointCompany" label="合同约定的管理公司"></el-table-column>
-        <el-table-column prop="actualCompany" label="实际管理公司"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称"></el-table-column>
-        <el-table-column prop="firsthand" label="项目首次交房时间"></el-table-column>
-        <el-table-column prop="firstApproach" label="项目初次进场时间"></el-table-column>
-        <el-table-column prop="ItemFormat" label="项目业务"></el-table-column>
-        <el-table-column prop="accessoryBasic" label="相关附件"></el-table-column>
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="companyName" label="区域" min-width="106px" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="city" label="城市" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="partyA" label="甲方公司名称" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="appointCompany" label="合同约定的管理公司" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="actualCompany" label="实际管理公司" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="firsthand" label="项目首次交房时间" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="ItemFormat" label="项目业态" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="accessoryBasic" label="相关附件" :show-overflow-tooltip="true">
+                    <span  @click="download()" class="download">下载</span>
+        </el-table-column>
         <!-- <el-table-column label="操作"> -->
         <!-- <template slot-scope="scope">
             <el-button type="warning" icon="el-icon-star-off" circle></el-button>
@@ -72,18 +74,16 @@ export default {
   },
   props: ["tablemsg"],
   methods: {
-    // tableRowClassName({row, rowIndex}) {
-    //     if (rowIndex === 0) {
-    //     return 'th';
-    //     }
-    //     return '';
-    // },
+
     switchChange() {
       this.istag = !this.istag;
     },
 
     current_change: function(currentPage) {
       this.currentPage = currentPage;
+    },
+    download(val){
+      console.log(val)
     },
     handleSizeChange(val) {
     //   console.log(`每页 ${val} 条`);
@@ -101,18 +101,19 @@ export default {
 </script>
 <style scoped>
 .box {
-  /* width: 100%; */
-  /* height: 100vh; */
-  /* position: fixed; */
-  /* height: 100%; */
+
   background: #eee;
   padding: 12px;
-  /* height: 680px */
-  /* position: relative; */
+
 }
 .box1{
   height: 50px;
   background: #fff
+}
+.download{
+  font-size: 14px;
+  color: #409eff;
+  cursor: pointer;
 }
 </style>
 <style>

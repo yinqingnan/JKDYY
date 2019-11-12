@@ -25,12 +25,8 @@ export default {
   watch: {
       region:{
           handler(newVal){
-            // console.log(newVal.slice(0,4))
-            // console.log(newVal.slice(4))
             let year=newVal.slice(0,4)
             let id=encodeURI(newVal.slice(4));
-            // console.log(year)
-            // console.log(id)
             axios.get("/api/listedCompany11?reportingType="+id+"&reportingYear="+year)    //正式默认第一条数据
             .then((res)=>{
                 this.companyName=[]
@@ -48,7 +44,6 @@ export default {
                     this.averagereturnonequity.push(element.averagereturnonequity.toFixed(2))
                     this.increaserateofbusinessrevenue.push(element.increaserateofbusinessrevenue.toFixed(2))
                 });
-
 
 
 

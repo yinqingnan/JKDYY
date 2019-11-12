@@ -91,7 +91,7 @@ export default {
               data: this.reportingYear, //时间数据入口
               axisLine: {
                 lineStyle: {
-                  color: "#333"
+                  color: "#B4B4B4"
                 }
               },
               axisTick: {

@@ -6,24 +6,20 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50"></el-table-column>
-        <el-table-column prop="companyName" label="区域"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称"></el-table-column>
-        <el-table-column prop="isBidding" label="是否招投标"></el-table-column>
-        <el-table-column prop="noTenderReason" label="未招投标原因"></el-table-column>
-        <el-table-column prop="recordPrice" label="备案价格"></el-table-column>
-        <el-table-column prop="actualPrice" label="实际收费价格"></el-table-column>
-        <el-table-column prop="exceedRecordPrice" label="是否超出备案价格"></el-table-column>
-        <el-table-column prop="exceedRecordPriceReason" label="若超出备案价格，说明原因"></el-table-column>
-        <el-table-column prop="supervisoryReceipt" label="监制回执是否取得"></el-table-column>
-        <el-table-column prop="accessoryTenderee" label="相关附件"></el-table-column>
-        <!-- <el-table-column label="操作"> -->
-        <!-- <template slot-scope="scope">
-            <el-button type="warning" icon="el-icon-star-off" circle></el-button>
-            <el-button type="primary" icon="el-icon-star-on" v-if="istag" @click="switchChange"></el-button>
-            <el-button type="primary" icon="el-icon-star-off" v-else="!istag" @click="switchChange"></el-button>
-        </template>-->
-        <!-- </el-table-column> -->
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="isBidding" label="是否招投标" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="noTenderReason" label="未招投标原因" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="recordPrice" label="备案价格" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="actualPrice" label="实际收费价格" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="exceedRecordPrice" label="是否超出备案价格" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="exceedRecordPriceReason" label="若超出备案价格，说明原因 " :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="supervisoryReceipt" label="监制回执是否取得" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="accessoryTenderee" label="相关附件" :show-overflow-tooltip="true">
+         <span  @click="download()" class="download">下载</span>
+        </el-table-column>
+     
       </el-table>
            <div class="box1">
         <el-pagination
@@ -91,7 +87,10 @@ export default {
     //   console.log(`当前页: ${val}`);
 
 
-    }
+    },   
+     download(val){
+      console.log(val)
+    },
   },
 //   created: function() {
 //     this.total = this.tableData.length;
@@ -100,18 +99,19 @@ export default {
 </script>
 <style scoped>
 .box {
-  /* width: 100%; */
-  /* height: 100vh; */
-  /* position: fixed; */
-  /* height: 100%; */
+
   background: #eee;
   padding: 12px;
-  /* height: 680px */
-  /* position: relative; */
+
 }
 .box1{
   height: 50px;
   background: #fff
+}
+.download{
+  font-size: 14px;
+  color: #409eff;
+  cursor: pointer;
 }
 </style>
 <style>

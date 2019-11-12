@@ -39,11 +39,16 @@ h1,h2,h3,h4,h5,h6{
   width:  0px !important
 }
 html, body {
-min-width: 1130px;
-width: 100%;
+/* min-width: 1130px; */
+/* width: 100%; */
 height: 100%;
 margin: 0px;
 padding: 0px;
 }
-
+/* html{ */
+  /* 当IE下溢出，仍然可以滚动*/ 
+        /* -ms-overflow-style:none; */
+        /*火狐下隐藏滚动条*/
+        /* overflow:-moz-scrollbars-none; */
+/* } */
 </style>

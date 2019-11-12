@@ -70,15 +70,6 @@ export default {
         });
 
 
-        // console.log(this.data)
-        // console.log(this.data1)
-        // console.log(this.data2)
-
-        // console.log(this.incomeName)
-
-        // console.log(this.incomeName[0])
-        // console.log(this.incomeName[1])
-        // console.log(this.incomeName[2])
 
         // 图表设置信息
         const option = {
@@ -109,11 +100,11 @@ export default {
               color: "#3B53A2",
               fontSize: 12
             },
-            itemWidth: 30, // 标志图形的长度
+            itemWidth: 10, // 标志图形的长度
             itemHeight: 10, // 标志图形的宽度
             inactiveColor: "#CDD9F0",
             top: 20,
-            icon: "rect", //点的形状
+            icon: "circle", //点的形状
             right: 0 //点的位置
           },
           grid: {

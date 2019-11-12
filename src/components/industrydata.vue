@@ -41,10 +41,15 @@ export default {
     border: 1px solid #e5e5e5;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow-y:auto
+    overflow-y:auto;
+     /* 当IE下溢出，仍然可以滚动*/ 
+        -ms-overflow-style:none;
+        /*火狐下隐藏滚动条*/
+        overflow:-moz-scrollbars-none;
 
 }
 .box::-webkit-scrollbar {display:none}
+
 .box>h1{
     font-size: 16px;
     text-align: center;

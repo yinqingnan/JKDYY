@@ -250,7 +250,8 @@ export default {
 .container_left_header>img{
     width: 160px;
     height: 50px;
-    margin-top: 25px
+    margin-top: 25px;
+    margin-left: 44px
 }
 .container_left_header>h1{
     width: 100%;
@@ -293,11 +294,9 @@ export default {
 }
 
 .container_right_header>div:nth-of-type(1)>ul>li>h1:nth-of-type(2){
-    /* text-align: left; */
     margin-left: 20px;
     overflow: hidden;
     font-weight: 100;
-    color: red;
     min-width: 150px;
 
 }
@@ -306,8 +305,6 @@ export default {
     border: 1px solid #e5e5e5;
     margin: 10px 0;
     display: flex;
-    /* min-width: 320px; */
-    /* justify-content: center */
     max-height: 170px
 
 }
@@ -316,7 +313,6 @@ export default {
     font-size: 14px;
     color: #333;
     margin:10px 5px;
-    /* margin-right: 46px */
    
 }
 .container_right_header>div:nth-of-type(2)>p{
@@ -333,6 +329,10 @@ export default {
     height: 90px;
     overflow-x: hidden;
     overflow-y: scroll;
+        /* 当IE下溢出，仍然可以滚动*/ 
+        -ms-overflow-style:none;
+        /*火狐下隐藏滚动条*/
+        overflow:-moz-scrollbars-none;
     
 }
 .container_right_header>div:nth-of-type(2)>p::-webkit-scrollbar {

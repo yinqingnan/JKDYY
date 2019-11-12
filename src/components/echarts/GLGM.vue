@@ -62,7 +62,7 @@ export default {
                 }
               }
               else{
-                return a[0].seriesName +":"+ a[0].value+"万m²"+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
+                return a[0].seriesName +":"+ a[0].value+"百万m²"+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
               }
             }
           },
@@ -198,8 +198,8 @@ export default {
 .ECHARTS {
  width: 100%;
  margin: 0 auto;
-  min-width: 270px;
-  height: 240px;
+min-width: 270px;
+height: 240px;
 
 }
 </style>

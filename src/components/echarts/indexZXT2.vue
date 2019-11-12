@@ -49,6 +49,16 @@ export default {
             const option = {
               backgroundColor: "#fff",
               title:[
+                 {text: '上市公司规模',
+                    x: 'center',
+                     padding: [0,0, 0, 0], //上右下左
+                    y: 20,
+                textStyle: {
+                  color: "#333",
+                  fontSize: 16,
+                  fontWeight: "600"
+                }
+                },
                 {text: '面积：亿m²',
                     x: 'right',
                      padding: [0,58, 0, 0], //上右下左
@@ -95,10 +105,10 @@ export default {
               //     },
               // },
               grid: {
-                top: "20%",
+                top: "30%",
                 right: "10%",
                 left: "10%",
-                bottom: "14%",
+                bottom: "4%",
                 containLabel: true
               },
               legend: {

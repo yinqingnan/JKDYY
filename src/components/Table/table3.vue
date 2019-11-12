@@ -6,17 +6,19 @@
         style="width: 100%"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
-        <el-table-column label="序号" type="index" width="50"></el-table-column>
-        <el-table-column prop="companyName" label="区域"></el-table-column>
-        <el-table-column prop="projectName" label="项目名称"></el-table-column>
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true"></el-table-column>
         <el-table-column prop="isParkingBusiness" label="是否开展停车场经营业务" :show-overflow-tooltip="true"></el-table-column>
-        <el-table-column prop="recordNumber" label="备案编号"></el-table-column>
-        <el-table-column prop="parkingRecordValidity" label="有效期"></el-table-column>
-        <el-table-column prop="noRecord" label="停车备案规定名称" ></el-table-column>
-        <el-table-column prop="recordingOrgan" label="备案机关"></el-table-column>
-        <el-table-column prop="supervisoryDocuments" label="是否取得监制文件"></el-table-column>
-        <el-table-column prop="publicSigns" label="是否有价格公示牌"></el-table-column>
-        <el-table-column prop="accessoryPark" label="相关附件"></el-table-column>
+        <el-table-column prop="recordNumber" label="备案编号" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="parkingRecordValidity" label="有效期" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="noRecord" label="停车备案规定名称" :show-overflow-tooltip="true" ></el-table-column>
+        <el-table-column prop="recordingOrgan" label="备案机关" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="supervisoryDocuments" label="是否取得监制文件" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="publicSigns" label="是否有价格公示牌" :show-overflow-tooltip="true"></el-table-column>
+        <el-table-column prop="accessoryPark" label="相关附件" :show-overflow-tooltip="true">
+          <span @click="download()" class="download">下载</span>
+        </el-table-column>
 
       </el-table>
          <div class="box1">
@@ -83,9 +85,10 @@ export default {
     },
     handleCurrentChange(val) {
     //   console.log(`当前页: ${val}`);
-
-
-    }
+    },
+        download(val){
+      console.log(val)
+    },
   },
 //   created: function() {
 //     this.total = this.tableData.length;
@@ -94,18 +97,17 @@ export default {
 </script>
 <style scoped>
 .box {
-  /* width: 100%; */
-  /* height: 100vh; */
-  /* position: fixed; */
-  /* height: 100%; */
   background: #eee;
   padding: 12px;
-  /* height: 680px */
-  /* position: relative; */
 }
 .box1{
   height: 50px;
   background: #fff
+}
+.download{
+  font-size: 14px;
+  color: #409eff;
+  cursor: pointer;
 }
 </style>
 <style>

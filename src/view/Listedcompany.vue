@@ -40,27 +40,27 @@
           <h1>关键财务数据</h1>
           <div>
             <div>
-              <h3>总营收平均值</h3>
+              <h3 title="总营收平均值">总营收平均值</h3>
               <h2>{{Finance.averageTotalRevenue}}亿</h2>
             </div>
             <div>
-              <h3>净利润平均值</h3>
+              <h3 title="净利润平均值">净利润平均值</h3>
               <h2>{{Finance.averageNetProfit}}亿</h2>
             </div>
             <div>
-              <h3>ROE平均值</h3>
+              <h3 title="ROE平均值">ROE平均值</h3>
               <h2>{{Finance.averageReturnOnEquity}}%</h2>
             </div>
             <div>
-              <h3>营收增长率平均值</h3>
+              <h3 title="营收增长率平均值">营收增长率平均值</h3>
               <h2>{{Finance.increaseRateOfBusinessRevenue}}%</h2>
             </div>
             <div>
-              <h3>净利润增长率平均值</h3>
+              <h3 title="净利润增长率平均值">净利润增长率平均值</h3>
               <h2>{{Finance.netProfitMarginOnSales}}%</h2>
             </div>
             <div>
-              <h3>净利润率平均值</h3>
+              <h3 title="净利润率平均值">净利润率平均值</h3>
               <h2>{{Finance.returnOnEquity}}%</h2>
             </div>
 
@@ -92,6 +92,7 @@
 
 
 <script>
+
 // 引入axios
 import axios from "axios";
 // 引入并购详情也
@@ -143,6 +144,7 @@ export default {
       let id =encodeURI(msg.slice(4));
       // 点击后再次赋值关键财务数据
       axios.get("/api/listedCompany09?reportingType="+id+"&reportingYear="+year).then(res => {
+        // console.log(res.data.data)
           // 再次赋值替换原数据
           this.Finance = res.data.data[0];
           
@@ -150,9 +152,8 @@ export default {
     }
   },
   mounted() {
-    // console.log(123123)
     // 获取收并购信息
-    axios.get("/api/listedCompany07?topcount=5").then(res => {
+    axios.get("/api/listedCompany07?topcount=8").then(res => {
         this.Merger = res.data.data;
       });
 
@@ -184,7 +185,7 @@ export default {
   box-sizing: border-box;
   /* min-width: 1136px; */
   /* position: fixed; */
-  height: 100%
+  height: 893px
 }
 .container > div {
   width: 32%;
@@ -209,7 +210,7 @@ background: #eee
 .container_left_header {
   border: 1px solid #e5e5e5;
   position: relative;
-  height: 400px;
+  /* height: 510px; */
   background: #fff
 }
 .container_left_header > h1 {
@@ -295,7 +296,7 @@ background: #eee
   margin-top: 20px;
   overflow: hidden;
   border: 1px solid #e5e5e5;
-  padding-bottom: 29px;
+  padding-bottom: 22px;
   background: #fff
 }
 .h2position{

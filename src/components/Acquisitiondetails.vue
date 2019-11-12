@@ -3,13 +3,13 @@
     <div>
         <div>
              <div class="box"> 
-                <el-table :data="Merger1" style="width: auto" fit:true >
-                <el-table-column prop="acquiringfirm" label="收购方"></el-table-column>
-                <el-table-column prop="acquiree" label="被收购方"></el-table-column>
-                <el-table-column prop="acquisitiontime" label="日期" ></el-table-column>
-                <el-table-column prop="capital" label="资金" ></el-table-column>
-                <el-table-column prop="ratio" label="占股比例" ></el-table-column>
-                <el-table-column prop="remark"  label="备注"  style="text-align:center !important"  ></el-table-column>
+                <el-table :data="Merger1" style="width: auto" fit:true  >
+                <el-table-column prop="acquiringfirm" label="收购方" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="acquiree" label="被收购方" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="acquisitiontime" label="日期" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="capital" label="资金" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="ratio" label="占股比例" :show-overflow-tooltip="true" ></el-table-column>
+                <el-table-column prop="remark"  label="备注"   :show-overflow-tooltip="true"></el-table-column>
                 </el-table>
             </div>
         </div>
@@ -40,6 +40,18 @@ export default {
 
      
     }, 
+    methods:{
+        
+        // cellStyle({row, column, rowIndex, columnIndex}){
+        //     if(rowIndex === 2 && columnIndex === 11){ //指定坐标
+        //         return 'background:pink'
+        //     }else{
+        //         return ''
+        //     }
+        // }
+
+    },
+
     created(){
     
     }
@@ -57,13 +69,13 @@ export default {
 /* .el-table_2_column_11> .cell{
     text-align: left !important
 } */
-.el-table_2_column_11> .cell{
+/* .el-table_2_column_11> .cell{
     text-align: left !important
-}
-.el-table_2_column_11:nth-of-type(1)> .call{
+} */
+/* .el-table_2_column_11:nth-of-type(1)> .call{ */
      /* text-align: center !important */
     /* color: red  !important */
-    }
+    /* } */
 /* .el-table_2_column_11{
     color: red
 } */
