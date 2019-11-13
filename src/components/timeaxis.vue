@@ -62,7 +62,7 @@ export default {
     border: 1px solid #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
-    min-width: 686px;
+    /* min-width: 686px; */
 }
 .TimeAxis>div>span{
     display: inline-block;
@@ -113,7 +113,6 @@ export default {
 .TimeAxis>div>div>ul>li:nth-of-type(3){
     font-size: 11px;
     color: #333;
-    /* margin-top: 9px; */
     text-align: center;
     white-space:nowrap;
     color: #999 ;

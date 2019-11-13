@@ -68,7 +68,11 @@ export default {
             bottom: "10%"
           },
           tooltip: {
-            trigger: "axis"
+            trigger: "axis",
+            formatter:function(a){
+                return a[0].seriesName +":"+a[0].value+"百万元"
+            }
+            
           },
           xAxis: {
             //x轴

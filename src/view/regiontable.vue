@@ -5,7 +5,7 @@
             <div class="tablecontainer_header">
                 <el-form :inline="true"  class="demo-form-inline">
                 <el-form-item label="区域公司">
-                    <el-select v-model="qydefault" placeholder="请选择" @change="qychange(qydefault)">
+                    <el-select v-model="qydefault" placeholder="请选择" @change="qychange(qydefault)"  >
                     <el-option 
                     v-for="(item,index) in qygslist" 
                     :key="index"
@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="tablecontainer_footer">
-                <Table1 v-show="0==num" :tablemsg="tablemsg"/>
+                <Table1 v-show="0==num" :tablemsg="tablemsg"  :number="number"/>
                 <Table2 v-show="1==num" :tablemsg="tablemsg"/>
                 <Table3 v-show="2==num" :tablemsg="tablemsg"/>   
             </div>
@@ -68,17 +68,15 @@ import Table3 from "../components/Table/table3"
             num:0,//-----------------------------------------------------默认显示的列表
             tablelength:'',//-------------------------------------------table长度
             tablemsg:[],//---------------------------------------------table的内容
-      
+            number:0
 
           };
         } ,
         methods: {
             // 查询点击事件
             onSubmit() {
-            if(this.msg===""){
-                // console.log("空")
-                // this.axios.get("http://222.180.200.126:9045/api/projectinfopage2?companyName=")
 
+            if(this.msg===""){
                 this.axios.get("http://222.180.200.126:9045/api/projectinfopage2?companyName="+encodeURI(this.Selection)).then((res)=>{
                     // console.log(res.data.data)
                     this.tablemsg=res.data.data
@@ -92,6 +90,10 @@ import Table3 from "../components/Table/table3"
                   
                 })
             }
+              
+                // this.propsData=[];
+                // this.propsData.push(this.Selection,this.msg)
+                
             },
             // 监听下拉选中项目并赋值给默认项
             qychange(qydefault){//-------区域选中项
@@ -99,7 +101,6 @@ import Table3 from "../components/Table/table3"
             },
             btn(index){
                 this.num=index
-
             }
             
         },
@@ -143,7 +144,7 @@ import Table3 from "../components/Table/table3"
 }
 .tablecontainer_body_header{
     display: flex;
-    line-height: 55px
+    line-height: 53px
 }
 .tablecontainer_body_header>li{
     margin-right: 40px;

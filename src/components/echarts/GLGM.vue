@@ -175,12 +175,7 @@ export default {
         };
         //初始化图表
         const chartObj = echarts.init(document.getElementById("11"));
-
         chartObj.setOption(option, true);
-        // 设置自适应
-        window.onresize = function() {
-          chartObj.resize();
-        };
       }
     },
 
@@ -189,7 +184,7 @@ export default {
   },
   props: ["GLGM", "newid"],
   mounted(){
-     const chartObj = echarts.init(document.getElementById("11"));
+    const chartObj = echarts.init(document.getElementById("11"));
     window.addEventListener("resize", () => { chartObj.resize();});
   }
 };
