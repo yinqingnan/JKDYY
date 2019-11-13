@@ -62,7 +62,7 @@ export default {
     border: 1px solid #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
-    min-width: 686px;
+    /* min-width: 686px; */
 }
 .TimeAxis>div>span{
     display: inline-block;

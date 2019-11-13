@@ -16,46 +16,43 @@ export default {
   data() {
     return {
       // chart: null
-      list: [],
-  //  list1: [      //需要单独上色的城市，  value只可控制颜色
-  //           {             
-  //             "businessFee": 9.43,
-  //             "garageFee": 9.96,
-  //             "highRiseFee": 9.64,
-  //             "name": "四川",
-  //             "value": "20",
-  //             "villaFee": 9.38,
-  //             "westernFee": 9.59,
-  //           }, 
-  //           {
-  //             "businessFee": 9.85,
-  //             "garageFee": 9.24,
-  //             "highRiseFee": 9.52,
-  //             "name": "重庆",
-  //             "value": "50",
-  //             "villaFee": 9.96,
-  //             "westernFee": 9.72,
-  //           }, 
-          
-  //    ]
+      list: []
+      //  list1: [      //需要单独上色的城市，  value只可控制颜色
+      //           {
+      //             "businessFee": 9.43,
+      //             "garageFee": 9.96,
+      //             "highRiseFee": 9.64,
+      //             "name": "四川",
+      //             "value": "20",
+      //             "villaFee": 9.38,
+      //             "westernFee": 9.59,
+      //           },
+      //           {
+      //             "businessFee": 9.85,
+      //             "garageFee": 9.24,
+      //             "highRiseFee": 9.52,
+      //             "name": "重庆",
+      //             "value": "50",
+      //             "villaFee": 9.96,
+      //             "westernFee": 9.72,
+      //           },
+
+      //    ]
     };
   },
-  created(){
-     this.axios.get("/api/cityData10").then(res => {
+  created() {
+    this.axios.get("/api/cityData10").then(res => {
       // console.log(res.data.data)
       this.list = res.data.data;
-       if(this.list.length==0){
-        return false
-    }else{
-       this.chinaConfigure();
-    }
+      if (this.list.length == 0) {
+        return false;
+      } else {
+        this.chinaConfigure();
+      }
     });
   },
 
-  mounted() {
-
-   
-  },
+  mounted() {},
   beforeDestroy() {
     if (!this.chart) {
       return;
@@ -79,34 +76,42 @@ export default {
               return (
                 "高层：" +
                 a.data.businessFee +
+                "元/m²" +
                 "<br/>" +
                 "洋房：" +
                 a.data.garageFee +
+                "元/m²" +
                 "<br/>" +
                 "别墅：" +
                 a.data.highRiseFee +
+                "元/m²" +
                 "<br/>" +
                 "商业：" +
                 a.data.villaFee +
+                "元/m²" +
                 "<br/>" +
                 "车库：" +
-                a.data.westernFee
+                a.data.westernFee +"元/个"
               );
             }
           },
 
-          backgroundColor: "#ccc", //标题背景色
+          backgroundColor: "#f0f0f0", //标题背景色
           borderColor: "#ccc", //边框颜色
-          borderWidth: 0 //边框线宽
-          // textStyle:[{}],                          //文本样式
-        }, 
-      
+          borderWidth: 1, //边框线宽
+         textStyle: {         //文本样式
+                color: "#333", //字体颜色
+                fontSize: 12,
+                fontWeight:100                     //字体加粗
+              }                         
+        },
+
         dataRange: {
           show: false,
           // min: 0,
           // max: 100,
           realtime: true,
-          color: ["skyblue"]      //固定单色
+          color: ["#12c0ff"] //固定单色
           // 设置范围颜色
           // x: 'left',
           // y: 'center',
@@ -121,6 +126,7 @@ export default {
           // ],
         },
         geo: {
+          
           // 这个是重点配置区
           map: "china", // 表示中国地图
           roam: false, //是否允许放大或者拖拽
@@ -130,12 +136,13 @@ export default {
               textStyle: {
                 color: "#fff", //字体颜色
                 fontSize: 12
-                 //字体大小
+                //字体大小
                 // fontWeight:600                     //字体加粗
               }
             }
           },
-
+        // aspectScale:1,         //-----------------拉伸比例
+        // layoutCenter: ['50%', '50%'],
           itemStyle: {
             normal: {
               borderColor: "#fff", //省份边界线
@@ -148,7 +155,7 @@ export default {
               shadowBlur: 20,
               borderWidth: 0,
               shadowColor: "rgba(0, 0, 0, 0.3)",
-              areaColor: "#12c0ff", //鼠标经过显示的颜色
+              areaColor: "#05adea", //鼠标经过显示的颜色
               color: "#333"
             }
           }
@@ -163,8 +170,8 @@ export default {
             name: "中国地图", // 浮动框的标题
             type: "map",
             geoIndex: 0,
-            data: 
-            this.list
+            data: this.list,
+            zoom: 1, 
           }
         ]
       });
@@ -173,7 +180,7 @@ export default {
       myChart.on("click", function(params) {
         //点击事件
         let name = params.name; //当前点击的名称
-        vue.$router.push({path:"/city",query:{name:name}})
+        vue.$router.push({ path: "/city", query: { name: name } });
       });
     }
   }

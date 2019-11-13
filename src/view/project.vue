@@ -41,7 +41,9 @@
                         </li>
                     </ul>
                 </div>
+
                 <Timeaxis/>
+
                 <div class="Chart">
                     <div>
                         <h1>关键指标</h1>
@@ -183,11 +185,11 @@ export default {
      border: 1px solid #e0dfe8;
     width :100%;
     background: #fff;
-    /* height :1150px; */
+    height :1150px;
 }
 .Right {
     width: 18.125rem;
-    margin: 0 15px 0 12px;
+    margin: 0 0 0 12px;
     background :#eee;
 }   
 
@@ -234,13 +236,13 @@ export default {
 }
 .Title>ul:nth-of-type(1){
     display: flex;
-    min-width: 17.375rem;
+    /* min-width: 17.375rem; */
     border-right: 1px dashed #e0dfe8
 }
 .Title>ul:nth-of-type(1)>li{
     width: 30%;
     position: relative;
-    min-width: 72px;
+    /* min-width: 72px; */
     white-space: nowrap
 }
 .Title>ul:nth-of-type(1)>li>h1{
@@ -319,12 +321,12 @@ export default {
 .Chart>div:nth-of-type(2){
     display: flex;
     justify-content: space-around;
-     min-width: 800px;
+     /* min-width: 800px; */
 }
 .Chart>div:nth-of-type(2)>div{
     width: 30%;
     height: 340px;
-    min-width: 238px;
+    /* min-width: 238px; */
     background: #f0eded;
 }
 .Chart>div:nth-of-type(2)>div>h1{
@@ -354,13 +356,9 @@ export default {
 .Chart>div:nth-of-type(2)>div>div>div{
     flex:1
 }
-.tab1{
 
-    /* padding-bottom: 20px */
-}
 .tab2{
     margin-top: 12px;
-    /* padding-bottom: 40px */
 }
 
 .projectName{
@@ -383,7 +381,7 @@ export default {
 }
 .Chart1>div:nth-of-type(1){
     width: 45%;
-    min-width: 350px;
+    /* min-width: 350px; */
 }
 .Chart1>div:nth-of-type(1)>div:nth-of-type(1){
     display: flex;
@@ -415,7 +413,7 @@ export default {
 .Chart1>div:nth-of-type(2){
     width: 55%;
     margin-left: 16px;
-    min-width: 396px;
+    /* min-width: 396px; */
 }
 .Chart1>div:nth-of-type(2)>div{
     display: flex;

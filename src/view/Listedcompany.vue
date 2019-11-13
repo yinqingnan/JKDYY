@@ -293,10 +293,10 @@ background: #eee
   margin-top: 12px
 }
 #ZXT1{
-  margin-top: 20px;
+  margin-top: 12px;
   overflow: hidden;
   border: 1px solid #e5e5e5;
-  padding-bottom: 22px;
+  padding-bottom: 30px;
   background: #fff
 }
 .h2position{

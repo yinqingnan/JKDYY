@@ -143,7 +143,7 @@ import Table3 from "../components/Table/table3"
 }
 .tablecontainer_body_header{
     display: flex;
-    line-height: 55px
+    line-height: 53px
 }
 .tablecontainer_body_header>li{
     margin-right: 40px;
