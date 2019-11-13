@@ -4,16 +4,26 @@
         <div class="container">
             <div class="Left">
                 <div class="Downmenu">
-                    <h1 @click="Downmenu" >{{name==""? "华东区域公司":name}}  <span class="iconfont iconpub_down" ></span></h1>
-                    <div class="ModalFrame" v-show="ModalFrame">
-                        <ul>
-                            <li 
-                            v-for="(item,index) in getProjectList" :key="index" class="projectName"
-                            @click="getid(item.id,item.projectName)"
+                    <div class="select">
+                        <el-select v-model="value" placeholder="请选择" class="selects" style="width:200px;border:0" @change="selectchange(value)">
+                            <el-option
+                            v-for="item in getProjectList"
+                            :key="item.value"
+                            :label="item.companyName"
+                            :value="item.companyName"
                             >
-                            {{item.projectName}}
-                            </li>
-                        </ul>
+                            </el-option>
+                        </el-select>
+
+                         <el-select v-model="value1" placeholder="请选择项目" class="selects" style="width:200px;border:0" @change="selectchange(value)">
+                            <el-option
+                            v-for="item in getProjectList"
+                            :key="item.value"
+                            :label="item.companyName"
+                            :value="item.companyName"
+                            >
+                            </el-option>
+                        </el-select>
                     </div>
                 </div>
                 <div class="Title">
@@ -22,21 +32,21 @@
                             <img src="../assets/ima/home_node.png" alt="">
                         </li>
                         <li>
-                            <h1>节点达成率</h1> 
+                            <h1>{{list1[0]}}</h1> 
                             <span>91%</span>
                         </li>
                         <li>
-                            <h1>重大节点逾期  </h1> 
+                            <h1>{{list1[1]}}</h1> 
                             <span>3个</span>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <h1>总收入</h1>
+                            <h1>{{list2[0]}}</h1>
                             <h2>796<span>万元</span></h2>
                         </li>
                         <li>
-                            <h1>总利润</h1>
+                            <h1>{{list2[1]}}</h1>
                             <h2>36<span>万元</span></h2>
                         </li>
                     </ul>
@@ -54,7 +64,7 @@
                             <h1>综合收费率 <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>81%</h2>
                             <div>
-                                <Histogram/>   
+                                <Histogram/>
                                 <Transversehistogram/>
                             </div>
                         </div>
@@ -138,30 +148,23 @@ export default {
     },
     data() {
         return {
-            name:"",
             getProjectList:[],
-            ModalFrame:false,
-            
+            list1:["节点达成率","重大节点逾期"],                  //--------------列表1
+            list2:["总收入","总利润"],                            //--------------列表2
+            value: '金科物业重庆区域公司' ,                        //下拉菜单1默认的选项
+            value1: ''                                          //下拉菜单2默认的选项
         }
     },
     methods: {
-        Downmenu(){
-            this.ModalFrame= !this.ModalFrame
-            // console.log(1)
-        },
-        getid(id,name){
-            this.ModalFrame=false
-            this.name=name
+        selectchange(value){
+            console.log(value)
         }
     },
     mounted() {
-        // http://localhost:8080/project?name=区域公司名称&?Fname=项目名称
-        // http://localhost:8080/project?name=%E5%8C%BA%E5%9F%9F%E5%85%AC%E5%8F%B8%E5%90%8D%E7%A7%B0&%3FFname=%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0
-        console.log(window.location.href)
+        // console.log(window.location.href)//获取当前的路由
 
         // 获取项目列表
-        this.axios.get('/api/getProjectList').then((res)=>{
-            // console.log(res.data.data)
+        this.axios.get('/api/projectCompanyList').then((res)=>{
             this.getProjectList=res.data.data
         })
       
@@ -210,6 +213,12 @@ export default {
     position: relative;
     height: 50px
 }
+.select{
+    line-height: 50px;
+}
+
+
+
 .Downmenu>h1{
     font-size: 16px;
     line-height: 50px;
@@ -236,14 +245,17 @@ export default {
 }
 .Title>ul:nth-of-type(1){
     display: flex;
-    /* min-width: 17.375rem; */
+    width: 40%;
     border-right: 1px dashed #e0dfe8
 }
 .Title>ul:nth-of-type(1)>li{
     width: 30%;
     position: relative;
-    /* min-width: 72px; */
     white-space: nowrap
+}
+.Title>ul:nth-of-type(1)>li:nth-of-type(3){
+  margin-left: 28px;
+  margin-right: 40px
 }
 .Title>ul:nth-of-type(1)>li>h1{
     font-size: 12px;
@@ -255,7 +267,6 @@ export default {
 }
 .Title>ul:nth-of-type(1)>li:nth-of-type(1){
     margin: 8px 17px .5rem 24px;
-  
 }
 
 .Title>ul:nth-of-type(1)>li>span{
@@ -264,7 +275,6 @@ export default {
     left: 0;
     line-height: 1;
     font-size: 20px;
-    font-weight: 600;
     white-space: nowrap
 }
 
@@ -286,12 +296,14 @@ export default {
     white-space: nowrap 
 }
 .Title>ul:nth-of-type(2)>li>h2{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 1;
     margin-top: 9px;
     white-space: nowrap
-
+}
+.Title>ul:nth-of-type(2)>li>h2>span{
+    font-size: 12px
 }
 .Chart>div:nth-of-type(1){
     display: flex;
@@ -321,12 +333,10 @@ export default {
 .Chart>div:nth-of-type(2){
     display: flex;
     justify-content: space-around;
-     /* min-width: 800px; */
 }
 .Chart>div:nth-of-type(2)>div{
     width: 30%;
     height: 340px;
-    /* min-width: 238px; */
     background: #f0eded;
 }
 .Chart>div:nth-of-type(2)>div>h1{
@@ -393,20 +403,23 @@ export default {
 }
 
 .Chart1>div:nth-of-type(1)>div>h1{
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
-    line-height: 1
-
+    line-height: 1;
+    font-weight: 100
 }
 .Chart1>div:nth-of-type(1)>div>h2{
     font-size: 12px;
     color: #666;
-    line-height: 1
+    line-height: 1;
+    cursor: pointer;
+
 }
 .Chart1>div:nth-of-type(1)>div>h2>span{
     font-size: 10px;
     color: #a0a0a0;
-    line-height: 1
+    line-height: 1;
+    font-weight: 100
 }
 
 
@@ -422,30 +435,24 @@ export default {
 }
 
 .Chart1>div:nth-of-type(2)>div>h1{
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
-    line-height: 1
+    line-height: 1;
+      font-weight: 100
 
 }
 .Chart1>div:nth-of-type(2)>div>h2{
     font-size: 12px;
     color: #666;
-    line-height: 1
+    line-height: 1;
+    cursor: pointer;
 }
 .Chart1>div:nth-of-type(2)>div>h2>span{
     font-size: 10px;
     color: #a0a0a0;
-    line-height: 1
+    line-height: 1;
+    font-weight: 100
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -476,5 +483,15 @@ export default {
     top: 5px;
     left: -18px;
     display: inline-block;
+}
+</style>
+
+<style>
+/* 自己添加一个父类div来操作下面的需要修改的class样式 */
+.selects>div>.el-input__inner{
+    border: 0 ;
+}
+.selects .el-input__icon{
+    width: 56px
 }
 </style>

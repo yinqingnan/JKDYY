@@ -45,11 +45,14 @@ export default {
             }
           },
           tooltip: {
-            trigger: "axis"
+            trigger: "axis",
+            formatter:function(a){
+                return a[0].seriesName +":"+a[0].value+"%"
+            }
           },
           legend: [
             {
-              data: ["自建占比%"],
+              data: ["自建占比"],
               icon: "rect",
               top: 20,
               right: 0,
@@ -108,7 +111,7 @@ export default {
           series: [
             {
               smooth: true, //变平滑
-              name: "自建占比%",
+              name: "自建占比",
               type: "line",
               stack: "总量",
               areaStyle: {

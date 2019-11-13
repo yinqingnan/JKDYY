@@ -86,7 +86,11 @@ export default {
           },
           tooltip: {
             tooltip: {
-              trigger: "axis"
+              trigger: "axis",
+              
+            },
+              formatter:function(a){
+                return a.seriesName +":"+a.value+"%"
             }
           },
           //     toolbox: {

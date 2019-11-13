@@ -49,15 +49,15 @@ export default {
       totalCount: null, //--------------------------------默认数据总数
       currentPage: 1, //----------------------------------默认开始页面
     //   istag: true,
-      pagesize: 14, //------------------------------------每页显示的数据条数
+      pagesize: 10, //------------------------------------每页显示的数据条数
       // istag: true,
     };
   },
   watch: {
     tablemsg: {
       handler(newVal) {
-        //   console.log(newVal)
         this.num=1
+        this.currentPage=1
         this.totalCount = newVal.length;
         this.tableData = newVal;
       }
@@ -66,31 +66,18 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   props: ["tablemsg"],
-  methods: {
-    // tableRowClassName({row, rowIndex}) {
-    //     if (rowIndex === 0) {
-    //     return 'th';
-    //     }
-    //     return '';
-    // },
-    switchChange() {
-      this.istag = !this.istag;
+   methods: {
+    handleSizeChange(cpage) {
+        this.pagesize=cpage
     },
-
     current_change: function(currentPage) {
       this.currentPage = currentPage;
     },
-    handleSizeChange(val) {
-    //   console.log(`每页 ${val} 条`);
+    download(val){
+      // console.log(val)
     },
-    handleCurrentChange(val) {
-    //   console.log(`当前页: ${val}`);
-
-
-    },   
-     download(val){
-      console.log(val)
-    },
+   
+ 
   },
 //   created: function() {
 //     this.total = this.tableData.length;

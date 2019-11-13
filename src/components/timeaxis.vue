@@ -113,7 +113,6 @@ export default {
 .TimeAxis>div>div>ul>li:nth-of-type(3){
     font-size: 11px;
     color: #333;
-    /* margin-top: 9px; */
     text-align: center;
     white-space:nowrap;
     color: #999 ;
