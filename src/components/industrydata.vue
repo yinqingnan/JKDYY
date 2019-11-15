@@ -56,6 +56,7 @@ export default {
     line-height: 50px;
     color: #333;
     margin-bottom: 12px;
+    font-weight: 500
 }
 .box>ul{
     width: 100%;

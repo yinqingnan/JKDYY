@@ -7,12 +7,12 @@
         <div class="container_left_header">
           <h1>收并购信息</h1>
           <div class="container_left_header_tab">
-            <el-table :data="Merger" style="width: auto" fit:true > 
-              <el-table-column prop="acquiringfirm" label="收购方" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
-              <el-table-column prop="acquiree" label="被收购方" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
+            <el-table :data="Merger" style="width: auto" fit:true  > 
+              <el-table-column prop="acquiringfirm" label="收购方" min-width="75x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
+              <el-table-column prop="acquiree" label="被收购方" min-width="75px" :show-overflow-tooltip="true" align="left"></el-table-column>
               <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
-              <el-table-column prop="capital" label="资金" min-width="60px" :show-overflow-tooltip="true" align="center"></el-table-column>
-              <el-table-column prop="ratio" label="占股比例" min-width="60px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="capital" label="资金" min-width="50px" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="ratio" label="占股比例" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
             </el-table>
           </div>
           <div class="h2position">
@@ -218,7 +218,8 @@ background: #eee
   line-height: 50px;
   text-align: center;
   color: #333;
-  background: #ffffff
+  background: #ffffff;
+  font-weight: 500
 }
 .h2position > h2 {
   text-align: right;
@@ -227,7 +228,7 @@ background: #eee
   cursor: pointer;
   line-height: 40px;
   width: 100px;
-  margin-left: 72%;
+  margin-left: 68%;
   text-decoration: underline
 }
 .container_center_header {
@@ -241,7 +242,8 @@ background: #eee
 .container_center_header > h1 {
   font-size: 16px;
   color: #333;
-  margin-right: 10%
+  margin-right: 2%;
+  font-weight: 500
 }
 .container_center_body {
   line-height: 50px;
@@ -253,9 +255,10 @@ background: #eee
 .container_center_body > h1 {
   font-size: 14px;
   background: #fff;
-  line-height: 40px;
+  line-height: 1;
   text-align: left;
-  margin-left:26px
+  margin-left:10px;
+  /* font-weight: 500 */
 }
 .container_center_body > div:nth-of-type(1) {
   display: flex;
@@ -280,14 +283,15 @@ background: #eee
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-top: 15px;
+  margin-top: 12px;
+  font-weight: 500
 }
 .container_center_body > div > div > h2 {
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
   color: #333;
-  margin-top: 15px;
+  margin-top: 12px;
 }
 #ZXT{
   margin-top: 12px
@@ -323,7 +327,7 @@ background: #ffffff
 .el-table th div,
 .el-table--border td:first-child .cell,
 .el-table--border th:first-child .cell {
-  padding: 0 !important;
+  /* padding: 0 !important; */
 }
 
 .el-table--scrollable-x .el-table__body-wrapper {
@@ -339,5 +343,12 @@ background: #ffffff
   width: 100%!important;
   min-width: 100%!important;
 
+}
+.container_left_header .el-table th>.cell{
+  font-weight: 500;
+  color: #333
+}
+.container_left_header .el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
+  padding: 5px
 }
 </style>

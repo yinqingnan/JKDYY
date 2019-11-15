@@ -1,5 +1,5 @@
 <template>
-<!-- 项目页面 -->
+<!-- 区域公司项目页面 4.0 -->
     <div>
         <div class="container">
             <div class="Left">
@@ -15,7 +15,15 @@
                             </el-option>
                         </el-select>
 
-                      
+                         <el-select v-model="value1" placeholder="请选择项目" class="selects" style="width:200px;border:0" @change="selectchange(value)">
+                            <el-option
+                            v-for="item in getProjectList"
+                            :key="item.value"
+                            :label="item.companyName"
+                            :value="item.companyName"
+                            >
+                            </el-option>
+                        </el-select>
                     </div>
                 </div>
                 <div class="Title">
@@ -44,6 +52,7 @@
                     </ul>
                 </div>
 
+                <Timeaxis/>
 
                 <div class="Chart">
                     <div>
@@ -52,66 +61,46 @@
                     </div>
                     <div>
                         <div>
-                            <h1>总收入 <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
+                            <h1>综合收费率 <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>81%</h2>
                             <div>
-                                <!-- <Histogram/> -->
-                                <!-- <Transversehistogram/> -->
+                                <Histogram/>
+                                <Transversehistogram/>
                             </div>
                         </div>
                          <div>
-                            <h1>报事完成率  
-                                <!-- <span class="Red"> <i class="Redsj"></i> 9%</span> -->
-                            </h1>
-                            <!-- <h2>55%</h2> -->
+                            <h1>报事完成率  <span class="Red"> <i class="Redsj"></i> 9%</span></h1>
+                            <h2>55%</h2>
                         <div>
-                            <!-- <Histogram/>   
-                            <Transversehistogram/> -->
-                            <h2>即将上线</h2>
-
+                            <Histogram/>   
+                            <Transversehistogram/>
+                            <!-- <h2>即将上线</h2> -->
                         </div>
                         </div>
                          <div>
-                            <h1>综合收费率  <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
+                            <h1>现场品质  <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>85%</h2>
                             <div>
-                                <!-- <Histogram/>    -->
-                                <!-- <Transversehistogram/> -->
+                                <Histogram/>   
+                                <Transversehistogram/>
                             </div>
                         </div>
                     </div>
                     <div class="Chart1">
                         <div>
-                            <div class="Chart1_header">
+                            <div>
                                 <h1>品质服务信息</h1>
                                 <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
-                            </div>
-                            <div class="Chart1_footer">
-                                <div class="Chart1_footer1">
-                                    <Qualityservice :Realestates="Realestates" ></Qualityservice>
-                                    <h2>{{Realestate}}</h2>
-                                </div>
-                                <div class="Chart1_footer1">
-                                    <Qualityservice :Realestates="Others" ></Qualityservice>
-                                    <h2>{{Other}}</h2>
-                                </div>
-                                <div class="Chart1_footer1 Chart1_footer2">
-                                    <Qualityservice :Realestates="Propertycategorys" ></Qualityservice>
-                                    <h2>{{Propertycategory}}</h2>
-                                </div>
-                            </div>
+                            </div> 
+                            <radar/>
+
                         </div>
                         <div>
-                            <div class="Chart1_header">
-                                <h1>外拓规模信息</h1>
+                            <div>
+                                <h1>项目能耗指标</h1>
                                 <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="Chart1_header">
-                                <h1>人力资源信息</h1>
-                                <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
-                            </div>
+                            </div> 
+                            
                         </div>
                     </div>
                     
@@ -126,10 +115,7 @@
                 <div class="table1">
                     <h1>重要提醒</h1>
                     <ul>
-                        <li v-for="(item,index) in reminder" :key="index">
-                            <h2 :title="item.remindTitle">{{item.remindTitle}}</h2>
-                            <h2>{{item.remindTime.split(" ")[0]}}</h2>
-                        </li>
+                        <li v-for="(item,index) in tab1" :key="index">{{item.title}}</li>
                     </ul>
                 </div>
                 <div class="table1 table2 ">
@@ -161,56 +147,43 @@
 <script>
 
 
-
-
+// 引入时间轴组建
+import Timeaxis from "../components/timeaxis"
 //引入雷达图图
-// import radar from '../components/radar'
+import radar from '../components/radar'
+
 // 测试重复使用
 //引入柱状图
-// import Histogram from '../components/Histogram'
+import Histogram from '../components/Histogram'
 //引入横向柱状图
-// import Transversehistogram from '../components/Transversehistogram'
+import Transversehistogram from '../components/Transversehistogram'
 
-
-
-// 引入折线图
-import Qualityservice from "../components/echarts/Qualityservice"
 
 export default {
     components:{
-        // Transversehistogram,
-        // Histogram,
-        // radar,
-        Qualityservice
+        Timeaxis,
+        Transversehistogram,
+        Histogram,
+
+        radar
     },
     data() {
         return {
-            date:null,                                          //当前月份
             getProjectList:[],
             list1:["节点达成率","重大节点逾期"],                  //--------------列表1
             list2:["总收入","总利润"],                            //--------------列表2
             value: '金科物业重庆区域公司' ,                        //下拉菜单1默认的选项
             value1: '',                                          //下拉菜单2默认的选项
             tab1:[                                               //假数据
-                {id:0,title:"公告:重大节点重启"},
-                {id:1,title:"2019年7月系统跟新说明"},                    
-                {id:2,title:"计划模块操作指引"},
-                {id:3,title:"十秒教你完成数据分析"},
-                {id:4,title:"他才是这次勒索案的后台。"},
-                {id:5,title:"上了妆穿着西服的演员在后台走来走去"},
-                {id:6,title:"按照家宴的传统做法，我们走到后台"},
+                    {id:0,title:"公告:重大节点重启"},
+                    {id:1,title:"2019年7月系统跟新说明"},                    
+                    {id:2,title:"计划模块操作指引"},
+                    {id:3,title:"十秒教你完成数据分析"},
+                    {id:4,title:"他才是这次勒索案的后台。"},
+                    {id:5,title:"上了妆穿着西服的演员在后台走来走去"},
+                    {id:6,title:"按照家宴的传统做法，我们走到后台"},
                     ],
-            loginxt:[],                                             //登录其他系统数据
-            Realestate:"",                                          //地产类title
-            Realestates:[],                                          //地产类数据
-            Other:"",                                               //其他类title
-            Others:[],                                               //其他类数据
-            Propertycategory:"",                                    //物业类title
-            Propertycategorys:[],                                    //物业类数据
-            reminder:[],                                              //重要提醒数据               
-            
-
-
+            loginxt:[]                                             //登录其他系统数据
         }
     },
     methods: {
@@ -219,38 +192,19 @@ export default {
         }
     },
     mounted() {
-
-        var date=new Date();
-        this.date=date.getMonth()+1
         // console.log(window.location.href)//获取当前的路由
 
         // 获取项目列表
         this.axios.get('/api/projectCompanyList').then((res)=>{
             this.getProjectList=res.data.data
         })
-        // 获取品质服务信息数据
-        this.axios.get("/api/companymonthrate?companyname="+encodeURI(this.value))
-        .then((res)=>{
-            // console.log(res.data.data)
-            this.Realestate=res.data.data[0].newspapersCateType         //地产title
-            this.Other=res.data.data[0].newspapersCateType                //其他title
-            this.Propertycategory=res.data.data[0].newspapersCateType       //物业title
-            this.Realestates.push(res.data.data[0].m01,res.data.data[0].m02,res.data.data[0].m03,res.data.data[0].m04,res.data.data[0].m05,res.data.data[0].m06,res.data.data[0].m07,res.data.data[0].m08,res.data.data[0].m09,res.data.data[0].m10,res.data.data[0].m11,res.data.data[0].m12)          //地产赋值
-            this.Others.push(res.data.data[1].m01,res.data.data[1].m02,res.data.data[1].m03,res.data.data[1].m04,res.data.data[1].m05,res.data.data[1].m06,res.data.data[1].m07,res.data.data[1].m08,res.data.data[1].m09,res.data.data[1].m10,res.data.data[1].m11,res.data.data[1].m12)          //其他赋值
-            this.Propertycategorys.push(res.data.data[2].m01,res.data.data[2].m02,res.data.data[2].m03,res.data.data[2].m04,res.data.data[2].m05,res.data.data[2].m06,res.data.data[2].m07,res.data.data[2].m08,res.data.data[2].m09,res.data.data[2].m10,res.data.data[2].m11,res.data.data[2].m12)     //物业赋值
-            // console.log(this.Realestates)
-        })
-        //获取登录其它系统的数据
+             //获取登录其它系统的数据
         this.axios.get("/api/systemDocking01")
         .then((res)=>{
-            // console.log(res.data.data)
+
             this.loginxt=res.data.data
         })
-        this.axios.get("/api/importantReminder01?topcount=10&companyId=250")
-        .then((res)=>{
-            // console.log(res.data.data)
-            this.reminder=res.data.data
-        })
+      
 
       
     },
@@ -271,15 +225,12 @@ export default {
      border: 1px solid #e0dfe8;
     width :100%;
     background: #fff;
-    /* min-width: 835px; */
     /* height :1150px; */
 }
 .Right {
-    /* width: 18.125rem; */
+    width: 18.125rem;
     margin: 0 0 0 12px;
     background :#eee;
-    width: 290px !important
-
 }   
 
 .ModalFrame>ul{
@@ -391,54 +342,39 @@ export default {
 .Title>ul:nth-of-type(2)>li>h2>span{
     font-size: 12px
 }
-
-
-
-
-
-
-
 .Chart>div:nth-of-type(1){
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 1.375rem;
     height: 40px;
    
 }
 .Chart>div:nth-of-type(1)>h1{
     font-size: 16px;
-    line-height: 40px;
-    color: #333;
-    font-weight: 500;
+    line-height: 1;
+    color: #333
 }
 .Chart>div:nth-of-type(1)>h2{
     font-size: .75rem;
-    line-height: 40px;
+    line-height: 1;
     color: #666;
     font-weight: 100;
     cursor: pointer;
 
 }
 .Chart>div:nth-of-type(1)>h2>span{
-    color: #a0a0a0;
+    color: #a7a7a7;
     font-size: .625rem;
     font-weight: 100
 }
 .Chart>div:nth-of-type(2){
     display: flex;
     justify-content: space-around;
-    padding: 0 20px
 }
 .Chart>div:nth-of-type(2)>div{
-    /* width: 33%; */
-    flex: 1;
+    width: 30%;
     height: 340px;
     background: #f0eded;
-    min-width: 238px;
-}
-.Chart>div:nth-of-type(2)>div:nth-of-type(2){
-    margin: 0 23px
-
 }
 .Chart>div:nth-of-type(2)>div>h1{
     font-size: 12px;
@@ -473,8 +409,6 @@ export default {
 
 
 
-
-
 .table1{
     background: #fff;
     border: 1px solid #e0dfe8;
@@ -495,37 +429,21 @@ export default {
 .table1>ul{
     height: 310px;
     /*  当IE下溢出，仍然可以滚动*/ 
-    -ms-overflow-style:none;
-    /*火狐下隐藏滚动条*/
-    overflow:-moz-scrollbars-none;
-  
+        -ms-overflow-style:none;
+        /*火狐下隐藏滚动条*/
+        overflow:-moz-scrollbars-none;
 }
 /* 谷歌浏览器溢出滚动 */
 .table1>ul::-webkit-scrollbar {display:none}
 .table1>ul>li{
-    /* font-size: 14px; */
+    font-size: 14px;
     max-width: 280px;
-    line-height: 34px;
     white-space: nowrap;
     display: flex;
     justify-content: space-between;
     margin: 0 20px;
     cursor: pointer;
-    overflow: hidden;
-    /* margin-top: 20px */
-}
-.table1>ul>li>h2{
-    font-size: 14px;
-    text-decoration: underline;
-    min-width: 170px;
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: normal
-}
-.table1>ul>li>h2:nth-of-type(2){
-    text-decoration: none;
-    text-indent: 5px
+    margin-top: 20px
 }
 .table2{
     margin-top: 11px;
@@ -575,6 +493,7 @@ export default {
 .table3_footer>ul>li{
     width: 64px;
     cursor: pointer;
+
 }
 .table3_footer>ul>li>img{
     width: 45px;
@@ -589,77 +508,101 @@ export default {
 
 
 
-/* 尾部 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .Chart1{
-    margin-top: 28px;
-    padding: 0 14px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 16px
+    padding: 0 1.375rem;
+    margin-top: 20px;
+    height:446px;
+    margin-bottom: 24px
+    
 }
 .Chart1>div{
-    width: 30%;
-    height: 326px;
     border: 1px solid #e0dfe8
 }
-.Chart1>div:nth-of-type(2){
-    width: 40%;
-    margin-left: 10px;
-    margin-right: 8px
+.Chart1>div:nth-of-type(1){
+    width: 45%;
+    /* min-width: 350px; */
 }
-
-.Chart1_header{
+.Chart1>div:nth-of-type(1)>div:nth-of-type(1){
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #e0dfe8;
-    /* line-height: 55px */
+    padding: 22px 18px 18px 18px;
+    background: #fff;
+    border-bottom: 1px solid #e0dfe8
+    
 }
 
-.Chart1>div:nth-of-type(1) .Chart1_header{
-    padding: 0 7px 0 23px
+.Chart1>div:nth-of-type(1)>div>h1{
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+    font-weight: 100
 }
-.Chart1>div:nth-of-type(2) .Chart1_header{
-    padding: 0 23px 0 8px
-}
-.Chart1>div:nth-of-type(3) .Chart1_header{
-    padding: 0 12px 0 20px
-}
-.Chart1_header>h1{
-    line-height: 55px;
-    font-size: 15px;
-    font-weight: 500
-}
-.Chart1_header>h2{
+.Chart1>div:nth-of-type(1)>div>h2{
     font-size: 12px;
-    font-weight: 500;
     color: #666;
-    line-height: 55px;
+    line-height: 1;
+    cursor: pointer;
+
+}
+.Chart1>div:nth-of-type(1)>div>h2>span{
+    font-size: 10px;
+    color: #a0a0a0;
+    line-height: 1;
+    font-weight: 100
+}
+
+
+.Chart1>div:nth-of-type(2){
+    width: 55%;
+    margin-left: 16px;
+    /* min-width: 396px; */
+}
+.Chart1>div:nth-of-type(2)>div{
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 18px 18px 18px;
+    border-bottom: 1px solid #e0dfe8;
+}
+
+.Chart1>div:nth-of-type(2)>div>h1{
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+      font-weight: 100
+
+}
+.Chart1>div:nth-of-type(2)>div>h2{
+    font-size: 12px;
+    color: #666;
+    line-height: 1;
     cursor: pointer;
 }
+.Chart1>div:nth-of-type(2)>div>h2>span{
+    font-size: 10px;
+    color: #a0a0a0;
+    line-height: 1;
+    font-weight: 100
+}
 
-.Chart1_header>h2>span{
-    color:#a0a0a0;
-    font-weight: 100;
-    font-size: 12px
-}
-.Chart1_footer1{
-    height: 82px;
-    border-bottom: 1px dashed #e0dfe8;
-    margin-left: 8px
-}
-.Chart1_footer2{
-    border: 0
-}
-.Chart1_footer1>h2{
-    font-size: 12px;
-    line-height: 82px;
-    font-weight: 500;
-    color: #333;
-    width: 52px
-}
-.Chart1_footer1{
-    display: flex
-}
+
+
 
 .Red{
     color: #fc6077

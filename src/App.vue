@@ -46,7 +46,7 @@ margin: 0px;
 padding: 0px;
 }
 /* html{ */
-  /* 当IE下溢出，仍然可以滚动*/ 
+ /*  当IE下溢出，仍然可以滚动*/ 
         /* -ms-overflow-style:none; */
         /*火狐下隐藏滚动条*/
         /* overflow:-moz-scrollbars-none; */

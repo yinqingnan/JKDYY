@@ -545,7 +545,7 @@ word-break:break-all;
 
 
 <style >
-.el-input--suffix .el-input__inner {
+/* .el-input--suffix .el-input__inner {
   min-width: 110px;
-}
+} */
 </style>
