@@ -79,10 +79,10 @@ export default {
         },
         rightbtn(){
              this.number--
-            if(this.number>=-7){
-                this.$refs.tabs.style.left=(this.number*80)+"px"
+            if(this.number>=-8){
+                this.$refs.tabs.style.left=(this.number*90)+"px"
             }else{
-               this.number=-7
+               this.number=-8
             }
         }
     },

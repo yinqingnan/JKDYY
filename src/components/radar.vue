@@ -126,7 +126,7 @@ export default {
             data: [
               {
                 name: "最高",
-                value: [8, 6, 5, 6, 7], //需要替换的数据
+                value: [8, 6, 5, 6], //需要替换的数据
                 areaStyle: {
                   normal: {
                     // 单项区域填充样式

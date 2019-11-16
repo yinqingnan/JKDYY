@@ -126,7 +126,8 @@ export default {
     text-align: left;
     font-size: 18px;
     color: #333;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    font-weight: 500
 }
 .positionbox>div{
     display: flex;

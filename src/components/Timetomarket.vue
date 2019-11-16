@@ -172,7 +172,8 @@ export default {
   line-height: 50px;
   text-align: center;
   background: #fff;
-  color:#333
+  color:#333;
+  font-weight: 500
 }
 
 </style>

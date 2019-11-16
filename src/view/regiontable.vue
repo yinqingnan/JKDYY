@@ -129,7 +129,8 @@ import Table3 from "../components/Table/table3"
     height: 55px;
     padding-top: 6px;
     box-sizing: border-box;
-    border-bottom: 1px solid #d9d9d9
+    border-bottom: 1px solid #d9d9d9;
+    background: #ffffff
 }
 .from1{
     margin-left: 12px
@@ -138,13 +139,16 @@ import Table3 from "../components/Table/table3"
     margin-left: 50px
 }
 .tablecontainer_body{
-    height: 55px;
+    height: 45px;
     /* background: pink; */
     padding-left: 12px
 }
 .tablecontainer_body_header{
     display: flex;
-    line-height: 53px
+    line-height: 45px;
+    background: #ffffff;
+      border-bottom: 1px solid #d9d9d9;
+      margin-bottom: 10px
 }
 .tablecontainer_body_header>li{
     margin-right: 40px;
@@ -175,13 +179,13 @@ import Table3 from "../components/Table/table3"
     color: #666 !important
 }
 .el-button--primary{
-    background: #4ac48b;
-    border-color :#4ac48b
+    background: #4ac48b !important; 
+    border-color :#4ac48b!important;
 }
 
 .el-button--primary:hover{
-     background: #4ac48b;
-    border-color :#4ac48b
+     background: #4ac48b !important;
+    border-color :#4ac48b !important;
 } 
 </style>
 

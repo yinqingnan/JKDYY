@@ -96,14 +96,15 @@ export default {
             }
           },
 
-          backgroundColor: "#f0f0f0", //标题背景色
+          backgroundColor: "#fff", //标题背景色
           borderColor: "#ccc", //边框颜色
           borderWidth: 1, //边框线宽
-         textStyle: {         //文本样式
-                color: "#333", //字体颜色
-                fontSize: 12,
-                fontWeight:100                     //字体加粗
-              }                         
+        
+          textStyle: {         //文本样式
+                  color: "#333", //字体颜色
+                  fontSize: 14,
+                  fontWeight:500                     //字体加粗
+                }                         
         },
 
         dataRange: {
@@ -134,8 +135,8 @@ export default {
             normal: {
               show: true, // 是否显示对应地名
               textStyle: {
-                color: "#fff", //字体颜色
-                fontSize: 12
+                color: "#333", //字体颜色
+                fontSize: 14,
                 //字体大小
                 // fontWeight:600                     //字体加粗
               }
@@ -147,7 +148,7 @@ export default {
             normal: {
               borderColor: "#fff", //省份边界线
               borderWidth: 1,
-              areaColor: "#3474b5" //省份区域默认显示颜色
+              areaColor: "#8295a2" //省份区域默认显示颜色
             },
             emphasis: {
               shadowOffsetX: 0,
@@ -155,7 +156,7 @@ export default {
               shadowBlur: 20,
               borderWidth: 0,
               shadowColor: "rgba(0, 0, 0, 0.3)",
-              areaColor: "#05adea", //鼠标经过显示的颜色
+              areaColor: "#8295a2", //鼠标经过显示的颜色
               color: "#333"
             }
           }
@@ -197,6 +198,12 @@ export default {
 #chartmainline {
   width: 100%;
   height: 100%;
+}
+#chartmainline>div:nth-of-type(2){
+  /* width: 300px;
+  height: 200px;
+  background: red */
+  padding: 20px !important
 }
 </style>
 

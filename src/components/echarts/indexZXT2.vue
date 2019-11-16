@@ -56,7 +56,7 @@ export default {
                 textStyle: {
                   color: "#333",
                   fontSize: 16,
-                  fontWeight: "600"
+                  fontWeight: "500"
                 }
                 },
                 {text: '面积：亿m²',
@@ -66,7 +66,7 @@ export default {
                 textStyle: {
                   color: "#666",
                   fontSize: 10,
-                  // fontWeight: "600"
+                  fontWeight: "500"
                 }
                 },
                 {text: '收费单价：元/m²/月',
@@ -76,19 +76,19 @@ export default {
                     textStyle: {
                       color: "#666",
                       fontSize: 10,
-                      // fontWeight: "600"
+                      fontWeight: "500"
                     }
                 
                 },
 
                 {text: '项目数量：个',
                    x: 'right',
-                   padding: [0, 54, 0, 0], //上右下左
+                   padding: [0, 52, 0, 0], //上右下左
                     y: 82,
                     textStyle: {
                       color: "#666",
                       fontSize: 10,
-                      // fontWeight: "600"
+                      fontWeight: "500"
                     }
                 
                 
@@ -107,7 +107,7 @@ export default {
               grid: {
                 top: "30%",
                 right: "10%",
-                left: "10%",
+                left: "0%",
                 bottom: "4%",
                 containLabel: true
               },

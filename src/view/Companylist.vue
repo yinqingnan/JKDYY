@@ -147,7 +147,7 @@ export default {
                 // 请求规模构成图表数据
                 axios.get("/api/listedCompany04?id="+newVal)
                 .then((res=>{
-                    // console.log(res)
+                    // console.log(res.data.data)
                     this.gmgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
                     this.gmgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
                     this.GMGC=this.gmgcbn     //默认显示半年数据
@@ -155,18 +155,8 @@ export default {
                 // 请求收入构成数据
                 axios.get("/api/listedCompany06?id="+newVal)
                 .then((res)=>{
-                    // console.log(res.data.data)
                     this.SRGC=res.data.data
-                    // this.srgcwyf=res.data.data.filter(item=>item.incomeName.indexOf("工程费"))               //物业费
-                    // this.srgcgcf=res.data.data.filter(item=>item.incomeName.indexOf("物业费"))               //工程费
-                    // this.SRGC=[]
-                    // this.SRGC.push(this.srgcwyf,this.srgcgcf)    
-                    // console.log(this.srgcgcf,)
-                    // console.log(this.srgcwyf)
-                    // console.log(this.SRGC)
-
                 })
-
             },
             deep:true,      //深度监测
             immediate: true     //将立即以表达式的当前值触发回调
@@ -259,11 +249,23 @@ export default {
     text-align: center;
     color:#666;
     font-size: 24px;
-    font-weight: 500
+    font-weight: 500;
+}
+.container_left_body{
+    padding :20px 20px 0 20px
 }
 .container_left_body>img{
-    width: 100%;
-    max-height: 540px
+    /* width: 100%; */
+    /* max-height: 540px; */
+    /* min-width: 290px; */
+    /* height: auto */
+    width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    
 }
 .container_right_header{
     width: 100%;
@@ -353,7 +355,8 @@ export default {
     font-size: 16px;
     color: #333;
     line-height: 24px;
-    cursor: pointer
+    cursor: pointer;
+    font-weight: 500
 }
 .container_right_body>div:nth-of-type(2){
     display: flex;
