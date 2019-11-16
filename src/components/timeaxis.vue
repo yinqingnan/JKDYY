@@ -6,31 +6,6 @@
             <div>
                 <span></span>
                 <div>
-                    <!-- <ul>
-                        <li></li>
-                        <li>项目立项</li>
-                        <li>2019/01/01</li>
-                    </ul>
-                    <ul>
-                        <li></li>
-                        <li>示范区进场</li>
-                        <li>2019/02/01</li>
-                    </ul>
-                    <ul>
-                        <li></li>
-                        <li>前期物业合同签订</li>
-                        <li>2019/03/01</li>
-                    </ul>
-                    <ul>
-                        <li></li>
-                        <li>重大事件投诉</li>
-                        <li>2019/04/01</li>
-                    </ul>
-                    <ul>
-                        <li></li>
-                        <li>首次集中交房</li>
-                        <li>2019/05/01</li>
-                    </ul> -->
                     <ul v-for="(item,index) in  list" :key="index" @mouseenter="onmouseenter(index)" @mouseleave="onmouseleave(index)">
                         <li ></li>
                         <li v-show="isshow" class="yc" ref="yc" :title="item.recordname">{{item.recordname}}</li>
@@ -109,8 +84,7 @@ export default {
     border: 1px solid #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
-    /* overflow: hidden; */
-    /* min-width: 686px; */
+
 }
 .TimeAxis>div>span{
     display: inline-block;

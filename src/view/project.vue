@@ -342,6 +342,7 @@ export default {
             // 获取园区数据
             this.axios.get("http://222.180.200.126:9045/api/companyTypeMoney?companyId="+this.id)                
             .then((res)=>{
+                // console.log(res.data.data)
                 this.zsryq=res.data.data
             })
             
@@ -834,6 +835,8 @@ export default {
     color: #333;
     width: 52px;
 }
+
+
 .yq{
     margin-left: 16px
 }

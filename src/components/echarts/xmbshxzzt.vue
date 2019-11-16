@@ -2,7 +2,7 @@
 <template>
 
   <div>
-    <div id="zsr2" class="ECHARTS"></div>
+    <div id="bswjlsxzzt" class="ECHARTS"></div>
   </div>
 </template>
 
@@ -12,20 +12,15 @@ import echarts from "echarts"; //引入echarts
 export default {
   data() {
     return {
-
+      list:["最大","最小","平均"],
       bjData: [],
       title:[]
     };
   },
   watch: {
-      zsrhxzzttitle:{
-          handler(newVal){
-              this.title=newVal
-          }
-      },
-    zsrhxzzt2: {
+
+    bssxzzt: {
       handler(newVal) {
-        // console.log(newVal)
         this.bjData = newVal;
 
         // 图表设置信息
@@ -77,7 +72,7 @@ export default {
                
             }
         }, 
-        data: this.title
+        data: this.list
     },
     series: [{
         name: '数据内框',
@@ -103,22 +98,21 @@ export default {
     ]
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("zsr2"));
+        const chartObj = echarts.init(document.getElementById("bswjlsxzzt"));
 
         chartObj.setOption(option, true);
         // 设置自适应
         window.onresize = function() {
           chartObj.resize();
-          // console.log(chartObj)
         };
       }
     },
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["zsrhxzzttitle","zsrhxzzt2"],
+  props: ["bssxzzt"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("zsr2"));
+    const chartObj = echarts.init(document.getElementById("bswjlsxzzt"));
     window.addEventListener("resize", () => {
       // console.log(chartObj)
       chartObj.resize();

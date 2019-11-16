@@ -63,22 +63,10 @@
                         <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
                     </div>
                     <div>
-                        <!-- <div>
-                            <h1 v-for="(item,index) in zsr" :key="index">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span></h1>
-                            <h2 >
-                                {{(zsrnumber/10000).toFixed(0)}} 
-                                <span>万元</span>
-                            </h2>
-                            <div>
-                                <div style="width:100%">
-                                    <qugszsr1 :zsrsxzzt1="zsrsxzzt1" :zsrsxzztm="zsrsxzztm"></qugszsr1>
-                                </div>
-                                <div style="width:100%">
-                                    <qugszsr2 :zsrhxzzttitle="zsrhxzzttitle" :zsrhxzzt2="zsrhxzzt2" style="width:80%"></qugszsr2>
-                                </div>
-                            </div>
-                              <div class="yq">
+                 
+                           
+<!-- 
+                            <div class="yq">
                                     <ul v-for="(item,index) in zsryq" :key="index">
                                         <li style="width:20%">{{item.incomType}}</li>
                                         <li style="width:30%">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
@@ -88,9 +76,9 @@
                                         </li>
                                      
                                     </ul>
-                                </div>
-                        </div>    -->
+                            </div> -->
 
+                    <!-- 关键指标图表1 -->
                         <div>
                             <h1>综合收费率 <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>81%</h2>
@@ -98,6 +86,7 @@
                              
                             </div>
                         </div>
+                    <!-- 关键指标图表2 -->
                          <div>
                             <h1 v-for="(item,index) in bstitle" :key="index">报事完结率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
@@ -107,18 +96,16 @@
                             </h2>
                             <div>
                                 <div style="width:100%">
-                                    <!-- <qugszsr1 :zsrsxzzt1="zsrsxzzt1" :zsrsxzztm="zsrsxzztm"></qugszsr1> -->
+
+                                    <xmbssxzzt  :bshxzzt="bshxzzt" :xsyf="xsyf" style="width:100%"></xmbssxzzt>
                                 </div>
                                 <div style="width:100%">
-                                    <!-- <qugszsr2 :zsrhxzzttitle="zsrhxzzttitle" :zsrhxzzt2="zsrhxzzt2" style="width:80%"></qugszsr2> -->
+                                    <xmbshxzzt :bssxzzt="bssxzzt" style="width:80%"></xmbshxzzt>
                                 </div>
                             </div>
-                        <div>
-                            <!-- <Histogram/>   
-                            <Transversehistogram/>
-                            <h2>即将上线</h2> -->
                         </div>
-                        </div>
+                    <!-- 关键指标图表3 -->
+
                          <div>
                             <h1>现场品质  <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>85%</h2>
@@ -213,8 +200,11 @@ import tab from '../components/tab'
 import xmnhysqn from '../components/echarts/xmnhysqn'
 // 用电全年图表
 import xmnhydqn from "../components/echarts/xmnhydqn"
-// 测试重复使用
 
+//项目报事完结率横向柱状图
+import xmbshxzzt from '../components/echarts/xmbshxzzt'
+//项目报事完结率竖向柱状图
+import xmbssxzzt from '../components/echarts/xmbssxzzt'
 
 
 
@@ -224,6 +214,8 @@ export default {
         xmnhysqn,
         xmnhydqn,
         tab,
+        xmbshxzzt,
+        xmbssxzzt,
         radar
     },
     data() {
@@ -338,30 +330,35 @@ export default {
 
         // 获取关键指标报事完成率数据 竖向柱状图数据            需变更数据  
         this.axios.get("/api/projectMNewPYear?projectId=1062").then((res)=>{
-            console.log(res.data.data)
+            // console.log(res.data.data)
             // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
             if(this.date>=7){
                 this.bshxzzt.push((res.data.data[0].m7/10000).toFixed(0),(res.data.data[0].m8/10000).toFixed(0),(res.data.data[0].m9/10000).toFixed(0),(res.data.data[0].m10/10000).toFixed(0),(res.data.data[0].m11/10000).toFixed(0),(res.data.data[0].m12/10000).toFixed(0))
-                console.log(this.bshxzzt)
+                // console.log(this.bshxzzt)
                 this.xsyf=1
             }else{
                 this.bshxzzt.push((res.data.data[0].m1/10000).toFixed(0),(res.data.data[0].m2/10000).toFixed(0),(res.data.data[0].m3/10000).toFixed(0),(res.data.data[0].m4/10000).toFixed(0),(res.data.data[0].m5/10000).toFixed(0),(res.data.data[0].m6/10000).toFixed(0))
-                console.log(this.bshxzzt)
+                // console.log(this.bshxzzt)
                 this.xsyf=0
             }
         })
         // 获取关键指标报事完成率     横向柱状图数据            需变更数据  
          this.axios.get("api/projectRateMaxMinVm").then((res)=>{
             // console.log(res.data.data)
+            let arr=res.data.data
+            this.bssxzzt=[]
+            arr.forEach(element => {
+                 this.bssxzzt.push(element.rate.toFixed(2))
+            });
         })
         //获取报事完结率   title数据                                 需变更数据  
         this.axios.get("/api/projectTotalRate?projectId=1062").then((res)=>{
-            console.log(res.data.data)
+            // console.log(res.data.data)
             this.bstitle=res.data.data
         })
         // 获取报事完结率   提示信息                                需变更数据
         this.axios.get("/api/projectTypeRate?projectId=1021").then((res)=>{
-            // console.log(res.data.data)
+            console.log(res.data.data)
             this.bsmsg=res.data.data
         })
       
@@ -615,8 +612,11 @@ export default {
     margin-bottom: 54px
 }
 .Chart>div:nth-of-type(2)>div>div{
-    display: flex;
-    justify-content: space-between
+   display: flex;
+    justify-content: space-between;
+    padding: 0 6px;
+    height: 94px ;
+    /* width:100% */
 }
 .Chart>div:nth-of-type(2)>div>div>div{
     flex:1

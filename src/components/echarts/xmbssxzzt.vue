@@ -1,7 +1,7 @@
-<!-- 项目报事完结率竖向柱状图-->
+l<!-- 项目报事完结率竖向柱状图-->
 <template>
   <div>
-    <div id="zsr1" class="ECHARTS"></div>
+    <div id="bswjlhxzzt" class="ECHARTS"></div>
   </div>
 </template>
 
@@ -12,11 +12,12 @@ export default {
   data() {
     return {
       bjData: [],
-      date:[]
+      date:[],
+   
     };
   },
   watch: {
-      zsrsxzztm:{
+      xsyf:{
         handler(newVal){
             // console.log(newVal)
             if(newVal==1){
@@ -27,8 +28,9 @@ export default {
             }
         }
       },
-    zsrsxzzt1: {
+    bshxzzt: {
       handler(newVal) {
+        // console.log("竖向柱状图"+newVal)
         this.bjData = newVal;
         // 图表设置信息
         const option = {
@@ -115,7 +117,7 @@ export default {
           ]
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("zsr1"));
+        const chartObj = echarts.init(document.getElementById("bswjlhxzzt"));
 
         chartObj.setOption(option, true);
         // 设置自适应
@@ -128,9 +130,9 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["zsrsxzzt1","zsrsxzztm"],
+  props: ["bshxzzt","xsyf"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("zsr1"));
+    const chartObj = echarts.init(document.getElementById("bswjlhxzzt"));
     window.addEventListener("resize", () => {
 
       chartObj.resize();
