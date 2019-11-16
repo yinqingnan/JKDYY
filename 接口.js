@@ -53,3 +53,7 @@ http://222.180.200.126:9045/api/projectRateMaxMinVm             竖向树状图
 http://222.180.200.126:9045/api/projectTotalRate?projectId=1062                 title
 项目当年各类型报事完结率对比
 http://222.180.200.126:9045/api/projectTypeRate?projectId=1021                    自信息  
+
+
+
+lalalala
