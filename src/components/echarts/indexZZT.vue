@@ -51,6 +51,15 @@ export default {
                   fontWeight: "600"
                 }
               },
+                    tooltip: {
+                showContent:true,  
+                // trigger: "axis",
+                formatter:function(a){
+                  // console.log(a)
+                    return a.seriesName +":"+a.value
+                }
+
+            },
               legend: {
                 // show:false,
                 // icon: "circle",
@@ -124,7 +133,7 @@ export default {
                   name: "总营收",
                   type: "bar",
                   data: this.generalIncome, //显示数据的接口
-                  barWidth: "20px", //宽度
+                  barWidth: "14px", //宽度
                   itemStyle: {
                     normal: {
                       color: new echarts.graphic.LinearGradient(
@@ -145,46 +154,13 @@ export default {
                       // shadowBlur: 10     //阴影
                     }
                   },
-                  label: {
-                    normal: {
-                      show: true,
-                      lineHeight: 30,
-                      width: 40,
-                      height: 24,
-                      backgroundColor: "#252453",
-                      borderRadius: 200,
-                      position: ["-5", "-60",],
-                      distance: 1,
-                      formatter: [
-                        "    {d|}",
-                        " {a|{c}}     \n",
-                        "    {b|}"
-                      ].join(""),
-                      rich: {
-                        d: {
-                          color: "#fff"
-                        },
-                        a: {
-                          color: "#fff",
-                          fontSize:8,
-                          align: "center"
-                        },
-                        b: {
-                          width: 1,
-                          height: 30,
-                          borderWidth: 1,
-                          borderColor: "#234e6c",
-                          align: "left"
-                        }
-                      }
-                    }
-                  }
+                 
                 },
                 {
                   name: "净利润",
                   type: "bar",
                   data: this.netProfitMargin, //显示数据的接口
-                  barWidth: "20px", //宽度
+                  barWidth: "14px", //宽度
                   itemStyle: {
                     normal: {
                       color: new echarts.graphic.LinearGradient(
@@ -205,40 +181,7 @@ export default {
                       // shadowBlur: 10     //阴影
                     }
                   },
-                  label: {
-                    normal: {
-                      show: true,
-                      lineHeight: 30,
-                      width: 40,
-                      height: 24,
-                      backgroundColor: "#252453",
-                      borderRadius: 200,
-                      position: ["-5", "-60"],
-                      distance: 1,
-                      formatter: [
-                        "    {d|}",
-                        " {a|{c}}     \n",
-                        "    {b|}"
-                      ].join(""),
-                      rich: {
-                        d: {
-                          color: "#fff"
-                        },
-                        a: {
-                          color: "#fff",
-                          fontSize:8,
-                          align: "center"
-                        },
-                        b: {
-                          width: 1,
-                          height: 30,
-                          borderWidth: 1,
-                          borderColor: "#234e6c",
-                          align: "left"
-                        }
-                      }
-                    }
-                  }
+
                 }
               ]
             };
@@ -265,7 +208,7 @@ export default {
 .zzt {
   width: 100%;
   margin: 0 auto;
-  min-width: 310px;
+  min-width: 340px;
   height: 280px;
 }
 </style>

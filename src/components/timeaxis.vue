@@ -6,7 +6,7 @@
             <div>
                 <span></span>
                 <div>
-                    <ul>
+                    <!-- <ul>
                         <li></li>
                         <li>项目立项</li>
                         <li>2019/01/01</li>
@@ -30,6 +30,11 @@
                         <li></li>
                         <li>首次集中交房</li>
                         <li>2019/05/01</li>
+                    </ul> -->
+                    <ul v-for="(item,index) in  list" :key="index" @mouseenter="onmouseenter(index)" @mouseleave="onmouseleave(index)">
+                        <li ></li>
+                        <li v-show="isshow" class="yc" ref="yc" :title="item.recordname">{{item.recordname}}</li>
+                        <li v-show="isshow" class="yc" ref="yc1">{{item.recordTime.split(" ")[0]}}</li>
                     </ul>
                 </div>
             </div>         
@@ -38,15 +43,58 @@
 </template>
 <script>
 export default {
-    
+    data(){
+        return {
+            list:[],
+            isshow:true
+        }
+    },
+    props:["xmid"],
+    watch:{
+        xmid:{
+            handler(newval){
+                // console.log(newval)
+                this.axios.get("/api/projectEvent01?projectid="+newval).then((res)=>{
+                    // console.log(res.data.data)
+                    this.list=res.data.data
+                })
+            }
+        },
+    deep: true, //深度监测
+    immediate: true //将立即以表达式的当前值触发回调
+    },
+    methods:{
+        onmouseenter(index){
+            // console.log(index)
+              setTimeout(()=>{
+                this.$refs.yc[index].style="display:block"
+                this.$refs.yc1[index].style="display:block"
+               },500)
+
+        },onmouseleave(index){
+           setTimeout(()=>{
+                this.$refs.yc[index].style="display:none"
+                this.$refs.yc1[index].style="display:none"
+            },1000)
+            // window.clearInterval(time)  
+
+        }
+    }
 }
 </script>
 
 
 <style >
 
-
-
+.yc{
+    display: none;
+    /* display: block */
+    width: 100px;
+    overflow: hidden;
+}
+.yc1{
+    display: none
+}
 .TimeAxis{
     height: 130px
 }
@@ -58,10 +106,10 @@ export default {
 
 .TimeAxis>div{
     width: 80%;
-    position: relative;
     border: 1px solid #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
+    /* overflow: hidden; */
     /* min-width: 686px; */
 }
 .TimeAxis>div>span{
@@ -76,14 +124,19 @@ export default {
 }
 .TimeAxis>div>div{
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     position: absolute;
+
     width: 100%;
 
+
 }
+
 .TimeAxis>div>div>ul{
-    width: 30%;
-    margin-right: 10%;
+
+    width: 100px;
+    min-width: 100px;
+
     position: relative;
     right: 30px;
 }
@@ -98,16 +151,20 @@ export default {
     left:50%;
     margin-left: -8px;
     background: #fff;
+    cursor: pointer;
 
 
 }
 .TimeAxis>div>div>ul>li:nth-of-type(2){
- 
+    width: 100px;
+    overflow: hidden;
     font-size: 12px;
     color: #333;
     margin-top: 9px;
     text-align: center;
-    white-space:nowrap
+    white-space:nowrap;
+    margin-top: 20px;
+    transition: all 1s
     
 }
 .TimeAxis>div>div>ul>li:nth-of-type(3){
@@ -116,7 +173,9 @@ export default {
     text-align: center;
     white-space:nowrap;
     color: #999 ;
-    
+      width: 100px;
+    overflow: hidden;
+      transition: all 1s
 }
 </style>
 

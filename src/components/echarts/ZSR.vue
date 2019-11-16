@@ -38,7 +38,7 @@ export default {
             textStyle: {
               color: "#333",
               fontSize: "16",
-              fontWeight: "600"
+              fontWeight: "500"
             }
           },
           postion: "200",
@@ -50,11 +50,11 @@ export default {
             right: 0,
             textStyle: {
               color: "#333",
-              fontSize: 16
+              fontSize: 12
             },
             data: ["总收入"],
-            itemWidth: 30, // 设置宽度
-            itemHeight: 6 // 设置高度
+            itemWidth: 20, // 设置宽度
+            itemHeight: 4 // 设置高度
           },
           // toolbox: {
           //   feature: {

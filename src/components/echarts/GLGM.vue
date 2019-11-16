@@ -39,7 +39,7 @@ export default {
             textStyle: {
               color: "#333",
               fontSize: 16,
-              fontWeight: "600"
+              fontWeight: "500"
             }
           },
           backgroundColor: "#f0eded",
@@ -73,11 +73,11 @@ export default {
             right: 0,
             textStyle: {
               color: "#333",
-              fontSize: 16
+              fontSize: 12
             },
             data: ["面积", "项目数量"],
-            itemWidth: 14, // 设置宽度
-            itemHeight: 14 // 设置高度
+            itemWidth: 10, // 设置宽度
+            itemHeight: 10 // 设置高度
           },
           // toolbox: {
           //   feature: {
@@ -156,15 +156,16 @@ export default {
               barWidth: 10,
               itemStyle: {
                 normal: {
-                  barBorderRadius: 5,
+
+                   barBorderRadius: [30, 30, 0, 0], //轴的圆角度数
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                     {
                       offset: 0,
-                      color: "#688de5"
+                      color: "#69b4e2"
                     },
                     {
                       offset: 1,
-                      color: "#69b4e2"
+                      color: "#688ee5"
                     }
                   ])
                 }

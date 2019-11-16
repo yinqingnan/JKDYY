@@ -51,10 +51,10 @@ export default {
                 const option = {
                     backgroundColor: '#f0eded',
                      grid: {
-                        top: "40%",
+                        top: "30%",
                         right: "10%",
-                        left: "10%",
-                        bottom: "14%",
+                        left: "0%",
+                        bottom: "4%",
                         containLabel: true, 
                     },
                     tooltip: {
@@ -69,7 +69,7 @@ export default {
                         // icon: "circle",
                         inactiveColor:"#999",
                          x: "10%",
-                        top: "10%",
+                        top: "4%",
                         textStyle: {
                         color: "#333",
                         fontSize: 14
@@ -134,7 +134,7 @@ export default {
                             type: 'line',
                             stack: '总量',
                             symbol: 'circle',
-                            symbolSize: 14,     //拐点大小
+                            symbolSize: 10,     //拐点大小
                             //  itemStyle : { normal: {label : {show: true}}},
                             itemStyle: {
                                 normal: {
@@ -191,7 +191,7 @@ export default {
                             type: 'line',
                             stack: '总量',
                             symbol: 'circle',
-                            symbolSize: 14,     //拐点大小
+                            symbolSize: 10,     //拐点大小
                             //  itemStyle : { normal: {label : {show: true}}},
                             itemStyle: {
                                 normal: {
@@ -238,7 +238,7 @@ export default {
                             type: 'line',
                             stack: '总量',
                             symbol: 'circle',
-                            symbolSize: 14,     //拐点大小
+                            symbolSize: 10,     //拐点大小
                             //  itemStyle : { normal: {label : {show: true}}},
                             itemStyle: {
                                 normal: {
@@ -285,7 +285,7 @@ export default {
                             type: 'line',
                             stack: '总量',
                             symbol: 'circle',
-                            symbolSize: 14,     //拐点大小
+                            symbolSize: 10,     //拐点大小
                             //  itemStyle : { normal: {label : {show: true}}},
                             itemStyle: {
                                 normal: {
@@ -341,7 +341,7 @@ export default {
                             type: 'line',
                             stack: '总量',
                             symbol: 'circle',
-                            symbolSize: 14,     //拐点大小
+                            symbolSize: 10,     //拐点大小
                             //  itemStyle : { normal: {label : {show: true}}},
                             itemStyle: {
                                 normal: {

@@ -85,7 +85,7 @@
               style="width: 100%;font-size:10px;min-width:100%;"
               :show-overflow-tooltip="true"
             >
-              <el-table-column prop="itemName" label="项目名称" align="center"></el-table-column>
+              <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
               <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
               <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
@@ -109,7 +109,7 @@
               fit:true
               style="font-size:10px;min-width:100%;width:100%"
             >
-              <el-table-column prop="itemName" label="项目名称" align="center"></el-table-column>
+              <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
               <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
               <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
@@ -135,7 +135,7 @@
             :header-cell-style="tableHeaderColor"
             style="width: 100%;min-width:100%;font-size:10px"
           >
-            <el-table-column prop="propertyClass" label="物业类别" align="center"></el-table-column>
+            <el-table-column prop="propertyClass" label="物业类别" align="left"></el-table-column>
             <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
             <el-table-column prop="standardPrice" label="最高基准价" min-width="68px" align="center"></el-table-column>
             <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>

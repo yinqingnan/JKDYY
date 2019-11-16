@@ -12,20 +12,15 @@
                 </li>
             </ul>
             <div class="tabCon">
-                <ul 
-                v-for="(item,index) in tabContents"
-                :key="index"
-                v-show="index==num" 
-                >
-                    <li v-for="(tiems,index) in item"  :key="index" :class="index===item.length-1?'lastfood':'last'" >
-                        <span>
-                            {{ tiems.title}}
-                        </span>
-                        <span class="xhx">
-                            {{tiems.msg}}
-
-                        </span>
-                        </li>
+       
+                <ul v-if="isshow">
+                    <li class="list" v-for="(item,index) in list1" :key="index"><h2>{{item.remindTitle}}</h2> <h2>{{item.remindTime.split(" ")[0]}}</h2></li>
+                </ul>
+                <ul v-if="isshow1">
+                    <li v-for="(item,index) in list2" :key="index" class="list">
+                        <h2 :title="item.notice">{{item.notice}}</h2>
+                        <h2>{{item.noticeDate.split(" ")[0]}}</h2>
+                    </li>
                 </ul>
             </div>  
         </div>
@@ -42,38 +37,52 @@
 export default {
        data() {
            return {
-                tabs: ["系统公告", "提醒事项"],
-                tabContents: [
-                    [
-                    {id:0,title:"公告:重大节点重启"},
-                    {id:1,title:"2019年7月系统跟新说明"},                    
-                    {id:2,title:"计划模块操作指引"},
-                    {id:3,title:"十秒教你完成数据分析"},
-                    {id:4,title:"他才是这次勒索案的后台。"},
-                    {id:5,title:"上了妆穿着西服的演员在后台走来走去"},
-                    {id:6,title:"按照家宴的传统做法，我们走到后台"},
-
-                    ], 
-                    [
-                    {id:0,title:"未完事项11111111111111111",msg:"2019/10/16"},
-                    {id:1,title:"未完事项222222222222222",msg:"2019/10/16"},                    
-                    {id:2,title:"未完事项3333333333",msg:"2019/10/16"},
-                    {id:3,title:"未完事项44444444444444444",msg:"2019/10/16"},
-                    {id:4,title:"未完事项55555555555555555555555",msg:"2019/10/16"},
-                    {id:5,title:"未完事项66666666666666666666666",msg:"2019/10/16"},
-                    {id:6,title:"未完事项7777777777777777777777777777777777777",msg:"2019/10/16"},
-                    ]
-                ],
-                num: 0
+                tabs: ["重要提醒", "系统公告"],
+                list1:[],
+                list2:[],
+                num: 0,
+                isshow:true,
+                isshow1:false
            }
-       
+        
     },
-    props:[],
+    props:["xmid"],
     methods: {
         tab(index) {
             this.num = index;
+            if(index==0){
+                this.isshow=true
+                this.isshow1=false
+            }else{
+                 this.isshow=false
+                this.isshow1=true
+            }
         }
+    },
+    watch:{
+        xmid:{
+            handler(newval){
+                // console.log(newval)
+                // 获取重要提醒
+                this.axios.get("/api/importantReminder02?topcount=10&projectId="+newval).then((res)=>{
+                    // console.log(res.data.data)
+                    this.list1=res.data.data
+
+                })
+                // 获取系统公告
+                this.axios.get("/api/projectNotice?topcount=2").then((res)=>{
+                    // console.log(res.data.data)
+                     this.list2=res.data.data
+                // console.log(this.tabContents[1])
+
+
+                })
+            }
+        },
+        deep: true, //深度监测
+        immediate: true //将立即以表达式的当前值触发回调
     }
+    
 }
 </script>
 
@@ -109,20 +118,7 @@ export default {
     border-bottom:2px solid #49a4d9
 
 }  
-.tabCon>ul{
-    height: auto;
-    padding-bottom: 20px
-}
-.tabCon>ul>li{
-    font-size: 14px;
-    max-width: 280px;
-    white-space: nowrap;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 20px;
-    cursor: pointer;
-    margin-top: 20px
-}
+
 .tabCon>ul>li>span:nth-of-type(1){
     text-decoration: underline;
     max-width: 180px;
@@ -138,4 +134,36 @@ export default {
 .lastfood{
     margin-bottom: 20px !important
 }
+.list{
+    font-size: 14px; 
+    max-width: 280px;
+    line-height: 34px;
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 20px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 20px
+ 
+}
+.list>h2{
+    font-size: 14px;
+    text-decoration: underline;
+    min-width: 170px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1
+}
+.list>h2:nth-of-type(2){
+    text-decoration: none;
+    text-indent: 5px;
+}
+
 </style>

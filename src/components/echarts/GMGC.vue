@@ -41,7 +41,7 @@ export default {
             textStyle: {
               color: "#333",
               fontSize: 16,
-              fontWeight: "600"
+              fontWeight: "500"
             }
           },
           tooltip: {
@@ -58,11 +58,11 @@ export default {
               right: 0,
               textStyle: {
                 color: "#333",
-                fontSize: 16
+                fontSize: 12
               },
 
-              itemWidth: 30, // 设置宽度
-              itemHeight: 8
+              itemWidth: 20, // 设置宽度
+              itemHeight: 4
             },
             // {
             //   data: ["线性（自建占比%）"],
@@ -147,31 +147,7 @@ export default {
               //   data: [[{ type: "min" }, { type: "max" }]]
               // }
             },
-            // {
-              // smooth: true, //变平滑
-              // name: "线性（自建占比%）",
-              // type: "line",
-              // stack: "总量",
-              // areaStyle: {
-              //   normal: {
-              //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              //       {
-              //         offset: 0,
-              //         color: "#81befd" // 0% 处的颜色
-              //       },
-              //       {
-              //         offset: 0.4,
-              //         color: "#e4f2ff" // 100% 处的颜色
-              //       },
-              //       {
-              //         offset: 1,
-              //         color: "#fff" // 100% 处的颜色
-              //       }
-              //     ])
-              //   }
-              // }
-              // data:this.selfBuiltArea             //数据入口
-            // }
+
           ]
         };
         //初始化图表

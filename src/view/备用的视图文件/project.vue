@@ -1,6 +1,7 @@
 <template>
 <!-- 项目页面 -->
     <div>
+        {{id}}
         <div class="container">
             <div class="Left">
                 <div class="Downmenu">
@@ -14,6 +15,8 @@
                             >
                             </el-option>
                         </el-select>
+
+                      
                     </div>
                 </div>
                 <div class="Title">
@@ -49,7 +52,7 @@
 
                 <div class="Chart">
                     <div>
-                        <h1>关键经营指标</h1>
+                        <h1>关键指标</h1>
                         <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
                     </div>
                     <div>
@@ -81,8 +84,11 @@
                                 </div>
                         </div>
                          <div>
-                            <h1>报事完成率</h1>  
-                            
+                            <h1>报事完成率  
+                                <!-- <span class="Red"> <i class="Redsj"></i> 9%</span> -->
+                            </h1>
+                            <!-- <h2>55%</h2> -->
+                        <!-- <div> -->
                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
                             
@@ -179,7 +185,7 @@
                     <h1>常用报表</h1>
                     <ul>
                         <li v-for="(item,index) in Commonreports" :key="index">
-                             <h2 :title="item.title">{{item.title}}</h2>
+                             <h2 :title="item.remindTitle">{{item.title}}</h2>
                             <h2>{{item.updatedate}}</h2>
                         </li>
                     </ul>
@@ -290,123 +296,118 @@ export default {
 
         // 获取项目列表
         this.axios.get('/api/projectCompanyList').then((res)=>{
-            // console.log(res.data.data)
+            console.log(res.data.data)
             this.getProjectList=res.data.data
      
         // 获取当前区域公司的节点达成率等信息               this.value代表路由传进来的参数
            this.titlename= this.getProjectList.filter((item)=>{
                 return   item.companyName==this.value      
            })
-        //    console.log(this.titlename)
            this.id=this.titlename[0].id
            
-            // 获取重要提醒数据
-            this.axios.get("/api/importantReminder01?topcount=10&companyId="+this.id)                
-            .then((res)=>{
-                // console.log(res.data.data)
-                this.reminder=res.data.data
-            })
-            // 获取关键指标总收入数据
-            this.axios.get("http://222.180.200.126:9045/api/companyIncomtoOld?companyId="+this.id)        
-            .then((res)=>{
-                // console.log(res.data.data)
-                this.zsr=res.data.data
-                this.zsrnumber=res.data.data[0].newReceiptsAll
-            })
-            // 获取总收入竖向柱状图数据
-            this.axios.get("http://222.180.200.126:9045/api/companyReceipts?year=2019&companyId="+this.id)        
-            .then((res)=>{
-                // console.log(res.data.data)
-                // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                if(this.date>=7){
-                    this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
-                    this.zsrsxzztm=1
-                }else{
-                    this.zsrsxzzt1.push((res.data.data[0].Receipts1/10000).toFixed(0),(res.data.data[0].Receipts2/10000).toFixed(0),(res.data.data[0].Receipts3/10000).toFixed(0),(res.data.data[0].Receipts4/10000).toFixed(0),(res.data.data[0].Receipts5/10000).toFixed(0),(res.data.data[0].Receipts6/10000).toFixed(0))
-                    this.zsrsxzztm=0
-                }
-            })
-              // 获取总收入横向柱状图数据
-            this.axios.get("api/companyIncomeMaxMin")                                                      
-            .then((res)=>{
-                // console.log(res.data.data)
-                let arr=res.data.data
-                this.zsrhxzzttitle=[]
-                this.zsrhxzzt2=[]
-                arr.forEach(element => {
-                    // console.log(element.ReceiptsAll)
-                    this.zsrhxzzttitle.push(element.state)
-                    this.zsrhxzzt2.push((element.ReceiptsAll/10000).toFixed(0))
-                });
-            })
-            // 获取园区数据
-            this.axios.get("http://222.180.200.126:9045/api/companyTypeMoney?companyId="+this.id)                
-            .then((res)=>{
-                this.zsryq=res.data.data
-            })
+         
             
-            // 获取综合收费率数据
-            this.axios.get("http://222.180.200.126:9045/api/companyTotalRate?companyId="+this.id)                
-            .then((res)=>{
-                this.sfl=res.data.data
-            })
-            //综合收费率竖向柱状图
-            this.axios.get("http://222.180.200.126:9045/api/companyRates?year=2019&companyId="+this.id)           
-            .then((res)=>{  
-                // console.log(res.data.data)
-                if(this.date>=7){
-                    this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
-                    this.zsrsxzztm=1
-                }else{
-                    this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(0),(res.data.data[0].Rates2).toFixed(0),(res.data.data[0].Rates3).toFixed(0),(res.data.data[0].Rates4).toFixed(0),(res.data.data[0].Rates5).toFixed(0),(res.data.data[0].Rates6).toFixed(0))
-                    this.zsrsxzztm=0
-                }
-            })
-            // 综合收费率横向柱状图
-            this.axios.get("http://222.180.200.126:9045/api/companyRateMaxMinVm").then((res)=>{                  
-                let arr=res.data.data
-                this.sflhxzzttitle=[];
-                this.sflhxzzt2=[]
-                arr.forEach(element=>{
-                    this.sflhxzzttitle.push(element.state)
-                    this.sflhxzzt2.push(element.rate.toFixed(2))
-                })
-            })
-               //当前收费率
-            this.axios.get("http://222.180.200.126:9045/api/companyCuMonthRate?companyId="+this.id)                    //修改后需要切换
-            .then((res)=>{
-                // console.log(res.data.data)
-                this.dqsfl=res.data.data
-            })
-            // 获取品质服务信息数据
-            this.axios.get("/api/companymonthrate?companyId="+this.id) //使用区域公司名称进行查询                      //修改后需要切换
-            .then((res)=>{
-                // console.log(res.data.data)
-                this.Realestate=res.data.data[0].newspapersCateType         //地产title
-                this.Other=res.data.data[1].newspapersCateType              //其他title
-                this.Propertycategory=res.data.data[2].newspapersCateType   //物业title
-                this.Realestates.push(res.data.data[0].m01.toFixed(2),res.data.data[0].m02.toFixed(2),res.data.data[0].m03.toFixed(2),res.data.data[0].m04.toFixed(2),res.data.data[0].m05.toFixed(2),res.data.data[0].m06.toFixed(2),res.data.data[0].m07.toFixed(2),res.data.data[0].m08.toFixed(2),res.data.data[0].m09.toFixed(2),res.data.data[0].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))          //地产赋值
+        })
+        // // 获取品质服务信息数据
+        // this.axios.get("/api/companymonthrate?companyId=250") //使用区域公司名称进行查询                      //修改后需要切换
+        // .then((res)=>{
+        //     console.log(res.data.data)
+        //     this.Realestate=res.data.data[0].newspapersCateType         //地产title
+        //     this.Other=res.data.data[1].newspapersCateType              //其他title
+        //     this.Propertycategory=res.data.data[2].newspapersCateType   //物业title
+        //     this.Realestates.push(res.data.data[0].m01.toFixed(2),res.data.data[0].m02.toFixed(2),res.data.data[0].m03.toFixed(2),res.data.data[0].m04.toFixed(2),res.data.data[0].m05.toFixed(2),res.data.data[0].m06.toFixed(2),res.data.data[0].m07.toFixed(2),res.data.data[0].m08.toFixed(2),res.data.data[0].m09.toFixed(2),res.data.data[0].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))          //地产赋值
 
-                this.Others.push(res.data.data[1].m01.toFixed(2),res.data.data[1].m02.toFixed(2),res.data.data[1].m03.toFixed(2),res.data.data[1].m04.toFixed(2),res.data.data[1].m05.toFixed(2),res.data.data[1].m06.toFixed(2),res.data.data[1].m07.toFixed(2),res.data.data[1].m08.toFixed(2),res.data.data[1].m09.toFixed(2),res.data.data[1].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))            //其他赋值
-                
-                this.Propertycategorys.push(res.data.data[2].m01.toFixed(2),res.data.data[2].m02.toFixed(2),res.data.data[2].m03.toFixed(2),res.data.data[2].m04.toFixed(2),res.data.data[2].m05.toFixed(2),res.data.data[2].m06.toFixed(2),res.data.data[2].m07.toFixed(2),res.data.data[2].m08.toFixed(2),res.data.data[2].m09.toFixed(2),res.data.data[2].m10.toFixed(2),res.data.data[2].m11.toFixed(2),res.data.data[2].m12.toFixed(2))      //物业赋值
-
-            })
-                    //获取登录其它系统的数据
-            this.axios.get("/api/systemDocking01")
-            .then((res)=>{
-                this.loginxt=res.data.data
-            })
-
-            //获取常用报表数据
-            this.axios.get("/api/commonReport").then((res)=>{
-                this.Commonreports=res.data.data
-            })
+        //     this.Others.push(res.data.data[1].m01.toFixed(2),res.data.data[1].m02.toFixed(2),res.data.data[1].m03.toFixed(2),res.data.data[1].m04.toFixed(2),res.data.data[1].m05.toFixed(2),res.data.data[1].m06.toFixed(2),res.data.data[1].m07.toFixed(2),res.data.data[1].m08.toFixed(2),res.data.data[1].m09.toFixed(2),res.data.data[1].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))            //其他赋值
             
+        //     this.Propertycategorys.push(res.data.data[2].m01.toFixed(2),res.data.data[2].m02.toFixed(2),res.data.data[2].m03.toFixed(2),res.data.data[2].m04.toFixed(2),res.data.data[2].m05.toFixed(2),res.data.data[2].m06.toFixed(2),res.data.data[2].m07.toFixed(2),res.data.data[2].m08.toFixed(2),res.data.data[2].m09.toFixed(2),res.data.data[2].m10.toFixed(2),res.data.data[2].m11.toFixed(2),res.data.data[2].m12.toFixed(2))      //物业赋值
+
+        // })
+        //获取登录其它系统的数据
+        this.axios.get("/api/systemDocking01")
+        .then((res)=>{
+            this.loginxt=res.data.data
+        })
+        // 获取重要提醒数据
+        this.axios.get("/api/importantReminder01?topcount=10&companyId="+this.id)                //切换区域公司后改数据要被切换
+        .then((res)=>{
+            console.log(res.data.data)
+            this.reminder=res.data.data
+        })
+        //获取常用报表数据
+        this.axios.get("/api/commonReport").then((res)=>{
+            this.Commonreports=res.data.data
+        })
+        // 获取关键指标总收入数据
+        this.axios.get("http://222.180.200.126:9045/api/companyIncomtoOld?companyId=250")         //修改后需要切换
+        .then((res)=>{
+            // console.log(res.data.data)
+            this.zsr=res.data.data
+            this.zsrnumber=res.data.data[0].newReceiptsAll
+        })
+        // // 获取总收入竖向柱状图数据
+        this.axios.get("http://222.180.200.126:9045/api/companyReceipts?year=2019&companyId=250")        //修改后需要切换
+        .then((res)=>{
+            // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
+            if(this.date>=7){
+                this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
+                this.zsrsxzztm=1
+            }else{
+                this.zsrsxzzt1.push((res.data.data[0].Receipts1/10000).toFixed(0),(res.data.data[0].Receipts2/10000).toFixed(0),(res.data.data[0].Receipts3/10000).toFixed(0),(res.data.data[0].Receipts4/10000).toFixed(0),(res.data.data[0].Receipts5/10000).toFixed(0),(res.data.data[0].Receipts6/10000).toFixed(0))
+                this.zsrsxzztm=0
+            }
+        })
+        // // 获取总收入横向柱状图数据
+        this.axios.get("api/companyIncomeMaxMin")                                                        //修改后需要切换
+        .then((res)=>{
+            // console.log(res.data.data)
+            let arr=res.data.data
+            this.zsrhxzzttitle=[]
+            this.zsrhxzzt2=[]
+            arr.forEach(element => {
+                // console.log(element.ReceiptsAll)
+                this.zsrhxzzttitle.push(element.state)
+                this.zsrhxzzt2.push((element.ReceiptsAll/10000).toFixed(0))
+            });
+        })
+        // // 获取园区数据
+        this.axios.get("http://222.180.200.126:9045/api/companyTypeMoney?companyId=250")                 //修改后需要切换
+        .then((res)=>{
+            this.zsryq=res.data.data
         })
 
 
-     
+        // // 获取综合收费率数据
+        this.axios.get("http://222.180.200.126:9045/api/companyTotalRate?companyId=250 ")                //修改后需要切换
+        .then((res)=>{
+            this.sfl=res.data.data
+        })
+        // //综合收费率竖向柱状图
+        this.axios.get("http://222.180.200.126:9045/api/companyRates?year=2019&companyId=250")           //修改后需要切换
+        .then((res)=>{  
+            if(this.date>=7){
+                this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
+                this.zsrsxzztm=1
+            }else{
+                this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(0),(res.data.data[0].Rates2).toFixed(0),(res.data.data[0].Rates3).toFixed(0),(res.data.data[0].Rates4).toFixed(0),(res.data.data[0].Rates5).toFixed(0),(res.data.data[0].Rates6).toFixed(0))
+                this.zsrsxzztm=0
+            }
+        })
+        // // 综合收费率横向柱状图
+        this.axios.get("http://222.180.200.126:9045/api/companyRateMaxMinVm").then((res)=>{                  //修改后需要切换
+               let arr=res.data.data
+               this.sflhxzzttitle=[];
+               this.sflhxzzt2=[]
+               arr.forEach(element=>{
+                   this.sflhxzzttitle.push(element.state)
+                   this.sflhxzzt2.push(element.rate.toFixed(2))
+               })
+        })
+        // //当前收费率
+        this.axios.get("http://222.180.200.126:9045/api/companyCuMonthRate?companyId=250")                    //修改后需要切换
+        .then((res)=>{
+            // console.log(res.data.data)
+            this.dqsfl=res.data.data
+        })
     },
 }
 </script>
@@ -709,15 +710,6 @@ export default {
 .table3{
     height: 210px;
     margin-top: 12px
-}
-.table2>ul>li>h2{
-        font-size: 14px;
-    text-decoration: underline;
-    min-width: 170px;
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
 }
 .table3_header{
     display: flex;

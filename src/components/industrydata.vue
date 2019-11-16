@@ -3,7 +3,7 @@
     <div class="box">
         <H1>行业数据资料</H1>
         <ul>
-            <li v-for="(item,index) in list" :key="index" @click="btn(item.dataUrl)">{{index+1}}.{{item.dataName}}</li>
+            <li v-for="(item,index) in list" :key="index" @click="btn(item.dataUrl)">{{item.dataName}}</li>
         </ul>
       
     </div>
@@ -36,7 +36,7 @@ export default {
 .box{
     width: 100%;
     background: #fff;
-    height: 364px;
+    height: 309px;
     overflow: hidden;
     border: 1px solid #e5e5e5;
     padding: 0 20px;
@@ -81,7 +81,7 @@ export default {
 }
 .box>ul>li{
     line-height: 40px;
- 
+    overflow: hidden;
 
 }
 

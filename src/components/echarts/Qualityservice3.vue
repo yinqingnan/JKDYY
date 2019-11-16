@@ -1,8 +1,8 @@
 <!-- 品质服务信息折线1-->
 <template>
-  <!-- 品质服务信息折线1 -->
+  <!-- 品质服务信息折线3 -->
   <div>
-    <div id="zxt1" class="ECHARTS"></div>
+    <div id="zxt3" class="ECHARTS"></div>
 
   </div>
 </template>
@@ -31,10 +31,9 @@ export default {
         left: '0%',
         // right: '4%',
         // bottom: '3%',
-        containLabel: false,
-      
-    },  
-    tooltip: {
+        containLabel: false
+    },
+        tooltip: {
             tooltip: {
               trigger: "axis",
               
@@ -43,7 +42,6 @@ export default {
                 return a.seriesName +":"+a.value+"%"
             }
     },
-
     xAxis: [{
         // name:'时间',
         type: 'category',
@@ -81,18 +79,16 @@ export default {
         },
         show: false
     }],
-    series: [
-        {
-            name: '地产类',
+    series: [{
+            name: '物业类',
             type: 'line',
             smooth: true,
             color: "#fff",
-            symbol: 'circle',//折线拐点去掉圆点
+            symbol: 'circle',
             // hoverAnimation:true,
-
             lineStyle: {
                 normal: {
-                    color: '#1bbdf2', //设置折线颜色
+                    color: '#fc9e1a', //设置折线颜色
                     width: 3
                 }
             },
@@ -106,7 +102,7 @@ export default {
                     y2: 1,
                     colorStops: [{ //改变折现区域的颜色
                             "offset": 0,
-                            "color": "#1bbdf2"
+                            "color": "#fc9e1a"
                         },
                         {
                             "offset": 1,
@@ -118,13 +114,12 @@ export default {
             },
             data: this.bjData      //数据入口
         },
-
-
+    
     ]
           
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("zxt1"));
+        const chartObj = echarts.init(document.getElementById("zxt3"));
 
         chartObj.setOption(option, true);
            // 设置自适应
@@ -140,7 +135,7 @@ export default {
   },
   props: ["Realestates"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("zxt1"));
+    const chartObj = echarts.init(document.getElementById("zxt3"));
     window.addEventListener("resize", () => {
         // console.log(chartObj)
       chartObj.resize();

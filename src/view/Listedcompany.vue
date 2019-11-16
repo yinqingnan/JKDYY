@@ -153,7 +153,7 @@ export default {
   },
   mounted() {
     // 获取收并购信息
-    axios.get("/api/listedCompany07?topcount=8").then(res => {
+    axios.get("/api/listedCompany07?topcount=5").then(res => {
         this.Merger = res.data.data;
       });
 
@@ -210,7 +210,7 @@ background: #eee
 .container_left_header {
   border: 1px solid #e5e5e5;
   position: relative;
-  /* height: 510px; */
+  height: 469px;
   background: #fff
 }
 .container_left_header > h1 {
@@ -273,7 +273,7 @@ background: #eee
   margin-top: 12px;
   border-radius: 5px;
   /* min-width:  124px;  */
-  height: 80px;
+  height: 66px;
 }
 
 .container_center_body > div > div > h3 {
@@ -307,7 +307,7 @@ background: #eee
 background: #ffffff
 }
 .charts{
-  padding: 0 10px;
+  padding: 0 10px 0 8px;
   box-sizing: border-box;
   padding-bottom: 12px
 }

@@ -89,7 +89,9 @@ export default {
 
   background: #eee;
   padding: 12px;
-  height: 764px
+  height: 764px;
+  margin-top: 3px
+
 }
 .box1{
   height: 50px;

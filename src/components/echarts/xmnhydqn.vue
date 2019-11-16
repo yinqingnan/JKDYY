@@ -1,8 +1,7 @@
-<!-- 品质服务信息折线1-->
+<!-- 项目能耗用水全年-->
 <template>
-  <!-- 品质服务信息折线1 -->
   <div>
-    <div id="zxt1" class="ECHARTS"></div>
+    <div id="zxt2" class="ECHARTS"></div>
 
   </div>
 </template>
@@ -14,23 +13,23 @@ import echarts from "echarts"; //引入echarts
 export default {
   data() {
     return {
-      time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12/月"],     
+      time: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月","12月"],     
       bjData:[],
   
     };
   },
   watch: {
-    Realestates: {
+    xmnhysqn: {
       handler(newVal) {
-      
+    //   console.log(newVal)
         this.bjData=newVal
 
         // 图表设置信息
         const option = {
              grid: {
-        left: '0%',
-        // right: '4%',
-        // bottom: '3%',
+        left: '2%',
+        right: '4%',
+        bottom: '13%',
         containLabel: false,
       
     },  
@@ -40,7 +39,7 @@ export default {
               
             },
               formatter:function(a){
-                return a.seriesName +":"+a.value+"%"
+                return a.seriesName +":"+a.value+"吨"
             }
     },
 
@@ -83,7 +82,7 @@ export default {
     }],
     series: [
         {
-            name: '地产类',
+            name: '当月',
             type: 'line',
             smooth: true,
             color: "#fff",
@@ -92,7 +91,7 @@ export default {
 
             lineStyle: {
                 normal: {
-                    color: '#1bbdf2', //设置折线颜色
+                    color: '#59bbea', //设置折线颜色
                     width: 3
                 }
             },
@@ -106,7 +105,7 @@ export default {
                     y2: 1,
                     colorStops: [{ //改变折现区域的颜色
                             "offset": 0,
-                            "color": "#1bbdf2"
+                            "color": "#59bbea"
                         },
                         {
                             "offset": 1,
@@ -124,7 +123,7 @@ export default {
           
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("zxt1"));
+        const chartObj = echarts.init(document.getElementById("zxt2"));
 
         chartObj.setOption(option, true);
            // 设置自适应
@@ -138,9 +137,9 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["Realestates"],
+  props: ["xmnhysqn"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("zxt1"));
+    const chartObj = echarts.init(document.getElementById("zxt2"));
     window.addEventListener("resize", () => {
         // console.log(chartObj)
       chartObj.resize();
@@ -155,7 +154,7 @@ export default {
 .ECHARTS {
     width: 100%;
  /* margin: 0 auto; */
-    min-width: 170px;
-     height: 86px;
+    min-width: 347px;
+     height: 148px;
 }
 </style>
