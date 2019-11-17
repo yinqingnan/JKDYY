@@ -1,8 +1,8 @@
-    <!-- 项目报事完成率横向柱状图 -->
+    <!-- 项目综合收费率横向柱状图 -->
 <template>
 
   <div>
-    <div id="bswjlsxzzt" class="ECHARTS"></div>
+    <div id="zhsflhxzzt" class="ECHARTS"></div>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
   },
   watch: {
 
-    bssxzzt: {
+    zhsflhxzzt: {
       handler(newVal) {
-        
+          // console.log(newVal)
         this.bjData = newVal;
 
         // 图表设置信息
@@ -99,7 +99,7 @@ export default {
     ]
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("bswjlsxzzt"));
+        const chartObj = echarts.init(document.getElementById("zhsflhxzzt"));
 
         chartObj.setOption(option, true);
         // 设置自适应
@@ -111,9 +111,9 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["bssxzzt"],
+  props: ["zhsflhxzzt"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("bswjlsxzzt"));
+    const chartObj = echarts.init(document.getElementById("zhsflhxzzt"));
     window.addEventListener("resize", () => {
       // console.log(chartObj)
       chartObj.resize();

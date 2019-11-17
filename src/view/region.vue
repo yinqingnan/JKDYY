@@ -63,29 +63,27 @@
                         <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
                     </div>
                     <div>
-                 
-                           
-<!-- 
-                            <div class="yq">
-                                    <ul v-for="(item,index) in zsryq" :key="index">
-                                        <li style="width:20%">{{item.incomType}}</li>
-                                        <li style="width:30%">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
-                                        <li style="width:30%">
-                                            <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span>
-                                        </li>
-                                     
-                                    </ul>
-                            </div> -->
 
                     <!-- 关键指标图表1 -->
                         <div>
-                            <h1>综合收费率 <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
-                            <h2>81%</h2>
+                           <h1 v-for="(item,index) in zhsfltitle" :key="index">综合收费率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            {{item.changeRate.toFixed(1)}}%</span></h1>
+                             <h2 v-for="(item,index) in bstitle" :key="index+1">
+                                {{item.newRate.toFixed(2)}}
+                                <span>%</span>
+                            </h2>
                             <div>
-                             
+                                <div style="width:100%">
+                                    <xmzhsflsxzzt :zhsflsxzzt="zhsflsxzzt" :xsyf="xsyf" style="width:100%"></xmzhsflsxzzt>
+                                </div>
+                                <div style="width:100%">
+                                    <xmzhsflhxzzt :zhsflhxzzt="zhsflhxzzt" style="width:80%"></xmzhsflhxzzt>
+                                </div>
                             </div>
                         </div>
+
+
+
                     <!-- 关键指标图表2 -->
                          <div>
                             <h1 v-for="(item,index) in bstitle" :key="index">报事完结率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
@@ -103,6 +101,19 @@
                                     <xmbshxzzt :bssxzzt="bssxzzt" style="width:80%"></xmbshxzzt>
                                 </div>
                             </div>
+                            <div class="yq">
+                                <!-- {{bsmsg}} -->
+                                    <ul v-for="(item,index) in bsmsg" :key="index">
+                                        <li style="width:20%">{{item.newspapersCateType}}</li>
+                                        <li style="width:30%">{{item.newRate.toFixed(2)}}%</li>
+                                        <li style="width:30%">
+                                            <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            {{item.changRate.toFixed(2)}}%</span>
+                                        </li>
+                                     
+                                    </ul>
+                            </div>
+
                         </div>
                     <!-- 关键指标图表3 -->
 
@@ -110,8 +121,13 @@
                             <h1>现场品质  <span class="Green"> <i class="Greensj"></i> 9%</span></h1>
                             <h2>85%</h2>
                             <div>
-                                <!-- <Histogram/>   
-                                <Transversehistogram/> -->
+                                <div style="width:100%">
+
+                                    <xcpzsxzzt  :xcpzsxzzt="xcpzsxzzt" :xsyf="xsyf" style="width:100%"></xcpzsxzzt>
+                                </div>
+                                <div style="width:100%">
+                                    <xcpzhxzzt :xcpzhxzzt="xcpzhxzzt" style="width:80%"></xcpzhxzzt>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,8 +137,9 @@
                                 <h1>品质服务信息</h1>
                                 <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
                             </div> 
-                            <radar/>
 
+                            <!-- 雷达图 -->
+                                <radar :xmid="xmid" :radarmsg="radarmsg"></radar>
                         </div>
                         <div>
                             <div>
@@ -192,8 +209,6 @@
 
 // 引入时间轴组建
 import Timeaxis from "../components/timeaxis"
-// //引入雷达图图
-import radar from '../components/radar'
 // 重要提醒tab组件
 import tab from '../components/tab'
 // 用水全年图表
@@ -205,8 +220,18 @@ import xmnhydqn from "../components/echarts/xmnhydqn"
 import xmbshxzzt from '../components/echarts/xmbshxzzt'
 //项目报事完结率竖向柱状图
 import xmbssxzzt from '../components/echarts/xmbssxzzt'
+// 项目综合收费率横向柱状图
+import xmzhsflhxzzt from "../components/echarts/xmzhsflhxzzt"
+//项目综合收费率竖向柱状图
+import xmzhsflsxzzt from "../components/echarts/xmzhsflsxzzt"
 
+// 引入雷达图
+import radar from '../components/echarts/radar'
 
+// 引入现场品质竖向柱状图
+import xcpzsxzzt from "../components/echarts/xcpzsxzzt"
+// 现场品质横线柱状图
+import xcpzhxzzt from "../components/echarts/xcpzhxzzt"
 
 export default {
     components:{
@@ -214,8 +239,12 @@ export default {
         xmnhysqn,
         xmnhydqn,
         tab,
-        xmbshxzzt,
-        xmbssxzzt,
+        xmbshxzzt,          //横向
+        xmbssxzzt,          //竖向
+        xmzhsflhxzzt,       //横向
+        xmzhsflsxzzt,       //竖向
+        xcpzsxzzt,          //竖向
+        xcpzhxzzt,          //横向
         radar
     },
     data() {
@@ -244,7 +273,21 @@ export default {
             bssxzzt:[]  ,                                     //报事  竖向柱状图
             bstitle:[],                                       //报事title信息
             bsmsg:[]   ,                                       //报事提示信息
-            xsyf:null                                           //显示月份
+            xsyf:null,                                           //显示月份
+
+            zhsflhxzzt:[],                                     //综合收费率横向柱状图
+            zhsflsxzzt:[],                                     //综合收费率竖向柱状图
+            zhsfltitle:[],                                     //报事title信息
+            zhsflmsg:[] ,                                    //报事提示信息
+
+            radarmsg:[],                                        //品质服务信息
+            
+            xcpzhxzzt:[],                                    //现场品质横向柱状图
+            xcpzsxzzt:[],                                    //现场品质竖向柱状图
+            xcpztitle:[],                                    //现场品质title信息
+            xcpzmsg:[],                                      //现场品质提示信息
+
+ 
 
         }
     },
@@ -329,7 +372,7 @@ export default {
         })
 
         // 获取关键指标报事完成率数据 竖向柱状图数据            需变更数据  
-        this.axios.get("/api/projectMNewPYear?projectId=1062").then((res)=>{
+        this.axios.get("/api/projectMNewPYear?projectId="+this.xmid).then((res)=>{
             // console.log(res.data.data)
             // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
             if(this.date>=7){
@@ -351,16 +394,106 @@ export default {
                  this.bssxzzt.push(element.rate.toFixed(2))
             });
         })
+        
         //获取报事完结率   title数据                                 需变更数据  
-        this.axios.get("/api/projectTotalRate?projectId=1062").then((res)=>{
+        this.axios.get("/api/projectTotalRate?projectId="+this.xmid).then((res)=>{
             // console.log(res.data.data)
             this.bstitle=res.data.data
         })
         // 获取报事完结率   提示信息                                需变更数据
-        this.axios.get("/api/projectTypeRate?projectId=1021").then((res)=>{
-            console.log(res.data.data)
+        this.axios.get("/api/projectTypeRate?projectId="+this.xmid).then((res)=>{
+            // console.log(res.data.data)
             this.bsmsg=res.data.data
         })
+
+
+
+
+        // 获取综合收费率  竖向柱状图数据           数据替换
+        this.axios.get("/api/projectYMRs?projectId="+this.xmid)
+        .then((res)=>{
+            // console.log(res.data.data[0])
+              if(this.date>=7){
+                this.zhsflsxzzt.push((res.data.data[0].Rate7).toFixed(1),(res.data.data[0].Rate8).toFixed(1),(res.data.data[0].Rate9).toFixed(1),(res.data.data[0].Rate10).toFixed(1),(res.data.data[0].Rate11).toFixed(1),(res.data.data[0].Rate12).toFixed(1))
+                // console.log(this.bshxzzt)
+                this.xsyf=1
+            }else{
+                this.zhsflsxzzt.push((res.data.data[0].Rate1).toFixed(1),(res.data.data[0].Rate2).toFixed(1),(res.data.data[0].Rate3).toFixed(1),(res.data.data[0].Rate4).toFixed(1),(res.data.data[0].Rate5).toFixed(1),(res.data.data[0].Rate6).toFixed(1))
+                // console.log(this.bshxzzt)
+                this.xsyf=0
+            }
+        })
+        // 获取综合收费率  横向柱状图数据           数据替换
+        this.axios.get("/api/companyRateMaxMinVm").then((res)=>{
+            // console.log(res.data.data)
+            let arr=res.data.data
+            this.zhsflhxzzt=[]
+            arr.forEach(element => {
+                 this.zhsflhxzzt.push(element.rate.toFixed(2))
+            });
+        })
+        
+        // 获取综合收费率 title                      数据替换
+        this.axios.get("/api/projectTotalRate2?projectId="+this.xmid)
+        .then((res)=>{
+            this.zhsfltitle=res.data.data
+        })
+        // 获取综合收费率的提示信息
+        this.axios.get("/api/projectCuMRate?projectId="+this.xmid).then((res)=>{
+            // console.log(res.data.data)
+            this.zhsflmsg=res.data.data
+        })
+        
+
+
+        // // 获取品质服务信息数据了  雷达图   切换数据
+        this.axios.get("/api/ProjectYuqu?projectId="+this.xmid).then((res)=>{
+           this.radarmsg=[]
+            var obj=res.data.data[0]
+        for(var i in obj){
+            this.radarmsg.push(obj[i].toFixed(1))
+        }
+        })
+        //  xcpzhxzzt:[],                                   
+        //     xcpzsxzzt:[],                                    
+        //     xcpztitle:[],                                    
+        //     xcpzmsg:[],     
+
+        // 现场品质竖向柱状图            数据替换
+        this.axios.get("/api/projectPZYM?projectId="+this.xmid).then((res)=>{
+            // console.log(res.data.data)
+              if(this.date>=7){
+                this.xcpzsxzzt.push((res.data.data[0].m7).toFixed(1),(res.data.data[0].m8).toFixed(1),(res.data.data[0].m9).toFixed(1),(res.data.data[0].m10).toFixed(1),(res.data.data[0].m11).toFixed(1),(res.data.data[0].m12).toFixed(1))
+                // console.log(this.bshxzzt)
+                this.xsyf=1
+            }else{
+                this.xcpzsxzzt.push((res.data.data[0].m1).toFixed(1),(res.data.data[0].m2).toFixed(1),(res.data.data[0].m3).toFixed(1),(res.data.data[0].m4).toFixed(1),(res.data.data[0].m5).toFixed(1),(res.data.data[0].m6).toFixed(1))
+                // console.log(this.bshxzzt)
+                this.xsyf=0
+            }
+        })
+
+
+
+        //现场品质横向柱状图         数据替换
+        this.axios.get("/api/projectXYPZMM").then((res)=>{
+            console.log(res.data.data)
+            let arr=res.data.data
+            this.xcpzhxzzt=[]
+            arr.forEach(element => {
+                 this.xcpzhxzzt.push(element.projectscore.toFixed(2))
+            });
+        })
+
+
+
+        //现场品质title信息              数据替换
+
+
+
+
+        //现场品质提示信息          数据替换
+
       
     },
 }
@@ -404,11 +537,28 @@ export default {
     margin-left: 20px
 }
 .active{
-        color: #49a4d9 !important ;
+    color: #49a4d9 !important ;
     border-bottom:2px solid #49a4d9
 }
+.yq{
+    margin-left: 16px
+}
+.yq>ul{
+    display: flex;
+    margin-top: 26px;
+    justify-content: space-around
+}
+.yq>ul>li{
+    line-height: 12px;
+    font-size: 12px;
+    color: #666;
+    overflow: hidden;
+    min-width: 44px;
 
-
+}
+.yq>ul>li>span{
+    font-size: 12px
+}
 
 
 
@@ -611,7 +761,7 @@ export default {
     margin-left: 33px;
     margin-bottom: 54px
 }
-.Chart>div:nth-of-type(2)>div>div{
+.Chart>div:nth-of-type(2)>div>div:nth-of-type(1){
    display: flex;
     justify-content: space-between;
     padding: 0 6px;

@@ -1,7 +1,7 @@
-<!-- 项目报事完结率竖向柱状图-->
+<!-- 项目综合收费率竖向柱状图-->
 <template>
   <div>
-    <div id="bswjlhxzzt" class="ECHARTS"></div>
+    <div id="zhsflsxzzt" class="ECHARTS"></div>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
             }
         }
       },
-    bshxzzt: {
+    zhsflsxzzt: {
       handler(newVal) {
         // console.log("竖向柱状图"+newVal)
         this.bjData = newVal;
@@ -117,8 +117,7 @@ export default {
           ]
         };
         //初始化图表
-        const chartObj = echarts.init(document.getElementById("bswjlhxzzt"));
-
+        const chartObj = echarts.init(document.getElementById("zhsflsxzzt"));
         chartObj.setOption(option, true);
         // 设置自适应
         window.onresize = function() {
@@ -130,11 +129,10 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["bshxzzt","xsyf"],
+  props: ["zhsflsxzzt","xsyf"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("bswjlhxzzt"));
+    const chartObj = echarts.init(document.getElementById("zhsflsxzzt"));
     window.addEventListener("resize", () => {
-
       chartObj.resize();
     });
   },

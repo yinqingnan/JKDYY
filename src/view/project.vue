@@ -101,7 +101,6 @@
                                     <qygssfl1 :sflsxzzt1="sflsxzzt1" :zsrsxzztm="zsrsxzztm"></qygssfl1>
                                 </div>
                                 <div style="width:100%">
-                                    
                                     <qygssfl2 :sflhxzzttitle="sflhxzzttitle" :sflhxzzt2="sflhxzzt2" style="width:80%"></qygssfl2>
                                 </div>
                             </div>
@@ -833,7 +832,8 @@ export default {
     line-height: 82px;
     font-weight: 500;
     color: #333;
-    width: 52px;
+    width: 30%;
+    overflow: hidden;
 }
 
 
