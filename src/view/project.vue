@@ -33,7 +33,7 @@
                     <ul>
                         <li>
                             <h1>{{list2[0]}}</h1>
-                            <h2  v-for="(item,index) in titlename" :key="index" >{{item.contractArea}}<span>万方</span></h2>
+                            <h2  v-for="(item,index) in titlename" :key="index" >{{item.contractArea}} <span>万方</span></h2>
                         </li>
                         <li>
                             <h1>{{list2[1]}}</h1>
@@ -282,7 +282,7 @@ export default {
     mounted() {
  
         this.value=decodeURI(window.location.href.split("=")[1]) // 获取到当前路由携带的参数
-                       
+        // console.log(this.value)        
         var date=new Date();   
         this.date=date.getMonth()+1    //获取到当前的月份信息            
         // console.log(window.location.href)//获取当前的路由

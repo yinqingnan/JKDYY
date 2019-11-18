@@ -6,10 +6,16 @@
             <div>
                 <span></span>
                 <div>
-                    <ul v-for="(item,index) in  list" :key="index" @mouseenter="onmouseenter(index)" @mouseleave="onmouseleave(index)">
-                        <li ></li>
-                        <li v-show="isshow" class="yc" ref="yc" :title="item.recordname">{{item.recordname}}</li>
-                        <li v-show="isshow" class="yc" ref="yc1">{{item.recordTime.split(" ")[0]}}</li>
+                    <ul v-for="(item,index) in  list" :key="index"  >
+                        <li class="ulul" >
+                            <div v-show="isshow" class="yc" ref="yc" :title="item.recordname">
+                                <span></span>
+                                <h1>{{item.recordname}}</h1>
+                                <h3>{{item.recordTime.split(" ")[0]}}</h3>
+                            </div>
+                        </li>
+                     
+                        <!-- <li v-show="isshow" class="yc" ref="yc1">{{item.recordTime.split(" ")[0]}}</li> -->
                     </ul>
                 </div>
             </div>         
@@ -39,37 +45,28 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
     },
     methods:{
-        onmouseenter(index){
-            // console.log(index)
-              setTimeout(()=>{
-                this.$refs.yc[index].style="display:block"
-                this.$refs.yc1[index].style="display:block"
-               },500)
-
-        },onmouseleave(index){
-           setTimeout(()=>{
-                this.$refs.yc[index].style="display:none"
-                this.$refs.yc1[index].style="display:none"
-            },1000)
-            // window.clearInterval(time)  
-
-        }
+ 
     }
 }
 </script>
 
 
 <style >
+.ulul:hover .yc {
+    display: block;
+}
+.yc>span{
 
-.yc{
-    display: none;
-    /* display: block */
-    width: 100px;
-    overflow: hidden;
+    display: block;
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom: 10px solid #c9e4f0;
+    top: -20px;
+    left: 40%;
+    margin-left: -10px
+
 }
-.yc1{
-    display: none
-}
+
 .TimeAxis{
     height: 130px
 }
@@ -108,48 +105,68 @@ export default {
 
 .TimeAxis>div>div>ul{
 
-    width: 100px;
-    min-width: 100px;
-
+    width: 20px;
+    min-width: 20px;
     position: relative;
-    right: 30px;
+    /* right: 30px; */
 }
 
-.TimeAxis>div>div>ul>li:nth-of-type(1){
+.TimeAxis>div>div>ul>li{
     border: 3px solid #688fe4;
     border-radius: 50%;
     width: 8px;
     height:  8px;
-    position: absolute;
+    position: relative;
     top: -8px;
     left:50%;
     margin-left: -8px;
     background: #fff;
     cursor: pointer;
+    transition: all 2s;
+
 
 
 }
-.TimeAxis>div>div>ul>li:nth-of-type(2){
-    width: 100px;
-    overflow: hidden;
+.TimeAxis>div>div>ul>li>div{
+    width: 136px;
     font-size: 12px;
     color: #333;
-    margin-top: 9px;
-    text-align: center;
     white-space:nowrap;
     margin-top: 20px;
-    transition: all 1s
+    text-align: center;
+    position: absolute;
+    left: -50px;
+    border: 1px solid #a2cdd2;
+    height: 60px;
+    border-radius: 5px;
+    background: #c9e4f0;
+    transition: all 2s;
+    display: none;
     
 }
-.TimeAxis>div>div>ul>li:nth-of-type(3){
-    font-size: 11px;
-    color: #333;
-    text-align: center;
-    white-space:nowrap;
-    color: #999 ;
-      width: 100px;
-    overflow: hidden;
-      transition: all 1s
+
+.yc>h1{
+    font-size: 14px;
+    color:#333;
+    font-weight: 600;
+    margin-top: 22px;
+    line-height: 1;
+    font-size: 14px;
+      overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+
+}
+.yc>h3{
+    font-size: 14px;
+    color:#666;
+    margin-top: 4px;
+    font-weight: 500;
+    line-height: 1;
+    color: #666;
+    font: size 10px; 
+    margin-bottom: 12px
+    
 }
 </style>
 

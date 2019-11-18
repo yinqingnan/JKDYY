@@ -17,7 +17,9 @@
         <el-table-column prop="supervisoryDocuments" label="是否取得监制文件" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="publicSigns" label="是否有价格公示牌" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="accessoryPark" label="相关附件" :show-overflow-tooltip="true" align="center">
-          <span @click="download()" class="download">下载</span>
+            <template slot-scope="scope">
+                <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+            </template>
         </el-table-column>
 
       </el-table>
@@ -75,7 +77,7 @@ export default {
       this.currentPage = currentPage;
     },
     download(val){
-      // console.log(val)
+      window.open(val.accessoryPark)
     },
    
  

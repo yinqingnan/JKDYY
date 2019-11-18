@@ -21,7 +21,7 @@ export default {
   watch: {
     GMGC: {
       handler(newVal) {
-        // console.log(newVal);
+        console.log(newVal);
         this.reportingYear = [];
         this.externalArea = [];
         this.selfBuiltArea = [];
@@ -29,6 +29,7 @@ export default {
           this.reportingYear.push(item.reportingYear);
           this.externalArea.push(item.externalArea);
           this.selfBuiltArea.push(item.selfBuiltArea);
+           
         });
 
         // 图表设置信息

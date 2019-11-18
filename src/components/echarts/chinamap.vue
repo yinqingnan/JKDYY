@@ -73,25 +73,26 @@ export default {
             if (a.data == undefined) {
               return "该区域暂无信息";
             } else {
+              // console.log(a)
               return (
                 "高层：" +
-                a.data.businessFee +
-                "元/m²" +
-                "<br/>" +
-                "洋房：" +
-                a.data.garageFee +
-                "元/m²" +
-                "<br/>" +
-                "别墅：" +
                 a.data.highRiseFee +
                 "元/m²" +
                 "<br/>" +
-                "商业：" +
+                "洋房：" +
+                a.data.westernFee +
+                "元/m²" +
+                "<br/>" +
+                "别墅：" +
                 a.data.villaFee +
                 "元/m²" +
                 "<br/>" +
+                "商业：" +
+                a.data.businessFee +
+                "元/m²" +
+                "<br/>" +
                 "车库：" +
-                a.data.westernFee +"元/个"
+                a.data.garageFee +"元/个"
               );
             }
           },

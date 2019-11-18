@@ -25,8 +25,9 @@ export default {
         var year = [];
         var name = [];
         newVal.forEach(item => {
+          // console.log(item.incomeName.slice(0,4))
           year.push(item.reportingYear);
-          name.push(item.incomeName);
+          name.push(item.incomeName.slice(0,4));    //限制只显示前4位
           // es6方法，ie不支持
           // this.reportingYear = new Set(year); //获取到公用的时间
           // var names = new Set(name); //保存公用的title名称

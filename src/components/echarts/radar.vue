@@ -30,9 +30,8 @@ export default {
            right:5
          },
               tooltip: {
-                        show: true,
-                        trigger: 'item',
-               
+                    show: true,
+                    trigger: 'item',
                     },
           radar: {
               shape: 'circle',
@@ -113,9 +112,9 @@ export default {
 </script>
 <style  scoped>
 .ECHARTS {
-  width: 100%;
+  width: 98%;
   /* margin: 0 auto; */
-  min-width: 348px;
+  min-width: 327px;
   height: 360px;
 }
 </style>

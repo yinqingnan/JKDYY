@@ -185,7 +185,7 @@ export default {
   box-sizing: border-box;
   /* min-width: 1136px; */
   /* position: fixed; */
-  height: 893px
+  /* height: 893px */
 }
 .container > div {
   width: 32%;

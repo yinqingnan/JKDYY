@@ -88,7 +88,7 @@ export default {
 
 <style  scoped>
 .box{
-    min-width: 290px;
+    /* min-width: 290px; */
     background: #fff
     /* padding-left: 20px */
 }

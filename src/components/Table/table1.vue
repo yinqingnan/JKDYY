@@ -17,7 +17,9 @@
         <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="ItemFormat" label="项目业态" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="accessoryBasic" label="相关附件" :show-overflow-tooltip="true" align="center">
-          <span  @click="download()" class="download">下载</span>
+            <template slot-scope="scope">
+                <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+            </template>
         </el-table-column>
       </el-table>
       <div class="box1">
@@ -81,7 +83,7 @@ export default {
       this.currentPage = currentPage;
     },
     download(val){
-      // console.log(val)
+      window.open(val.accessoryBasic)
     },
    
  

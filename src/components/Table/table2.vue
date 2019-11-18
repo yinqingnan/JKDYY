@@ -17,7 +17,9 @@
         <el-table-column prop="exceedRecordPriceReason" label="若超出备案价格，说明原因 " :show-overflow-tooltip="true" align="center" min-width="120px"></el-table-column>
         <el-table-column prop="supervisoryReceipt" label="监制回执是否取得" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="accessoryTenderee" label="相关附件" :show-overflow-tooltip="true" align="center">
-         <span  @click="download()" class="download">下载</span>
+           <template slot-scope="scope">
+                <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+            </template>
         </el-table-column>
      
       </el-table>
@@ -74,7 +76,7 @@ export default {
       this.currentPage = currentPage;
     },
     download(val){
-      // console.log(val)
+      window.open(val.accessoryTenderee)
     },
    
  

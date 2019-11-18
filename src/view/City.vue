@@ -17,8 +17,9 @@
           </div>
           <div class="sign">
             <h1>物业费指导价</h1>
-            <span>{{defaultdata.lumpSumOrSalary}}</span>
-            <span>{{defaultdata.aFeeOrNotAFee}}</span>
+            
+            <span v-show="isshow">{{defaultdata.lumpSumOrSalary}}</span>
+            <span v-show="isshow">{{defaultdata.aFeeOrNotAFee}}</span>
           </div>
         </div>
         <div class="left_header">
@@ -118,10 +119,7 @@
               <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
               <el-table-column prop label="备注" min-width="30px" align="center"></el-table-column>
             </el-table>
-            <!-- <div class="Explain">
-                            <h1>上浮说明</h1>
-                            <p>债券溢价是债券价格大于票面价值的差额。债券溢价受两方面因素的影响：一是受市场利率的影响。当债券的票面利率高于金融市场的通行利率即市场利率时，债券就会溢价。二是受债券兑付期的影响，距兑付期越近，购买债券所支付的款项就越多，溢...</p>
-            </div>-->
+    
           </div>
         </div>
         <div class="left_footer">
@@ -139,12 +137,6 @@
             <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
             <el-table-column prop="standardPrice" label="最高基准价" min-width="68px" align="center"></el-table-column>
             <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>
-            <!-- <el-table-column
-                                prop="remark"
-                                label="上浮说明"
-                                min-width="50px"
-                                >
-            </el-table-column>-->
           </el-table>
           <div class="Explain">
             <h1>上浮说明</h1>
@@ -163,6 +155,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      isshow:true,
       newid: "请选择城市",
       name: "",
       cityname: "",
@@ -202,6 +195,8 @@ export default {
           axios.get("/api/cityData04?id=" + res.data.data[0].id).then(res => {
             // console.log(res.data.data)
             this.defaultdata = res.data.data[0];
+
+              console.log(res.data.data[0])
           });
           // 获取金科自建物业费备案价  table1
           axios.get("/api/cityData05?id=" + res.data.data[0].id).then(res => {
@@ -219,7 +214,7 @@ export default {
           axios
             .get("/api/cityData08?cityDataId=" + res.data.data[0].id)
             .then(res => {
-              console.log(res.data.data);
+              // console.log(res.data.data);
               this.defaultable3 = res.data.data;
             });
           // 关键政策解读
@@ -258,6 +253,16 @@ export default {
             this.defaultdata = res.data.data[0];
             this.citylist = res.data.data; //下拉菜单数据
           });
+      }
+    },
+    defaultdata:{
+      handler(newval){
+        // console.log(newval.aFeeOrNotAFee==null)
+        if(newval.aFeeOrNotAFee==null){
+          this.isshow=false
+        }else{
+          this.isshow=true
+        }
       }
     },
     deep: true, //深度监测
@@ -413,11 +418,18 @@ export default {
   margin: 0 10px 0 12px;
 }
 .center_body > div > img {
-  width: 100%;
-  height: auto;
-  min-width: 530px;
+  /* width: 100%; */
+  /* height: auto; */
+  /* min-width: 530px; */
   /* min-height: 400px; */
-  max-height: 550px;
+  /* max-height: 550px; */
+    width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+    display: block;
+    margin: 20px auto 0 auto;
+
 }
 .right {
   min-width: 530px;
