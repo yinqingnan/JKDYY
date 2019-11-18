@@ -53,7 +53,11 @@ export default {
 
 <style >
 .ulul:hover .yc {
-    display: block;
+    /* display: block; */
+    opacity: 1;
+}
+.yc{
+    transition: all 1s
 }
 .yc>span{
 
@@ -97,7 +101,6 @@ export default {
     display: flex;
     justify-content: space-between;
     position: absolute;
-
     width: 100%;
 
 
@@ -122,9 +125,6 @@ export default {
     margin-left: -8px;
     background: #fff;
     cursor: pointer;
-    transition: all 2s;
-
-
 
 }
 .TimeAxis>div>div>ul>li>div{
@@ -140,11 +140,12 @@ export default {
     height: 60px;
     border-radius: 5px;
     background: #c9e4f0;
-    transition: all 2s;
-    display: none;
+    /* display: none; */
+    opacity: 0;
     
 }
-
+.yc{
+}
 .yc>h1{
     font-size: 14px;
     color:#333;

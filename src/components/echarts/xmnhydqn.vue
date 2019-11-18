@@ -39,7 +39,7 @@ export default {
               
             },
               formatter:function(a){
-                return a.seriesName +":"+a.value+"吨"
+                return a.seriesName +":"+a.value+"度"
             }
     },
 
