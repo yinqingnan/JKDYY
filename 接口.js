@@ -56,3 +56,6 @@ http://222.180.200.126:9045/api/projectCuMRate?projectId=1015           当前�
 
 园区资源                雷达图
 http://222.180.200.126:9045/api/ProjectYuqu?projectId=1015                      
+
+
+mac添加
