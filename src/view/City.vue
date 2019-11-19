@@ -93,13 +93,9 @@
               <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="businessFee" label="商业" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop label="备注" min-width="30px" align="center"></el-table-column>
+              <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
             </el-table>
-            <!-- <div class="Explain">
-                            <h1>上浮说明</h1>
-                            <p>2018年2月8日 - 而韩国比特币价格也已经跌到了与国际市场一致水平,为七周来首次,这意味着此前存在的“泡菜溢价”已经消失。 什么是“泡菜溢价”? 韩国对数字加密货币...</p>
-            </div>-->
-            <!-- table2 -->
+          
             <h1 class="titlezt">金科自有项目物业费备案价</h1>
             <el-table
               border
@@ -117,7 +113,7 @@
               <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="businessFee" min-width="30px" label="商业" align="center"></el-table-column>
               <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop label="备注" min-width="30px" align="center"></el-table-column>
+              <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
             </el-table>
     
           </div>
@@ -140,7 +136,7 @@
           </el-table>
           <div class="Explain">
             <h1>上浮说明</h1>
-            <p>期货溢价意味着什么?期货溢价说明什么?_正点财经2019年8月5日 - 正点财经为您提供期货溢价意味着什么?期货溢价说明什么?寻求减小风险的套期保优者,在某些市场情况下.希望价格风险减小的程度。期货溢价面临现货溢价的...</p>
+            <p>{{sfsm}}</p>
           </div>
         </div>
       </div>
@@ -170,7 +166,8 @@ export default {
       tablelist: ["地图价格", "关键政策解读"], //切换列表
       num: 0,
       xs: false,
-      xs1: true
+      xs1: true,
+      sfsm:""
     };
   },
   mounted() {
@@ -179,6 +176,7 @@ export default {
     axios
       .get("/api/cityData03?provinceName=" + encodeURI(this.cityname))
       .then(res => {
+        
         // console.log(res.data.data)
         if (res.data.data[0] === undefined) {
           // return false
@@ -196,7 +194,7 @@ export default {
             // console.log(res.data.data)
             this.defaultdata = res.data.data[0];
 
-              console.log(res.data.data[0])
+              // console.log(res.data.data[0])
           });
           // 获取金科自建物业费备案价  table1
           axios.get("/api/cityData05?id=" + res.data.data[0].id).then(res => {
@@ -224,6 +222,11 @@ export default {
               this.defaultlist = res.data.data;
               // console.log(res.data.data)
             });
+            // 城市当地政府物业费指导价上浮说明数据
+            this.axios.get("/api/cityDataBuoyancyThat").then((res)=>{
+              // 
+              this.sfsm=res.data.data[0].itemName
+            })
         }
       });
   },
