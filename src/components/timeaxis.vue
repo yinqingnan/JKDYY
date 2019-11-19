@@ -165,7 +165,7 @@ export default {
     font-weight: 500;
     line-height: 1;
     color: #666;
-    font: size 10px; 
+    font-size: size 10px; 
     margin-bottom: 12px
     
 }

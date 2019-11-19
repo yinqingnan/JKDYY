@@ -49,15 +49,15 @@ export default {
               },
               indicator: 
               [{
-                      name: '家庭生活',
-                      max: 10
-                  },
-                  {
                       name: '园区资源',
                       max: 10
                   },
                   {
                       name: '家居',
+                      max: 10
+                  },
+                  {
+                      name: '家庭生活',
                       max: 10
                   },
                   {
@@ -103,7 +103,6 @@ export default {
   mounted() {
     const chartObj = echarts.init(document.getElementById("radart"));
     window.addEventListener("resize", () => {
-      // console.log(chartObj)
       chartObj.resize();
     });
   },

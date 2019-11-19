@@ -81,7 +81,7 @@
                                 </div>
                         </div>
                          <div>
-                            <h1>报事完成率</h1>  
+                            <h1>总利润</h1>  
                             
                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
@@ -186,7 +186,7 @@
                 <div class="table1 table3">
                     <div class="table3_header">
                         <h1>登录其他系统</h1>
-                        <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
+                        <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                     </div>
                     <div class="table3_footer">
                         <ul>
@@ -204,19 +204,6 @@
 </template>
 
 <script>
-
-
-
-
-//引入雷达图图
-// import radar from '../components/radar'
-// 测试重复使用
-//引入柱状图
-// import Histogram from '../components/Histogram'
-//引入横向柱状图
-// import Transversehistogram from '../components/Transversehistogram'
-
-
 
 
 // 引入折线图
@@ -421,19 +408,19 @@ export default {
    
 } 
    
-.Left{
-     border: 1px solid #e0dfe8;
-    width :100%;
-    background: #fff;
-
+.Left {
+  border: 1px solid #e0dfe8;
+  width: 70%;
+  background: #fff;
+  /* height :1150px; */
+  flex-grow: 1;
 }
 .Right {
-    /* width: 18.125rem; */
-    margin: 0 0 0 10px;
-    background :#eee;
-    width: 290px !important
-
-}   
+  /* width: 30%; */
+  margin: 0 0 0 10px;
+  background: #eee;
+  width: 292px;
+}
 
 .ModalFrame>ul{
     z-index: 10;
@@ -725,11 +712,11 @@ export default {
     padding: 23px 16px 23px 20px
 }
 .table3_header>h1{
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     color: #333
 }
-.table3_header>h2{
+/* .table3_header>h2{
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -739,7 +726,7 @@ export default {
     font-size: 12px;
     font-weight: 500;
     color: #a0a0a0
-}
+} */
 .table3_footer>ul{
     display: flex;
     justify-content: space-around

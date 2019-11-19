@@ -428,10 +428,11 @@ export default {
   /* max-height: 550px; */
     width: auto;
 	height: auto;
-	max-width: 100%;
+	/* max-width: 100%; */
 	max-height: 100%;
     display: block;
     margin: 20px auto 0 auto;
+    max-width: 535px;
 
 }
 .right {

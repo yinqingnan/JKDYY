@@ -261,10 +261,10 @@
         <div class="table1 table3">
           <div class="table3_header">
             <h1>登录其他系统</h1>
-            <h2>
+            <!-- <h2>
               更多
               <span class="iconfont iconpub_right"></span>
-            </h2>
+            </h2> -->
           </div>
           <div class="table3_footer">
             <ul>
@@ -1090,6 +1090,7 @@ export default {
 
     // // 获取品质服务信息数据了  雷达图   切换数据
     this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
+      // console.log(res.data.data)
       this.radarmsg = [];
       var obj = res.data.data[0];
       for (var i in obj) {
@@ -1213,19 +1214,21 @@ export default {
   background: #eeeeee;
   padding: 0.75rem;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .Left {
   border: 1px solid #e0dfe8;
-  width: 72%;
+  width: 70%;
   background: #fff;
   /* height :1150px; */
+  flex-grow: 1;
 }
 .Right {
-  width: 30%;
+  /* width: 30%; */
   margin: 0 0 0 10px;
   background: #eee;
+  width: 292px;
 }
 
 .ModalFrame > ul {
@@ -1469,21 +1472,21 @@ export default {
   padding: 23px 16px 23px 20px;
 }
 .table3_header > h1 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #333;
 }
-.table3_header > h2 {
+/* .table3_header > h2 {
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   color: #666;
-}
-.table3_header > h2 > span {
+} */
+/* .table3_header > h2 > span {
   font-size: 12px;
   font-weight: 500;
   color: #a0a0a0;
-}
+} */
 .table3_footer > ul {
   display: flex;
   justify-content: space-around;
