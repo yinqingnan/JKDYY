@@ -13,7 +13,7 @@
        
         <div>
             <Listedcompany v-if="show" ></Listedcompany>
-            <Companylist v-if="isshow" :nameid="nameid"></Companylist>
+            <Companylist v-if="isshow" :nameid="nameid" ref="headerChild"></Companylist>
 
 
         </div>
@@ -53,6 +53,7 @@ export default {
     methods: {
         ...mapMutations(["display1"]),
         btn(id,index) {
+            // console.log(this.$refs.headerChild.num)
             this.num = index;
            if(index==0){
                this.isshow=false
@@ -67,14 +68,7 @@ export default {
  
         },
         leftbtn(){
-            // this.number++
-            // if(this.number>=0){
-            //       this.$refs.tabs.style="left:12px"
-            // }else if(this.number<0){
-            //     this.$refs.tabs.style.left=(this.number*80)+"px"
-            // }
              this.number=0
-            // this.$refs.tabs.style="left:12px"
             this.$refs.tabs.style.left=12+"px"
         },
         rightbtn(){

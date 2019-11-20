@@ -9,7 +9,9 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state:{
         show0:true,
-        show1:false
+        show1:false,
+
+        number:0
     },
     mutations:{
         // 修改显示权限
@@ -24,6 +26,7 @@ const store = new Vuex.Store({
             location.reload(true)     //强制刷新页面将丢失的数据找回
         }
         
+
     },
     actions:{
         

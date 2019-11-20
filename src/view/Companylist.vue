@@ -49,10 +49,11 @@
                     </div>
                     <div >
                         <GLGM :GLGM="GLGM" id="id11" class="boxpic" ></GLGM>
-                        <ZSR :ZSR="ZSR" id="id12" class="boxpic" ></ZSR>
+                        <JLR :JLR="JLR" id="id13" class="boxpic" ></JLR>
+                        
                      </div >  
                     <div >  
-                        <GMGC :GMGC="GMGC" id="id13" class="boxpic" ></GMGC>
+                        <ZSR :ZSR="ZSR" id="id12" class="boxpic" ></ZSR>
                         <SRGC :SRGC="SRGC" id="id14" class="boxpic"></SRGC>
                     </div>
 
@@ -75,8 +76,8 @@ import axios from 'axios'
 import GLGM from '../components/echarts/GLGM'
 //总收入组件
 import ZSR from '../components/echarts/ZSR'
-//规模构成组件
-import GMGC from '../components/echarts/GMGC'
+//净利润组件
+import JLR from '../components/echarts/JLR'
 //收入构成模块
 import SRGC from '../components/echarts/SRGC'
 
@@ -85,7 +86,7 @@ export default {
         GLGM,
         ZSR,
         // CS,
-        GMGC,
+        JLR,
         SRGC
     
     },
@@ -101,9 +102,9 @@ export default {
             ZSR:[],          //总收入
             zsrbn:[],        //总收入半年
             zsrqn:[],         //总收入全年
-            GMGC:[],          //规模构成
-            gmgcbn:[],        //规模构成半年
-            gmgcqn:[],        //规模构成全年
+            JLR:[],          //净利润
+            jlrbn:[],        //规模构成半年
+            jlrqn:[],        //规模构成全年
 
 
             
@@ -118,6 +119,7 @@ export default {
         nameid:{
             handler(newVal){ // 实时更新的id
                 // get公司信息数据
+                // console.log(newVal)
                  axios.get("/api/listedCompany02?id="+newVal)
                 .then((res=>{
                     // console.log(res.data.data[0])
@@ -144,13 +146,16 @@ export default {
                      this.ZSR=this.zsrbn     //默认显示半年数据
                    
                 })
-                // 请求规模构成图表数据
-                axios.get("/api/listedCompany04?id="+newVal)
+                // 请求净利润图表数据
+                // /api/listedCompany13?id=889e290c-cbb4-11e8-ad85-00ffcec184a9
+                axios.get("/api/listedCompany13?id="+newVal)
                 .then((res=>{
                     // console.log(res.data.data)
-                    this.gmgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
-                    this.gmgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
-                    this.GMGC=this.gmgcbn     //默认显示半年数据
+                    this.jlrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                    this.jlrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                    this.JLR=this.jlrbn     //默认显示半年数据
+                    // console.log(this.jlrbn)
+                    // console.log(this.jlrqn)
                 }))
                 // 请求收入构成数据
                 axios.get("/api/listedCompany06?id="+newVal)
@@ -171,32 +176,32 @@ export default {
             if(index==0){  //半年
                 this.GLGM=this.glgmbn     //管理规模半年赋值
                 this.ZSR=this.zsrbn       //总收入半年赋值
-                this.GMGC=this.gmgcbn       //规模构成半年数据
+                this.JLR=this.jlrbn       //规模构成半年数据
                 // this.SRGC=this.srgcbn       //收入构成半年数据
             }else{          //半年
                 this.GLGM=this.glgmqn      //管理规模全年赋值
                 this.ZSR=this.zsrqn       //总收入半年赋值
-                this.GMGC=this.gmgcqn       //规模构成全年数据
+                this.JLR=this.jlrqn       //规模构成全年数据
                 // this.SRGC=this.srgcqn       //收入构成全年数据
 
             }
         }
     },
     mounted() {
-      const chartObj4 = document.getElementById("id14");
-      const chartObj3 = document.getElementById("id13");
-      const chartObj2 = document.getElementById("id12");
-      const chartObj1 = document.getElementById("id11");
-        // console.log(chartObj1)
-        // console.log(chartObj2)
-        // console.log(chartObj3)
-        // console.log(chartObj4)
-    window.onresize = function () {
-        chartObj1.resize();
-        chartObj2.resize();
-        chartObj3.resize();
-        chartObj4.resize();
-    }
+    //   const chartObj4 = document.getElementById("id14");
+    //   const chartObj3 = document.getElementById("id13");
+    //   const chartObj2 = document.getElementById("id12");
+    //   const chartObj1 = document.getElementById("id11");
+    //     // console.log(chartObj1)
+    //     // console.log(chartObj2)
+    //     // console.log(chartObj3)
+    //     // console.log(chartObj4)
+    // window.onresize = function () {
+    //     chartObj1.resize();
+    //     chartObj2.resize();
+    //     chartObj3.resize();
+    //     chartObj4.resize();
+    // }
        
     },
     
@@ -252,7 +257,13 @@ export default {
     font-weight: 500;
 }
 .container_left_body{
-    padding :20px 20px 0 20px
+    /* padding :20px 20px 0 20px; */
+    overflow: hidden;
+    max-width: 700px;
+    min-width: 500px;
+    margin: 0 auto;
+padding-top: 60px
+
 }
 .container_left_body>img{
     /* width: 100%; */
@@ -265,6 +276,8 @@ export default {
 	max-height: 100%;
     display: block;
     margin: 0 auto;
+    /* max-width: 700px; */
+    min-height: 380px
     
 }
 .container_right_header{

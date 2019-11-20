@@ -14,21 +14,21 @@ export default {
     return {
       data1: [],
       reportingYear: [], //年（时间）
-      externalArea: [], //收入折线图
-      selfBuiltArea: [] //柱状图
+      netProfitMarginOnSales: [], //净利润折线图
+      // selfBuiltArea: [] //柱状图
     };
   },
   watch: {
-    GMGC: {
+    JLR: {
       handler(newVal) {
-        console.log(newVal);
+        // console.log(newVal);
         this.reportingYear = [];
-        this.externalArea = [];
-        this.selfBuiltArea = [];
+        this.netProfitMarginOnSales = [];
+        // this.selfBuiltArea = [];
         newVal.forEach(item => {
           this.reportingYear.push(item.reportingYear);
-          this.externalArea.push(item.externalArea);
-          this.selfBuiltArea.push(item.selfBuiltArea);
+          this.netProfitMarginOnSales.push(item.netProfitMarginOnSales);
+          // this.selfBuiltArea.push(item.selfBuiltArea);
            
         });
 
@@ -36,7 +36,7 @@ export default {
         const option = {
           backgroundColor: "#f0eded",
           title: {
-            text: "规模构成",
+            text: "净利润",
             x: "10",
             y: 20,
             textStyle: {
@@ -53,7 +53,7 @@ export default {
           },
           legend: [
             {
-              data: ["自建占比"],
+              data: ["净利润"],
               icon: "rect",
               top: 20,
               right: 0,
@@ -112,7 +112,7 @@ export default {
           series: [
             {
               smooth: true, //变平滑
-              name: "自建占比",
+              name: "净利润",
               type: "line",
               stack: "总量",
               areaStyle: {
@@ -138,7 +138,7 @@ export default {
                   color: "#2cabe3" //折线颜色
                 }
               },
-              data: this.externalArea, //数据入口
+              data: this.netProfitMarginOnSales, //数据入口
               // markLine: {            //基准线
               //   lineStyle: {
               //     normal: {
@@ -164,7 +164,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["GMGC"],
+  props: ["JLR"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("13"));
     window.addEventListener("resize", () => {
