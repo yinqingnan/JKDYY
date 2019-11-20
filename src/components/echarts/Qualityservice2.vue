@@ -14,7 +14,7 @@ import echarts from "echarts"; //引入echarts
 export default {
   data() {
     return {
-      time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12/月"],     
+      time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"],     
       bjData:[],
   
     };

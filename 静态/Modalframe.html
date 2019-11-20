@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{
+            background: #eeeeee;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        h1,h2,h3,h4,h5,h6{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            height: 100%;
+            position: relative;
+        }
+        .module{
+            position: absolute;
+            width: 460px;
+            height: 325px;
+            border: 1px solid #bfbfbf;
+            border-top-color: transparent;
+            top:238px ;
+            left: 50%;
+            margin-left: -230px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .module_header{
+            height: 150px;
+            background: url("./img/experience_tanchuang.png") no-repeat 0 0 ;
+            background-size:100% 100% ;
+            
+                        
+        }
+        .btn{
+            width:15px ;
+            height: 15px;
+            background: url("./img/experience_close.png") no-repeat 0 0 ;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            cursor: pointer;
+        }
+        .module_body{
+            height: 175px;
+            background: #fff;
+            position: relative;
+            padding-top: 22px;
+            text-align: center;
+        }
+        .module_body>h1{
+            font-size: 20px;
+            color: #666;
+            line-height: 1;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+        .module_body>h2{
+            font-size :14px; ;
+            color:#ea5e13;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        .module_body>h2>span{
+            margin :0 8px 0 12px;
+        }
+        .module_body>h3{
+            font-size :14px; ;
+            color:#fff;
+            background: #fc8a63;
+            font-weight: 500;
+            margin-bottom: 30px;
+            width: 75px;
+            height: 32px;
+            line-height: 32px;
+            font-weight: 500;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="module">
+            <div class="module_header">
+                <div class="btn"></div>
+            </div>
+            <div class="module_body">
+                <h1>全面升级，即将上线</h1>
+                <h2> 项目数据可视化<span>|</span>管理数据清晰化 </h2>
+                <h3>去体验</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn=document.getElementsByClassName("btn")[0]
+        var module=document.getElementsByClassName("module")[0]
+        btn.onclick=()=>{
+            
+            module.style.display="none"
+        }
+    
+    
+    
+    </script>
+</body>
+</html>

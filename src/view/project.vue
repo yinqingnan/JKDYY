@@ -89,7 +89,7 @@
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 v-for="(item,index) in sfl" :key="index">综合收费率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                              <h1 v-for="(item,index) in sfl" :key="index">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
@@ -186,11 +186,11 @@
                 <div class="table1 table3">
                     <div class="table3_header">
                         <h1>登录其他系统</h1>
-                        <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
+                      
                     </div>
                     <div class="table3_footer">
                         <ul>
-                            <li v-for="(item,index) in loginxt" :key="index">
+                            <li v-for="(item,index) in loginxt" :key="index" >
                                 <img :src="item.imagehref" >
                                 <h2 :title="item.name">{{item.name}}</h2>
                             </li>
@@ -261,15 +261,13 @@ export default {
         }
     },
     methods: {
-        selectchange(value){            //下拉菜单选中监听输出为该区域的id
-        console.log(value)
-            window.location.href=window.location.href.split("=")[0]+"="+value
+        selectchange(value){            //下拉菜单选中监听输出为该区域的名称
+        // console.log(encodeURI(value))
+            window.location.href=window.location.href.split("=")[0]+"="+encodeURI(value)
         }
     },
     mounted() {
- 
-        this.value=decodeURI(window.location.href.split("=")[1]) // 获取到当前路由携带的参数
-        // console.log(this.value)        
+        this.value=this.$route.query.name       //获取到路由的参数
         var date=new Date();   
         this.date=date.getMonth()+1    //获取到当前的月份信息            
         // console.log(window.location.href)//获取当前的路由
@@ -302,7 +300,6 @@ export default {
             // 获取总收入竖向柱状图数据
             this.axios.get("http://222.180.200.126:9045/api/companyReceipts?year=2019&companyId="+this.id)        
             .then((res)=>{
-                // console.log(res.data.data)
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
                 if(this.date>=7){
                     this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
@@ -360,13 +357,13 @@ export default {
                 })
             })
                //当前收费率
-            this.axios.get("http://222.180.200.126:9045/api/companyCuMonthRate?companyId="+this.id)                    //修改后需要切换
+            this.axios.get("http://222.180.200.126:9045/api/companyCuMonthRate?companyId="+this.id)                    
             .then((res)=>{
                 // console.log(res.data.data)
                 this.dqsfl=res.data.data
             })
             // 获取品质服务信息数据
-            this.axios.get("/api/companymonthrate?companyId="+this.id) //使用区域公司名称进行查询                      //修改后需要切换
+            this.axios.get("/api/companymonthrate?companyId="+this.id) //使用区域公司名称进行查询                      
             .then((res)=>{
                 // console.log(res.data.data)
                 this.Realestate=res.data.data[0].newspapersCateType         //地产title
@@ -379,16 +376,18 @@ export default {
                 this.Propertycategorys.push(res.data.data[2].m01.toFixed(2),res.data.data[2].m02.toFixed(2),res.data.data[2].m03.toFixed(2),res.data.data[2].m04.toFixed(2),res.data.data[2].m05.toFixed(2),res.data.data[2].m06.toFixed(2),res.data.data[2].m07.toFixed(2),res.data.data[2].m08.toFixed(2),res.data.data[2].m09.toFixed(2),res.data.data[2].m10.toFixed(2),res.data.data[2].m11.toFixed(2),res.data.data[2].m12.toFixed(2))      //物业赋值
 
             })
-                    //获取登录其它系统的数据
-            this.axios.get("/api/systemDocking01")
-            .then((res)=>{
-                this.loginxt=res.data.data
-            })
 
-            //获取常用报表数据
-            this.axios.get("/api/commonReport").then((res)=>{
-                this.Commonreports=res.data.data
-            })
+
+                        //获取登录其它系统的数据
+                this.axios.get("/api/systemDocking01")
+                .then((res)=>{
+                    this.loginxt=res.data.data
+                })
+
+                //获取常用报表数据
+                this.axios.get("/api/commonReport").then((res)=>{
+                    this.Commonreports=res.data.data
+                })
             
         })
 
@@ -733,7 +732,7 @@ export default {
 }
 .table3_footer>ul>li{
     width: 64px;
-    cursor: pointer;
+    cursor: pointer;text-align: center
 }
 .table3_footer>ul>li>img{
     width: 45px;

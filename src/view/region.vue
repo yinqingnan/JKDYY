@@ -188,7 +188,7 @@
           <div class="Chart1">
             <div>
               <div>
-                <h1>品质服务信息</h1>
+                <h1>园区经营指标</h1>
                 <h2>
                   更多
                   <span class="iconfont iconpub_right"></span>
@@ -380,20 +380,20 @@ export default {
       // console.log(value)
       this.value = value;
       this.axios.get("api/projectBycId?companyId=" + value).then(res => {
-        this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
+        // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
         this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
         this.value1 = res.data.data[0].projectName;
-
+       this.xmid=res.data.data[0].projectId     //切换后使用新id来进行数据的切换
         // 获取项目详情数据（根据路由携带的项目id查询数据）
         this.axios
-          .get("api/projectInfoById?projectId=" + this.msg)
+          .get("api/projectInfoById?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.titlename = res.data.data;
           });
         // 获取项目能耗用水数据
         this.axios
-          .get("api/projectWaterrentM?projectId=" + this.msg)
+          .get("api/projectWaterrentM?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data[0])
             this.xmnhysqn = [];
@@ -414,7 +414,7 @@ export default {
             // console.log(this.xunhysqn)
           });
         //项目能耗用水数据月度
-            this.axios.get("/api/projectWaterMType?projectId="+this.msg+"&topcount=2").then((res)=>{
+            this.axios.get("/api/projectWaterMType?projectId="+this.xmid+"&topcount=2").then((res)=>{
                 // console.log(res.data.data)
                 let arr=res.data.data
                 this.xmnhdyys=[]
@@ -428,7 +428,7 @@ export default {
 
         // 获取项目能耗用电数据
         this.axios
-          .get("api/projectElectricityM?projectId=" + this.msg)
+          .get("api/projectElectricityM?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.xmnhydqn = [];
@@ -447,7 +447,7 @@ export default {
               res.data.data[0].m12
             );
           });
-              this.axios.get("/api/projectElectMType?projectId="+this.msg+"&topcount=2").then((res)=>{
+              this.axios.get("/api/projectElectMType?projectId="+this.xmid+"&topcount=2").then((res)=>{
         // console.log(res.data.data)
         let arr=res.data.data
         this.xmnhyddy=[]
@@ -460,7 +460,7 @@ export default {
 
         // 获取关键指标报事完成率数据 竖向柱状图数据
         this.axios
-          .get("/api/projectMNewPYear?projectId=" + this.msg)
+          .get("/api/projectMNewPYear?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data[0])
             // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
@@ -501,21 +501,21 @@ export default {
 
         //获取报事完结率   title数据
         this.axios
-          .get("/api/projectTotalRate?projectId=" + this.msg)
+          .get("/api/projectTotalRate?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.bstitle = res.data.data;
           });
         // 获取报事完结率   提示信息
         this.axios
-          .get("/api/projectTypeRate?projectId=" + this.msg)
+          .get("/api/projectTypeRate?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.bsmsg = res.data.data;
           });
 
         // 获取综合收费率  竖向柱状图数据           数据替换
-        this.axios.get("/api/projectYMRs?projectId=" + this.msg).then(res => {
+        this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
           // console.log(res.data.data[0])
           if (this.date >= 7) {
             this.zhsflsxzzt.push(
@@ -553,21 +553,21 @@ export default {
 
         // 获取综合收费率 title
         this.axios
-          .get("/api/projectTotalRate2?projectId=" + this.msg)
+          .get("/api/projectTotalRate2?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.zhsfltitle = res.data.data;
           });
         // 获取综合收费率的提示信息
         this.axios
-          .get("/api/projectCuMRate?projectId=" + this.msg)
+          .get("/api/projectCuMRate?projectId=" + this.xmid)
           .then(res => {
             // console.log(res.data.data)
             this.zhsflmsg = res.data.data;
           });
 
         // // 获取品质服务信息数据了  雷达图
-        this.axios.get("/api/ProjectYuqu?projectId=" + this.msg).then(res => {
+        this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
           this.radarmsg = [];
           var obj = res.data.data[0];
           for (var i in obj) {
@@ -576,7 +576,7 @@ export default {
         });
 
         // 现场品质竖向柱状图
-        this.axios.get("/api/projectPZYM?projectId=" + this.msg).then(res => {
+        this.axios.get("/api/projectPZYM?projectId=" + this.xmid).then(res => {
           // console.log(res.data.data)
           this.xcpzsxzzt = [];
           if (this.date >= 7) {
@@ -614,7 +614,7 @@ export default {
         });
 
         //现场品质title信息
-        this.axios.get("api/projectXCPZhj?projectId=" + this.msg).then(res => {
+        this.axios.get("api/projectXCPZhj?projectId=" + this.xmid).then(res => {
           // console.log(res.data.data)
           this.xcpztitle = res.data.data;
         });
@@ -622,7 +622,7 @@ export default {
         this.axios
           .get(
             "http://222.180.200.126:9045/api/projectXCPZtype?projectId=" +
-              this.msg
+              this.xmid
           )
           .then(res => {
             // console.log(res.data.data)
@@ -630,6 +630,10 @@ export default {
           });
       });
     },
+
+
+
+
 
     selectchange1(value) {
       //项目公司下拉菜单监听
@@ -1494,6 +1498,7 @@ export default {
 .table3_footer > ul > li {
   width: 64px;
   cursor: pointer;
+  text-align: center
 }
 .table3_footer > ul > li > img {
   width: 45px;

@@ -2,8 +2,11 @@
 <template>
   <!-- 品质服务信息折线1 -->
   <div>
-    <div id="zxt1" class="ECHARTS"></div>
-
+    <div class="box">
+      <div id="zxt1" class="ECHARTS"></div>
+        <!-- <h2>/月</h2> -->
+    </div>
+   
   </div>
 </template>
 
@@ -14,7 +17,7 @@ import echarts from "echarts"; //引入echarts
 export default {
   data() {
     return {
-      time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12/月"],     
+      time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"],     
       bjData:[],
   
     };
@@ -157,5 +160,15 @@ export default {
  /* margin: 0 auto; */
     min-width: 170px;
      height: 86px;
+}
+.box{
+  position: relative;
+}
+.box>h2{
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  font-size: 10px;
+  font-weight: 500;
 }
 </style>
