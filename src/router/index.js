@@ -11,8 +11,9 @@ import City from '../view/City.vue'       //城市数据（旧）
 import Indexmap from '../view/indexmap.vue'   //地图页面
 import Regiontable from '../view/regiontable.vue'   //区域项目表格
 
-import Applicationexperience from "../view/Applicationexperience.vue"   //申请体验地图数据
-
+// import Applicationexperience from "../view/Applicationexperience.vue"   //申请体验地图数据
+import Dyyd from "../components/Table/xmydtab.vue"
+import Dyys from "../components/Table/xmystab.vue"
 
 const  router = new VueRouter({
     base: '/',
@@ -26,7 +27,10 @@ const  router = new VueRouter({
         {path:'/city',name:"City",component:City},            //城市数据详情页面   路由须携带参数指定城市名称   // http://localhost:8080/city?name=重庆
         {path:"/indexmap",name:"Indexmap",component:Indexmap},  //中国地图
         {path:"/regiontable",name:"Regiontable",component:Regiontable},     //区域公司项目表格 （在管项目 招标物业费 停车备案情况）
-        {path:"/Applicationexperience",name:"Applicationexperience",component:Applicationexperience}
+        // {path:"/Applicationexperience",name:"Applicationexperience",component:Applicationexperience},
+        {path:"/dyyd",name:"dyyd",component:Dyyd},
+        {path:"/dyys",name:"dyys",component:Dyys},
+
     ]
 })
 

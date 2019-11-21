@@ -1,7 +1,7 @@
 <!-- 项目能耗用水全年-->
 <template>
   <div>
-    <div id="zxt2" class="ECHARTS"></div>
+    <div id="zxt2" class="ECHARTS" ></div>
 
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     return {
       time: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月","12月"],     
       bjData:[],
+      xmid1:null,
   
     };
   },
@@ -73,8 +74,7 @@ export default {
         }
     }],
     yAxis: [{
-        // name:'(次)',
-        // type: 'value',
+
         splitLine: {
             show: false,
         },
@@ -134,19 +134,27 @@ export default {
         };
       }
     },
+  
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmnhysqn"],
+  props: ["xmnhysqn",],
   mounted() {
     const chartObj = echarts.init(document.getElementById("zxt2"));
     window.addEventListener("resize", () => {
         // console.log(chartObj)
       chartObj.resize();
     });
+
   },
   methods: {
-
+      //点击事件
+      // myChart.on("click", function(params) {
+      //   //点击事件
+      //   let name = params.name; //当前点击的名称
+      //   vue.$router.push({ path: "/city", query: { name: name } });
+      // });
+     
   }
 };
 </script>

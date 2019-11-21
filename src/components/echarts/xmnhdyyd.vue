@@ -1,7 +1,7 @@
 <!-- 项目能耗用电当月-->
 <template>
   <div>
-    <div id="xmnhdyyd" class="ECHARTS"></div>
+    <div id="xmnhdyyd" class="ECHARTS" ></div>
 
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     return {
       time: [],     
       bjData:[],
+
   
     };
   },
@@ -341,12 +342,13 @@ export default {
         };
       }
     },
+
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
 // <!-- // xmnhyddyname   xmnhyddy -->
 
-  props: ["xmnhyddy","xmnhyddyname"],
+  props: ["xmnhyddy","xmnhyddyname","xmid"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("xmnhdyyd"));
     window.addEventListener("resize", () => {
@@ -355,7 +357,7 @@ export default {
     });
   },
   methods: {
-
+   
   }
 };
 </script>

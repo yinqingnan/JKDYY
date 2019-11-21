@@ -201,10 +201,14 @@
             <div>
               <div>
                 <h1>项目能耗指标</h1>
-                <h2>
+                <!-- <h2>
                   更多
                   <span class="iconfont iconpub_right"></span>
-                </h2>
+                </h2> -->
+                <div class="xmnhxq">
+                  <h2 @click="dyys">当月用水详情</h2>
+                  <h2 @click="dyyd">当月用电详情</h2>
+                </div>
               </div>
               <div class="xmnh">
                 <div class="xmys">
@@ -233,9 +237,8 @@
                       >{{item}}</li>
                     </ul>
                      <div >
-                        <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2"></xmnhydqn>
-
-                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy" ></xmnhdyyd>
+                        <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" ></xmnhydqn>
+                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy"  ></xmnhdyyd>
                     </div>
                   </div>
                 </div>
@@ -375,9 +378,24 @@ export default {
     };
   },
   methods: {
+    // 当月用水详情跳转
+    dyys(){
+      // console.log(this.xmid)
+      this.$router.push('/dyys?xmid='+this.xmid)
+
+    },
+    // 当月用电详情跳转
+    dyyd(){
+      // console.log(this.xmid)
+      this.$router.push('/dyyd?xmid='+this.xmid)
+    },
+
+
     selectchange(value) {
       //区域公司级下拉菜单选中监听
       // console.log(value)
+
+
       this.value = value;
       this.axios.get("api/projectBycId?companyId=" + value).then(res => {
         // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
@@ -894,17 +912,29 @@ export default {
     var date = new Date();
     this.date = date.getMonth() + 1; //获取到当前的月份信息
     // 通过获取的区域公司id和项目id来显示默认数据
-    this.quid = window.location.href.split("=")[1].split("&")[0]; //区域公司id
-    this.xmid = window.location.href.split("=")[2]; //项目id
+    this.quid = this.$route.query.quid; //区域公司id
+    this.xmid = this.$route.query.xmid; //项目id
+  // console.log(this.$route.query)
+
+  // 通过项目id来获取到默认显示的项目的名称
+  this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
+    // console.log(res.data.data[0].projectName)
+    this.value1=res.data.data[0].projectName
+  })
+
+
+  // 通过路由的区域id获取到默认显示的区域
     this.axios
       .get("api/companIdOrName?companIdOrName=" + this.quid)
       .then(res => {
+
+        // console.log(res.data.data[0].companyName)
         this.value = res.data.data[0].companyName;
         this.axios
           .get("api/projectBycId?companyId=" + res.data.data[0].companyId)
           .then(res => {
             this.getregionList = res.data.data;
-            this.value1 = res.data.data[0].projectName;
+            // this.value1 = res.data.data[0].projectName;
           });
       });
     // 获取区域公司列表
@@ -1612,6 +1642,20 @@ export default {
   top: 5px;
   left: 0;
   display: inline-block;
+}
+.xmnhxq{
+  display: flex;
+
+}
+.xmnhxq>h2{
+  transform: scale(0.8);
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+}
+.xmnhxq>h2:nth-of-type(2){
+  margin-left: 8px
 }
 </style>
 
