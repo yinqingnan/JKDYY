@@ -39,7 +39,8 @@ export default {
               
             },
               formatter:function(a){
-                return a.seriesName +":"+a.value+"吨"
+                // console.log(a)
+                return a.name +":"+a.value+"吨"
             }
     },
 

@@ -175,7 +175,7 @@ export default {
         const { columns, data } = param;
         const sums = [];
         columns.forEach((column, index) => {
-          if (index === 0) {
+          if (index === 1) {
             sums[index] = '汇总';
             return;
           }

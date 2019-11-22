@@ -40,7 +40,7 @@ export default {
               
             },
               formatter:function(a){
-                return a.seriesName +":"+a.value+"度"
+                return a.name +":"+a.value+"度"
             }
     },
 
@@ -147,15 +147,7 @@ export default {
     });
 
   },
-  methods: {
-      //点击事件
-      // myChart.on("click", function(params) {
-      //   //点击事件
-      //   let name = params.name; //当前点击的名称
-      //   vue.$router.push({ path: "/city", query: { name: name } });
-      // });
-     
-  }
+
 };
 </script>
 <style  scoped>

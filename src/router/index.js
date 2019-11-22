@@ -12,9 +12,9 @@ import Indexmap from '../view/indexmap.vue'   //地图页面
 import Regiontable from '../view/regiontable.vue'   //区域项目表格
 
 // import Applicationexperience from "../view/Applicationexperience.vue"   //申请体验地图数据
-import Dyyd from "../components/Table/xmydtab.vue"
-import Dyys from "../components/Table/xmystab.vue"
-
+import Dyyd from "../components/Table/xmydtab.vue"      //当月用电详情
+import Dyys from "../components/Table/xmystab.vue"      //当月用水 详情
+import ZSR from "../components/Table/ZSR.vue"       //综合收费率详情
 const  router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
@@ -28,8 +28,9 @@ const  router = new VueRouter({
         {path:"/indexmap",name:"Indexmap",component:Indexmap},  //中国地图
         {path:"/regiontable",name:"Regiontable",component:Regiontable},     //区域公司项目表格 （在管项目 招标物业费 停车备案情况）
         // {path:"/Applicationexperience",name:"Applicationexperience",component:Applicationexperience},
-        {path:"/dyyd",name:"dyyd",component:Dyyd},
-        {path:"/dyys",name:"dyys",component:Dyys},
+        {path:"/dyyd",name:"dyyd",component:Dyyd},              //当月用电详情
+        {path:"/dyys",name:"dyys",component:Dyys},              //当月用水 详情
+        {path:"/zsr",name:"zsr",component:ZSR}             //综合收费率详情
 
     ]
 })

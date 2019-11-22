@@ -48,7 +48,7 @@ export default {
           tooltip: {
             trigger: "axis",
             formatter:function(a){
-                return a[0].seriesName +":"+a[0].value+"%"
+                return a[0].seriesName +":"+a[0].value+"百万元"
             }
           },
           legend: [

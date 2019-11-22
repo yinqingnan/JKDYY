@@ -550,6 +550,9 @@ word-break:break-all;
 .Explain > p::-webkit-scrollbar {
   display: none;
 }
+.el-tooltip__popper {
+  max-width:400px;
+}
 </style>
 
 
@@ -564,4 +567,9 @@ word-break:break-all;
 /* .el-input--suffix .el-input__inner {
   min-width: 110px;
 } */
+/* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */
+.el-tooltip__popper {
+  max-width:400px;
+  
+}
 </style>

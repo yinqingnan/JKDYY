@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:40%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                             <h2 >
                                 {{(zsrnumber/10000).toFixed(0)}} 
@@ -264,7 +264,16 @@ export default {
         selectchange(value){            //下拉菜单选中监听输出为该区域的名称
         // console.log(encodeURI(value))
             window.location.href=window.location.href.split("=")[0]+"="+encodeURI(value)
-        }
+        },
+            // 综合收费率跳转
+        zrh(){
+        // console.log(this.value)
+        
+        this.axios.get("/api/companIdOrName?companIdOrName="+this.value).then((res)=>{
+            // console.log()
+            this.$router.push("zsr?qyid="+res.data.data[0].companyId)
+        })
+        },
     },
     mounted() {
         this.value=this.$route.query.name       //获取到路由的参数

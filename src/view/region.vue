@@ -70,20 +70,21 @@
         </div>
         <!-- 时间轴 -->
         <Timeaxis :xmid="xmid"></Timeaxis>
-
+      <!-- 关键指标图表 -->
         <div class="Chart">
           <div>
             <h1>关键指标</h1>
-            <h2>
+            <!-- <h2>
               更多
               <span class="iconfont iconpub_right"></span>
-            </h2>
+            </h2> -->
           </div>
           <div>
             <!-- 关键指标图表1 -->
             <div>
-              <h1 v-for="(item,index) in zhsfltitle" :key="index">
-                综合收费率
+              <h1 v-for="(item,index) in zhsfltitle" :key="index" >
+                
+                    综合收费率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
                   {{item.changeRate.toFixed(1)}}%
@@ -117,7 +118,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:40%;cursor: pointer;">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -152,7 +153,7 @@
             <!-- 关键指标图表3 -->
 
             <div>
-              <h1 v-for="(item,index) in xcpztitle" :key="index">
+              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:40%;cursor: pointer;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -389,7 +390,6 @@ export default {
       // console.log(this.xmid)
       this.$router.push('/dyyd?xmid='+this.xmid)
     },
-
 
     selectchange(value) {
       //区域公司级下拉菜单选中监听

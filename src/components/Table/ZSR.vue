@@ -4,10 +4,10 @@
     <div>
           <div class="box">
               <div class="boxTitle">
-                    <button @click="TO"><i class="el-icon-back"></i>返回项目</button>
+                    <button @click="TO"><i class="el-icon-back"></i>返回区域公司</button>
                     
                     
-                    <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用电量明细表
+                    <h3 style="margin:0 auto">{{projectName}}{{year}}年{{month}}收入情况表
                     </h3>
                     <div class="select">
                         <el-select v-model="yeardefaultdefault" placeholder="请选择年份" @change="yearchange(yeardefaultdefault)"  style="width:100px;text-align: center;margin-right:10px">
@@ -19,14 +19,7 @@
                             </el-option>
                         </el-select>
            
-                        <el-select v-model="monthdefaultdefault" placeholder="请选择月份" @change="monthchange(monthdefaultdefault)"  style="width:100px;text-align: center;">
-                            <el-option 
-                            v-for="(item,index) in number" 
-                            :key="index"
-                            :value="item" 
-                            >
-                            </el-option>
-                        </el-select>
+                     
                     </div>
                     <h2 @click="exportExcel">导出表格</h2>
               
@@ -34,22 +27,30 @@
       <el-table
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
+ 
         :default-sort="{prop: 'date', order: 'descending'}"
-         :summary-method="getSummaries"
-         show-summary
+        :summary-method="getSummaries"
+        show-summary
       class="table"
+      element-loading-text="请稍后..."
       >
         <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-        <el-table-column prop="itemName" label="名称" min-width="106px" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="electricityMeter" label="表号" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="beginNumber" label="起数" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="endNumber" label="止数" :show-overflow-tooltip="true" align="center" min-width="122px"></el-table-column>
-        <el-table-column prop="dosage" label="用量（度）" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="unitPrice" label="单价" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="amount" label="金额" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="payer" label="缴费人" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="ascription" label="用电归属" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <!-- <el-table-column prop="accessoryBasic" label="备注" :show-overflow-tooltip="true" align="center"></el-table-column> -->
+        <el-table-column prop="projectName" label="项目" min-width="90px" :show-overflow-tooltip="true" align="center" ></el-table-column>
+        <el-table-column prop="target" label="目标值" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="m1" label="1月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m2" label="2月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m3" label="3月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m4" label="4月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m5" label="5月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m6" label="6月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m7" label="7月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m8" label="8月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m9" label="9月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m10" label="10月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m11" label="11月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="m12" label="12月" :show-overflow-tooltip="true" align="center" min-width="60px"></el-table-column>
+        <el-table-column prop="projectCount" label="单项目合计" :show-overflow-tooltip="true" align="center" min-width="90px"></el-table-column>
+        <el-table-column prop="yieldRate" label="达成率" :show-overflow-tooltip="true" align="center"></el-table-column>
       </el-table> 
        <div class="box1">
         <el-pagination
@@ -77,52 +78,51 @@ export default {
     data(){
         return {
             projectName:null,
-            xmid:null,
+            qyid:null,
             year:null,
             month:null,
-            monthdefaultdefault:"",         //------------------默认显示的月份信息
             yeardefaultdefault:"",         //------------------默认显示的年份信息
-            number:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],        //-----------月份信息
             years:["2020年","2019年","2018年","2017年","2016年","2015年","2014年","2013年","2012年","2011年","2010年","2009年","2008年","2007年","2006年","2005年","2004年","2003年","2002年","2001年","2000年"] ,       //-------------------------------年份限制2001年到2020年
             tablemsg:[],
             num:1,
             totalCount: null, //--------------------------------默认数据总数
             currentPage: 1, //----------------------------------默认开始页面
-            //   istag: true,
+              istag: true,
             pagesize: 12, //------------------------------------每页显示的数据条数
             style:{
                 width:"100%",
                 height:''
             },
-            // getmonth:null           //切换后的月
+            // height:""
       
         }
     },
     mounted(){
-        // console.log(this.$route.query.xmid)
-        this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
-        var date=new Date();
-        this.month=date.getMonth()+1;
-        this.monthdefaultdefault=date.getMonth()+1+"月";
+        // console.log(this.$route.query.qyid)
+         var date=new Date();
+
         this.yeardefaultdefault=date.getFullYear()+"年";
         this.year=date.getFullYear()
-        // /api/projectElectricity01?projectId=1085&year=2019&month=11
-        this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
-            // console.log(res.data.data)
+        this.qyid=this.$route.query.qyid    //获取到路由参数 （项目的id）
+        this.axios.get("/api/monthTotalRevenue?year="+this.year+"&companyID="+this.qyid).then((res)=>{
+            console.log(res.data.data.length)
             this.tablemsg=res.data.data
             this.totalCount=res.data.data.length
         })
-        // 通过项目ID查询项目名称信息
-        this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-            // console.log(res.data.data)
-            this.projectName=res.data.data[0].projectName
+        this.axios.get("/api/companIdOrName?companIdOrName="+this.$route.query.qyid).then((res)=>{
+            // console.log(res.data.data[0].companyName)
+            this.projectName=res.data.data[0].companyName
         })
+       
+    
         this.getheight()
     },
     methods:{
         getheight(){
+            console.log(window.innerHeight)
             // 获取当前浏览器的高度赋值给元素
             this.style.height=window.innerHeight-130+"px"
+            // this.height=window.innerHeight-100+"px"
             // console.log(window.innerHeight)
         },
         // 选中的年
@@ -130,45 +130,29 @@ export default {
             // console.log(yeardefaultdefault.slice(0,4))
             this.year=yeardefaultdefault.slice(0,4)
         }, 
-        // 选中的月
-        monthchange(monthdefaultdefault){
-            if(monthdefaultdefault.length==2){
-                this.month=monthdefaultdefault.slice(0,1)
-                this.axios.get("/api/projectInfoName?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
-                    this.tablemsg=res.data.data
-                    this.totalCount=res.data.data.length
 
-                })
-            }else{
-                this.month=monthdefaultdefault.slice(0,2)
-                  this.axios.get("/api/projectInfoName?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
-                    this.tablemsg=res.data.data
-                    this.totalCount=res.data.data.length
-                })
-            }    
-
-        },  
         handleSizeChange(cpage) {
             this.pagesize=cpage
         },
         current_change: function(currentPage) {
         this.currentPage = currentPage;
         },
+
         TO(){
-            this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-                // 跳转回上级
-                this.$router.push({
-                    path:'/region',
-                    query:{
-                        quid:res.data.data[0].companyId,
-                        xmid:res.data.data[0].projectId
-                    }
-                })
-            })
-          
+
+          this.axios.get("/api/companIdOrName?companIdOrName="+this.qyid).then((res)=>{
+            //   console.log(res.data.data[0].companyName)
+              this.$router.push({
+                  path:"/project",
+                  query:{
+                      name:res.data.data[0].companyName
+                  }
+              })
+          })
          
         },
          getSummaries(param) {
+             console.log(param)
         const { columns, data } = param;
         const sums = [];
         columns.forEach((column, index) => {
@@ -178,9 +162,12 @@ export default {
           }
           const values = data.map(item => Number(item[column.property]));
         //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
-         if (column.property == 'dosage' ||column.property =='amount' ){
+        // console.log(values)
+         if (column.property == 'projectCount' ||column.property =='yieldRate' ){
+            //  console.log(column.property)
              sums[index] = values.reduce((prev, curr) => {
                 const value = Number(curr);
+              
                 if (!isNaN(value)) {
                 return prev + curr;
                 } else {
@@ -194,13 +181,10 @@ export default {
 
         return sums;
       },
-      sc(){
-          console.log(11111)
-      },
+    //   sc(){
+    //       console.log(11111)
+    //   },
       exportExcel(){
-
-
-      
         this.$confirm('即将下载该表格, 是否继续下载?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -210,11 +194,11 @@ export default {
                  this.$message({
                 type: 'success',
                 message: '下载成功!'})
-                     this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-            // console.log(res.data.data[0].projectName)       //当前的项目名称
+                     this.axios.get("/api/companIdOrName?companIdOrName="+this.qyid).then((res)=>{
+            // console.log(res.data.data[0].companyName)       //当前的项目名称
             // console.log(this.year)                          //当前的年份
             // console.log(this.month)                         //当前的月份
-            let name=res.data.data[0].projectName+this.year+"年"+this.month+"月"+"用电量明细表"
+            let name=res.data.data[0].companyName+this.year+"年"+"收入表"
             var wb = XLSX.utils.table_to_book(document.querySelector(".table"));
             var wbout = XLSX.write(wb, {
                 bookType: "xlsx",
@@ -276,7 +260,7 @@ export default {
   
 }
 .boxTitle >button{
-    width: 90px;
+    width: 100px;
     border: 0;
     cursor: pointer;
     height: 35px;
@@ -320,4 +304,10 @@ export default {
     text-align: center
 }                   
 
+.el-table--fit td.gutter, .el-table--fit th.gutter {
+    border-right-width: 1px;
+    background: #F5F7FA;
+}
+.el-table__body-wrapper:-webkit-scrollbar {display:none} 
+.is-scrolling-right:-webkit-scrollbar {display:none}
 </style>

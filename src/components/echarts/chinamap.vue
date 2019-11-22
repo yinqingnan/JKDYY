@@ -77,22 +77,22 @@ export default {
               return (
                 "高层：" +
                 a.data.highRiseFee +
-                "元/m²" +
+                "元/m²/月" +
                 "<br/>" +
                 "洋房：" +
                 a.data.westernFee +
-                "元/m²" +
+                "元/m²/月" +
                 "<br/>" +
                 "别墅：" +
                 a.data.villaFee +
-                "元/m²" +
+                "元/m²/月" +
                 "<br/>" +
                 "商业：" +
                 a.data.businessFee +
-                "元/m²" +
+                "元/m²/月" +
                 "<br/>" +
                 "车库：" +
-                a.data.garageFee +"元/个"
+                a.data.garageFee +"元/月/个"
               );
             }
           },
