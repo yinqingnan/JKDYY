@@ -10,7 +10,7 @@
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用水量明细表
                     </h3>
                     <div class="select">
-                        <el-select v-model="yeardefaultdefault" placeholder="请选择年份" @change="yearchange(yeardefaultdefault)"  style="width:100px;text-align: center;">
+                        <el-select v-model="yeardefaultdefault" placeholder="请选择年份" @change="yearchange(yeardefaultdefault)"  style="width:100px;text-align: center;margin-right:10px">
                             <el-option 
                             v-for="(item,index) in years" 
                             :key="index"
@@ -198,7 +198,7 @@ export default {
         return sums;
       },
       sc(){
-          console.log(11111)
+        //   console.log(11111)
       },
       exportExcel(){
 
@@ -298,7 +298,7 @@ export default {
     cursor: pointer;
 }
 .select{
-    margin-right: 50px
+    margin-right: 22px
 }
 .box1{
     /* width: 100% */

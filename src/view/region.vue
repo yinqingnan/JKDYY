@@ -1327,7 +1327,7 @@ export default {
   font-size: 12px;
   color: #666;
   line-height: 1;
-  font-weight: 100;
+  font-weight: 500;
   margin-top: 14px;
   white-space: nowrap;
 }
@@ -1566,10 +1566,10 @@ export default {
 }
 
 .Chart1 > div:nth-of-type(1) > div > h1 {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   line-height: 1;
-  font-weight: 100;
+  font-weight:500;
 }
 .Chart1 > div:nth-of-type(1) > div > h2 {
   font-size: 12px;
@@ -1598,10 +1598,10 @@ export default {
 }
 
 .Chart1 > div:nth-of-type(2) > div > h1 {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   line-height: 1;
-  font-weight: 100;
+  font-weight: 500;
 }
 .Chart1 > div:nth-of-type(2) > div > h2 {
   font-size: 12px;
@@ -1648,8 +1648,8 @@ export default {
 
 }
 .xmnhxq>h2{
-  transform: scale(0.8);
-  font-size: 14px;
+  /* transform: scale(0.8); */
+  font-size: 12px;
   font-weight: 500;
   color: #666;
   cursor: pointer;

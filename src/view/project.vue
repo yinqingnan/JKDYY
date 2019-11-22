@@ -786,7 +786,7 @@ export default {
 }
 .Chart1_header>h1{
     line-height: 55px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500
 }
 .Chart1_header>h2{

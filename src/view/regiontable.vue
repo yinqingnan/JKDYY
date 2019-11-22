@@ -144,7 +144,7 @@ import Table3 from "../components/Table/table3"
 }
 .tablecontainer_body{
     height: 45px;
-    /* background: pink; */
+    background: #fff;
     padding-left: 12px
 }
 .tablecontainer_body_header{

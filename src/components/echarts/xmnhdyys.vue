@@ -136,7 +136,7 @@ export default {
             }]
         },
         {
-            name:'油车三角形',
+            name:'',
             type:'line',
             barWidth:0,
             markPoint: {
@@ -214,7 +214,7 @@ export default {
             }]
         },
         {
-            name:'危化品三角形',
+            name:'',
             type:'line',
             barWidth:0,
             markPoint: {
@@ -263,8 +263,8 @@ export default {
                     align: 'center',
                     verticalAlign: 'middle',
                     borderRadius: 1,
-                    borderColor: '#0CD8A7',
-                    backgroundColor: '#0CD8A7',
+                    borderColor: '#39A8F7',
+                    backgroundColor: '#39A8F7',
                     show: true,
                     position: 'top',
                     formatter: '{c}%',
@@ -279,10 +279,10 @@ export default {
                         type: 'bar',
                         colorStops: [{
                             offset: 0,
-                            color: '#0CD8A7' // 0% 处的颜色
+                            color: '#39A8F7' // 0% 处的颜色
                         }, {
                             offset: 1,
-                            color: '#0CD8A7' // 100% 处的颜色
+                            color: '#39A8F7' // 100% 处的颜色
                         }],
                         globalCoord: false, // 缺省为 false
 
@@ -306,9 +306,9 @@ export default {
                         x2: 1,
                         y2: 0,
                         colorStops: [{
-                            offset: 0, color: '#0CD8A7' // 0% 处的颜色
+                            offset: 0, color: '#39A8F7' // 0% 处的颜色
                         }, {
-                            offset: 1, color: '#0CD8A7' // 100% 处的颜色
+                            offset: 1, color: '#39A8F7' // 100% 处的颜色
                         }],
                         globalCoord: false // 缺省为 false
                     }  
