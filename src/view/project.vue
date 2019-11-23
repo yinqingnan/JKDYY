@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:40%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                             <h2 >
                                 {{(zsrnumber/10000).toFixed(0)}} 
@@ -89,7 +89,7 @@
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 v-for="(item,index) in sfl" :key="index">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                              <h1 v-for="(item,index) in sfl" :key="index" style="marginRight:24%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >

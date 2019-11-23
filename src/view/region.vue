@@ -82,7 +82,7 @@
           <div>
             <!-- 关键指标图表1 -->
             <div>
-              <h1 v-for="(item,index) in zhsfltitle" :key="index" >
+              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:30%;cursor: pointer;" @click="zhsfl">
                 
                     综合收费率
                 <span :class="item.state==1? 'Green':'Red'">
@@ -118,7 +118,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:40%;cursor: pointer;">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:30%;cursor: pointer;">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -153,7 +153,7 @@
             <!-- 关键指标图表3 -->
 
             <div>
-              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:40%;cursor: pointer;">
+              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:30%;cursor: pointer;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -250,6 +250,7 @@
       </div>
 
       <div class="Right">
+        <!-- 重要提醒tab组件 -->
         <div class="table1">
           <tab :xmid="xmid"></tab>
         </div>
@@ -369,9 +370,7 @@ export default {
       zhsflsxzzt: [], //-----------------------------综合收费率竖向柱状图
       zhsfltitle: [], //-----------------------------报事title信息
       zhsflmsg: [], //-------------------------------综合收费lv提示信息
-
       radarmsg: [], //-------------------------------品质服务信息
-
       xcpzhxzzt: [], //------------------------------现场品质横向柱状图
       xcpzsxzzt: [], //------------------------------现场品质竖向柱状图
       xcpztitle: [], //------------------------------现场品质title信息
@@ -379,6 +378,13 @@ export default {
     };
   },
   methods: {
+ 
+    //项目综合收费率跳转
+    zhsfl(){
+      // console.log(111)
+        this.$router.push('/xmzhsfl?xmid='+this.xmid)
+
+    },
     // 当月用水详情跳转
     dyys(){
       // console.log(this.xmid)

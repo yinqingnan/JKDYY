@@ -14,7 +14,10 @@
             <div class="tabCon">
        
                 <ul v-if="isshow">
-                    <li class="list" v-for="(item,index) in list1" :key="index"><h2>{{item.remindTitle}}</h2> <h2>{{item.remindTime.split(" ")[0]}}</h2></li>
+                    <li class="list" v-for="(item,index) in list1" :key="index" @click="liebiao(item.remindType)">
+                        <h2>{{item.remindTitle}}</h2>
+                        <h2>{{item.remindTime.split(" ")[0]}}</h2>
+                    </li>
                 </ul>
                 <ul v-if="isshow1">
                     <li v-for="(item,index) in list2" :key="index" class="list">
@@ -42,7 +45,8 @@ export default {
                 list2:[],
                 num: 0,
                 isshow:true,
-                isshow1:false
+                isshow1:false,
+                id:""
            }
         
     },
@@ -57,13 +61,26 @@ export default {
                  this.isshow=false
                 this.isshow1=true
             }
+        },
+        liebiao(item){
+            // 判断type的类型，进行页面跳转
+            if(item=="合同台账"){
+                console.log(1)
+                 this.$router.push('/xmhttz?xmid='+this.id)
+
+            }else if(item=="设施设备"){
+                console.log(2)
+                 this.$router.push('/xmsbwx?xmid='+this.id)
+
+            }
         }
     },
     watch:{
         xmid:{
             handler(newval){
-                // console.log(newval)
+                console.log(newval)
                 // 获取重要提醒
+                this.id=newval
                 this.axios.get("/api/importantReminder02?topcount=10&projectId="+newval).then((res)=>{
                     // console.log(res.data.data)
                     this.list1=res.data.data
@@ -88,9 +105,7 @@ export default {
 
 <style  scoped>
 .box{
-    /* min-width: 290px; */
-    background: #fff
-    /* padding-left: 20px */
+    background: #fff;
 }
 .title{
     font-size:20px;

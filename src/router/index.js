@@ -12,9 +12,14 @@ import Indexmap from '../view/indexmap.vue'   //地图页面
 import Regiontable from '../view/regiontable.vue'   //区域项目表格
 
 // import Applicationexperience from "../view/Applicationexperience.vue"   //申请体验地图数据
-import Dyyd from "../components/Table/xmydtab.vue"      //当月用电详情
-import Dyys from "../components/Table/xmystab.vue"      //当月用水 详情
-import ZSR from "../components/Table/ZSR.vue"       //综合收费率详情
+import Dyyd from "../components/Table/xmydtab.vue"      //项目当月用电详情
+import Dyys from "../components/Table/xmystab.vue"      //项目当月用水 详情
+import ZSR from "../components/Table/ZSR.vue"       //区域公司总收入详情
+import Xmzhsfl from "../components/Table/xmzhsfl.vue"       //区域公司总收入详情
+import Xmhttz from '../components/Table/xmhttz.vue'         //项目公司合同台账详情表格
+import Xmsbwx from '../components/Table/xmsbwx.vue'         //项目公司设备维修详情表格
+
+
 const  router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
@@ -28,10 +33,13 @@ const  router = new VueRouter({
         {path:"/indexmap",name:"Indexmap",component:Indexmap},  //中国地图
         {path:"/regiontable",name:"Regiontable",component:Regiontable},     //区域公司项目表格 （在管项目 招标物业费 停车备案情况）
         // {path:"/Applicationexperience",name:"Applicationexperience",component:Applicationexperience},
-        {path:"/dyyd",name:"dyyd",component:Dyyd},              //当月用电详情
-        {path:"/dyys",name:"dyys",component:Dyys},              //当月用水 详情
-        {path:"/zsr",name:"zsr",component:ZSR}             //综合收费率详情
-        
+        {path:"/dyyd",name:"dyyd",component:Dyyd},              //当月用电详情表格
+        {path:"/dyys",name:"dyys",component:Dyys},              //当月用水 详情表格
+        {path:"/zsr",name:"zsr",component:ZSR},             //区域公司总收入详情表格
+        {path:"/xmzhsfl",name:"xmzhsfl",component:Xmzhsfl},  //项目公司总收入详情表格
+        {path:"/xmhttz",name:"xmhttz",component:Xmhttz} , //项目公司合同台账详情表格
+        {path:"/xmsbwx",name:"xmsbwx",component:Xmsbwx},  //项目公司设备维修详情表格
+
     ]
 })
 

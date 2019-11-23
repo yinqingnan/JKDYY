@@ -4,7 +4,7 @@
     <div>
           <div class="box">
               <div class="boxTitle">
-                    <button @click="TO"><i class="el-icon-back"></i>返回项目</button>
+                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回项目</button>
                     
                     
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用水量明细表
@@ -28,7 +28,7 @@
                             </el-option>
                         </el-select>
                     </div>
-                    <h2 @click="exportExcel">导出表格</h2>
+                    <h2 @click="exportExcel" class="daochu">导出表格</h2>
                 <!-- {{getyear}}
                 {{getmonth}} -->
               </div>
@@ -305,8 +305,21 @@ export default {
     background: #fff;
     height: 50px;
 }
-.elementtable{
-    /* height: 800px */
+.daochu{
+    border: 1px solid #4ac48b;
+    height:40px;
+    line-height:40px;
+    margin-top: 7px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: #4ac48b;
+    color:#fff !important 
+}
+.fhsj{
+    border: 1px solid #4ac48b !important;
+    background: #4ac48b !important;
+    color: #fff !important;
+    border-radius: 5px; 
 }
 </style>
 
