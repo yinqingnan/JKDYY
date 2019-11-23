@@ -31,7 +31,7 @@ const  router = new VueRouter({
         {path:"/dyyd",name:"dyyd",component:Dyyd},              //当月用电详情
         {path:"/dyys",name:"dyys",component:Dyys},              //当月用水 详情
         {path:"/zsr",name:"zsr",component:ZSR}             //综合收费率详情
-
+        
     ]
 })
 
