@@ -83,6 +83,7 @@ export default {
           ],
           series: [
             {
+              
               type: "bar",
               data: this.bjData, //数据 在data中获取，或者父元素传值
               barWidth: "10px", //更改柱状图柱体宽度
@@ -90,6 +91,7 @@ export default {
               itemStyle: {
                 //更改颜色
                 normal: {
+                  color:"red",
                   color: new echarts.graphic.LinearGradient(
                     0,
                     0,
@@ -103,6 +105,28 @@ export default {
                       {
                         offset: 1,
                         color: "#688ee5" // 100% 处的颜色
+                      }
+                    ],
+                    false
+                  ),
+                  barBorderRadius: [2, 2, 2, 2],
+                  shadowColor: "rgba(255,255,255,0)",
+                  shadowBlur: 4
+                },
+                emphasis:{      //鼠标经过样式
+                   color: new echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    [
+                      {
+                        offset: 0,
+                        color: "#688ee5" // 0% 处的颜色
+                      },
+                      {
+                        offset: 1,
+                        color: "#69b4e2" // 100% 处的颜色
                       }
                     ],
                     false

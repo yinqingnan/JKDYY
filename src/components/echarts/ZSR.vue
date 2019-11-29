@@ -32,12 +32,12 @@ export default {
         // 图表设置信息
         const option = {
           title: {
-            x: "10",
+            top: 0,
             y: 20,
             text: "总收入",
             textStyle: {
               color: "#333",
-              fontSize: "16",
+              fontSize: "14",
               fontWeight: "500"
             }
           },
@@ -62,15 +62,22 @@ export default {
           //   }
           // },
           grid: {
-            x: "0%",
-            width: "100%",
-            y: "30%",
-            bottom: "10%"
+               top: "20%",
+              right: "4%",
+              left: "8%",
+              bottom: "10%"
           },
           tooltip: {
             trigger: "axis",
             formatter:function(a){
                 return a[0].seriesName +":"+a[0].value+"百万元"
+            },    
+            axisPointer: {
+                type: 'cross',           //设置为none为不显示线条，设为shadow为柱状图显示阴影   设为cross为 横向虚线基准线
+                label: {
+                    show: false,      //是否出现title提示文字
+                    backgroundColor: '#7B7DDC'
+                }
             }
             
           },
@@ -88,28 +95,19 @@ export default {
             }
           },
           yAxis: {
-            //y轴
-            show: false,
-            //  min: 0,
-            type: "value",
-            splitLine: {
-              show: true,
-              lineStyle: {
-                type: "dashed"
+            show: true,
+              splitLine: {
+                show: true
+              },
+              axisLine: {
+                show:true,
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisLabel: {
+                // formatter: "{value} "
               }
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 12,
-                color: "#fff"
-              }
-            },
-            axisLine: {
-              show: false,
-              lineStyle: {
-                color: "#fff"
-              }
-            }
           },
           series: [
             {
@@ -180,7 +178,7 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   props: ["ZSR"],
-  mounted() {
+  mounted(){
     const chartObj = echarts.init(document.getElementById("12"));
     window.addEventListener("resize", () => { chartObj.resize();});
   }
@@ -190,8 +188,8 @@ export default {
 .ECHARTS {
  width: 100%;
  margin: 0 auto;
-  min-width: 270px;
-  height: 240px;
+min-width: 270px;
+height: 240px;
 
 }
 </style>

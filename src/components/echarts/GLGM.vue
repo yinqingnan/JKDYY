@@ -1,7 +1,7 @@
 <template>
   <!-- 管理规模图 -->
   <div>
-    <div id="11" class="ECHARTS"></div>
+    <div id="11" ref="charts" class="ECHARTS"></div>
   </div>
 </template>
 
@@ -34,23 +34,24 @@ export default {
         const option = {
           title: {
             text: "管理规模",
-            x: "10",
+
+            top:0,
             y: 20,
             textStyle: {
               color: "#333",
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: "500"
             }
           },
           backgroundColor: "#f0eded",
           tooltip: {
             trigger: "axis",
-            // backgroundColor: 'rgba(255,255,255,0.1)',
+            // backgroundColor: '#999',
             axisPointer: {
               type: "shadow",
               label: {
                 show: true,
-                backgroundColor: "#7B7DDC"
+                backgroundColor: "rgba(255,255,255,0.1)"
               }
             },
             formatter:function(a){
@@ -85,17 +86,17 @@ export default {
           //   }
           // },
           grid: {
-            x: "0%",
-            width: "100%",
-            y: "30%",
-            bottom: "10%"
+               top: "20%",
+                right: "4%",
+                left: "8%",
+                bottom: "10%"
           },
           xAxis: {
             show: true,
             data: this.category, //时间接口
             axisLine: {
               lineStyle: {
-                color: "#B4B4B4"
+                color: "#666"
               }
             },
             axisTick: {
@@ -104,25 +105,30 @@ export default {
           },
           yAxis: [
             {
+              show: true,
+              splitLine: {
+                show: true
+              },
+              axisLine: {
+                show:true,
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisLabel: {
+                // formatter: "{value} "
+              }
+            },
+            {
               show: false,
               splitLine: {
                 show: false
               },
               axisLine: {
+                show: false,
                 lineStyle: {
-                  color: "#B4B4B4"
+                  color: "transparent"
                 }
-              },
-              axisLabel: {
-                formatter: "{value} "
-              }
-            },
-            {
-              splitLine: {
-                show: false
-              },
-              axisLine: {
-                show: false
               },
               axisLabel: {
                 formatter: "{value} "

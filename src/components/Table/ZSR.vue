@@ -345,12 +345,12 @@ export default {
         this.tablemsgmsg = res.data.data;
         this.totalCount = res.data.data.length;
         // 提前计算好合计金额   （先进行清空）
-        this.number=null
-        this.number2=null
+        this.number=0
+        this.number2=0
         res.data.data.forEach(item=>{
           this.number+=item.projectCount
           this.number2+=item.yieldRate
-
+        
         })
      
 
@@ -383,8 +383,8 @@ export default {
         this.tablemsgmsg = res.data.data;
         this.totalCount = res.data.data.length;
         // 切换后提前计算好合计金额   （先进行清空）
-        this.number=null
-        this.number2=null
+        this.number=0
+        this.number2=0
          res.data.data.forEach(item=>{
           this.number+=item.projectCount
           this.number2+=item.yieldRate
@@ -429,11 +429,25 @@ export default {
         if (column.property == "projectCount") {
           //  console.log(column.property)
           sums[index] = values.reduce(() => {
-            return this.number;
+              // return this.number
+              if(this.number==0){
+                // console.log(2)
+                return 0
+              }else{
+                  return this.number.toFixed(2)
+              }
+
+
+
           }, 0);
         } else if (column.property == "yieldRate") {
           sums[index] = values.reduce(() => {
-            return this.number2;
+              // return this.number2
+              if(this.number2==0){
+                return 0
+              }else{
+                return this.number2.toFixed(2)
+              }
           }, 0);
         }
       });

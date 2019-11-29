@@ -1,7 +1,7 @@
 <template>
 <!-- 公司详情页面 -->
     <div>
-        <div class="container">
+        <div class="container" :style="style">
             <div class="container_left">
                 <div class="container_left_header ">
                     <img :src="data.companyLogo" alt="">
@@ -111,6 +111,12 @@ export default {
             SRGC:[],          //收入构成
             srgcgcf:[],        //收入构成工程费
             srgcwyf:[],        //收入构成物业费
+
+
+
+            style:{
+                height:""
+            },
             }
     },
     props:["nameid"],
@@ -185,23 +191,14 @@ export default {
                 // this.SRGC=this.srgcqn       //收入构成全年数据
 
             }
+        },
+        getheight(){
+            // console.log(window.innerHeight -44 + "px")
+            this.style.height=window.innerHeight-44+"px"
         }
     },
     mounted() {
-    //   const chartObj4 = document.getElementById("id14");
-    //   const chartObj3 = document.getElementById("id13");
-    //   const chartObj2 = document.getElementById("id12");
-    //   const chartObj1 = document.getElementById("id11");
-    //     // console.log(chartObj1)
-    //     // console.log(chartObj2)
-    //     // console.log(chartObj3)
-    //     // console.log(chartObj4)
-    // window.onresize = function () {
-    //     chartObj1.resize();
-    //     chartObj2.resize();
-    //     chartObj3.resize();
-    //     chartObj4.resize();
-    // }
+        this.getheight()
        
     },
     
@@ -219,7 +216,8 @@ export default {
     justify-content: center;
     box-sizing: border-box;
     /* min-width: 1136px; */
-
+    /* height: 900px; */
+    background: #fff
 }
 .container>div{
     width: 48%;

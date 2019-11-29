@@ -1,5 +1,5 @@
 <template>
-<!-- 上市公司数据行业数据资料 -->
+<!-- 上市公司数据行业数据资料下载 -->
     <div class="box">
         <H1>行业数据资料</H1>
         <ul>
@@ -27,7 +27,7 @@ export default {
         btn(Url){
             // console.log(Url)
             window.open(Url)
-            // window.location.href = Url;
+         
         } 
     },
 }
@@ -39,7 +39,7 @@ export default {
     height: 309px;
     overflow: hidden;
     border: 1px solid #e5e5e5;
-    padding: 0 20px;
+    padding:  10px;
     box-sizing: border-box;
     overflow-y:auto;
      /* 当IE下溢出，仍然可以滚动*/ 
@@ -52,11 +52,11 @@ export default {
 
 .box>h1{
     font-size: 16px;
-    text-align: center;
-    line-height: 50px;
+    font-weight: 500;
     color: #333;
-    margin-bottom: 12px;
-    font-weight: 500
+    line-height: 40px;
+    /* margin-right: 100px; */
+    border-bottom: 1px solid #f0f0f0
 }
 .box>ul{
     width: 100%;

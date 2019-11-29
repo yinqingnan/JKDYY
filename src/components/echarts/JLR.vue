@@ -37,11 +37,11 @@ export default {
           backgroundColor: "#f0eded",
           title: {
             text: "净利润",
-            x: "10",
+            top:0,
             y: 20,
             textStyle: {
               color: "#333",
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: "500"
             }
           },
@@ -49,6 +49,13 @@ export default {
             trigger: "axis",
             formatter:function(a){
                 return a[0].seriesName +":"+a[0].value+"百万元"
+            },
+            axisPointer: {
+                type: 'cross',    //设置为none为不显示线条，设为shadow为柱状图显示阴影   设为cross为 横向虚线基准线
+                label: {
+                    show: false,      //是否出现title提示文字
+                    backgroundColor: '#7B7DDC'
+                }
             }
           },
           legend: [
@@ -65,28 +72,14 @@ export default {
               itemWidth: 20, // 设置宽度
               itemHeight: 4
             },
-            // {
-            //   data: ["线性（自建占比%）"],
-            //   icon: "line",
-            //   top: 20,
-            //   right: 0,
-            //   textStyle: {
-            //     color: "#333",
-            //     fontSize: 16
-            //   },
-            //   itemWidth: 30 // 设置宽度
-            // }
+
           ],
-          //   toolbox: {
-          //     feature: {
-          //       saveAsImage: {}
-          //     }
-          //   },
+  
           grid: {
-            x: "0%",
-            width: "100%",
-            y: "30%",
-            bottom: "10%"
+              top: "20%",
+              right: "4%",
+              left: "8%",
+              bottom: "10%"
           },
           xAxis: [
             {
@@ -95,7 +88,7 @@ export default {
               data: this.reportingYear, //时间数据入口
               axisLine: {
                 lineStyle: {
-                  color: "#B4B4B4"
+                  color: "#666"
                 }
               },
               axisTick: {
@@ -105,8 +98,19 @@ export default {
           ],
           yAxis: [
             {
-              type: "value",
-              show: false
+              show: true,
+              splitLine: {
+                show: true
+              },
+              axisLine: {
+                show:true,
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisLabel: {
+                // formatter: "{value} "
+              }
             }
           ],
           series: [
@@ -165,14 +169,9 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   props: ["JLR"],
-  mounted() {
+  mounted(){
     const chartObj = echarts.init(document.getElementById("13"));
-    window.addEventListener("resize", () => {
-      chartObj.resize();
-    });
-  },
-  methods: {
-
+    window.addEventListener("resize", () => { chartObj.resize();});
   }
 };
 </script>
@@ -180,7 +179,7 @@ export default {
 .ECHARTS {
  width: 100%;
  margin: 0 auto;
-  min-width: 270px;
-  height: 240px;
+min-width: 270px;
+height: 240px;
 }
 </style>

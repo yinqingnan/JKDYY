@@ -27,21 +27,21 @@
                         </li>
                         <li>
                             <h1>{{list1[1]}}</h1> 
-                            <span v-for="(item,index) in titlename " :key="index" >{{item.rowNum}}名</span>
+                            <span v-for="(item,index) in titlename " :key="index"  style="font-size:20px">{{item.rowNum}}名</span>
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <h1>{{list2[0]}}</h1>
-                            <h2  v-for="(item,index) in titlename" :key="index" >{{item.contractArea}} <span>万方</span></h2>
+                            <h2  v-for="(item,index) in titlename" :key="index" >{{item.contractArea}}<span>万方</span></h2>
                         </li>
                         <li>
                             <h1>{{list2[1]}}</h1>
-                            <h2 v-for="(item,index) in titlename " :key="index" > {{item.tubeArea}} <span>万元</span></h2>
+                            <h2 v-for="(item,index) in titlename " :key="index" > {{item.tubeArea}}<span>万方</span></h2>
                         </li>
                          <li>
                             <h1>{{list2[2]}}</h1>
-                            <h2  v-for="(item,index) in titlename " :key="index" > {{item.chargingArea}} <span>万元</span></h2>
+                            <h2  v-for="(item,index) in titlename " :key="index" > {{item.chargingArea}}<span>万方</span></h2>
                         </li>
                     </ul>
                 </div>
@@ -54,11 +54,10 @@
                     </div>
                     <div>
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                             <h2 >
-                                {{(zsrnumber/10000).toFixed(0)}} 
-                                <span>万元</span>
+                                {{(zsrnumber/10000).toFixed(0)}}<span>万元</span>
                             </h2>
                             <div>
                                 <div style="width:100%">
@@ -71,7 +70,7 @@
                               <div class="yq">
                                     <ul v-for="(item,index) in zsryq" :key="index">
                                         <li style="width:20%">{{item.incomType}}</li>
-                                        <li style="width:30%">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
+                                        <li style="width:30%;font-weight:600">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
                                         <li style="width:30%">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
@@ -84,12 +83,12 @@
                             <h1>总利润</h1>  
                             
                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
-                            <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
+                            <h3 style="    text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
                             
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 v-for="(item,index) in sfl" :key="index" style="marginRight:24%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:24%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
@@ -105,10 +104,10 @@
                                 </div>
                             </div>
                             <!-- dqsfl当前收费率 -->
-                             <div class="yq">
+                             <div class="yq yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
-                                        <li style="width:40%;">当前综合收费率</li>
-                                        <li style="width:30%">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
+                                        <li style="width:40%">当前综合收费率</li>
+                                        <li style="width:30%;font-weight:600">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
                                         <li style="width:30%">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
@@ -268,12 +267,18 @@ export default {
             // 综合收费率跳转
         zrh(){
         // console.log(this.value)
-        
-        this.axios.get("/api/companIdOrName?companIdOrName="+this.value).then((res)=>{
-            // console.log()
+            
+        this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
+            // console.log(res.data.data)
             this.$router.push("zsr?qyid="+res.data.data[0].companyId)
         })
         },
+        zhsfl(){
+            this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
+                // console.log(res.data.data[0].companyId)
+                this.$router.push("zhsjl?qyid="+res.data.data[0].companyId)
+            })
+        }
     },
     mounted() {
         this.value=this.$route.query.name       //获取到路由的参数
@@ -425,7 +430,7 @@ export default {
 }
 .Right {
   /* width: 30%; */
-  margin: 0 0 0 10px;
+  margin: 0 0 0 12px;
   background: #eee;
   width: 292px;
 }
@@ -445,10 +450,12 @@ export default {
 .Downmenu{
     border-bottom: 1px solid #e0dfe8;
     position: relative;
-    height: 50px
+    height: 55px
 }
 .select{
-    line-height: 50px;
+    line-height: 55px;
+    height: 55px;
+    padding-bottom: 1px
 }
 
 .Downmenu>h1{
@@ -490,10 +497,10 @@ export default {
   margin-right: 40px
 }
 .Title>ul:nth-of-type(1)>li>h1{
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
     line-height: 1;
-    font-weight: 100;
+    font-weight: 500;
     margin-top: 14px;
     white-space: nowrap
 }
@@ -506,8 +513,9 @@ export default {
     top: 36px;
     left: 0;
     line-height: 1;
-    font-size: 20px;
-    white-space: nowrap
+    font-size: 24px;
+    white-space: nowrap;
+    color: #333
 }
 
 .Title>ul:nth-of-type(2){
@@ -522,14 +530,15 @@ export default {
     margin-left: 4.625rem
 }
 .Title>ul:nth-of-type(2)>li>h1{
-    font-size: 12px;
-    font-weight: 100;
+    font-size: 14px;
+    font-weight: 500;
     line-height: 1;
-    white-space: nowrap 
+    white-space: nowrap ;
+    color: #666
 }
 .Title>ul:nth-of-type(2)>li>h2{
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
     line-height: 1;
     margin-top: 9px;
     white-space: nowrap
@@ -587,7 +596,7 @@ export default {
 
 }
 .Chart>div:nth-of-type(2)>div>h1{
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
     margin:16px 0 8px 33px;
     line-height: 1;
@@ -595,7 +604,7 @@ export default {
 }
 .Chart>div:nth-of-type(2)>div>h1>span{
     line-height: 1;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
     margin-left: 1.4375rem;
     position: relative;
@@ -605,11 +614,11 @@ export default {
     color: #333333 ;
     margin-left: 33px;
     margin-bottom: 42px;
-    font-size: 20px;
+    font-size: 24px;
     
 }
 .Chart>div:nth-of-type(2)>div>h2>span{
-    font-size: 12px;
+    font-size: 14px;
     color: #666
 }
 
@@ -642,11 +651,11 @@ export default {
 .table1>h1{
     font-size:16px;
     display:flex;
-    height: 50px;
+    height: 55px;
     /* justify-content: space-around; */
     border-bottom: 1px solid #f0f0f0;
     font-weight: 500;
-    line-height: 50px;
+    line-height: 55px;
     padding-left: 20px
     
 }
@@ -724,17 +733,7 @@ export default {
     font-weight: 500;
     color: #333
 }
-/* .table3_header>h2{
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    color: #666
-}
-.table3_header>h2>span{
-    font-size: 12px;
-    font-weight: 500;
-    color: #a0a0a0
-} */
+
 .table3_footer>ul{
     display: flex;
     justify-content: space-around
@@ -760,7 +759,7 @@ export default {
 
 /* 尾部 */
 .Chart1{
-    margin-top: 29px;
+    margin-top: 20px;
     padding: 0 14px;
     display: flex;
     justify-content: space-between;
@@ -843,13 +842,13 @@ export default {
 
 /* 园区信息 */
 .yq>ul>li{
-    line-height: 12px;
-    font-size: 12px;
+    line-height: 14px;
+    font-size: 14px;
     color: #666;
 
 }
 .yq>ul>li>span{
-    font-size: 12px
+    font-size: 14px
 }
 
 
@@ -881,6 +880,12 @@ export default {
     left: 3px;
     display: inline-block;
 }
+/* .yq1>ul{
+    display: block
+}
+.yq1>ul>li{
+
+} */
 </style>
 
 <style>

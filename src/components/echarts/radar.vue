@@ -32,6 +32,8 @@ export default {
               tooltip: {
                     show: true,
                     trigger: 'item',
+                    confine: true,
+                    enterable: true, //鼠标是否可以移动到tooltip区域内
                     },
           radar: {
               shape: 'circle',

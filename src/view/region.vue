@@ -82,17 +82,15 @@
           <div>
             <!-- 关键指标图表1 -->
             <div>
-              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:30%;cursor: pointer;" @click="zhsfl">
+              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:24%;cursor: pointer;" @click="zhsfl">
                 
                     综合收费率
                 <span :class="item.state==1? 'Green':'Red'">
-                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeRate.toFixed(1)}}%
+                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(1)}}%
                 </span>
               </h1>
               <h2 v-for="(item,index) in bstitle" :key="index+1">
-                {{item.newRate.toFixed(2)}}
-                <span>%</span>
+                {{item.newRate.toFixed(2)}}<span>%</span>
               </h2>
               <div>
                 <div style="width:100%">
@@ -118,16 +116,14 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:30%;cursor: pointer;">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:24%;cursor: pointer;">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeRate.toFixed(1)}}%
-                </span>
+                  {{item.changeRate.toFixed(1)}}%</span>
               </h1>
               <h2 v-for="(item,index) in bstitle" :key="index+1">
-                {{item.newRate.toFixed(2)}}
-                <span>%</span>
+                {{item.newRate.toFixed(2)}}<span>%</span>
               </h2>
               <div>
                 <div style="width:100%">
@@ -153,7 +149,7 @@
             <!-- 关键指标图表3 -->
 
             <div>
-              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:30%;cursor: pointer;">
+              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:24%;cursor: pointer;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -161,8 +157,7 @@
                 </span>
               </h1>
               <h2 v-for="(item,index) in xcpztitle" :key="index+1">
-                {{item.newScore}}
-                <span>%</span>
+                {{item.newScore}}<span>%</span>
               </h2>
               <div>
                 <div style="width:100%">
@@ -916,7 +911,7 @@ export default {
   },
   mounted() {
     var date = new Date();
-    this.date = date.getMonth() + 1; //获取到当前的月份信息
+    this.date = date.getMonth()+ 1; //获取到当前的月份信息
     // 通过获取的区域公司id和项目id来显示默认数据
     this.quid = this.$route.query.quid; //区域公司id
     this.xmid = this.$route.query.xmid; //项目id
@@ -1207,6 +1202,8 @@ export default {
   display: flex;
   right: 20px;
   z-index: 10;
+  font-size: 12px;
+  font-weight: 600
 }
 .xmys > ul > li {
   cursor: pointer;
@@ -1223,6 +1220,9 @@ export default {
   display: flex;
   right: 20px;
   z-index: 10;
+  font-size: 12px;
+  font-weight: 600
+
 }
 .xmyd > ul > li:nth-of-type(2) {
   margin-left: 20px;
@@ -1266,7 +1266,7 @@ export default {
 }
 .Right {
   /* width: 30%; */
-  margin: 0 0 0 10px;
+  margin: 0 0 0 12px;
   background: #eee;
   width: 292px;
 }
@@ -1285,10 +1285,10 @@ export default {
 .Downmenu {
   border-bottom: 1px solid #e0dfe8;
   position: relative;
-  height: 50px;
+  height: 55px;
 }
 .select {
-  line-height: 50px;
+  line-height: 54px;
 }
 
 .Downmenu > h1 {
@@ -1387,6 +1387,7 @@ export default {
   font-size: 16px;
   line-height: 1;
   color: #333;
+  font-weight: 500
 }
 .Chart > div:nth-of-type(1) > h2 {
   font-size: 0.75rem;
@@ -1410,7 +1411,7 @@ export default {
   background: #f0eded;
 }
 .Chart > div:nth-of-type(2) > div > h1 {
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
   margin: 16px 0 8px 33px;
   line-height: 1;
@@ -1418,7 +1419,7 @@ export default {
 }
 .Chart > div:nth-of-type(2) > div > h1 > span {
   line-height: 1;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   margin-left: 1.4375rem;
   position: relative;
@@ -1428,6 +1429,8 @@ export default {
   color: #333333;
   margin-left: 33px;
   margin-bottom: 54px;
+  font-size: 24px;
+  font-weight: 500
 }
 .Chart > div:nth-of-type(2) > div > div:nth-of-type(1) {
   display: flex;
@@ -1637,7 +1640,7 @@ export default {
   border-color: transparent transparent #80d8a8;
   position: relative;
   top: -1px;
-  left: 0;
+  left: 3px;
 }
 .Redsj {
   width: 0;
@@ -1655,13 +1658,17 @@ export default {
 }
 .xmnhxq>h2{
   /* transform: scale(0.8); */
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: #666;
   cursor: pointer;
+
 }
 .xmnhxq>h2:nth-of-type(2){
   margin-left: 8px
+}
+.yq>ul>li{
+  white-space: nowrap
 }
 </style>
 

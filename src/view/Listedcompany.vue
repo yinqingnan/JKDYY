@@ -2,86 +2,90 @@
 <!-- 城市页面 -->
   <div>
     <div class="container" v-if="show0">
-      <!-- left -->
       <div class="container_left">
         <div class="container_left_header">
-          <h1>收并购信息</h1>
-          <div class="container_left_header_tab">
-            <el-table :data="Merger" style="width: auto" fit:true  > 
-              <el-table-column prop="acquiringfirm" label="收购方" min-width="75x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
-              <el-table-column prop="acquiree" label="被收购方" min-width="75px" :show-overflow-tooltip="true" align="left"></el-table-column>
-              <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
-              <el-table-column prop="capital" label="资金" min-width="50px" :show-overflow-tooltip="true" align="center"></el-table-column>
-              <el-table-column prop="ratio" label="占股比例" min-width="80px" :show-overflow-tooltip="true" align="center"></el-table-column>
-            </el-table>
-          </div>
-          <div class="h2position">
-            <h2 @click="btn1">查看更多</h2>
-          </div>
-        </div>
-        <div class="timecharts">
-            <Timetomarket></Timetomarket>
-        </div>
-      </div>
-      <!-- center -->
-      <div class="container_center">
-        <div class="container_center_header">
-          <h1>请点击右侧选择查询日期</h1>
-          <el-select v-model="region" placeholder @change="chickvalue(region)">
-            <el-option
-              :value="item.reporting"
-              v-for="(item,index) in time"
-              :key="index"
-              @click="getindex(item.reportingYear,item.reportingType)"
-            ></el-option>
-          </el-select>
-        </div>
-        <div class="container_center_body">
-          <h1>关键财务数据</h1>
+            <!-- <h2>查询日期</h2> -->
+          <h2>关键财务数据</h2>
           <div>
-            <div>
-              <h3 title="总营收平均值">总营收平均值</h3>
-              <h2>{{Finance.averageTotalRevenue}}亿</h2>
-            </div>
-            <div>
-              <h3 title="净利润平均值">净利润平均值</h3>
-              <h2>{{Finance.averageNetProfit}}亿</h2>
-            </div>
-            <div>
-              <h3 title="ROE平均值">ROE平均值</h3>
-              <h2>{{Finance.averageReturnOnEquity}}%</h2>
-            </div>
-            <div>
-              <h3 title="营收增长率平均值">营收增长率平均值</h3>
-              <h2>{{Finance.increaseRateOfBusinessRevenue}}%</h2>
-            </div>
-            <div>
-              <h3 title="净利润增长率平均值">净利润增长率平均值</h3>
-              <h2>{{Finance.netProfitMarginOnSales}}%</h2>
-            </div>
-            <div>
-              <h3 title="净利润率平均值">净利润率平均值</h3>
-              <h2>{{Finance.returnOnEquity}}%</h2>
-            </div>
-
-      
+            <h2>查询年份</h2>
+              <el-select v-model="region" placeholder @change="chickvalue(region)" style="width:200px;" class="input1">
+                  <el-option
+                    :value="item.reporting"
+                    v-for="(item,index) in time"
+                    :key="index"
+                    @click="getindex(item.reportingYear,item.reportingType)"
+                  ></el-option>
+              </el-select>
           </div>
-          <div class="charts">
+      
+        </div>
+        <div class="container_left_title">
+          <!-- <h2>关键财务数据</h2> -->
+            <div>
+              <div>
+                <h3 title="总营收平均值">总营收平均值</h3>
+                <h2>{{Finance.averageTotalRevenue}}亿</h2>
+              </div>
+              <div>
+                <h3 title="净利润平均值">净利润平均值</h3>
+                <h2>{{Finance.averageNetProfit}}亿</h2>
+              </div>
+              <div>
+                <h3 title="ROE平均值">ROE平均值</h3>
+                <h2>{{Finance.averageReturnOnEquity}}%</h2>
+              </div>
+              <div>
+                <h3 title="营收增长率平均值">营收增长率平均值</h3>
+                <h2>{{Finance.increaseRateOfBusinessRevenue}}%</h2>
+              </div>
+              <div>
+                <h3 title="净利润增长率平均值">净利润增长率平均值</h3>
+                <h2>{{Finance.netProfitMarginOnSales}}%</h2>
+              </div>
+              <div>
+                <h3 title="净利润率平均值">净利润率平均值</h3>
+                <h2>{{Finance.returnOnEquity}}%</h2>
+              </div>
+          </div>
+        </div>
+        <div class="container_left_box"> 
             <indexZZT id="ZZT" :region="region"></indexZZT>
             <indexZXT1 id="ZXT" :region="region"></indexZXT1>
+            <indexZXT2 id="ZXT1" :region="region"></indexZXT2>
+       
+        </div>
+            
+           
+      </div>
+      <div class="container_right">
+        <div class="container_right_header"> 
+          
+          <div class="container_right_header_title">
+            <h1>并购信息</h1>
+            <h2 @click="btn1">更多</h2>
+          </div>
+           <div class="container_left_header_tab">
+            <el-table :data="Merger" style="width: auto" fit:true  border> 
+              <el-table-column prop="acquiringfirm" label="收购方" min-width="75x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
+              <el-table-column prop="acquiree" label="被收购方" min-width="90px" :show-overflow-tooltip="true" align="left"></el-table-column>
+              <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="left"></el-table-column>
+              <el-table-column prop="capital" label="资金" min-width="50px" :show-overflow-tooltip="true" align="left"></el-table-column>
+              <el-table-column prop="ratio" label="占比" min-width="40px" :show-overflow-tooltip="true" align="left"></el-table-column>
+            </el-table>
           </div>
         </div>
-      </div>
-      <!-- right -->
-      <div class="container_right">
-        <industrydata></industrydata>
-        <div>
-            <indexZXT2 id="ZXT1" :region="region"></indexZXT2>
+        <div class="container_right_body">
+          <industrydata></industrydata>
+
         </div>
+        <div class="container_right_footer">
+          <div class="timecharts">
+            <Timetomarket></Timetomarket>
+          </div>
+        </div>
+
       </div>
-
     </div>
-
     <!-- 并购详情页面 -->
     <div v-show="show1">
       <Acquisitiondetails></Acquisitiondetails>
@@ -93,10 +97,9 @@
 
 <script>
 
-// 引入axios
-import axios from "axios";
+
 // 引入并购详情也
-import Acquisitiondetails from "../components/Acquisitiondetails";
+import Acquisitiondetails from "../components/Table/Acquisitiondetails";
 // 行业数据资料
 import industrydata from "../components/industrydata";
 // 引入vuex的数据
@@ -137,6 +140,7 @@ export default {
   methods: {
     ...mapMutations(["display"]),
     btn1() {
+      // 跳转详情页
       this.display();
     },
     chickvalue(msg) {
@@ -153,19 +157,19 @@ export default {
   },
   mounted() {
     // 获取收并购信息
-    axios.get("/api/listedCompany07?topcount=5").then(res => {
+    this.axios.get("/api/listedCompany07?topcount=5").then(res => {
         this.Merger = res.data.data;
       });
 
     // 获取时间列表
-    axios.get("/api/listedCompany10").then(res => {
+    this.axios.get("/api/listedCompany10").then(res => {
       this.time = res.data.data;
         //  console.log(res.data.data[0].reporting )
       this.region = res.data.data[0].reporting; //获取数据第一条数据
       this.year = this.region.slice(0, 4); //获取到初始的时间
       this.id = encodeURI(this.region.slice(4)); //获取到初始的id
       // 获取关键财务数据
-      axios.get("/api/listedCompany09?reportingType="+this.id +"&reportingYear=" +this.year).then(res => {
+      this.axios.get("/api/listedCompany09?reportingType="+this.id +"&reportingYear=" +this.year).then(res => {
           this.Finance = res.data.data[0];
       });
     });
@@ -177,142 +181,123 @@ export default {
 };
 </script>
 <style scoped>
-.container {
-  width: 100%;
+.container_left_header{
   display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  background: #7a879b;
+  line-height: 57px;
+  justify-content: space-between
+
+}
+.container_left_header>h2{
+  font-size: 14px;
+  font-weight:600;
+  color: #fff;
+  line-height: 57px;
+  text-indent: 20px
+}
+.container_left_header>div>h2{
+  font-size: 14px;
+  color: #fff;
+  margin-right: 7px
+}
+.container_left_header>div{
+  display: flex;
+  margin-right: 13px
+}
+.container{
+  padding: 10px 10px;
+  display: flex;
+  background: #fff
+}
+.container_left{
+  border: 1px solid #f0f0f0;
+  width: 60%;
+   background: #fff;   /*最后替换为白色 */
+  padding:  10px
+}
+.container_left_title>h2{
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0
+  
+}
+.container_left_title>div{
+  display: flex;
+  margin-top: 12px;
   justify-content: space-around;
-  background: #eee;
-  box-sizing: border-box;
-  /* min-width: 1136px; */
-  /* position: fixed; */
-  /* height: 893px */
-}
-.container > div {
-  width: 32%;
-  margin-top: 8px;
-background: #eee
-}
-/* .container > div:nth-of-type(2){
-  border: 1px solid #e0dfe8
-} */
-
-.container_left_header_tab {
-  overflow: hidden;
-  text-align: center;
-}
-.el-table td,
-.el-table th {
-  padding: 0;
-}
-.el-table--enable-row-transition .el-table__body td {
-  height: 100px;
-}
-.container_left_header {
-  border: 1px solid #e5e5e5;
-  position: relative;
-  height: 469px;
-  background: #fff
-}
-.container_left_header > h1 {
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  color: #333;
-  background: #ffffff;
-  font-weight: 500
-}
-.h2position > h2 {
-  text-align: right;
-  color: #2cabe3;
-  font-size: 12px;
-  cursor: pointer;
-  line-height: 40px;
-  width: 100px;
-  margin-left: 68%;
-  text-decoration: underline
-}
-.container_center_header {
-  display: flex;
-  /* justify-content: space-around; */
-  line-height: 50px;
-  white-space: nowrap;
-  background: #fff;
-  padding: 0 10px
-}
-.container_center_header > h1 {
-  font-size: 16px;
-  color: #333;
-  margin-right: 2%;
-  font-weight: 500
-}
-.container_center_body {
-  line-height: 50px;
-  /* padding-top: 12px; */
-  color: #333;
-  text-align: center;
-  background: #fff
-}
-.container_center_body > h1 {
-  font-size: 14px;
-  background: #fff;
-  line-height: 1;
-  text-align: left;
-  margin-left:10px;
-  /* font-weight: 500 */
-}
-.container_center_body > div:nth-of-type(1) {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   margin-bottom: 12px;
-  padding: 0 10px;
+  border: 1px solid #f0f0f0;
+  height: 97px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
 }
-.container_center_body > div:nth-of-type(1) > div {
-  width: 30%;
-  border: 1px solid #e5e5e5;
-  margin-top: 12px;
+.container_left_title>div>div{
+  width: 16%;
+  /* border: 1px solid #f0f0f0; */
+  text-align: center;
   border-radius: 5px;
-  /* min-width:  124px;  */
-  height: 66px;
-}
 
-.container_center_body > div > div > h3 {
-  font-size: 14px;
-  line-height: 1;
-  color: #666;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-top: 12px;
-  font-weight: 500
 }
-.container_center_body > div > div > h2 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-  color: #333;
-  margin-top: 12px;
+.container_left_title>div>div>h3{
+  font-size: 12px;
+    line-height: 1;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 29px;
+    font-weight: 500;
+}
+.container_left_title>div>div>h2{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fd7858;
+    margin-top: 10px
 }
 #ZXT{
-  margin-top: 12px
+  margin: 12px 0
 }
-#ZXT1{
-  margin-top: 12px;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-  padding-bottom: 30px;
+
+.container_right{
+  width: 40%;
+  height: 100%;
+   padding:  10px;
+  margin-left: 10px;
+  border: 1px solid #f0f0f0;
   background: #fff
 }
-.h2position{
-background: #ffffff
+/* .container_right_header>h1{
+  font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    line-height: 40px;
+    border-bottom: 1px solid #f0f0f0;
+    text-indent: 10px;
+    background: #fff
+} */
+.container_right_header_title{
+  display: flex;
+  justify-content: space-between;
+  line-height: 39px;
+  border-bottom: 1px solid #e0dfe8 
 }
-.charts{
-  padding: 0 10px 0 8px;
-  box-sizing: border-box;
-  padding-bottom: 12px
+.container_right_header_title>h1{
+  font-size: 14px;font-weight: 500;
+  color: #666;
+
 }
-.timecharts{
-  margin-top: 12px
+
+.container_right_header_title>h2{
+  font-size: 12px;font-weight: 500;
+  color: #2cabe3;
+    cursor: pointer;
+  text-decoration: underline
+}
+.container_right_body{
+  margin:12px 0
 }
 
 </style>
@@ -350,5 +335,10 @@ background: #ffffff
 }
 .container_left_header .el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
   padding: 5px
+}
+.container_left_header .input1 .el-input__inner{
+  background: #7a879b;
+  border-color: #adb5c1;
+  color: #ebe8e8
 }
 </style>

@@ -14,7 +14,10 @@ export default {
       reportingYear: [], //时间表
       data: [],
       data1: [],
-      data2: []
+      data2: [],
+      data3:[],
+      data4:[],
+      data5:[],
     };
   },
   watch: {
@@ -25,63 +28,68 @@ export default {
         var year = [];
         var name = [];
         newVal.forEach(item => {
-          // console.log(item.incomeName.slice(0,4))
+          // console.log(item.incomeMoney)
           year.push(item.reportingYear);
           name.push(item.incomeName.slice(0,4));    //限制只显示前4位
-          // es6方法，ie不支持
-          // this.reportingYear = new Set(year); //获取到公用的时间
-          // var names = new Set(name); //保存公用的title名称
-          // this.incomeName = [...names]; //因为使用set方法，所以必须在结构函数一下
-        });
 
+        });
+        
         function unique(year) {
-          return year.filter(function(item, index, year) {
-          return year.indexOf(item, 0) === index;
-          });
+            return year.filter(function(item, index, year) {
+                return year.indexOf(item, 0) === index;
+            });
         }
         this.reportingYear=unique(year)
         this.incomeName=unique(name)
-  
-
+      // console.log(this.reportingYear)
+    
         // 每一次都清空数组
         this.data = [];
         this.data1 = [];
         this.data2 = [];
-
-        var ljf = newVal.filter(item => item.incomeName == "垃圾费");
-        ljf.forEach(item => {
+        this.data3 = [];
+        this.data4 = [];
+        this.data5 = [];
+        var list=newVal.filter(item=>item.incomeName==this.incomeName[0])
+         list.forEach(item => {
             this.data.push(item.incomeMoney);
-        });
-        var gtf = newVal.filter(item => item.incomeName == "公摊费");
-        gtf.forEach(item => {
+         });
+        // console.log(this.data)
+        var list1=newVal.filter(item=>item.incomeName==this.incomeName[1])
+         list1.forEach(item => {
             this.data1.push(item.incomeMoney);
-        });
+         });
+        // console.log(this.data1)
 
-        var qjf = newVal.filter(item => item.incomeName == "清洁费");
-        qjf.forEach(item => {
+        var list2=newVal.filter(item=>item.incomeName==this.incomeName[2])
+         list2.forEach(item => {
             this.data2.push(item.incomeMoney);
-        });
-        var wyf = newVal.filter(item => item.incomeName == "物业费");
-        wyf.forEach(item => {
-            this.data.push(item.incomeMoney);
-        });
-        var gcf = newVal.filter(item => item.incomeName == "工程费");
-        gcf.forEach(item => {
-            this.data1.push(item.incomeMoney);
-        });
+         });
+        // console.log(this.data2)
+         var list3=newVal.filter(item=>item.incomeName==this.incomeName[3])
+         list3.forEach(item => {
+            this.data3.push(item.incomeMoney);
+         });
 
-
+          var list4=newVal.filter(item=>item.incomeName==this.incomeName[4])
+         list4.forEach(item => {
+            this.data4.push(item.incomeMoney);
+         });
+          var list5=newVal.filter(item=>item.incomeName==this.incomeName[5])
+         list5.forEach(item => {
+            this.data5.push(item.incomeMoney);
+         });
 
         // 图表设置信息
         const option = {
           backgroundColor: "#f0eded",
           title: {
             text: "收入构成",
-            x: "10",
+            top:0,
             y: 20,
             textStyle: {
               color: "#333",
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: "500"
             }
           },
@@ -103,7 +111,7 @@ export default {
             data: this.incomeName,
             textStyle: {
               color: "#3B53A2",
-              fontSize: 12
+              fontSize: 10
             },
             itemWidth: 10, // 标志图形的长度
             itemHeight: 10, // 标志图形的宽度
@@ -113,11 +121,10 @@ export default {
             right: 0 //点的位置
           },
           grid: {
-            x: "0%",
-            width: "100%",
-            y: "30%",
-            bottom: "10%"
-            // containLabel: true
+              top: "28%",
+              right: "4%",
+              left: "8%",
+              bottom: "10%"
           },
           xAxis: {
             type: "category",
@@ -125,7 +132,7 @@ export default {
             data: this.reportingYear, //时间数据入口
             axisLine: {
               lineStyle: {
-                color: "#B4B4B4"
+                color: "#666"
               }
             },
             axisTick: {
@@ -133,31 +140,24 @@ export default {
             }
           },
           yAxis: {
-            show: false,
-            type: "value",
-            axisLabel: {
-              color: "#3B53A2",
-              fontSize: "30",
-              interval: 0
-              //   formatter: '{value}元'
-            },
-            axisLine: {
-              lineStyle: {
-                color: "#3B53A2",
-                type: "solid" //'dotted'虚线 'solid'实线
+             show: true,
+              splitLine: {
+                show: true
+              },
+              axisLine: {
+                show:true,
+                lineStyle: {
+                  color: "#666"
+                }
+              },
+              axisLabel: {
+                // formatter: "{value} "
               }
-            },
-            splitLine: {
-              show: true,
-              lineStyle: {
-                color: "#CDD9F0"
-              }
-            }
           },
           series: [
             {
               symbolSize: 14, //拐点圆的大小
-              name: this.incomeName[1],
+              name: this.incomeName[0],
               type: "line",
 
               lineStyle: {
@@ -174,7 +174,7 @@ export default {
             },
             {
               symbolSize: 14, //拐点圆的大小
-              name: this.incomeName[0],
+              name: this.incomeName[1],
               type: "line",
               lineStyle: {
                 color: "#70ad47", //连线颜色
@@ -199,7 +199,49 @@ export default {
               },
               smooth: true,
               data: this.data2 //数据入口
-            }
+            },
+            {
+              symbolSize: 14, //拐点圆的大小
+              name: this.incomeName[3],
+              type: "line",
+              lineStyle: {
+                color: "yellow", //连线颜色
+                width: 3 //宽度
+              },
+              itemStyle: {
+                color: "yellow" //连线颜色
+              },
+              smooth: true,
+              data: this.data3 //数据入口
+            },
+            {
+              symbolSize: 14, //拐点圆的大小
+              name: this.incomeName[4],
+              type: "line",
+              lineStyle: {
+                color: "#F656B6", //连线颜色
+                width: 3 //宽度
+              },
+              itemStyle: {
+                color: "#F656B6" //连线颜色
+              },
+              smooth: true,
+              data: this.data4 //数据入口
+            },
+                    {
+              symbolSize: 14, //拐点圆的大小
+              name: this.incomeName[5],
+              type: "line",
+              lineStyle: {
+                color: "C5C99C", //连线颜色
+                width: 3 //宽度
+              },
+              itemStyle: {
+                color: "#C5C99C" //连线颜色
+              },
+              smooth: true,
+              data: this.data5 //数据入口
+            },
           ]
         };
         //初始化图表
@@ -215,20 +257,17 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   props: ["SRGC"],
-  mounted() {
+  mounted(){
     const chartObj = echarts.init(document.getElementById("14"));
-    window.addEventListener("resize", () => {
-      chartObj.resize();
-    });
-  },
-  methods: {}
+    window.addEventListener("resize", () => { chartObj.resize();});
+  }
 };
 </script>
 <style  scoped>
 .ECHARTS {
  width: 100%;
  margin: 0 auto;
-  min-width: 270px;
-  height: 240px;
+min-width: 270px;
+height: 240px;
 }
 </style>

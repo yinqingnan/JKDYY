@@ -52,13 +52,7 @@ export default {
 
 
 <style >
-.ulul:hover .yc {
-    /* display: block; */
-    opacity: 1;
-}
-.yc{
-    transition: all 1s
-}
+
 .yc>span{
 
     display: block;
@@ -72,19 +66,21 @@ export default {
 }
 
 .TimeAxis{
-    height: 130px
+    height: 80px
 }
 .TimeAxis>h1{
     font-size: 16px;
     line-height: 1;
     margin: 16px 0 16px 26px;
+    font-weight: 500
 }
 
 .TimeAxis>div{
-    width: 80%;
+    width: 93%;
     border: 1px solid #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
+    left: -63px
 
 }
 .TimeAxis>div>span{
@@ -140,17 +136,36 @@ export default {
     height: 60px;
     border-radius: 5px;
     background: #c9e4f0;
-    /* display: none; */
     opacity: 0;
+    z-index: -1
     
 }
+.ulul:hover .yc {
+    opacity: 1;
+    z-index: 1;
+    
+}
+.TimeAxis>div>div>ul>li{
+    transition: all 0.5s
+}
+.TimeAxis>div>div>ul>li:hover{
+    background: #688fe4
+
+}
 .yc{
+    transition: all 1s
+}
+.TimeAxis>div>div>ul:nth-of-type(1){
+    left: 20px
+}
+.TimeAxis>div>div>ul:last-child{
+    right: 20px
 }
 .yc>h1{
-    font-size: 14px;
+    font-size: 12px;
     color:#333;
-    font-weight: 600;
-    margin-top: 22px;
+    font-weight: 500;
+    margin-top: 16px;
     line-height: 1;
     font-size: 14px;
       overflow: hidden;
@@ -159,8 +174,8 @@ export default {
 
 }
 .yc>h3{
-    font-size: 14px;
-    color:#666;
+    font-size: 12px;
+    color:#999;
     margin-top: 4px;
     font-weight: 500;
     line-height: 1;

@@ -9,7 +9,7 @@
           <i class="el-icon-back " ></i>返回项目
         </button>
 
-        <h3 style="margin:0 auto">{{projectName}}合同台账</h3>
+        <h3 style="margin:0 auto">{{projectName}}设施设备台账</h3>
  
          <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;margin-right:10px" 
             placeholder="请输入设备名称进行查询">

@@ -47,79 +47,48 @@ export default {
 
             // 柱状图表设置信息
             const option = {
-              backgroundColor: "#fff",
+              backgroundColor: "#f0eded",
               title:[
-                 {text: '上市公司规模',
-                    x: 'center',
-                     padding: [0,0, 0, 0], //上右下左
-                    y: 20,
+                 {
+                  text: "单位：亿m²",
+                x: 20,
+                // padding: [0, 0, 0, "20px"], //上右下左
+                y: 28,
                 textStyle: {
-                  color: "#333",
-                  fontSize: 16,
-                  fontWeight: "500"
+                  color: "#999",
+                  fontSize: 12,
+                  fontWeight: "600"
                 }
-                },
-                {text: '面积：亿m²',
-                    x: 'right',
-                     padding: [0,58, 0, 0], //上右下左
-                    y: 48,
-                textStyle: {
-                  color: "#666",
-                  fontSize: 10,
-                  fontWeight: "500"
-                }
-                },
-                {text: '收费单价：元/m²/月',
-                    x: 'right',
-                    padding: [0, 20, 0, 0], //上右下左
-                    y: 64,
-                    textStyle: {
-                      color: "#666",
-                      fontSize: 10,
-                      fontWeight: "500"
-                    }
-                
                 },
 
-                {text: '项目数量：个',
-                   x: 'right',
-                   padding: [0, 52, 0, 0], //上右下左
-                    y: 82,
-                    textStyle: {
-                      color: "#666",
-                      fontSize: 10,
-                      fontWeight: "500"
-                    }
-                
-                
-                }
                 ],
-              // "tooltip": {             //鼠标经过是否显示弹窗
-              //     "trigger": "axis",
-              //     "axisPointer": {
-              //         "type": "shadow",
-              //         textStyle: {
-              //             color: "#fff"
-              //         }
-
-              //     },
-              // },
+              tooltip: {             //鼠标经过是否显示弹窗
+                  "trigger": "axis",
+                  "axisPointer": {
+                      "type": "shadow",
+                      textStyle: {
+                          color: "#fff"
+                      }
+                  },
+              },
               grid: {
-                top: "30%",
-                right: "10%",
-                left: "0%",
-                bottom: "4%",
-                containLabel: true
+                 top: "20%",
+                right: "8%",
+                left: "10%",
+                bottom: "20%"
               },
               legend: {
-                x: "12%",
+                right:"10",
                 top: "10%",
+                icon:"react",
                 inactiveColor:"#999",
+                 itemWidth: 9, // 设置宽度
+                itemHeight: 9 ,// 设置高度
                 textStyle: {
                         color: "#333",
-                        fontSize: 14
+                        fontSize: 12
                 },
-                data: ["面积", "平均单价", ""],
+                data: ["面积", "项目"],
                 // orient: "vertical", //垂直显示
                 selectedMode: "single" //强制多选（multiple）或单选（single）
               },
@@ -128,50 +97,55 @@ export default {
               xAxis: [
                 {
                   type: "category",
+                  color: "#59588D",
+                  data: this.companyName, //X轴数据入口
+
                   axisLine: {
                     lineStyle: {
-                      color: "#333"
+                      color: "#999" //X轴颜色
                     }
                   },
-                  splitLine: {
-                    show: false
+                  axisLabel: {
+                    interval:0,
+                    rotate:40,
+                    color: "#333",
+                    // formatter: function(value) {
+                    //   //X轴文字众向排列
+                    //   return value.split("").join("\n");
+                    // },
+                    textStyle: {
+                      fontSize: 12,
+                      color: "#8f8f8f"
+                    }
                   },
                   axisTick: {
                     show: false
-                  },
-                  splitArea: {
-                    show: false
-                  },
-                  axisLabel: {
-                      interval:0,  
-                      color: '#333',
-                      formatter: function (value) {               //X轴文字众向排列
-                              return value.split("").join("\n")
-                          }
-                  },
-                  data: this.companyName//X轴名称接口
+                  }
                 }
               ],
               yAxis: [
-                {
-                  show: false,
-                  type: "value",
-                  splitLine: {
-                    show: false
+               {
+                  show: true,
+                  min: 0,
+                  // max: 100,
+                  axisLabel: {
+                    // formatter: '{value}%',
+                    color: "#999"
                   },
                   axisLine: {
                     lineStyle: {
-                      color: "#90979c"
+                      color: "#999" //X轴颜色
                     }
                   },
-                  axisTick: {
-                    show: false
+                  splitLine: {
+                    show: true, //横向基准线
+                    lineStyle: {
+                      color: "#999"
+                    }
                   },
-                  axisLabel: {
-                    interval: 0
-                  },
-                  splitArea: {
-                    show: false
+                  textStyle: {
+                      fontSize: 12,
+                      color: "#999"
                   }
                 }
               ],
@@ -182,55 +156,65 @@ export default {
                   
                   // "stack": "总量",
                   barMaxWidth: 35,
+                  symbol: "rect",
                   barGap: "10%",
                   itemStyle: {
                     normal: {
-                      color: "#666",
-                      label: {
-                        show: true,
-                        textStyle: {
-                          color: "#333"
+                      color: "#f594be",
+                        lineStyle: {
+                          color: "#f594be",       //折现颜色
+                          width: 1
                         },
-                        position: "insideTop",
-                        formatter: function(p) {
-                          return p.value > 0 ? p.value : "";
-                        }
-                      }
+                      // label: {
+                      //   show: true,
+                      //   textStyle: {
+                      //     color: "#f594be"
+                      //   },
+                      //   position: "insideTop",
+                      //   formatter: function(p) {
+                      //     return p.value > 0 ? p.value : "";
+                      //   }
+                      // }
                     }
                   },
                   data: this.contractArea
                 },
 
-                {
-                  name: "平均单价",
-                  type: "line",
-                  barGap: "10%",
-                  barMaxWidth: 35,
-                  // "stack": "总量",
-                  itemStyle: {
-                    normal: {
-                      color: "#666",
-                      barBorderRadius: 0,
-                      label: {
-                        show: true,
-                        position: "top",
-                        formatter: function(p) {
-                          return p.value > 0 ? p.value : "";
-                        }
-                      }
-                    }
-                  },
-                  data: this.averageChargeUnitPrice
-                },
+                // {
+                //   name: "平均单价",
+                //   type: "line",
+                //   barGap: "10%",
+                //   barMaxWidth: 35,
+                //   // "stack": "总量",
+                //   itemStyle: {
+                //     normal: {
+                //       color: "#63B8FF",
+                //        lineStyle: {
+                //         color: "#63B8FF",       //折现颜色
+                //         width: 1
+                //       },
+                //       barBorderRadius: 0,
+                //       label: {
+                //         show: true,
+                //         position: "top",
+                //         formatter: function(p) {
+                //           return p.value > 0 ? p.value : "";
+                //         }
+                //       }
+                //     }
+                //   },
+                //   data: this.averageChargeUnitPrice
+                // },
                 {
                   name: "项目",
                   type: "bar",
                   // "stack": "总量",
                   symbolSize: 4,           //拐点大小
-                  symbol: "circle",
+                  symbol: "rect",
                   itemStyle: {
                     normal: {
                       color: "#2cabe3",
+                     
                       barBorderRadius: 0,
                       label: {
                         show: true,
@@ -270,6 +254,6 @@ export default {
   width: 100%;
   margin: 0 auto;
   min-width: 310px;
-  height: 468px;
+  height: 270px;
 }
 </style>

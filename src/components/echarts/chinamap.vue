@@ -108,6 +108,13 @@ export default {
                 }                         
         },
 
+        // grid: {
+        // left: "0%",
+        // top: "50%",
+        // bottom: "0%",
+        // right: "50%",
+        // containLabel: false
+        // },
         dataRange: {
           show: false,
           // min: 0,

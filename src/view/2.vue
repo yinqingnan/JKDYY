@@ -7,10 +7,12 @@
                 :class="{active:index == num}"
                 :title="item.companyName"
                 >{{item.companyName}}</li>
+                
+            
             </ul>
             <i class="el-icon-d-arrow-right rightbtn" @click="rightbtn"></i>
         </div>
-       
+       <!-- {{list}} -->
         <div>
             <Listedcompany v-if="show" ></Listedcompany>
             <Companylist v-if="isshow" :nameid="nameid" ref="headerChild"></Companylist>
@@ -53,7 +55,6 @@ export default {
     methods: {
         ...mapMutations(["display1"]),
         btn(id,index) {
-            // console.log(this.$refs.headerChild.num)
             this.num = index;
            if(index==0){
                this.isshow=false
@@ -73,20 +74,21 @@ export default {
         },
         rightbtn(){
              this.number--
-            if(this.number>=-8){
+            if(this.number>=-9){
                 this.$refs.tabs.style.left=(this.number*90)+"px"
             }else{
-               this.number=-8
+               this.number=-9
             }
         }
     },
     mounted() {
-        // 获取上市公示列表数据
-        this.axios.get('/api/listedCompany01')
-        .then((res)=>{
+        this.axios.get("/api/listedCompany01").then((res)=>{
             // console.log(res.data.data)
-            this.list=res.data.data 
+            this.list=res.data.data
             res.data.data.unshift(this.index)
+            // res.data.data.forEach(element => {
+            //     this.list.push(element.companyName)
+            // });
         })
     },
         computed: {
@@ -103,18 +105,15 @@ export default {
 }
 .active{
     color: #49a4d9;
-    border-bottom: 2px solid #49a4d9
+    border-bottom: 2px solid #49a4d9;
 }  
 .tab{
     width: 100%;
     display: flex;
-    background: #ececec;
-    /* min-width: 1136px; */
     box-sizing: border-box;
     position: absolute;
     left:12px;
     transition: all 1s
-    /*   最大412px */
 }
 
 .tab>li{
@@ -123,20 +122,14 @@ export default {
     cursor: pointer;
     margin-right: 16px;
     white-space:nowrap;
-    /* min-width:64px; */
-    /* overflow: hidden; */
     text-align: center;
-    /* text-overflow:ellipsis; */
 }
 .nav{
-    /* box-sizing: border-box; */
-    background: #eee;
-    height: 42px;
+    height: 44px;
     overflow: hidden;
-    min-width: 1136;
     padding: 0 30px;
     position: relative;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 .leftbtn{
     position: absolute;
@@ -150,7 +143,6 @@ export default {
     height: 100%;
     z-index: 2;
     transition: all 0.8s
-    /* display: none */
 }
 .rightbtn{
     position: absolute;

@@ -353,7 +353,7 @@ export default {
             console.log(res.data.data);
             this.tablemsg=res.data.data
             this.tablemsgmsg=res.data.data
-            this.number = null;
+            this.number = 0;
             this.totalCount = res.data.data.length;
             res.data.data.forEach(item=>{
                 this.number+=item.projectCount
@@ -361,13 +361,7 @@ export default {
           });
       });
 
-    //   });
-    // this.axios
-    //   .get("/api/companIdOrName?companIdOrName=" + this.$route.query.qyid)
-    //   .then(res => {
-    //     // console.log(res.data.data[0].companyName)
-    //     this.projectName = res.data.data[0].companyName;
-    //   });
+
 
     this.getheight();
   },
@@ -385,7 +379,7 @@ export default {
         this.axios.get("/api/projectTotalRevenue?year="+this.year +"&projectId=" +this.xmid +"&companyID=" +res.data.data[0].companyId).then(res => {
             this.tablemsg=res.data.data
             this.tablemsgmsg=res.data.data
-            this.number = null;
+            this.number = 0;
             this.totalCount = res.data.data.length;
             res.data.data.forEach(item=>{
                 this.number+=item.projectCount
@@ -427,7 +421,12 @@ export default {
         if (column.property == "projectCount") {
           //  console.log(column.property)
           sums[index] = values.reduce(() => {
-            return this.number;
+           
+            if(this.number==0){
+              return 0
+            }else{
+               return this.number.toFixed(2)
+            }
           }, 0);
         } 
        

@@ -114,7 +114,7 @@ export default {
                 }
             },
             itemStyle: {
-                color: '#E8A61F'
+                color: '#E8A61F'        //小圆点颜色
             },
             data:[{
                 value:this.bjData[0],
@@ -177,7 +177,7 @@ export default {
             barWidth:16,
             stack: '危货种类占比',
             itemStyle: {
-                color: '#E67C26'
+                color: '#E67C26'            //小圆点颜色
             },
             label: {
                 normal: {
@@ -255,7 +255,7 @@ export default {
             barWidth:16,
             stack: '危货种类占比',
             itemStyle: {
-                color: '#0CD8A7'
+                color: '#39A8F7'                //小圆点颜色
             },
             label: {
                 normal: {

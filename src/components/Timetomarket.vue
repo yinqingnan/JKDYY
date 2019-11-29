@@ -82,7 +82,7 @@ export default {
     width: 100%;
     background:#fff;
     position: relative;
-    height: 337px;
+    height: 281px;
     border: 1px solid #e5e5e5;
 }
 .line{
@@ -118,7 +118,7 @@ export default {
     position: absolute;
     top: -15px;
     width: 100%;
-    height: 244px;
+    height: 207px;
     overflow-y: hidden;
     /* 当IE下溢出，仍然可以滚动*/ 
     -ms-overflow-style:none;
@@ -144,7 +144,7 @@ export default {
     flex-wrap: wrap;
     text-align: center;
     position: relative;
-    margin:0 10px;
+    /* margin:0 10px; */
 }
 .box_header>div>ul>li{
     font-size: 12px;
@@ -155,17 +155,20 @@ export default {
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+    line-height: 1;
+    margin-top: 6px
 }
 .year{
-    width: 30px !important;
-    height: 30px !important;
+    width: 46px !important;
+    height: 46px !important;
     /* text-indent: 0px !important; */
     background: #2cabe3;
     border-radius: 50%;
     line-height: 30px;
     color :#fff;
     font-weight: 600;
-    line-height: 30px !important;
+    line-height: 46px !important;
+    margin-top: 0 !important
 }
 .box>h1{
   font-size: 16px;
@@ -173,7 +176,10 @@ export default {
   text-align: center;
   background: #fff;
   color:#333;
-  font-weight: 500
+  font-weight: 500;
+  text-align: left;
+  text-indent: 10px;
+  /* padding: 0 6px */
 }
 
 </style>

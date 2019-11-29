@@ -78,7 +78,7 @@ export default {
     watch:{
         xmid:{
             handler(newval){
-                console.log(newval)
+                // console.log(newval)
                 // 获取重要提醒
                 this.id=newval
                 this.axios.get("/api/importantReminder02?topcount=10&projectId="+newval).then((res)=>{
@@ -110,7 +110,7 @@ export default {
 .title{
     font-size:20px;
     display:flex;
-    height: 50px;
+    height: 55px;
     /* justify-content: space-around; */
     border-bottom: 1px solid #f0f0f0
 }
