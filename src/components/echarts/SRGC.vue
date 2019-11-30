@@ -82,17 +82,26 @@ export default {
 
         // 图表设置信息
         const option = {
-          backgroundColor: "#f0eded",
-          title: {
+          backgroundColor: "#fff",
+          title: [{
             text: "收入构成",
             top:0,
             y: 20,
             textStyle: {
               color: "#333",
               fontSize: 14,
+              fontWeight: "600"
+            }
+          },{
+            text: "单位：百万",
+            top:36,
+            y: 20,
+            textStyle: {
+              color: "#666",
+              fontSize: 12,
               fontWeight: "500"
             }
-          },
+          },],
           tooltip: {
             tooltip: {
               trigger: "axis",
@@ -116,44 +125,57 @@ export default {
             itemWidth: 10, // 标志图形的长度
             itemHeight: 10, // 标志图形的宽度
             inactiveColor: "#CDD9F0",
-            top: 20,
-            icon: "circle", //点的形状
-            right: 0 //点的位置
+            top: 0,
+            icon: "ract", //点的形状
+            right: 20 //点的位置
           },
           grid: {
-              top: "28%",
-              right: "4%",
-              left: "8%",
-              bottom: "10%"
+             top: "26%",
+                right: "8%",
+                left: "8%",
+                bottom: "10%"
           },
-          xAxis: {
-            type: "category",
-            // boundaryGap: false,
-            data: this.reportingYear, //时间数据入口
+               xAxis: {
+            //x轴
+            show: true,
+            data: this.reportingYear, //时间接口
             axisLine: {
               lineStyle: {
-                color: "#666"
+                color: "#B4B4B4"
               }
             },
             axisTick: {
               show: false
             }
           },
-          yAxis: {
-             show: true,
+          yAxis:  {
+              
+            type: 'value',
+            // name: '体积',
+              position:'left',
+              show: true,
               splitLine: {
                 show: true
               },
               axisLine: {
                 show:true,
                 lineStyle: {
-                  color: "#666"
+                  color: "#999"
                 }
               },
-              axisLabel: {
-                // formatter: "{value} "
-              }
-          },
+                axisLabel: {
+                    interval:0,
+                    color: "#999",
+                    // formatter: function(value) {
+                    //   //X轴文字众向排列
+                    //   return value.split("").join("\n");
+                    // },
+                    textStyle: {
+                      fontSize: 12,
+                      color: "#8f8f8f"
+                    }
+                  },
+            },
           series: [
             {
               symbolSize: 14, //拐点圆的大小
@@ -177,11 +199,11 @@ export default {
               name: this.incomeName[1],
               type: "line",
               lineStyle: {
-                color: "#70ad47", //连线颜色
+                color: "#39c359", //连线颜色
                 width: 3 //宽度
               },
               itemStyle: {
-                color: "#70ad47" //连线颜色
+                color: "#39c359" //连线颜色
               },
               smooth: true,
               data: this.data1 //数据入口
@@ -191,11 +213,11 @@ export default {
               name: this.incomeName[2],
               type: "line",
               lineStyle: {
-                color: "red", //连线颜色
+                color: "#f19ec2", //连线颜色
                 width: 3 //宽度
               },
               itemStyle: {
-                color: "red" //连线颜色
+                color: "#f19ec2" //连线颜色
               },
               smooth: true,
               data: this.data2 //数据入口
@@ -268,6 +290,6 @@ export default {
  width: 100%;
  margin: 0 auto;
 min-width: 270px;
-height: 240px;
+height: 241px;
 }
 </style>

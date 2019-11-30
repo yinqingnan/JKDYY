@@ -69,7 +69,7 @@ export default {
                   fontWeight: "600"
                 }
               },
-              backgroundColor: "#f0eded",
+              backgroundColor: "#fff",
               grid: {
                 top: "20%",
                 right: "8%",
@@ -171,7 +171,7 @@ export default {
                       color: "#56a8e7", //拐点颜色
                       lineStyle: {
                         color: "#56a8e7", //折现颜色
-                        width: 1
+                        width: 2
                       }
                       // areaStyle: {
                       // 折线阴影
@@ -209,7 +209,7 @@ export default {
                       color: "#ff7676", //拐点颜色
                       lineStyle: {
                         color: "#ff7676", //折现颜色
-                        width: 1
+                        width: 2
                       }
                     }
                   },
@@ -237,7 +237,7 @@ export default {
                       color: "#39c359", //拐点颜色
                       lineStyle: {
                         color: "#39c359", //折现颜色
-                        width: 1
+                        width: 2
                       }
                     }
                   },
@@ -265,7 +265,7 @@ export default {
                       color: "#f594be", //拐点颜色
                       lineStyle: {
                         color: "#f594be", //折现颜色
-                        width: 1
+                        width: 2
                       }
                     }
                   },
@@ -292,7 +292,7 @@ export default {
                       color: "#a889e9", //拐点颜色
                       lineStyle: {
                         color: "#a889e9", //折现颜色
-                        width: 1
+                        width: 2
                       }
                     }
                   },

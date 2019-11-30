@@ -36,10 +36,10 @@ export default {
 .box{
     width: 100%;
     background: #fff;
-    height: 309px;
+    height: 265px;
     overflow: hidden;
     border: 1px solid #e5e5e5;
-    padding:  10px;
+    /* padding:  10px; */
     box-sizing: border-box;
     overflow-y:auto;
      /* 当IE下溢出，仍然可以滚动*/ 
@@ -51,15 +51,19 @@ export default {
 .box::-webkit-scrollbar {display:none}
 
 .box>h1{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #333;
-    line-height: 40px;
+    line-height: 44px;
+    text-indent:14px;
     /* margin-right: 100px; */
     border-bottom: 1px solid #f0f0f0
 }
 .box>ul{
     width: 100%;
+}
+.box>ul>li{
+    margin-left: 19px
 }
 .box>ul>li:nth-of-type(1){
     display: flex

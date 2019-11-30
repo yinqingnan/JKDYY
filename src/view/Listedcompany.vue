@@ -24,27 +24,27 @@
             <div>
               <div>
                 <h3 title="总营收平均值">总营收平均值</h3>
-                <h2>{{Finance.averageTotalRevenue}}亿</h2>
+                <h2>{{Finance.averageTotalRevenue}}<span>亿</span> </h2>
               </div>
               <div>
                 <h3 title="净利润平均值">净利润平均值</h3>
-                <h2>{{Finance.averageNetProfit}}亿</h2>
+                <h2>{{Finance.averageNetProfit}}<span>亿</span></h2>
               </div>
               <div>
                 <h3 title="ROE平均值">ROE平均值</h3>
-                <h2>{{Finance.averageReturnOnEquity}}%</h2>
+                <h2>{{Finance.averageReturnOnEquity}}<span>%</span></h2>
               </div>
               <div>
                 <h3 title="营收增长率平均值">营收增长率平均值</h3>
-                <h2>{{Finance.increaseRateOfBusinessRevenue}}%</h2>
+                <h2>{{Finance.increaseRateOfBusinessRevenue}}<span>%</span></h2>
               </div>
               <div>
                 <h3 title="净利润增长率平均值">净利润增长率平均值</h3>
-                <h2>{{Finance.netProfitMarginOnSales}}%</h2>
+                <h2>{{Finance.netProfitMarginOnSales}}<span>%</span></h2>
               </div>
               <div>
                 <h3 title="净利润率平均值">净利润率平均值</h3>
-                <h2>{{Finance.returnOnEquity}}%</h2>
+                <h2>{{Finance.returnOnEquity}}<span>%</span></h2>
               </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
             <h2 @click="btn1">更多</h2>
           </div>
            <div class="container_left_header_tab">
-            <el-table :data="Merger" style="width: auto" fit:true  border> 
+            <el-table :data="Merger" style="width: auto;height:312px" fit:true  border > 
               <el-table-column prop="acquiringfirm" label="收购方" min-width="75x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
               <el-table-column prop="acquiree" label="被收购方" min-width="90px" :show-overflow-tooltip="true" align="left"></el-table-column>
               <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="left"></el-table-column>
@@ -147,7 +147,7 @@ export default {
       let year = msg.slice(0, 4);
       let id =encodeURI(msg.slice(4));
       // 点击后再次赋值关键财务数据
-      axios.get("/api/listedCompany09?reportingType="+id+"&reportingYear="+year).then(res => {
+      this.axios.get("/api/listedCompany09?reportingType="+id+"&reportingYear="+year).then(res => {
         // console.log(res.data.data)
           // 再次赋值替换原数据
           this.Finance = res.data.data[0];
@@ -157,7 +157,7 @@ export default {
   },
   mounted() {
     // 获取收并购信息
-    this.axios.get("/api/listedCompany07?topcount=5").then(res => {
+    this.axios.get("/api/listedCompany07?topcount=7").then(res => {
         this.Merger = res.data.data;
       });
 
@@ -212,7 +212,7 @@ export default {
 }
 .container_left{
   border: 1px solid #f0f0f0;
-  width: 60%;
+  width: 59%;
    background: #fff;   /*最后替换为白色 */
   padding:  10px
 }
@@ -257,6 +257,9 @@ export default {
     color: #fd7858;
     margin-top: 10px
 }
+.container_left_title>div>div>h2>span{
+  font-size: 14px
+}
 #ZXT{
   margin: 12px 0
 }
@@ -264,25 +267,20 @@ export default {
 .container_right{
   width: 40%;
   height: 100%;
-   padding:  10px;
+   /* padding:  10px; */
   margin-left: 10px;
-  border: 1px solid #f0f0f0;
+  /* border: 1px solid #f0f0f0; */
   background: #fff
 }
-/* .container_right_header>h1{
-  font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    line-height: 40px;
-    border-bottom: 1px solid #f0f0f0;
-    text-indent: 10px;
-    background: #fff
-} */
+
 .container_right_header_title{
   display: flex;
   justify-content: space-between;
   line-height: 39px;
-  border-bottom: 1px solid #e0dfe8 
+  /* border-bottom: 1px solid #e0dfe8 ; */
+  padding: 0 10px;
+  border: 1px solid #e0dfe8;
+  border-bottom-color: transparent
 }
 .container_right_header_title>h1{
   font-size: 14px;font-weight: 500;
@@ -340,5 +338,8 @@ export default {
   background: #7a879b;
   border-color: #adb5c1;
   color: #ebe8e8
+}
+.container_left_header_tab .el-table td{
+  padding: 1.5px 0
 }
 </style>

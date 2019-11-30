@@ -18,7 +18,6 @@ import ZSR from "../components/Table/ZSR.vue"       //区域公司总收入详�
 import Xmzhsfl from "../components/Table/xmzhsfl.vue"       //区域公司总收入详情
 import Xmhttz from '../components/Table/xmhttz.vue'         //项目公司合同台账详情表格
 import Xmsbwx from '../components/Table/xmsbwx.vue'         //项目公司设备维修详情表格
-
 import Zhsjl from "../components/zhsjl/zhsjl.vue"           //综合收缴率主页面
 import Xqhz from "../components/zhsjl/xqhz.vue"             //子页面 小区汇总表
 import Sfkhz from "../components/zhsjl/sfkhz.vue"           //子页面 收费科汇总表
@@ -37,7 +36,7 @@ const  router = new VueRouter({
         {path:'/city',name:"City",component:City},            //城市数据详情页面   路由须携带参数指定城市名称   // http://localhost:8080/city?name=重庆
         {path:"/indexmap",name:"Indexmap",component:Indexmap},  //中国地图
         {path:"/regiontable",name:"Regiontable",component:Regiontable},     //区域公司项目表格 （在管项目 招标物业费 停车备案情况）
-        // {path:"/Applicationexperience",name:"Applicationexperience",component:Applicationexperience},
+
         {path:"/dyyd",name:"dyyd",component:Dyyd},              //当月用电详情表格
         {path:"/dyys",name:"dyys",component:Dyys},              //当月用水 详情表格
         {path:"/zsr",name:"zsr",component:ZSR},             //区域公司总收入详情表格

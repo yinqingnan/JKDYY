@@ -32,28 +32,50 @@ export default {
 
         // 图表设置信息
         const option = {
-          title: {
+          title: [
+            {
             text: "管理规模",
-
             top:0,
             y: 20,
             textStyle: {
               color: "#333",
               fontSize: 14,
+              fontWeight: "600"
+            }
+          },
+          {
+            text: "单位：个数",
+            top:36,
+            y: 20,
+            textStyle: {
+              color: "#666",
+              fontSize: 12,
               fontWeight: "500"
             }
           },
-          backgroundColor: "#f0eded",
+           {
+            text: "单位：平方",
+            top:36,
+            right:20,
+            // x: 20,
+            textStyle: {
+              color: "#666",
+              fontSize: 12,
+              fontWeight: "500"
+            }
+          },
+          ],
+          backgroundColor: "#fff",
           tooltip: {
             trigger: "axis",
             // backgroundColor: '#999',
-            axisPointer: {
-              type: "shadow",
-              label: {
-                show: true,
-                backgroundColor: "rgba(255,255,255,0.1)"
-              }
-            },
+                  axisPointer: {
+                  type: "shadow",
+                  label: {
+                    show: false, //是否出现title提示文字
+                    backgroundColor: "#7B7DDC"
+                  }
+                },
             formatter:function(a){
               if(a.length==1){
                 if(a[0].seriesName=="面积"){
@@ -69,16 +91,17 @@ export default {
           },
 
           legend: {
-            icon: "circle",
-            top: 20,
-            right: 0,
+            icon: "ract",
+            top: 0,
+            right: 20,
             textStyle: {
               color: "#333",
               fontSize: 12
             },
+            selectedMode: "multiple", //强制多选（ multiple ）或单选（ single ）
             data: ["面积", "项目数量"],
-            itemWidth: 10, // 设置宽度
-            itemHeight: 10 // 设置高度
+            itemWidth: 9, // 设置宽度
+            itemHeight: 9 // 设置高度
           },
           // toolbox: {
           //   feature: {
@@ -86,8 +109,8 @@ export default {
           //   }
           // },
           grid: {
-               top: "20%",
-                right: "4%",
+               top: "26%",
+                right: "8%",
                 left: "8%",
                 bottom: "10%"
           },
@@ -96,12 +119,24 @@ export default {
             data: this.category, //时间接口
             axisLine: {
               lineStyle: {
-                color: "#666"
+                color: "#999999"
               }
             },
             axisTick: {
               show: false
-            }
+            },
+              axisLabel: {
+                    interval:0,
+                    color: "#333",
+                    // formatter: function(value) {
+                    //   //X轴文字众向排列
+                    //   return value.split("").join("\n");
+                    // },
+                    textStyle: {
+                      fontSize: 12,
+                      color: "#8f8f8f"
+                    }
+                  },
           },
           yAxis: [
             {
@@ -112,33 +147,47 @@ export default {
               axisLine: {
                 show:true,
                 lineStyle: {
-                  color: "#666"
+                  color: "#999"
                 }
               },
-              axisLabel: {
-                // formatter: "{value} "
-              }
+                axisLabel: {
+                    interval:0,
+                    color: "#999",
+                    // formatter: function(value) {
+                    //   //X轴文字众向排列
+                    //   return value.split("").join("\n");
+                    // },
+                    textStyle: {
+                      fontSize: 12,
+                      color: "#8f8f8f"
+                    }
+                  },
             },
             {
-              show: false,
+              show: true,
               splitLine: {
                 show: false
               },
               axisLine: {
-                show: false,
+                show: true,
                 lineStyle: {
-                  color: "transparent"
+                  color: "#999"
                 }
               },
-              axisLabel: {
-                formatter: "{value} "
-              }
+             axisLabel: {
+                    interval:0,
+                    color: "#999",
+                    textStyle: {
+                      fontSize: 12,
+                      color: "#8f8f8f"
+                    }
+                  },
             }
           ],
           series: [
             {
               name: "面积",
-              type: "line",
+              type: "bar",
               smooth: true,
               showAllSymbol: true,
               symbol: "emptyCircle",
@@ -158,7 +207,7 @@ export default {
             },
             {
               name: "项目数量",
-              type: "bar",
+              type: "line",
               barWidth: 10,
               itemStyle: {
                 normal: {
@@ -167,11 +216,11 @@ export default {
                   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                     {
                       offset: 0,
-                      color: "#69b4e2"
+                      color: "#39c359"
                     },
                     {
                       offset: 1,
-                      color: "#688ee5"
+                      color: "#39c359"
                     }
                   ])
                 }
@@ -201,7 +250,7 @@ export default {
  width: 100%;
  margin: 0 auto;
 min-width: 270px;
-height: 240px;
+height: 241px;
 
 }
 </style>

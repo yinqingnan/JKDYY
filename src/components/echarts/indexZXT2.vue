@@ -47,7 +47,7 @@ export default {
 
             // 柱状图表设置信息
             const option = {
-              backgroundColor: "#f0eded",
+              backgroundColor: "#fff",
               title:[
                  {
                   text: "单位：亿m²",
@@ -163,7 +163,7 @@ export default {
                       color: "#f594be",
                         lineStyle: {
                           color: "#f594be",       //折现颜色
-                          width: 1
+                          width: 2
                         },
                       // label: {
                       //   show: true,

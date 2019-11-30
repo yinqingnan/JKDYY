@@ -44,7 +44,7 @@ export default {
 
             // 柱状图表设置信息
             const option = {
-              backgroundColor: " #f0eded",
+              backgroundColor: " #fff",
               title: [
                 {
                 text: "单位：百万元",
