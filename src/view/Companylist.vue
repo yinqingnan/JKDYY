@@ -1,71 +1,7 @@
 <template>
 <!-- 公司详情页面 -->
     <div>
-        <!-- <div class="container" :style="style">
-            <div class="container_left">
-                <div class="container_left_header ">
-                    <img :src="data.companyLogo" alt="">
-                    <h1>{{data.companyName}}在中国大陆布局图</h1>
-                </div>
-                <div class="container_left_body">
-                    <img :src="data.nationwideMap" alt="">
-                </div>
-            </div>
-            <div class="container_right">
-                <div class="container_right_header">
-                    <div>
-                        <ul>
-                            <li>
-                                <h1>公司名称:</h1>
-                                <h1 :title="data.companyName">{{data.companyName}}</h1>
-                            </li>
-                            <li>
-                                <h1>上市时间:</h1>
-                                <h1 :title="data.timeToMarket">{{data.timeToMarket}}</h1>
-                            </li>
-                            <li>
-                                <h1>上市地址:</h1>
-                                <h1 :title="data.listingPlace">{{data.listingPlace}}</h1>
-                            </li>
-                            <li>
-                                <h1>总部所在地:</h1>
-                                <h1 :title="data.headquartersAddress">{{data.headquartersAddress}}</h1>
-                            </li>
-                            <li>
-                                <h1>官方网址:</h1>
-                                <h1 :title="data.officialwebsite">{{data.officialwebsite}}</h1>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                    <div>
-                        <h1>公司简介</h1>
-                        <p>{{data.companyprofile}}</p>
-                    </div>
-                </div>
-                <div class="container_right_body">
-                    <div>
-                        <h1 v-for="(item,index) in qnbn " :key="index"  :class="{active:index==num}"  @click="btn(index)">{{item}}</h1>
-                    </div>
-                    <div >
-                        <GLGM :GLGM="GLGM" id="id11" class="boxpic" ></GLGM>
-                        <JLR :JLR="JLR" id="id13" class="boxpic" ></JLR>
-                        
-                     </div >  
-                    <div >  
-                        <ZSR :ZSR="ZSR" id="id12" class="boxpic" ></ZSR>
-                        <SRGC :SRGC="SRGC" id="id14" class="boxpic"></SRGC>
-                    </div>
-
-                    
-
-                
-
-                </div>
-            </div>
-        </div> -->
-
-
+      
         <div class="container" :style="style">
             <div>
                   <div class="container_header" >

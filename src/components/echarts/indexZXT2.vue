@@ -50,7 +50,7 @@ export default {
               backgroundColor: "#fff",
               title:[
                  {
-                  text: "单位：亿m²",
+                  text: "单位：面积（亿m²）| 项目（个）",
                 x: 20,
                 // padding: [0, 0, 0, "20px"], //上右下左
                 y: 28,
@@ -60,6 +60,17 @@ export default {
                   fontWeight: "600"
                 }
                 },
+                {
+                text: "上市公司规模数据",
+                x: 20,
+                // padding: [0, 0, 0, "20px"], //上右下左
+                y: 2,
+                textStyle: {
+                  color: "#333",
+                  fontSize: 14,
+                  fontWeight: "600"
+                }
+              },
 
                 ],
               tooltip: {             //鼠标经过是否显示弹窗
@@ -147,7 +158,7 @@ export default {
                       fontSize: 12,
                       color: "#999"
                   }
-                }
+                },
               ],
               series: [
                 {
@@ -179,32 +190,6 @@ export default {
                   },
                   data: this.contractArea
                 },
-
-                // {
-                //   name: "平均单价",
-                //   type: "line",
-                //   barGap: "10%",
-                //   barMaxWidth: 35,
-                //   // "stack": "总量",
-                //   itemStyle: {
-                //     normal: {
-                //       color: "#63B8FF",
-                //        lineStyle: {
-                //         color: "#63B8FF",       //折现颜色
-                //         width: 1
-                //       },
-                //       barBorderRadius: 0,
-                //       label: {
-                //         show: true,
-                //         position: "top",
-                //         formatter: function(p) {
-                //           return p.value > 0 ? p.value : "";
-                //         }
-                //       }
-                //     }
-                //   },
-                //   data: this.averageChargeUnitPrice
-                // },
                 {
                   name: "项目",
                   type: "bar",

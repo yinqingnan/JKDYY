@@ -106,7 +106,7 @@
                             <!-- dqsfl当前收费率 -->
                              <div class="yq yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
-                                        <li style="width:40%">当前综合收费率</li>
+                                        <li style="width:40%">当期综合收缴率</li>
                                         <li style="width:30%;font-weight:600">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
                                         <li style="width:30%">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
@@ -171,6 +171,7 @@
                             <h2 :title="item.remindTitle">{{item.remindTitle}}</h2>
                             <h2>{{item.remindTime.split(" ")[0]}}</h2>
                         </li>
+                    
                     </ul>
                 </div>
                 <div class="table1 table2 ">
@@ -660,6 +661,7 @@ export default {
     
 }
 .table1>ul{
+    overflow-y: auto;
     height: 310px;
     /*  当IE下溢出，仍然可以滚动*/ 
     -ms-overflow-style:none;
@@ -670,16 +672,16 @@ export default {
 /* 谷歌浏览器溢出滚动 */
 .table1>ul::-webkit-scrollbar {display:none}
 .table1>ul>li{
-    /* font-size: 14px; */
+    font-size: 14px;
     max-width: 280px;
+    width: 250px;
     line-height: 34px;
-    white-space: nowrap;
     display: flex;
     justify-content: space-between;
     margin: 0 20px;
     cursor: pointer;
-    overflow: hidden;
-    /* margin-top: 20px */
+    height: 34px;
+
 }
 .table1>ul>li>h2{
     font-size: 14px;
@@ -692,7 +694,10 @@ export default {
 }
 .table1>ul>li>h2:nth-of-type(2){
     text-decoration: none;
-    text-indent: 5px
+    text-indent: 5px;
+        overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .table2{
     margin-top: 11px;

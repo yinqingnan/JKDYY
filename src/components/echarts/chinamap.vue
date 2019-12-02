@@ -12,6 +12,9 @@
 import vue from "../../main";
 import echarts from "echarts";
 import "../../../node_modules/echarts/map/js/china.js"; // 引入中国地图数据      (注意路径容易报错)
+// import "../../assets/echarts/china.js"      //引入中国地图
+
+
 export default {
   data() {
     return {

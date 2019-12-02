@@ -57,7 +57,7 @@ export default {
                   fontWeight: "600"
                 }
               },
-                              {
+              {
                 text: "收入情况",
                 x: 20,
                 // padding: [0, 0, 0, "20px"], //上右下左

@@ -96,7 +96,7 @@
               <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
             </el-table>
           
-            <h1 class="titlezt">金科自有项目物业费备案价</h1>
+            <h1 class="titlezt">金科自建项目物业费备案价</h1>
             <el-table
               border
               :data="defaultable1"

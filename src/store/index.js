@@ -23,7 +23,7 @@ const store = new Vuex.Store({
         display1(state){
             state.show0=true
             state.show1=false
-            location.reload(true)     //强制刷新页面将丢失的数据找回
+            // location.reload(true)     //强制刷新页面将丢失的数据找回
         }
         
 

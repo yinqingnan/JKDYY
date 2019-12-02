@@ -7,7 +7,7 @@
                 <el-table-column prop="acquiringfirm" label="收购方" :show-overflow-tooltip="true"  align="left" style="marginRight:10px"></el-table-column>
                 <el-table-column prop="acquiree" label="被收购方" :show-overflow-tooltip="true" align="left"></el-table-column>
                 <el-table-column prop="acquisitiontime" label="日期" :show-overflow-tooltip="true" align="center"></el-table-column>
-                <el-table-column prop="capital" label="资金" :show-overflow-tooltip="true" align="center"></el-table-column>
+                <el-table-column prop="capital" label="资金(亿)" :show-overflow-tooltip="true" align="center"></el-table-column>
                 <el-table-column prop="ratio" label="占股比例" :show-overflow-tooltip="true"  align="center"></el-table-column>
                 <el-table-column prop="remark"  label="备注"   :show-overflow-tooltip="true" class="beizhu" align="left"></el-table-column>
                 </el-table>

@@ -58,7 +58,18 @@ export default {
 
             // 柱状图表设置信息
             const option = {
-              title:   {
+              title: [            {
+                text: "收入情况百分比",
+                x: 20,
+                // padding: [0, 0, 0, "20px"], //上右下左
+                y: 2,
+                textStyle: {
+                  color: "#333",
+                  fontSize: 14,
+                  fontWeight: "600"
+                }
+              },
+              {
                 text: "单位：百分比",
                 x: 20,
                 // padding: [0, 0, 0, "20px"], //上右下左
@@ -68,7 +79,7 @@ export default {
                   fontSize: 12,
                   fontWeight: "600"
                 }
-              },
+              },] , 
               backgroundColor: "#fff",
               grid: {
                 top: "20%",
@@ -95,7 +106,7 @@ export default {
                   color: "#333",
                   fontSize: 12
                 },
-                data: ["净利润", "毛利率", "营收增长率", "利润增长率", "ROE"],
+                data: ["净利率", "毛利率", "营收增长率", "利润增长率", "ROE"],
                 selectedMode: "single", //强制多选（multiple）或单选（single）
                 itemWidth: 9, // 设置宽度
                 itemHeight: 9 // 设置高度
@@ -153,12 +164,13 @@ export default {
                       fontSize: 12,
                       color: "#999"
                   }
-                }
+                },
+   
               ],
 
               series: [
                 {
-                  name: "净利润",
+                  name: "净利率",
                   type: "line",
                   stack: "总量",
                   symbol: "rect",

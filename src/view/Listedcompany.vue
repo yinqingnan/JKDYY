@@ -40,11 +40,11 @@
               </div>
               <div>
                 <h3 title="净利润增长率平均值">净利润增长率平均值</h3>
-                <h2>{{Finance.netProfitMarginOnSales}}<span>%</span></h2>
+                <h2>{{Finance.returnOnEquity}}<span>%</span></h2>
               </div>
               <div>
                 <h3 title="净利润率平均值">净利润率平均值</h3>
-                <h2>{{Finance.returnOnEquity}}<span>%</span></h2>
+                <h2>{{Finance.netProfitMarginOnSales}}<span>%</span></h2>
               </div>
           </div>
         </div>
@@ -66,10 +66,10 @@
           </div>
            <div class="container_left_header_tab">
             <el-table :data="Merger" style="width: auto;height:312px" fit:true  border > 
-              <el-table-column prop="acquiringfirm" label="收购方" min-width="75x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
-              <el-table-column prop="acquiree" label="被收购方" min-width="90px" :show-overflow-tooltip="true" align="left"></el-table-column>
+              <el-table-column prop="acquiringfirm" label="收购方" min-width="80x" :show-overflow-tooltip="true" align="left" style="fontWeight:500"></el-table-column>
+              <el-table-column prop="acquiree" label="被收购方" min-width="80px" :show-overflow-tooltip="true" align="left"></el-table-column>
               <el-table-column prop="acquisitiontime" label="日期" min-width="80px" :show-overflow-tooltip="true" align="left"></el-table-column>
-              <el-table-column prop="capital" label="资金" min-width="50px" :show-overflow-tooltip="true" align="left"></el-table-column>
+              <el-table-column prop="capital" label="资金(亿)" min-width="70px" :show-overflow-tooltip="true" align="left"></el-table-column>
               <el-table-column prop="ratio" label="占比" min-width="40px" :show-overflow-tooltip="true" align="left"></el-table-column>
             </el-table>
           </div>
@@ -140,7 +140,7 @@ export default {
   methods: {
     ...mapMutations(["display"]),
     btn1() {
-      // 跳转详情页
+      // 跳转收购详情页
       this.display();
     },
     chickvalue(msg) {
@@ -164,7 +164,6 @@ export default {
     // 获取时间列表
     this.axios.get("/api/listedCompany10").then(res => {
       this.time = res.data.data;
-        //  console.log(res.data.data[0].reporting )
       this.region = res.data.data[0].reporting; //获取数据第一条数据
       this.year = this.region.slice(0, 4); //获取到初始的时间
       this.id = encodeURI(this.region.slice(4)); //获取到初始的id

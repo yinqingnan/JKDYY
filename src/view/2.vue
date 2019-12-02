@@ -12,7 +12,9 @@
             </ul>
             <i class="el-icon-d-arrow-right rightbtn" @click="rightbtn"></i>
         </div>
-       <!-- {{list}} -->
+
+
+        
         <div>
             <Listedcompany v-if="show" ></Listedcompany>
             <Companylist v-if="isshow" :nameid="nameid" ref="headerChild"></Companylist>
@@ -60,6 +62,7 @@ export default {
                this.isshow=false
                this.show=true
                 this.display1()
+                this.$router.push('/2')
            }else{
                this.isshow=true
                this.show=false
@@ -68,6 +71,9 @@ export default {
            }
  
         },
+
+
+
         leftbtn(){
              this.number=0
             this.$refs.tabs.style.left=12+"px"

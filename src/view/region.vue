@@ -84,7 +84,7 @@
             <div>
               <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:24%;cursor: pointer;" @click="zhsfl">
                 
-                    综合收费率
+                    综合收缴率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(1)}}%
                 </span>
@@ -102,7 +102,7 @@
               </div>
               <div class="yq">
                 <ul v-for="(item,index) in zhsflmsg" :key="index">
-                  <li style="width:30%">当前收费率</li>
+                  <li style="width:30%">当期收缴率</li>
                   <li style="width:30%">{{item.newRate.toFixed(0)}}%</li>
                   <li style="width:30%">
                     <span :class="item.state==1? 'Green':'Red'">
