@@ -39,7 +39,7 @@ const  router = new VueRouter({
             {path:"/",redirect:'/2/listedcompany'}, 
             {path:"/2/listedcompany",component:Listedcompany} ,     //上市公司数据页
             {path:"/2/companylist",component:Companylist},          //各公司详情页
-            {path:"/2/acquisition",component:Acquisition },          //收并购详情页
+            {path:"/2/acquisition",component:Acquisition },          // 收并购详情页
         ]},                  
         {path:'/city',name:"City",component:City},            //城市数据详情页面   路由须携带参数指定城市名称   // http://localhost:8080/city?name=重庆
         {path:"/indexmap",name:"Indexmap",component:Indexmap},  //中国地图
