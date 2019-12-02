@@ -88,7 +88,7 @@
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:24%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:16%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span></h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
@@ -104,14 +104,23 @@
                                 </div>
                             </div>
                             <!-- dqsfl当前收费率 -->
-                             <div class="yq yq1">
+                             <div class=" yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
-                                        <li style="width:40%">当期综合收缴率</li>
-                                        <li style="width:30%;font-weight:600">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
+                                        <li style="width:50%; display:blank" >当期综合收缴率</li>
+                                        <!-- <li style="width:30%;font-weight:600">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
                                         <li style="width:30%">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
+                                        </li> -->
+                                        <li style="width:100%;font-weight:600">
+                                            
+                                            <h3>{{(item.changeRate/10000).toFixed(2)}} 万元</h3>
+                                            <h4>  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            {{item.changeRate.toFixed(1)}}%</span></h4>
+
+
                                         </li>
+                                      
                                      
                                     </ul>
                                 </div>
@@ -885,12 +894,26 @@ export default {
     left: 3px;
     display: inline-block;
 }
-/* .yq1>ul{
-    display: block
+.yq1>ul{
+    margin-top: 26px;
+    margin-left: 26px
 }
-.yq1>ul>li{
-
-} */
+.yq1>ul>li:nth-of-type(1){
+    line-height: 14px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 10px
+}
+.yq1>ul>li:nth-of-type(2){
+   display: flex;
+   line-height: 14px;
+    font-size: 14px;
+    color: #666;
+}
+.yq1>ul>li:nth-of-type(2)>h4{
+    margin-left: 34px
+}
 </style>
 
 <style>

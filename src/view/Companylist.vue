@@ -82,6 +82,7 @@ export default {
     },
     data(){
         return {
+            luyouid:"",           //路由中获取的id
             data:[],         //上市公司信息
             id:"",           //动态id
             qnbn:["半年数据","全年数据"],
@@ -114,8 +115,7 @@ export default {
  
         nameid:{
             handler(newVal){ // 实时更新的id
-                // get公司信息数据
-                // console.log(newVal)
+                //获取公司信息数据
                  axios.get("/api/listedCompany02?id="+newVal)
                 .then((res=>{
                     // console.log(res.data.data[0])
@@ -151,9 +151,48 @@ export default {
                     this.SRGC=res.data.data
                 })
             },
-            deep:true,      //深度监测
-            immediate: true     //将立即以表达式的当前值触发回调
+         
     },
+    $route:{
+        handler(newVal){
+            // console.log(newVal.query.id)
+             //获取公司信息数据
+            axios.get("/api/listedCompany02?id="+newVal.query.id)
+            .then((res=>{
+                this.id=res.data.data[0].id
+                this.data=res.data.data[0]
+            }))
+
+
+            // 请求管理模块图表数据
+            axios.get("/api/listedCompany03?id="+newVal.query.id)
+            .then((res=>{
+                //  console.log(res.data.data)   
+                this.glgmqn=res.data.data.filter(item => item.reportingType.indexOf('半年'))            //全年数据
+                this.glgmbn=res.data.data.filter(item => item.reportingType.indexOf('全年'))            //半年数据
+                this.GLGM=this.glgmbn     //默认显示半年数据
+            }))
+
+            // 请求总收入图表数据
+            axios.get("/api/listedCompany05?id="+newVal.query.id)
+            .then((res)=>{
+                // console.log(res.data.data)
+                this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                    this.ZSR=this.zsrbn     //默认显示半年数据
+                
+            })
+
+
+            // 请求收入构成数据
+            axios.get("/api/listedCompany06?id="+newVal.query.id)
+            .then((res)=>{
+                this.SRGC=res.data.data
+            })
+        }
+    },
+    deep:true,      //深度监测
+    immediate: true     //将立即以表达式的当前值触发回调
    
        
    
@@ -181,9 +220,36 @@ export default {
     },
     mounted() {
         this.getheight()
+          axios.get("/api/listedCompany02?id="+this.$route.query.id)
+            .then((res=>{
+                this.id=res.data.data[0].id
+                this.data=res.data.data[0]
+            }))
+            // 请求管理模块图表数据
+            axios.get("/api/listedCompany03?id="+this.$route.query.id)
+            .then((res=>{
+                this.glgmqn=res.data.data.filter(item => item.reportingType.indexOf('半年'))            //全年数据
+                this.glgmbn=res.data.data.filter(item => item.reportingType.indexOf('全年'))            //半年数据
+                this.GLGM=this.glgmbn     //默认显示半年数据
+                // console.log(this.glgmbn)
+            }))
+
+            // 请求总收入图表数据
+            axios.get("/api/listedCompany05?id="+this.$route.query.id)
+            .then((res)=>{
+                this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                    this.ZSR=this.zsrbn     //默认显示半年数据
+            })
+            // 请求收入构成数据
+            axios.get("/api/listedCompany06?id="+this.$route.query.id)
+            .then((res)=>{
+                this.SRGC=res.data.data
+            })
+
        
     },
-    
+ 
 }
 </script>
 
@@ -324,8 +390,8 @@ background: #fff;
 .container_body_left_body>p::-webkit-scrollbar {display:none}
 .container_body_left_footer{
     text-align: center;
-    width: 486px;
-    height: 474px;
+    /* width: 486px; */
+   height: 474px;
     /* background: red; */
     margin: 0 auto
 }

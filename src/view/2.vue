@@ -2,23 +2,17 @@
     <div>
         <div class="nav">
             <i class="el-icon-d-arrow-left leftbtn" @click="leftbtn"></i>
-             <ul class="tab" ref="tabs">
-                <li v-for="(item,index) in list" :key="index" @click="btn(item.id,index) " 
-                :class="{active:index == num}"
-                :title="item.companyName"
-                >{{item.companyName}}</li>
-                
-            
-            </ul>
+            <div class="tab" ref="tabs">
+                <router-link to="/2/listedcompany">上市公司首页查询</router-link>
+                <router-link :to="{path:'/2/companylist',query:{id:item.id}}"  exact  v-for="(item,index) in list" :key="index" >{{item.companyName}}</router-link>
+            </div>
             <i class="el-icon-d-arrow-right rightbtn" @click="rightbtn"></i>
         </div>
 
 
         
         <div>
-            <Listedcompany v-if="show" ></Listedcompany>
-            <Companylist v-if="isshow" :nameid="nameid" ref="headerChild"></Companylist>
-
+            <router-view></router-view>
 
         </div>
     </div>
@@ -27,22 +21,14 @@
 
 <script>
 
-// 页面组建
-import Listedcompany from '../view/Listedcompany'
-import Companylist from '../view/Companylist'
-
-// 引入vuex的数据
-import {mapState,mapActions,mapMutations} from 'vuex'
-
-// import axios from 'axios'
 export default {
     components:{
-        Listedcompany,Companylist
+        // Listedcompany,Companylist
     },
        data() {
            return {
-               show:true,    
-               isshow:false,
+            //    show:true,    
+            //    isshow:false,
                num: 0,
                list:[],  //公司列表数据
                index:
@@ -55,23 +41,6 @@ export default {
            }
     },
     methods: {
-        ...mapMutations(["display1"]),
-        btn(id,index) {
-            this.num = index;
-           if(index==0){
-               this.isshow=false
-               this.show=true
-                this.display1()
-                this.$router.push('/2')
-           }else{
-               this.isshow=true
-               this.show=false
-               this.nameid=id 
-               this.btnindex=index
-           }
- 
-        },
-
 
 
         leftbtn(){
@@ -85,21 +54,16 @@ export default {
             }else{
                this.number=-12
             }
-        }
+        },
+    
     },
     mounted() {
+
+        // 获取所有公司名称 并压入上市公司数据数据到第一条
         this.axios.get("/api/listedCompany01").then((res)=>{
-            // console.log(res.data.data)
             this.list=res.data.data
-            res.data.data.unshift(this.index)
-            // res.data.data.forEach(element => {
-            //     this.list.push(element.companyName)
-            // });
         })
     },
-        computed: {
-        ...mapState(["show0","show1"])
-  },
 }
 </script>
 
@@ -109,10 +73,7 @@ export default {
     display:flex;
 
 }
-.active{
-    color: #49a4d9;
-    border-bottom: 2px solid #49a4d9;
-}  
+
 .tab{
     width: 100%;
     display: flex;
@@ -170,4 +131,25 @@ export default {
 .nav:hover .rightbtn{
     right: 0;
 }
+.tab>a{
+    line-height: 42px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 16px;
+    white-space: nowrap;
+    text-align: center;
+    color: #666;
+    text-decoration: none
+}
+</style>
+
+<style>
+/* .active{
+color: #49a4d9;
+border-bottom: 2px solid #49a4d9;
+}   */
+.router-link-active {
+        color: #49a4d9;
+border-bottom: 2px solid #49a4d9;
+       }
 </style>

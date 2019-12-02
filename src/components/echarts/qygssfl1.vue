@@ -13,21 +13,20 @@ export default {
   data() {
     return {
       bjData: [],
-      date:[]
+      date: []
     };
   },
   watch: {
-      zsrsxzztm:{
-        handler(newVal){
-            // console.log(newVal)
-            if(newVal==1){
-                this.date=["7月","8月","9月","10月","11月","12月",]
-            }else{
-                this.date=["1月","2月","3月","4月","5月","6月",]
-
-            }
+    zsrsxzztm: {
+      handler(newVal) {
+        // console.log(newVal)
+        if (newVal == 1) {
+          this.date = ["7月", "8月", "9月", "10月", "11月", "12月"];
+        } else {
+          this.date = ["1月", "2月", "3月", "4月", "5月", "6月"];
         }
-      },
+      }
+    },
     sflsxzzt1: {
       handler(newVal) {
         this.bjData = newVal;
@@ -40,14 +39,20 @@ export default {
             left: "0%",
             bottom: "20%"
           },
-            tooltip: {
-                showContent:true,  
-                // trigger: "axis",
-                formatter:function(a){
-                    return a.name +":"+a.value+"%"
-                }
-
+          tooltip: {
+            showContent: true,
+            trigger: "axis",
+            formatter: function(a) {
+              return a[0].name + ":" + a[0].value;
             },
+            axisPointer: {
+              type: "shadow", //设置为none为不显示线条，设为 shadow 为柱状图显示阴影   设为cross为 横向虚线基准线
+              label: {
+                show: false, //是否出现title提示文字
+                backgroundColor: "#7B7DDC"
+              }
+            }
+          },
           xAxis: [
             {
               type: "category",
@@ -122,18 +127,16 @@ export default {
         // 设置自适应
         window.onresize = function() {
           chartObj.resize();
-
         };
       }
     },
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["sflsxzzt1","zsrsxzztm"],
+  props: ["sflsxzzt1", "zsrsxzztm"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("sfl1"));
     window.addEventListener("resize", () => {
-
       chartObj.resize();
     });
   },

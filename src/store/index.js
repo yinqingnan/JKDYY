@@ -15,16 +15,16 @@ const store = new Vuex.Store({
     },
     mutations:{
         // 修改显示权限
-        display(state){
-            state.show0=false
-            state.show1=true
-        },
-        // 修改显示权限
-        display1(state){
-            state.show0=true
-            state.show1=false
-            // location.reload(true)     //强制刷新页面将丢失的数据找回
-        }
+        // display(state){
+        //     state.show0=false
+        //     state.show1=true
+        // },
+        // // 修改显示权限
+        // display1(state){
+        //     state.show0=true
+        //     state.show1=false
+        //     // location.reload(true)     //强制刷新页面将丢失的数据找回
+        // }
         
 
     },

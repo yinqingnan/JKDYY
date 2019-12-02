@@ -140,6 +140,18 @@ export default {
                   }
                 }
               ],
+              //   dataZoom: [        //滚动条功能
+              //   {
+              //       type: 'slider',
+              //       show: true,
+              //       xAxisIndex: [0],
+              //       left: '9%',
+              //       bottom: -5,
+              //       start: 10,
+              //       end: 90 //初始化滚动条
+              //   }
+
+              // ],
               yAxis: [
                 {
                   show: true,

@@ -1,7 +1,7 @@
 <template>
 <!-- 城市页面 -->
   <div>
-    <div class="container" v-if="show0">
+    <div class="container" >
       <div class="container_left">
         <div class="container_left_header">
             <!-- <h2>查询日期</h2> -->
@@ -86,10 +86,6 @@
 
       </div>
     </div>
-    <!-- 并购详情页面 -->
-    <div v-show="show1">
-      <Acquisitiondetails></Acquisitiondetails>
-    </div>
   </div>
 </template>
 
@@ -98,12 +94,10 @@
 <script>
 
 
-// 引入并购详情也
-import Acquisitiondetails from "../components/Table/Acquisitiondetails";
 // 行业数据资料
 import industrydata from "../components/industrydata";
-// 引入vuex的数据
-import { mapState, mapMutations } from "vuex";
+// // 引入vuex的数据
+// import { mapState, mapMutations } from "vuex";
 // 引入首页柱状图
 import indexZZT from "../components/echarts/indexZZT";
 //引入首页折线图1
@@ -115,7 +109,7 @@ import Timetomarket from "../components/Timetomarket"
 
 export default {
   components: {
-    Acquisitiondetails,
+    // Acquisitiondetails,
     industrydata,
     indexZZT,
     indexZXT1,
@@ -138,10 +132,8 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["display"]),
-    btn1() {
-      // 跳转收购详情页
-      this.display();
+    btn1(){
+        this.$router.push('/2/acquisition')
     },
     chickvalue(msg) {
       let year = msg.slice(0, 4);
@@ -174,9 +166,6 @@ export default {
     });
 
   },
-  computed: {
-    ...mapState(["show0", "show1"])
-  }
 };
 </script>
 <style scoped>

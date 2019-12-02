@@ -114,20 +114,32 @@ export default {
                     interval:0,
                     rotate:40,
                     color: "#333",
-                    // formatter: function(value) {
+                    // formatter: function(value) { 
                     //   //X轴文字众向排列
                     //   return value.split("").join("\n");
                     // },
                     textStyle: {
                       fontSize: 12,
                       color: "#8f8f8f"
-                    }
+                    } 
                   },
                   axisTick: {
                     show: false
                   }
                 }
               ],
+              //   dataZoom: [        //滚动条功能
+              //   {
+              //       type: 'slider',
+              //       show: true,
+              //       xAxisIndex: [0],
+              //       left: '9%',
+              //       bottom: -5,
+              //       start: 10,
+              //       end: 90 //初始化滚动条
+              //   }
+
+              // ],
               yAxis: [
                 {
                   show: true,

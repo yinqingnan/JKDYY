@@ -38,13 +38,19 @@ export default {
       
     },  
     tooltip: {
-            tooltip: {
-              trigger: "axis",
-              
-            },
-              formatter:function(a){
-                return a.seriesName +":"+a.value+"%"
-            }
+      showContent: true,
+      trigger: "axis",
+      formatter: function(a) {
+        return a[0].seriesName + ":" + a[0].value;
+        // console.log(a)
+      },
+      axisPointer: {
+        type: "shadow", //设置为none为不显示线条，设为 shadow 为柱状图显示阴影   设为cross为 横向虚线基准线
+        label: {
+          show: false, //是否出现title提示文字
+          backgroundColor: "#7B7DDC"
+        }
+      }
     },
 
     xAxis: [{
