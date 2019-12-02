@@ -9,7 +9,7 @@ import Region from "../view/region.vue"      //公司项目详情
 import Y2 from "../view/2.vue"      //上市公司数据
 import Listedcompany from "../view/Listedcompany.vue"       //上市公司子路由 首页
 import Companylist from "../view/Companylist.vue"       //上市公司子路由    公司页面
-import Acquisition  from '../components/Table/Acquisitiondetails.vue'
+import Acquisition  from '../components/Table/Acquisitiondetails.vue'       //收并购信息详情页
 
 import City from '../view/City.vue'       //城市数据（旧）
 import Indexmap from '../view/indexmap.vue'   //地图页面
