@@ -44,7 +44,7 @@ export default {
             }
           },
           {
-            text: "单位：个数",
+            text: "单位：个",
             top:36,
             y: 20,
             textStyle: {
@@ -54,7 +54,7 @@ export default {
             }
           },
            {
-            text: "单位：平方",
+            text: "单位：百万平方米",
             top:36,
             right:20,
             // x: 20,
@@ -76,18 +76,18 @@ export default {
                     backgroundColor: "#7B7DDC"
                   }
                 },
-            formatter:function(a){
-              if(a.length==1){
-                if(a[0].seriesName=="面积"){
-                  return a[0].seriesName +":"+ a[0].value
-                }else{
-                  return a[0].seriesName +":"+ a[0].value
-                }
-              }
-              else{
-                return a[0].seriesName +":"+ a[0].value+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
-              }
-            }
+            // formatter:function(a){
+            //   if(a.length==1){
+            //     if(a[0].seriesName=="面积"){
+            //       return a[0].seriesName +":"+ a[0].value
+            //     }else{
+            //       return a[0].seriesName +":"+ a[0].value
+            //     }
+            //   }
+            //   else{
+            //     return a[0].seriesName +":"+ a[0].value+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
+            //   }
+            // }
           },
 
           legend: {

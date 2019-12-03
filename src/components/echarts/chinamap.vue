@@ -44,6 +44,7 @@ export default {
   },
   created() {
     this.axios.get("/api/cityData10").then(res => {
+      console.log(res.data.data)
       this.list = res.data.data;
       if (this.list.length == 0) {
         return false;
@@ -111,9 +112,9 @@ export default {
         dataRange: {
             color: ["#12c0ff"] , //--------------------------------------------------固定单色
           show: false,//-------------------------------------------------------------是否显示颜色提示条
-          min: 0,
-          max: 100,
-          realtime: true,
+          // min: 0,
+          // max: 100,
+          // realtime: true,
           // 根据值显示不同的颜色， （值依据数据中的value）
           // x: 'left',
           // y: 'center',

@@ -12,7 +12,9 @@
                       <div class="container_body_left">
                           <div class="container_body_left_header">
                               <!-- <h2>{{data.companyName}}</h2> -->
-                                <img :src="data.companyLogo" alt="">
+                                <img :src="data.companyLogo"  
+                                :onerror="defaultlogo"
+                                >
                               <div>
                                     <ul>
                                         <li>上市时间：</li>
@@ -34,11 +36,10 @@
                           </div>
                           <div class="container_body_left_body">
                               <h2>公司简介</h2>
-                              <!-- <p>碧桂园服务控股有限公司成立于1992年，股份代码：06098，经过26年的稳健发展,公司业务涵盖住宅、商业物业、写字楼、多功能综合楼、政府及其他公共设施、产业园、高速公路服务站、公园及学校等多种业态。截至目前服务版图遍布中国29个省（直辖市、自治区）260多个城市，管理536个物业项目，服务面积达386百万平方米。</p> -->
-                              <p>{{data.companyprofile}}</p>
+                              <div v-html="html"></div>
                           </div>
                           <div class="container_body_left_footer">
-                              <img :src="data.nationwideMap" alt="">
+                              <img :src="data.nationwideMap"  :onerror="defaultmap">
                           </div>
                       </div>
                       <div class="container_body_right">
@@ -100,10 +101,12 @@ export default {
 
 
             
-            SRGC:[],          //收入构成
+            SRGC:[],           //收入构成
+            srgcbn:[],         //收入构成半年
+            srgcqn:[],         //收入构成全年
             srgcgcf:[],        //收入构成工程费
             srgcwyf:[],        //收入构成物业费
-
+            html:"",
 
 
             style:{
@@ -113,53 +116,12 @@ export default {
     },
     props:["nameid"],
     watch: {
- 
-        nameid:{
-            handler(newVal){ // 实时更新的id
-                //获取公司信息数据
-                 axios.get("/api/listedCompany02?id="+newVal)
-                .then((res=>{
-                    // console.log(res.data.data[0])
-                    this.id=res.data.data[0].id
-                    this.data=res.data.data[0]
-                }))
-
-
-                // 请求管理模块图表数据
-                axios.get("/api/listedCompany03?id="+newVal)
-                .then((res=>{
-                    //  console.log(res.data.data)   
-                    this.glgmqn=res.data.data.filter(item => item.reportingType.indexOf('半年'))            //全年数据
-                    this.glgmbn=res.data.data.filter(item => item.reportingType.indexOf('全年'))            //半年数据
-                    this.GLGM=this.glgmbn     //默认显示半年数据
-                    // console.log(this.glgmbn)
-                }))
-
-                // 请求总收入图表数据
-                axios.get("/api/listedCompany05?id="+newVal)
-                .then((res)=>{
-                    // console.log(res.data.data)
-                    this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
-                    this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
-                     this.ZSR=this.zsrbn     //默认显示半年数据
-                   
-                })
-
-
-                // 请求收入构成数据
-                axios.get("/api/listedCompany06?id="+newVal)
-                .then((res)=>{
-                    this.SRGC=res.data.data
-                })
-            },
-         
-    },
     $route:{
         handler(newVal){
-            // console.log(newVal.query.id)
              //获取公司信息数据
             axios.get("/api/listedCompany02?id="+newVal.query.id)
             .then((res=>{
+                this.html= res.data.data[0].companyprofile.replace(/\n|\r\n/g,"<br/><p>")
                 this.id=res.data.data[0].id
                 this.data=res.data.data[0]
             }))
@@ -177,10 +139,10 @@ export default {
             // 请求总收入图表数据
             axios.get("/api/listedCompany05?id="+newVal.query.id)
             .then((res)=>{
-                // console.log(res.data.data)
+             
                 this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
                 this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
-                    this.ZSR=this.zsrbn     //默认显示半年数据
+                this.ZSR=this.zsrbn     //默认显示半年数据
                 
             })
 
@@ -188,8 +150,13 @@ export default {
             // 请求收入构成数据
             axios.get("/api/listedCompany06?id="+newVal.query.id)
             .then((res)=>{
-                this.SRGC=res.data.data
+                this.srgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                this.srgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                this.SRGC=this.srgcbn       //默认显示到半年
+
+             
             })
+             
         }
     },
     deep:true,      //深度监测
@@ -200,7 +167,6 @@ export default {
     },
       methods: {
         open(url){
-            // console.log(url)
             window.open(url,"_blank")
         },
         btn(index){
@@ -209,17 +175,16 @@ export default {
                 this.GLGM=this.glgmbn     //管理规模半年赋值
                 this.ZSR=this.zsrbn       //总收入半年赋值
                 this.JLR=this.jlrbn       //规模构成半年数据
-                // this.SRGC=this.srgcbn       //收入构成半年数据
+                this.SRGC=this.srgcbn       //收入构成半年数据
             }else{          //半年
                 this.GLGM=this.glgmqn      //管理规模全年赋值
                 this.ZSR=this.zsrqn       //总收入半年赋值
                 this.JLR=this.jlrqn       //规模构成全年数据
-                // this.SRGC=this.srgcqn       //收入构成全年数据
+                this.SRGC=this.srgcqn       //收入构成全年数据
 
             }
         },
         getheight(){
-            // console.log(window.innerHeight -44 + "px")
             this.style.height=window.innerHeight-64+"px"
         }
     },
@@ -227,6 +192,8 @@ export default {
         this.getheight()
           axios.get("/api/listedCompany02?id="+this.$route.query.id)
             .then((res=>{
+               this.html= res.data.data[0].companyprofile.replace(/\n|\r\n/g,"<br/><p>")
+              
                 this.id=res.data.data[0].id
                 this.data=res.data.data[0]
             }))
@@ -249,11 +216,25 @@ export default {
             // 请求收入构成数据
             axios.get("/api/listedCompany06?id="+this.$route.query.id)
             .then((res)=>{
-                this.SRGC=res.data.data
+
+                this.srgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                this.srgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                this.SRGC=this.srgcbn       //默认显示到半年
+               
+             
             })
+            
 
        
     },
+    computed:{
+        defaultlogo(){
+            return 'this.src="' + require ('../assets/ima/defaultlogo.png')+' " '
+        },
+        defaultmap(){
+            return 'this.src="' + require ('../assets/ima/defaultmap.png')+' " '
+        }
+    }
  
 }
 </script>
@@ -381,19 +362,21 @@ background: #fff;
     color: #000;
     margin-bottom: 14px
 }
-.container_body_left_body>p{
+.container_body_left_body>div{
     padding-right: 50px;
     font-size: 14px;
     height: 120px;
     color: #999;
     line-height: 25px;
+    text-indent: 2em;
     overflow-y: auto;
          /* 当IE下溢出，仍然可以滚动*/ 
         -ms-overflow-style:none;
         /*火狐下隐藏滚动条*/
         overflow:-moz-scrollbars-none;
 }
-.container_body_left_body>p::-webkit-scrollbar {display:none}
+.container_body_left_body>div::-webkit-scrollbar {display:none}
+
 .container_body_left_footer{
     text-align: center;
     /* width: 486px; */

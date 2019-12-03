@@ -89,7 +89,7 @@ export default {
               fontWeight: "600"
             }
           },{
-            text: "单位：比例",
+            text: "单位：百分比",
             top:36,
             y: 20,
             textStyle: {
@@ -98,20 +98,22 @@ export default {
               fontWeight: "500"
             }
           },],
-          tooltip: {
             tooltip: {
-              trigger: "axis",
-              
-            },
-              formatter:function(a){
-                return a.seriesName +":"+a.value+"%"
-            }
+            trigger: "axis",
+            // formatter:function(a){
+            //     return a[0].seriesName +":"+a[0].value+"%" +"<br/>"+a[1].seriesName +":"+ a[1].value+"%"+"<br/>"
+            //     +a[2].seriesName +":"+ a[2].value+"%"
+            //     // console.log(a)
+            // },    
+                  axisPointer: {
+                  type: "shadow",
+                  label: {
+                    show: false, //是否出现title提示文字
+                    backgroundColor: "#7B7DDC"
+                  }
+                }
+            
           },
-          //     toolbox: {
-          //     feature: {
-          //       saveAsImage: {}
-          //     }
-          //   },
           legend: {
             data: this.incomeName,
             textStyle: {
@@ -131,7 +133,7 @@ export default {
             left: "8%",
             bottom: "10%"
           },
-               xAxis: {
+              xAxis: {
             //x轴
             show: true,
             data: this.reportingYear, //时间接口
@@ -144,11 +146,7 @@ export default {
               show: false
             }
           },
-          yAxis:  {
-              
-            type: 'value',
-            // name: '体积',
-              position:'left',
+ yAxis:  {
               show: true,
               splitLine: {
                 show: true
@@ -174,24 +172,33 @@ export default {
             },
           series: [
             {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[0],
+              data: this.data ,//数据 入口
               type: "line",
-
-              lineStyle: {
-                color: "#2cabe3", //连线颜色
-                width: 3, //宽度
-                type: "solid" //'dotted'虚线 'solid'实线
+              smooth: true,//折线是否平滑
+              areaStyle: {
+                opacity: 0
               },
+       
               itemStyle: {
-                color: "#2cabe3" //连线颜色
+                // color: "#2cabe3", //连线颜色
+                  normal: {
+                  label: { show: false }, //拐点显示数据
+                  color: "#2cabe3", //小圆点的颜色
+                  lineStyle: {
+                    color: "#2cabe3", //折线的颜色
+                    width:2, //宽度
+                    type: "solid" //'dotted'虚线 'solid'实线
+                  }
+                }
               },
-              smooth: true,
-              data: this.data
-              //数据 入口
+              
+             
+              
             },
             {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[1],
               type: "line",
               lineStyle: {
@@ -205,7 +212,7 @@ export default {
               data: this.data1 //数据入口
             },
             {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[2],
               type: "line",
               lineStyle: {
@@ -219,7 +226,7 @@ export default {
               data: this.data2 //数据入口
             },
             {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[3],
               type: "line",
               lineStyle: {
@@ -233,7 +240,7 @@ export default {
               data: this.data3 //数据入口
             },
             {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[4],
               type: "line",
               lineStyle: {
@@ -247,7 +254,7 @@ export default {
               data: this.data4 //数据入口
             },
                     {
-              symbolSize: 14, //拐点圆的大小
+              // symbolSize: 4, //拐点圆的大小
               name: this.incomeName[5],
               type: "line",
               lineStyle: {

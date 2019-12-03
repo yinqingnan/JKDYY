@@ -45,7 +45,7 @@ export default {
               fontWeight: "600"
             }
           },  {
-            text: "单位：百万",
+            text: "单位：百万元",
             top:36,
             y: 20,
             textStyle: {
@@ -84,18 +84,18 @@ export default {
           },
           tooltip: {
             trigger: "axis",
-            formatter:function(a){
-                return a[0].seriesName +":"+a[0].value+"百万元" +"<br/>"+a[1].seriesName +":"+ a[1].value+"百万元"+"<br/>"
-                // +a[2].seriesName +":"+ a[2].value+"%"
-                // console.log(a)
-            },    
-                  axisPointer: {
-                  type: "shadow",
-                  label: {
-                    show: false, //是否出现title提示文字
-                    backgroundColor: "#7B7DDC"
-                  }
-                }
+            // formatter:function(a){
+            //     return a[0].seriesName +":"+a[0].value+"百万元" +"<br/>"+a[1].seriesName +":"+ a[1].value+"百万元"+"<br/>"
+            //     // +a[2].seriesName +":"+ a[2].value+"%"
+            //     // console.log(a)
+            // },    
+            axisPointer: {
+            type: "shadow",
+            label: {
+              show: false, //是否出现title提示文字
+              backgroundColor: "#7B7DDC"
+            }
+          }
             
           },
           xAxis: {
