@@ -79,13 +79,13 @@ export default {
             formatter:function(a){
               if(a.length==1){
                 if(a[0].seriesName=="面积"){
-                  return a[0].seriesName +":"+ a[0].value+"万m²"
+                  return a[0].seriesName +":"+ a[0].value
                 }else{
-                  return a[0].seriesName +":"+ a[0].value+"个"
+                  return a[0].seriesName +":"+ a[0].value
                 }
               }
               else{
-                return a[0].seriesName +":"+ a[0].value+"百万m²"+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
+                return a[0].seriesName +":"+ a[0].value+"<br/>"+a[1].seriesName +":"+ a[1].value+"个"
               }
             }
           },
@@ -193,6 +193,7 @@ export default {
               symbol: "emptyCircle",
               symbolSize: 4,
               yAxisIndex: 1,
+              barWidth:12,
               lineStyle: {
                 color: "#2cabe3", //连线颜色
                 width:2, //宽度

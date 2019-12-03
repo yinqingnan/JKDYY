@@ -63,7 +63,8 @@ export default {
     width: 100%;
 }
 .box>ul>li{
-    margin-left: 19px
+    margin-left: 19px;
+    font-size: 14px;
 }
 .box>ul>li:nth-of-type(1){
     display: flex

@@ -30,7 +30,7 @@ export default {
         newVal.forEach(item => {
           // console.log(item.incomeMoney)
           year.push(item.reportingYear);
-          name.push(item.incomeName.slice(0,4));    //限制只显示前4位
+          name.push(item.incomeName.slice(0,6));    //限制只显示前4位
 
         });
         
@@ -41,7 +41,7 @@ export default {
         }
         this.reportingYear=unique(year)
         this.incomeName=unique(name)
-      // console.log(this.reportingYear)
+      // console.log(this.incomeName)
     
         // 每一次都清空数组
         this.data = [];
@@ -50,36 +50,32 @@ export default {
         this.data3 = [];
         this.data4 = [];
         this.data5 = [];
-        var list=newVal.filter(item=>item.incomeName==this.incomeName[0])
+
+        var list=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[0])
          list.forEach(item => {
             this.data.push(item.incomeMoney);
          });
-        // console.log(this.data)
-        var list1=newVal.filter(item=>item.incomeName==this.incomeName[1])
+        var list1=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[1])
          list1.forEach(item => {
+
             this.data1.push(item.incomeMoney);
          });
-        // console.log(this.data1)
-
-        var list2=newVal.filter(item=>item.incomeName==this.incomeName[2])
+        var list2=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[2])
          list2.forEach(item => {
             this.data2.push(item.incomeMoney);
          });
-        // console.log(this.data2)
-         var list3=newVal.filter(item=>item.incomeName==this.incomeName[3])
+         var list3=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[3])
          list3.forEach(item => {
             this.data3.push(item.incomeMoney);
          });
-
-          var list4=newVal.filter(item=>item.incomeName==this.incomeName[4])
+          var list4=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[4])
          list4.forEach(item => {
             this.data4.push(item.incomeMoney);
          });
-          var list5=newVal.filter(item=>item.incomeName==this.incomeName[5])
+          var list5=newVal.filter(item=>item.incomeName.slice(0,6)==this.incomeName[5])
          list5.forEach(item => {
             this.data5.push(item.incomeMoney);
          });
-
         // 图表设置信息
         const option = {
           backgroundColor: "#fff",
@@ -93,7 +89,7 @@ export default {
               fontWeight: "600"
             }
           },{
-            text: "单位：百万",
+            text: "单位：比例",
             top:36,
             y: 20,
             textStyle: {
@@ -130,10 +126,10 @@ export default {
             right: 20 //点的位置
           },
           grid: {
-             top: "26%",
-                right: "8%",
-                left: "8%",
-                bottom: "10%"
+            top: "26%",
+            right: "8%",
+            left: "8%",
+            bottom: "10%"
           },
                xAxis: {
             //x轴

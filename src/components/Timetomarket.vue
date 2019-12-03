@@ -205,14 +205,14 @@ export default {
 }
 
 .fuhezi:nth-child(odd){
-    top: -134px
+    top: -116px
 }
 .fuhezi:nth-child(even){
     bottom: -58px
 }
 .Label{
-    width: 140px ;
-    height: 77px;
+    width: 110px ;
+    height: 56px;
     background: #fff;
     position: relative;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
@@ -226,7 +226,7 @@ export default {
 
 
 .Label>li{
-    line-height: 33px;
+    line-height: 23px;
     width: 100%;
     font-size: 14px;
     color: #333;
@@ -234,7 +234,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 120px
+    width: 110px
 
 }
 /* 单数样式 */
@@ -271,7 +271,7 @@ export default {
 .year{
     background: #fff;
     position: absolute;
-    width: 140px;
+    width: 110px;
     height: 33px;
     padding-top: 7px;
 }
@@ -293,7 +293,7 @@ export default {
     position: absolute;
     top:-20px;
     z-index: 1;
-    left: 60px;
+    left: 45px;
 }
 /* 向下的尖角 */
 .fuhezi:nth-last-child(odd) .Arrow{
@@ -306,17 +306,17 @@ export default {
     position: absolute;
     bottom: -20px;
     z-index: 1;
-    left: 60px;
+    left: 45px;
 
 }
 .fuhezi:nth-last-child(odd) .dian{
-   bottom: -65px;
-   left:63px
+   bottom: -67px;
+   left:49px
 
 }
 .fuhezi:nth-last-child(even) .dian{
     top: -63px;
-    left:63px
+    left:49px
 
 }
 .fuhezi .dian{
@@ -339,18 +339,21 @@ export default {
 }
 .fuhezi:nth-last-of-type(odd) .line{
     bottom: -50px;
-    left: 69px;
+    left: 55px;
     height: 40px;
 }
 .fuhezi:nth-last-of-type(even) .line{
     top: -50px;
-    left: 69px;
+    left: 55px;
     height: 40px;
 }
-.Label>li:first-child{
+.Label >li:first-child{
     margin-top: 10px
 }
 
+.fuhezi:nth-last-of-type(even) .Label>li:first-child{
+         margin-top: 0px
 
+}
 
 </style>

@@ -564,12 +564,26 @@ word-break:break-all;
 
 
 <style >
-/* .el-input--suffix .el-input__inner {
-  min-width: 110px;
-} */
 /* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */
 .el-tooltip__popper {
   max-width:400px;
   
+}
+.left_body_header .el-table td, .el-table th{
+  padding: 0;
+  font-size: 12px
+}
+.left_footer .el-table td, .el-table th{
+  padding: 0
+}
+
+.left_body_header .left_body_header .el-table td, .el-table th {
+  font-size: 14px
+}
+.left_body_header .cell{
+  font-size: 14px
+}
+.left_footer .cell{
+  font-size: 14px
 }
 </style>
