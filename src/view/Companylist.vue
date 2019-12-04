@@ -193,7 +193,6 @@ export default {
           axios.get("/api/listedCompany02?id="+this.$route.query.id)
             .then((res=>{
                this.html= res.data.data[0].companyprofile.replace(/\n|\r\n/g,"<br/><p>")
-              
                 this.id=res.data.data[0].id
                 this.data=res.data.data[0]
             }))

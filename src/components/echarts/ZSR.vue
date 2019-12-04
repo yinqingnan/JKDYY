@@ -25,12 +25,13 @@ export default {
         this.reportingYear = [];
         this.generalIncome = [];
         this.netProfitMarginOnSales=[]
+         this.SalesRale=[]
         // this.barData = [];
         newVal.forEach(item => {
           this.reportingYear.push(item.reportingYear);
           this.generalIncome.push(item.generalIncome);
           this.netProfitMarginOnSales.push(item.netProfitMarginOnSales);
-          this.SalesRale.push(item.SalesRale*100);
+          this.SalesRale.push(item.SalesRale);
         });
 
         // 图表设置信息
@@ -86,7 +87,7 @@ export default {
             trigger: "axis",
             // formatter:function(a){
             //     return a[0].seriesName +":"+a[0].value+"百万元" +"<br/>"+a[1].seriesName +":"+ a[1].value+"百万元"+"<br/>"
-            //     // +a[2].seriesName +":"+ a[2].value+"%"
+            //     +a[2].seriesName +":"+ a[2].value+"%"
             //     // console.log(a)
             // },    
             axisPointer: {
@@ -178,7 +179,7 @@ export default {
               }
             }, 
             {
-              name: "利润率",
+              name: "销售净利率",
               data: this.SalesRale, //收入数据入口
               
               type: "line",
@@ -189,9 +190,9 @@ export default {
               itemStyle: {
                 normal: {
                   label: { show: false }, //拐点显示数据
-                  color: "transparent", //小圆点的颜色
+                  color: "#FFA500", //小圆点的颜色
                   lineStyle: {
-                    color: "#transparent", //折线的颜色
+                    color: "#FFA500", //折线的颜色
                     width: 0, //宽度
                     type: "solid" //'dotted'虚线 'solid'实线
                   }

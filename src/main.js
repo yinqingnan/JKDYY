@@ -38,7 +38,6 @@ Vue.use(ElementUI);
 import echarts from "echarts"
 Vue.prototype.$echarts = echarts;
 
-
 // 注入vuex
 import store from './store'
 
@@ -46,14 +45,11 @@ import store from './store'
 import axios from 'axios'
 import VueAxios  from 'vue-axios'
 
-// axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
-axios.defaults.baseURL="http://219.153.109.174:9045"          //默认地址   金科内部使用
+axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
+// axios.defaults.baseURL="http://219.153.109.174:9045"          //默认地址   金科内部使用
 
 Vue.prototype.axios = axios         //将axios配置到Vue原型中
 Vue.use(VueAxios, axios)
-
-
-
 var vue=new Vue({
   router,
   store,
