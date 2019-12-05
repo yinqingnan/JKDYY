@@ -138,7 +138,6 @@ export default {
               //       start: 10,
               //       end: 90 //初始化滚动条
               //   }
-
               // ],
               yAxis: [
                 {

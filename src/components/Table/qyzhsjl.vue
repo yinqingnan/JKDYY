@@ -5,10 +5,10 @@
     <div class="box">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回项目
+          <i class="el-icon-back " ></i>返回上级
         </button>
 
-        <h3 style="margin:0 auto">{{projectName}}项目收入一览表</h3>
+        <h3 style="margin:0 auto">{{projectName}}综合收缴率</h3>
         <div class="select">
           <el-select
             v-model="yeardefaultdefault"
@@ -26,10 +26,9 @@
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
-        :summary-method="getSummaries"
-        show-summary
         class="table"
         element-loading-text="请稍后..."
+        @row-click="openDetails"
       >
         <el-table-column
           label="序号"
@@ -40,124 +39,69 @@
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="incomCategoryName"
-          label="收入项"
-          min-width="90px"
+          prop="companyName"
+          label="所属公司"
+          min-width="80px"
           :show-overflow-tooltip="true"
           align="center"
         ></el-table-column>
-        <el-table-column prop="targetValue" label="目标值" :show-overflow-tooltip="true" align="center" min-width="60"></el-table-column>
         <el-table-column
-          prop="m1"
-          label="1月"
+          prop="projectName"
+          label="项目名称"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m2"
-          label="2月"
+          prop="incomAmountReceivable"
+          label="应收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m3"
-          label="3月"
+          prop="incomAmountReceipts"
+          label="实收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m4"
-          label="4月"
+          prop="Arrearage"
+          label="欠收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m5"
-          label="5月"
+          prop="rate"
+          label="收缴率"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m6"
-          label="6月"
+          prop="remark"
+          label="备注"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="60px"
         ></el-table-column>
-        <el-table-column
-          prop="m7"
-          label="7月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m8"
-          label="8月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m9"
-          label="9月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m10"
-          label="10月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="m11"
-          label="11月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="m12"
-          label="12月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="projectCount"
-          label="单项合计"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="90px"
-        ></el-table-column>
-        <el-table-column prop="yieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px"></el-table-column>
-        <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>
-        <el-table-column prop="someYieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px"></el-table-column>
       </el-table>
 
 
 
         <!-- 下载表格 -->
 
- <el-table
+        <el-table
         :data="tablemsgmsg"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
-        :summary-method="getSummaries"
-        show-summary
         class="xiazai"
         v-show="show"
         element-loading-text="请稍后..."
       >
-        <el-table-column
+       <el-table-column
           label="序号"
           type="index"
           width="50"
@@ -166,107 +110,55 @@
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="incomCategoryName"
-          label="收入项"
-          min-width="90px"
+          prop="companyName"
+          label="所属公司"
+          min-width="80px"
           :show-overflow-tooltip="true"
           align="center"
         ></el-table-column>
-        <el-table-column prop="targetValue" label="目标值" :show-overflow-tooltip="true" align="center" min-width="60"></el-table-column>
         <el-table-column
-          prop="m1"
-          label="1月"
+          prop="projectName"
+          label="项目名称"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m2"
-          label="2月"
+          prop="incomAmountReceivable"
+          label="应收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m3"
-          label="3月"
+          prop="incomAmountReceipts"
+          label="实收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m4"
-          label="4月"
+          prop="Arrearage"
+          label="欠收金额"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m5"
-          label="5月"
+          prop="rate"
+          label="收缴率"
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
         ></el-table-column>
         <el-table-column
-          prop="m6"
-          label="6月"
+          prop="remark"
+          label="备注"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="60px"
         ></el-table-column>
-        <el-table-column
-          prop="m7"
-          label="7月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m8"
-          label="8月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m9"
-          label="9月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
-        ></el-table-column>
-        <el-table-column
-          prop="m10"
-          label="10月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="m11"
-          label="11月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="m12"
-          label="12月"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="48px"
-        ></el-table-column>
-        <el-table-column
-          prop="projectCount"
-          label="单项合计"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="90px"
-        ></el-table-column>
-        <el-table-column prop="yieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px"></el-table-column>
-        <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>
-        <el-table-column prop="someYieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px"></el-table-column>
+
       </el-table>
 
         <!-- 分页器 -->
@@ -340,27 +232,23 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.$route.query.xmid)
+    // console.log(this.$route.query.qyid)
     var date = new Date();
     this.yeardefaultdefault = date.getFullYear() + "年";
     this.year = date.getFullYear();
-    this.xmid = this.$route.query.xmid; //获取到路由参数 （项目的id）
-    // 通过项目id查询到区域公司的id并查询数据
-    this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
-        //   console.log(res.data.data[0].projectName)
-        this.projectName=res.data.data[0].projectName
-        this.axios.get("/api/projectTotalRevenue?year="+this.year +"&projectId=" +this.xmid +"&companyID=" +res.data.data[0].companyId).then(res => {
-            // console.log(res.data.data);
-            this.tablemsg=res.data.data
-            this.tablemsgmsg=res.data.data
-            this.number = 0;
-            this.totalCount = res.data.data.length;
-            res.data.data.forEach(item=>{
-                this.number+=item.projectCount
-            })
-          });
-      });
+    this.qyid = this.$route.query.qyid; //获取到路由参数 （区域公司的id）
+    // 通过区域公司id来获取名称
+    this.axios.get("/api/companIdOrName?companIdOrName="+this.qyid).then((res)=>{
+      // console.log(res.data.data[0])
+      this.projectName=res.data.data[0].companyName
+    })
 
+    // 通过区域公司id和当前的年份来查询数据
+    this.axios.get("/api/proChargeRate10?companyId="+this.qyid+"&year="+this.year).then((res)=>{
+        this.tablemsgmsg=res.data.data  //下载数据的表格
+        this.tablemsg=res.data.data      //展示数据的表格
+        this.totalCount=res.data.data.length    //展示数据的总条数
+    })
 
 
     this.getheight();
@@ -374,18 +262,11 @@ export default {
     // 选中的年
     yearchange(yeardefaultdefault) {
       this.year = yeardefaultdefault.slice(0, 4);
-  this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
-        this.projectName=res.data.data[0].projectName
-        this.axios.get("/api/projectTotalRevenue?year="+this.year +"&projectId=" +this.xmid +"&companyID=" +res.data.data[0].companyId).then(res => {
-            this.tablemsg=res.data.data
-            this.tablemsgmsg=res.data.data
-            this.number = 0;
-            this.totalCount = res.data.data.length;
-            res.data.data.forEach(item=>{
-                this.number+=item.projectCount
-            })
-          });
-      });
+      this.axios.get("/api/proChargeRate10?companyId="+this.qyid+"&year="+this.year).then((res)=>{
+              this.tablemsgmsg=res.data.data  //下载数据的表格
+              this.tablemsg=res.data.data      //展示数据的表格
+              this.totalCount=res.data.data.length    //展示数据的总条数
+          })
     },
     handleSizeChange(cpage) {
       this.pagesize = cpage;
@@ -395,47 +276,8 @@ export default {
     },
 
     TO() {
-      //  this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-      //           // 跳转回上级
-      //           this.$router.push({
-      //               path:'/region',
-      //               query:{
-      //                   quid:res.data.data[0].companyId,
-      //                   xmid:res.data.data[0].projectId
-      //               }
-      //           })
-      //       })
-       this.$router.go(-1)
+    this.$router.go(-1)
     },
-    getSummaries(param) {
-    //   显示汇总的信息
-      const { columns, data } = param;
-      const sums = [];
-      columns.forEach((column, index) => {
-        if (index === 1) {
-          sums[index] = "汇总";
-          return;
-        }
-        const values = data.map(item => Number(item[column.property]));
-        //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
-        // console.log(values)    ||
-        if (column.property == "projectCount") {
-          //  console.log(column.property)
-          sums[index] = values.reduce(() => {
-           
-            if(this.number==0){
-              return 0
-            }else{
-               return this.number.toFixed(2)
-            }
-          }, 0);
-        } 
-       
-      });
-
-      return sums;
-    },
-
     exportExcel() {
       this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
         confirmButtonText: "确定",
@@ -448,11 +290,10 @@ export default {
               type: "success",
               message: "下载成功!"
             });
-            this.axios
-              .get("/api/projectInfoName?projectIdName=" + this.xmid)
+            this.axios.get("/api/companIdOrName?companIdOrName=" + this.qyid)
               .then(res => {
-                //   console.log(res.data.data[0].projectName)
-                let name =res.data.data[0].projectName + this.year + "年" + "收入一览表";
+                  // console.log(res.data.data[0].companyName)
+                let name =res.data.data[0].companyName+ this.year + "年" + "综合收缴率";
                 var wb = XLSX.utils.table_to_book(
                   document.querySelector(".xiazai")
                 );
@@ -480,6 +321,10 @@ export default {
             message: "已取消下载"
           });
         });
+    },
+    openDetails(row){
+      // console.log(row.projectId)
+       this.$router.push("zhsjl?xmid="+row.projectId)
     }
   }
 };

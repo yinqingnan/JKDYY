@@ -54,8 +54,10 @@
                     </div>
                     <div>
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span></h1>
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 
+                                <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            {{item.changeRate.toFixed(1)}}%</span>
+                            </h1>
                             <h2 >
                                 {{(zsrnumber/10000).toFixed(0)}}<span>万元</span>
                             </h2>
@@ -88,8 +90,10 @@
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:16%;cursor: pointer;">综合收缴率 <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span></h1>
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:16%;cursor: pointer;">综合收缴率 
+                                  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                            {{item.changeRate.toFixed(1)}}%</span>
+                            </h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
                                 {{(item.newRate).toFixed(0)}}%
@@ -107,11 +111,6 @@
                              <div class=" yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
                                         <li style="width:50%; display:blank" >当期综合收缴率</li>
-                                        <!-- <li style="width:30%;font-weight:600">{{(item.changeRate/10000).toFixed(2)}} 万元</li>
-                                        <li style="width:30%">
-                                            <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span>
-                                        </li> -->
                                         <li style="width:100%;font-weight:600">
                                             
                                             <h3>{{(item.changeRate/10000).toFixed(2)}} 万元</h3>
@@ -274,19 +273,20 @@ export default {
         // console.log(encodeURI(value))
             window.location.href=window.location.href.split("=")[0]+"="+encodeURI(value)
         },
-            // 综合收费率跳转
+        // 区域公司总收入跳转跳转
         zrh(){
         // console.log(this.value)
             
         this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
-            // console.log(res.data.data)
+        //    console.log(res.data.data)
             this.$router.push("zsr?qyid="+res.data.data[0].companyId)
         })
         },
+        // 区域公司综合收缴率跳转
         zhsfl(){
             this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
                 // console.log(res.data.data[0].companyId)
-                this.$router.push("zhsjl?qyid="+res.data.data[0].companyId)
+                this.$router.push('/qyzhsjl?qyid='+res.data.data[0].companyId) 
             })
         }
     },
@@ -361,7 +361,7 @@ export default {
             //综合收费率竖向柱状图
             this.axios.get("http://222.180.200.126:9045/api/companyRates?year=2019&companyId="+this.id)           
             .then((res)=>{  
-                // console.log(res.data.data)
+                console.log(res.data.data)
                 if(this.date>=7){
                     this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
                     this.zsrsxzztm=1

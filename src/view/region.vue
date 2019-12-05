@@ -376,8 +376,7 @@ export default {
  
     //项目综合收费率跳转
     zhsfl(){
-      // console.log(111)
-        this.$router.push('/xmzhsfl?xmid='+this.xmid)
+      this.$router.push("zhsjl?xmid="+this.xmid)
 
     },
     // 当月用水详情跳转

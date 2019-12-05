@@ -6,7 +6,6 @@ Vue.config.productionTip = false
 
 // 引人VueRouter
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 // 解决路由重复点击报错的问题
 import Router from 'vue-router'
@@ -50,6 +49,10 @@ axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   �
 
 Vue.prototype.axios = axios         //将axios配置到Vue原型中
 Vue.use(VueAxios, axios)
+
+
+
+
 var vue=new Vue({
   router,
   store,

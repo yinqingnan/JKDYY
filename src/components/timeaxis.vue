@@ -77,7 +77,7 @@ export default {
 
 .TimeAxis>div{
     width: 93%;
-    border: 1px solid #e0e0e0;
+    border: 1px dashed #e0e0e0;
     margin: 26px 33px 14px 88px  ;
     position: relative;
     left: -63px
@@ -87,11 +87,11 @@ export default {
     display: inline-block;
     width: 0;
     height: 0;
-    border: 15px solid;
+    border: 10px solid;
     border-color: transparent   transparent transparent #a0a0a0 ;
     position: absolute;
-    right: -32px;
-    top: -15px;
+    right: -21px;
+    top: -11px;
 }
 .TimeAxis>div>div{
     display: flex;
