@@ -150,8 +150,17 @@ export default {
     border: 1px solid #e5e5e5;
     padding: 20px;
     box-sizing: border-box;
-    background: #fff
+    background: #fff;
+    overflow-y: auto;
+      /* 当IE下溢出，仍然可以滚动*/
+  -ms-overflow-style: none;
+  /*火狐下隐藏滚动条*/
+  overflow: -moz-scrollbars-none;
 
+}
+.right>div::-webkit-scrollbar {
+  /* 隐藏滚动条 */
+  display: none;
 }
 .btn{
     position: absolute;
