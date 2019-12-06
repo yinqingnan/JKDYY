@@ -147,7 +147,7 @@ export default {
 <style scoped>
 
 .box{
-    padding: 0 12px
+    padding: 0 12px;
 }
 .box_header>h1{
     font-size: 16px;color: #666;
@@ -159,11 +159,13 @@ export default {
     margin-top: 12px;
     height: 520px;
     display: flex;
+
 }
 .box_body_left{
     width: 55%;
     border: 1px solid #f0f0f0;
-    margin-right: 12px
+    margin-right: 12px;
+    background: #fff
 }
 .box_body_right{
      width: 45%;
@@ -200,5 +202,6 @@ export default {
 .box_body_right_body_right>div{
     height: 104px
 }
+
 </style>>
     

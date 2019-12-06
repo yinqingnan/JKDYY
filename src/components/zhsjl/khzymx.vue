@@ -12,6 +12,7 @@
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
+        min-height="600px"
         element-loading-text="请稍后..."
       >
         <el-table-column

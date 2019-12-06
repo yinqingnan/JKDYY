@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;" @click="zrh">总收入 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;" @click="zrh">总收入 
                                 <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
                             </h1>
@@ -90,7 +90,7 @@
                         <!-- </div> -->
                         </div>
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:16%;cursor: pointer;">综合收缴率 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;">综合收缴率 
                                   <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
                             </h1>
@@ -532,12 +532,7 @@ export default {
     width: 70%;
     display: flex;
     padding-top :14px; 
-}
-.Title>ul:nth-of-type(2)>li:nth-of-type(1){
-    margin-left: 3.125rem
-}
-.Title>ul:nth-of-type(2)>li{
-    margin-left: 4.625rem
+    justify-content: space-around
 }
 .Title>ul:nth-of-type(2)>li>h1{
     font-size: 14px;
@@ -599,7 +594,7 @@ export default {
     flex: 1;
     height: 324px;
     background: #f0eded;
-    min-width: 238px;
+    min-width: 200px;
 }
 .Chart>div:nth-of-type(2)>div:nth-of-type(2){
     margin: 0 23px

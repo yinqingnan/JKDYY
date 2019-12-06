@@ -26,8 +26,8 @@ export default {
                backgroundColor: "#ffffff",
           color: ["#37A2DA"],
          grid:{
-           left:5,
-           right:5
+          //  left:5,
+          //  right:"20%"
          },
               tooltip: {
                     show: true,
@@ -68,8 +68,8 @@ export default {
                   },
 
               ],
-              center: ['50%', '50%'], // 位置
-              radius: 96, //大小
+              center: ['46%', '50%'], // 位置
+              radius: 94, //大小
           },
        
           series: [{
@@ -113,9 +113,9 @@ export default {
 </script>
 <style  scoped>
 .ECHARTS {
-  width: 98%;
+  width: 100%;
   /* margin: 0 auto; */
-  min-width: 327px;
+  min-width: 298px;
   height: 360px;
 }
 </style>

@@ -182,7 +182,7 @@ export default {
             totalCount: null, //--------------------------------默认数据总数
             currentPage: 1, //----------------------------------默认开始页面
             istag: true,
-            pagesize: 12, //------------------------------------每页显示的数据条数
+            pagesize:12, //------------------------------------每页显示的数据条数
             style: {
                 width: "100%",
                 height: "",
@@ -296,5 +296,8 @@ export default {
     line-height: 50px;
     text-align: center;
     font-weight: 500
+}
+.table{
+  min-height: 600px
 }
 </style>

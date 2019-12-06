@@ -48,7 +48,9 @@ export default {
 
 <style scoped>
 .box{
-    padding-left: 10px
+    padding-left: 10px;
+    background: #fff
+
 }
 .box>div>a{
     text-decoration: none;

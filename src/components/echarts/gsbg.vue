@@ -53,7 +53,7 @@ export default {
 ];
  let option = {
     title: {
-        text: "公司标杆",
+        text: "月度排名",
         x:8,
         // padding: [0, 0, 0, "20px"], //上右下左
         y: 0,
@@ -224,7 +224,7 @@ export default {
     .zzt {
         width: 100%;
         margin: 0 auto;
-        min-width: 252px;
+        min-width: 230px;
         height: 340px;
     }
 </style>

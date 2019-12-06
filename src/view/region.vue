@@ -82,7 +82,7 @@
           <div>
             <!-- 关键指标图表1 -->
             <div>
-              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:24%;cursor: pointer;" @click="zhsfl">
+              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:10%;cursor: pointer;" @click="zhsfl">
                 
                     综合收缴率
                 <span :class="item.state==1? 'Green':'Red'">
@@ -116,7 +116,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:24%;cursor: pointer;">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%;cursor: pointer;">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -149,7 +149,7 @@
             <!-- 关键指标图表3 -->
 
             <div>
-              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:24%;cursor: pointer;">
+              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:10%;cursor: pointer;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -192,7 +192,7 @@
               </div>
 
               <!-- 雷达图 -->
-              <radar :xmid="xmid" :radarmsg="radarmsg" style="min-width:330px"></radar>
+              <radar :xmid="xmid" :radarmsg="radarmsg" style="min-width:298px"></radar>
             </div>
             <div>
               <div>
