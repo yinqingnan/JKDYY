@@ -81,13 +81,33 @@
                 <div class="box_body_right_body">
                     <div class="box_body_right_body_left">
                         <div>
-                            sssssss
+                           <h1>{{projectName}}</h1>
+                           <ul>
+                               <li>
+                                   <h1>本月收费率</h1>
+                                   <h2>50%</h2>
+                               </li>
+                               <li>
+                                   <h1>本月排名</h1>
+                                   <h2>10名</h2>
+                               </li>
+                           </ul>
                         </div>
                         <gsbg></gsbg>
                     </div>
                     <div class="box_body_right_body_right">
                          <div>
-                            sssssss
+                              <h1>区域标杆</h1>
+                           <ul>
+                               <li>
+                                   <h1>本月平均收费率</h1>
+                                   <h2>50%</h2>
+                               </li>
+                               <li>
+                                   <h1>全年平均收费率</h1>
+                                   <h2>50%</h2>
+                               </li>
+                           </ul>
                         </div>
                         <qybg></qybg>
                     </div>
@@ -116,6 +136,7 @@ export default {
     },
     data(){
         return {
+            projectName:"",           //当前项目名称
             xmid:"",                //区域id
             tablemsg:[],           //小区表格数据
             style: {
@@ -132,7 +153,7 @@ export default {
         // console.log(this.$route.query.xmid)
         this.xmid=this.$route.query.xmid
         this.axios.get("/api/proChargeRate03?projectId="+this.xmid).then((res)=>{
-            // console.log(res.data.data[0])
+            this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
   
@@ -197,11 +218,71 @@ export default {
     
 }
 .box_body_right_body_left>div{
-    height: 104px
+    height: 78px
 }
 .box_body_right_body_right>div{
-    height: 104px
+    height: 78px
+}
+.box_body_right_body_left>div>h1{
+    font-size: 14px;
+    font-weight: 500;
+    color: #73adce;
+    text-indent: 20px
+}
+.box_body_right_body_left>div>ul{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 12px
+}
+.box_body_right_body_left>div>ul>li{
+    color: #666
+}
+.box_body_right_body_left>div>ul>li>h1{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1
+}
+.box_body_right_body_left>div>ul>li>h2{
+    color: #333;
+    font-size: 14px;
+    margin-top: 3px;
+    line-height: 1;
+    
+
+}
+.box_body_right_body_right>div>ul>li:nth-of-type(2){
+    margin-left: 20px
 }
 
+.box_body_right_body_right>div>h1{
+    font-size: 14px;
+    font-weight: 500;
+    color: #73adce;
+    text-indent: 20px
+}
+.box_body_right_body_right>div>ul{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 12px
+}
+.box_body_right_body_right>div>ul>li{
+    color: #666
+}
+.box_body_right_body_right>div>ul>li>h1{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1
+}
+.box_body_right_body_right>div>ul>li>h2{
+    color: #333;
+    font-size: 14px;
+    margin-top: 3px;
+    line-height: 1;
+    
+
+}
+.box_body_right_body_left>div>ul>li:nth-of-type(2){
+    margin-left: 20px
+}
 </style>>
     

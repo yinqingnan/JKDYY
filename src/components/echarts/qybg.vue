@@ -54,7 +54,7 @@ export default {
  let option = {
     title: {
         text: "全年排名",
-        x:8,
+        x:10,
         // padding: [0, 0, 0, "20px"], //上右下左
         y: 0,
         textStyle: {
@@ -69,11 +69,11 @@ export default {
         //   formatter: "{b}:{c}%"
         },
     grid: {
-        left: '54%',
+         left: '0%',
         top: '10%',
         right: '10%',
         bottom: '8%',
-        containLabel: false
+        containLabel: true
     },
 
     xAxis: {
@@ -106,7 +106,7 @@ export default {
             "splitLine": { //网格线
                 "show": false
             },
-            inverse: 'true', //排序
+            inverse: 'false', //排序
             axisLine: {
                 show: false,
                 lineStyle: {
@@ -115,9 +115,9 @@ export default {
 
             },
             axisLabel: {
-                margin:130,
+                         // margin:120,
                 textStyle: {
-                    align: 'left',
+                    // align: 'left',
                     fontSize: 14,
                     fontWeight: '500',
                     color: '#666'

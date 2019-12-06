@@ -261,10 +261,7 @@
         <div class="table1 table3">
           <div class="table3_header">
             <h1>登录其他系统</h1>
-            <!-- <h2>
-              更多
-              <span class="iconfont iconpub_right"></span>
-            </h2> -->
+    
           </div>
           <div class="table3_footer">
             <ul>
