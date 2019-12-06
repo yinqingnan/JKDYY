@@ -69,15 +69,14 @@ export default {
         //   formatter: "{b}:{c}%"
         },
     grid: {
-        left: '56%',
+        left: '50%',
         top: '10%',
-        right: '4%',
+        right: '10%',
         bottom: '8%',
         containLabel: false
     },
 
     xAxis: {
-
         type: 'value',
         show: false,
         position: 'top',
@@ -115,7 +114,7 @@ export default {
 
             },
             axisLabel: {
-                margin:130,
+                margin:120,
                 textStyle: {
                     align: 'left',
                     fontSize: 14,
@@ -129,12 +128,13 @@ export default {
 
     ],
     series: [{
-            name: '指标图',
+            // name: '指标图',
             type: 'bar',
             barWidth:20,
             label: {
                 normal: {
                     show: true,
+                    position: 'right',      //数值显示位置
                     formatter: '{c}%',
                     textStyle: {
                         color: '#666', //color of value
@@ -196,12 +196,9 @@ export default {
 
                         }
                     },
-                    // barBorderRadius: 0,
-                    // borderWidth:20,
-                    // borderColor: '#333',
+                    barBorderRadius: 0,
                 }
             },
-            // barGap: '0%',
             // barCategoryGap: '80%', //柱状图宽度
             data:this.data1
         }

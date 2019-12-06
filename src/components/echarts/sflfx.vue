@@ -42,12 +42,13 @@ export default {
                 }
             }
         }else{
-            console.log("没有数据")
+            // console.log("没有数据")
         }
 
       let myChart = echarts.init(document.getElementById('zzt'));
 
       let option = {
+       backgroundColor: "#fff",
         title: {
             text: '收费率分析',
             top:10,

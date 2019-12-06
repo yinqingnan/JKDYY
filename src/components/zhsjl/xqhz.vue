@@ -104,9 +104,6 @@
 
 
 
-
-
-
 <script>
 import sflfx from '../echarts/sflfx'     //柱状图
 import gsbg from "../echarts/gsbg"      //公司标杆图
@@ -170,7 +167,8 @@ export default {
 }
 .box_body_right{
      width: 45%;
-    border: 1px solid #f0f0f0
+    border: 1px solid #f0f0f0;
+    background: #fff
 
 }
 .box_header{

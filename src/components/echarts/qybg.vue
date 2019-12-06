@@ -53,7 +53,7 @@ export default {
 ];
  let option = {
     title: {
-        text: "公司标杆",
+        text: "区域标杆",
         x:8,
         // padding: [0, 0, 0, "20px"], //上右下左
         y: 0,
@@ -69,9 +69,9 @@ export default {
         //   formatter: "{b}:{c}%"
         },
     grid: {
-        left: '56%',
+        left: '54%',
         top: '10%',
-        right: '4%',
+        right: '10%',
         bottom: '8%',
         containLabel: false
     },
@@ -136,6 +136,7 @@ export default {
                 normal: {
                     show: true,
                     formatter: '{c}%',
+                    position: 'right',    //数值显示位置
                     textStyle: {
                         color: '#666', //color of value
                         fontSize: 12,

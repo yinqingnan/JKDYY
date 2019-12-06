@@ -374,7 +374,7 @@ export default {
   },
   methods: {
  
-    //项目综合收费率跳转
+    // 项目综合收费率跳转
     zhsfl(){
       this.$router.push("zhsjl?xmid="+this.xmid)
 

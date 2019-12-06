@@ -205,10 +205,10 @@ export default {
 }
 
 .fuhezi:nth-child(odd){
-    top: -116px
+    top: 58px
 }
 .fuhezi:nth-child(even){
-    bottom: -58px
+    bottom: 116px
 }
 .Label{
     width: 110px ;
