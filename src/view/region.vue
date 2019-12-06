@@ -1211,7 +1211,7 @@ export default {
   margin-left: 20px;
 }
 .xmyd {
-  margin-top: 48px;
+  margin-top: 32px;
   position: relative;
 }
 .xmyd > ul {
