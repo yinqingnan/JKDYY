@@ -13,6 +13,7 @@ const store = new Vuex.Store({
 
         number:0
     },
+    
     mutations:{
         // 修改显示权限
         // display(state){

@@ -281,33 +281,33 @@
 
 <script>
 // 引入时间轴组建
-import Timeaxis from "../components/timeaxis";
+import Timeaxis from "@/components/timeaxis";
 // 重要提醒tab组件
-import tab from "../components/tab";
+import tab from "@/components/tab";
 // 用水全年图表
-import xmnhysqn from "../components/echarts/xmnhysqn";
+import xmnhysqn from "@/components/echarts/xmnhysqn";
 //用水当月图表
-import xmnhdyys from "../components/echarts/xmnhdyys"
+import xmnhdyys from "@/components/echarts/xmnhdyys"
 // 用电全年图表
-import xmnhydqn from "../components/echarts/xmnhydqn";
+import xmnhydqn from "@/components/echarts/xmnhydqn";
 // 用电当月图表
-import xmnhdyyd from "../components/echarts/xmnhdyyd"
+import xmnhdyyd from "@/components/echarts/xmnhdyyd"
 //项目报事完结率横向柱状图
-import xmbshxzzt from "../components/echarts/xmbshxzzt";
+import xmbshxzzt from "@/components/echarts/xmbshxzzt";
 //项目报事完结率竖向柱状图
-import xmbssxzzt from "../components/echarts/xmbssxzzt";
+import xmbssxzzt from "@/components/echarts/xmbssxzzt";
 // 项目综合收费率横向柱状图
 import xmzhsflhxzzt from "../components/echarts/xmzhsflhxzzt";
 //项目综合收费率竖向柱状图
 import xmzhsflsxzzt from "../components/echarts/xmzhsflsxzzt";
 
 // 引入雷达图
-import radar from "../components/echarts/radar";
+import radar from "@/components/echarts/radar";
 
 // 引入现场品质竖向柱状图
-import xcpzsxzzt from "../components/echarts/xcpzsxzzt";
+import xcpzsxzzt from "@/components/echarts/xcpzsxzzt";
 // 现场品质横线柱状图
-import xcpzhxzzt from "../components/echarts/xcpzhxzzt";
+import xcpzhxzzt from "@/components/echarts/xcpzhxzzt";
 
 export default {
   components: {
@@ -415,18 +415,7 @@ export default {
             // console.log(res.data.data[0])
             this.xmnhysqn = [];
             this.xmnhysqn.push(
-              res.data.data[0].m1,
-              res.data.data[0].m2,
-              res.data.data[0].m3,
-              res.data.data[0].m4,
-              res.data.data[0].m5,
-              res.data.data[0].m6,
-              res.data.data[0].m7,
-              res.data.data[0].m8,
-              res.data.data[0].m9,
-              res.data.data[0].m10,
-              res.data.data[0].m11,
-              res.data.data[0].m12
+              res.data.data[0].m1,res.data.data[0].m2,res.data.data[0].m3,res.data.data[0].m4,res.data.data[0].m5,res.data.data[0].m6,res.data.data[0].m7,res.data.data[0].m8,res.data.data[0].m9,res.data.data[0].m10,res.data.data[0].m11,res.data.data[0].m12
             );
             // console.log(this.xunhysqn)
           });
@@ -490,7 +479,7 @@ export default {
                 (res.data.data[0].m11 / 10000).toFixed(0),
                 (res.data.data[0].m12 / 10000).toFixed(0)
               );
-              // console.log(this.bshxzzt)
+
               this.xsyf = 1;
             } else {
               this.bshxzzt.push(
@@ -501,14 +490,13 @@ export default {
                 (res.data.data[0].m5 / 10000).toFixed(0),
                 (res.data.data[0].m6 / 10000).toFixed(0)
               );
-              // console.log(this.bshxzzt)
+             
               this.xsyf = 0;
             }
           });
 
         // 获取关键指标报事完成率     横向柱状图数据
         this.axios.get("api/projectRateMaxMinVm").then(res => {
-          // console.log(res.data.data)
           let arr = res.data.data;
           this.bssxzzt = [];
           arr.forEach(element => {
@@ -520,20 +508,20 @@ export default {
         this.axios
           .get("/api/projectTotalRate?projectId=" + this.xmid)
           .then(res => {
-            // console.log(res.data.data)
+
             this.bstitle = res.data.data;
           });
         // 获取报事完结率   提示信息
         this.axios
           .get("/api/projectTypeRate?projectId=" + this.xmid)
           .then(res => {
-            // console.log(res.data.data)
+ 
             this.bsmsg = res.data.data;
           });
 
         // 获取综合收费率  竖向柱状图数据           数据替换
         this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
-          // console.log(res.data.data[0])
+
           if (this.date >= 7) {
             this.zhsflsxzzt.push(
               res.data.data[0].Rate7.toFixed(1),
@@ -543,7 +531,7 @@ export default {
               res.data.data[0].Rate11.toFixed(1),
               res.data.data[0].Rate12.toFixed(1)
             );
-            // console.log(this.bshxzzt)
+   
             this.xsyf = 1;
           } else {
             this.zhsflsxzzt.push(
@@ -554,7 +542,6 @@ export default {
               res.data.data[0].Rate5.toFixed(1),
               res.data.data[0].Rate6.toFixed(1)
             );
-            // console.log(this.bshxzzt)
             this.xsyf = 0;
           }
         });
@@ -572,18 +559,16 @@ export default {
         this.axios
           .get("/api/projectTotalRate2?projectId=" + this.xmid)
           .then(res => {
-            // console.log(res.data.data)
             this.zhsfltitle = res.data.data;
           });
         // 获取综合收费率的提示信息
         this.axios
           .get("/api/projectCuMRate?projectId=" + this.xmid)
           .then(res => {
-            // console.log(res.data.data)
             this.zhsflmsg = res.data.data;
           });
 
-        // // 获取品质服务信息数据了  雷达图
+        // 获取品质服务信息数据  雷达图
         this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
           this.radarmsg = [];
           var obj = res.data.data[0];
@@ -594,7 +579,6 @@ export default {
 
         // 现场品质竖向柱状图
         this.axios.get("/api/projectPZYM?projectId=" + this.xmid).then(res => {
-          // console.log(res.data.data)
           this.xcpzsxzzt = [];
           if (this.date >= 7) {
             this.xcpzsxzzt.push(
@@ -605,7 +589,6 @@ export default {
               res.data.data[0].m11.toFixed(1),
               res.data.data[0].m12.toFixed(1)
             );
-            // console.log(this.bshxzzt)
             this.xsyf = 1;
           } else {
             this.xcpzsxzzt.push(
@@ -616,13 +599,11 @@ export default {
               res.data.data[0].m5.toFixed(1),
               res.data.data[0].m6.toFixed(1)
             );
-            // console.log(this.bshxzzt)
             this.xsyf = 0;
           }
         });
         //现场品质横向柱状图
         this.axios.get("/api/projectXYPZMM").then(res => {
-          // console.log(res.data.data)
           let arr = res.data.data;
           this.xcpzhxzzt = [];
           arr.forEach(element => {
@@ -632,12 +613,10 @@ export default {
 
         //现场品质title信息
         this.axios.get("api/projectXCPZhj?projectId=" + this.xmid).then(res => {
-          // console.log(res.data.data)
           this.xcpztitle = res.data.data;
         });
         //现场品质提示信息
         this.axios.get("/api/projectXCPZtype?projectId=" +this.xmid).then(res => {
-            // console.log(res.data.data)
             this.xcpzmsg = res.data.data;
           });
       });
@@ -649,17 +628,14 @@ export default {
 
     selectchange1(value) {
       //项目公司下拉菜单监听
-      // console.log(value)
       this.xmid = value;
 
       // 获取项目详情数据（根据路由携带的项目id查询数据）
       this.axios.get("api/projectInfoById?projectId=" + value).then(res => {
-        // console.log(res.data.data)
         this.titlename = res.data.data;
       });
       // 获取项目能耗用水数据   年度
       this.axios.get("api/projectWaterrentM?projectId=" + value).then(res => {
-        // console.log(res.data.data[0])
         this.xmnhysqn = [];
         this.xmnhysqn.push(
           res.data.data[0].m1,
@@ -675,11 +651,9 @@ export default {
           res.data.data[0].m11,
           res.data.data[0].m12
         );
-        // console.log(this.xunhysqn)
       });
         //项目能耗用水数据月度
         this.axios.get("/api/projectWaterMType?projectId="+value+"&topcount=2").then((res)=>{
-            // console.log(res.data.data)
             let arr=res.data.data
             this.xmnhdyys=[]
             this.xmnhdyysname=[]
@@ -690,7 +664,6 @@ export default {
         })
       // 获取项目能耗用电数据
       this.axios.get("api/projectElectricityM?projectId=" + value).then(res => {
-        // console.log(res.data.data)
         this.xmnhydqn = [];
         this.xmnhydqn.push(
           res.data.data[0].m1,
@@ -710,7 +683,6 @@ export default {
 
           // 获取项目能耗用电数据   月度
     this.axios.get("/api/projectElectMType?projectId="+value+"&topcount=2").then((res)=>{
-        // console.log(res.data.data)
         let arr=res.data.data
         this.xmnhyddy=[]
         this.xmnhyddyname=[]
@@ -722,7 +694,6 @@ export default {
 
       // 获取关键指标报事完成率数据 竖向柱状图数据
       this.axios.get("/api/projectMNewPYear?projectId=" + value).then(res => {
-        // console.log(res.data.data[0])
         // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
         if (this.date >= 7) {
           this.bshxzzt.push(
@@ -733,7 +704,6 @@ export default {
             (res.data.data[0].m11 / 10000).toFixed(0),
             (res.data.data[0].m12 / 10000).toFixed(0)
           );
-          // console.log(this.bshxzzt)
           this.xsyf = 1;
         } else {
           this.bshxzzt.push(
@@ -967,7 +937,6 @@ export default {
         res.data.data[0].m11,
         res.data.data[0].m12
       );
-      console.log(this.xunhysqn)
     });
     //项目能耗用水数据月度
     this.axios.get("/api/projectWaterMType?projectId="+this.xmid+"&topcount=2").then((res)=>{

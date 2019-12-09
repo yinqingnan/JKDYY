@@ -435,11 +435,11 @@ export default {
 .center_body > div > img {
     width: auto;
 	height: auto;
-	/* max-width: 100%; */
+  /* height: 518px; */
 	max-height: 100%;
     display: block;
     margin: 20px auto 0 auto;
-    max-width: 535px;
+    max-width: 578px;
 
 }
 .right {

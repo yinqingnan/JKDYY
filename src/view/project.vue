@@ -361,7 +361,7 @@ export default {
             //综合收费率竖向柱状图
             this.axios.get("http://222.180.200.126:9045/api/companyRates?year=2019&companyId="+this.id)           
             .then((res)=>{  
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 if(this.date>=7){
                     this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
                     this.zsrsxzztm=1
@@ -394,29 +394,19 @@ export default {
                 this.Other=res.data.data[1].newspapersCateType              //其他title
                 this.Propertycategory=res.data.data[2].newspapersCateType   //物业title
                 this.Realestates.push(res.data.data[0].m01.toFixed(2),res.data.data[0].m02.toFixed(2),res.data.data[0].m03.toFixed(2),res.data.data[0].m04.toFixed(2),res.data.data[0].m05.toFixed(2),res.data.data[0].m06.toFixed(2),res.data.data[0].m07.toFixed(2),res.data.data[0].m08.toFixed(2),res.data.data[0].m09.toFixed(2),res.data.data[0].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))          //地产赋值
-
                 this.Others.push(res.data.data[1].m01.toFixed(2),res.data.data[1].m02.toFixed(2),res.data.data[1].m03.toFixed(2),res.data.data[1].m04.toFixed(2),res.data.data[1].m05.toFixed(2),res.data.data[1].m06.toFixed(2),res.data.data[1].m07.toFixed(2),res.data.data[1].m08.toFixed(2),res.data.data[1].m09.toFixed(2),res.data.data[1].m10.toFixed(2),res.data.data[0].m11.toFixed(2),res.data.data[0].m12.toFixed(2))            //其他赋值
-                
                 this.Propertycategorys.push(res.data.data[2].m01.toFixed(2),res.data.data[2].m02.toFixed(2),res.data.data[2].m03.toFixed(2),res.data.data[2].m04.toFixed(2),res.data.data[2].m05.toFixed(2),res.data.data[2].m06.toFixed(2),res.data.data[2].m07.toFixed(2),res.data.data[2].m08.toFixed(2),res.data.data[2].m09.toFixed(2),res.data.data[2].m10.toFixed(2),res.data.data[2].m11.toFixed(2),res.data.data[2].m12.toFixed(2))      //物业赋值
-
             })
-
-
                         //获取登录其它系统的数据
                 this.axios.get("/api/systemDocking01")
                 .then((res)=>{
                     this.loginxt=res.data.data
                 })
-
                 //获取常用报表数据
                 this.axios.get("/api/commonReport").then((res)=>{
                     this.Commonreports=res.data.data
                 })
-            
         })
-
-
-     
     },
 }
 </script>
