@@ -78,37 +78,44 @@
                 <div class="box_body_right_header">
                     <h1>项目对比分析</h1>
                 </div>
+                <div class="box_body_right_div">
+                   <ul>
+                        <li style="width:40%">
+                           <h1>本项目：</h1>
+                           <h2 :title="projectName">{{projectName}}</h2>
+                        </li>
+                        <li>
+                           <h1>本月收费率：</h1>
+                           <h2>66%</h2>
+                        </li>
+                        <li>
+                           <h1>本月排名：</h1>
+                           <h2>5名</h2>
+                        </li>
+                       
+                   </ul>
+                    <ul>
+                        <li style="width:20%">
+                           <h1>全集团：</h1>
+                          
+                        </li>
+                        <li>
+                           <h1>本月平均收费率：</h1>
+                           <h2 >{{ypjsfl}}%</h2>
+                        </li>
+                        <li>
+                           <h1>全年平均收费率：</h1>
+                           <h2>{{qnpjsfl}}%</h2>
+                        </li>
+                       
+                   </ul>
+                </div>
                 <div class="box_body_right_body">
                     <div class="box_body_right_body_left">
-                        <div>
-                           <h1>{{projectName}}</h1>
-                           <ul>
-                               <li>
-                                   <h1>本月收费率</h1>
-                                   <h2>50%</h2>
-                               </li>
-                               <li>
-                                   <h1>本月排名</h1>
-                                   <h2>10名</h2>
-                               </li>
-                           </ul>
-                        </div>
+                       
                         <gsbg></gsbg>
                     </div>
                     <div class="box_body_right_body_right">
-                         <div>
-                              <h1>区域标杆</h1>
-                           <ul>
-                               <li>
-                                   <h1>本月平均收费率</h1>
-                                   <h2>50%</h2>
-                               </li>
-                               <li>
-                                   <h1>全年平均收费率</h1>
-                                   <h2>50%</h2>
-                               </li>
-                           </ul>
-                        </div>
                         <qybg></qybg>
                     </div>
 
@@ -144,7 +151,12 @@ export default {
             height: "158px",
             },
             echartsdata:[],           //图表数据
-            msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32]
+            msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32],
+            bysfl:"",  //本月收费率
+            bypm:"",      //本月排名
+            ypjsfl:""  ,    //本月平均收费率
+            qnpjsfl:""  ,    //全年平均收费率
+
 
         }
     },
@@ -156,7 +168,21 @@ export default {
             this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
-  
+        // 全集团本月平均收费率
+        this.axios.get("/api/proChargeRate06").then((res)=>{
+            // console.log(res.data.data[0].rate)
+            this.ypjsfl=res.data.data[0].rate.toFixed(2)
+            
+        })
+        // 全集团全年平均收费率
+        this.axios.get("/api/proChargeRate07").then((res)=>{
+            // console.log(res.data.data[0].rate)
+            this.qnpjsfl=res.data.data[0].rate.toFixed(2)
+        })
+        // 获取当前项目数据
+        // this.axios.get("/api/proChargeRate05?projectId=1085").then((res)=>{
+        //     console.log(res.data.data)
+        // })
 
     },
     methods:{
@@ -208,7 +234,7 @@ export default {
 }
 .box_body_right_body_left{
     width: 50%;
-    height: 420px;
+    height: 320px;
     border-right: 1px dashed #f0f0f0;
 }
 .box_body_right_body_right{
@@ -253,36 +279,42 @@ export default {
 .box_body_right_body_right>div>ul>li:nth-of-type(2){
     margin-left: 20px
 }
-
-.box_body_right_body_right>div>h1{
-    font-size: 14px;
-    font-weight: 500;
-    color: #73adce;
-    text-indent: 20px
+.box_body_right_div{
+    height: 80px;
+    padding: 0 10px
 }
-.box_body_right_body_right>div>ul{
+.box_body_right_div>ul{
     display: flex;
-    margin-left: 20px;
-    margin-top: 12px
+    justify-content: space-around;
+    margin-bottom: 12px
 }
-.box_body_right_body_right>div>ul>li{
-    color: #666
-}
-.box_body_right_body_right>div>ul>li>h1{
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1
-}
-.box_body_right_body_right>div>ul>li>h2{
-    color: #333;
-    font-size: 14px;
-    margin-top: 3px;
-    line-height: 1;
+.box_body_right_div>ul>li{
+    display: flex;
+    width: 40%;
     
+}
+.box_body_right_div>ul>li>h1{
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+    color: #999;
+    white-space: nowrap;
+
 
 }
-.box_body_right_body_left>div>ul>li:nth-of-type(2){
-    margin-left: 20px
+.box_body_right_div>ul>li>h2{
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+     font-weight: 500;
+    color: #666;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    max-width: 124px;
+
+    
 }
 </style>>
     

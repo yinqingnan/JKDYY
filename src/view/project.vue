@@ -50,7 +50,7 @@
                 <div class="Chart">
                     <div>
                         <h1>关键经营指标</h1>
-                        <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
+                        <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                     </div>
                     <div>
                         <div>
@@ -129,7 +129,7 @@
                         <div>
                             <div class="Chart1_header">
                                 <h1>品质服务信息</h1>
-                                <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
+                                <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                             </div>
                             <div class="Chart1_footer">
                                 <div class="Chart1_footer1">
@@ -149,7 +149,7 @@
                         <div>
                             <div class="Chart1_header">
                                 <h1>外拓规模信息</h1>
-                                <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
+                                <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                             </div>
                              <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
@@ -157,7 +157,7 @@
                         <div>
                             <div class="Chart1_header">
                                 <h1>人力资源信息</h1>
-                                <h2>更多 <span class="iconfont iconpub_right" ></span></h2>
+                                <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                             </div>
                              <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>

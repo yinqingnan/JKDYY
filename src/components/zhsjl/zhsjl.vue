@@ -5,7 +5,7 @@
         <div class="box">
             <div class="box1">
                 <button @click="TO" class="fhsj">
-                    <i class="el-icon-back"></i>返回区域公司
+                    <i class="el-icon-back"></i>返回上级
                 </button>
                 <!-- <h2>综合收缴率统计</h2> -->
             </div>

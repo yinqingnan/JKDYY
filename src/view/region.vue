@@ -149,6 +149,7 @@
             <!-- 关键指标图表3 -->
 
             <div>
+            
               <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:10%;cursor: pointer;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
@@ -158,6 +159,7 @@
               </h1>
               <h2 v-for="(item,index) in xcpztitle" :key="index+1">
                 {{item.newScore}}<span>%</span>
+            
               </h2>
               <div>
                 <div style="width:100%">
@@ -185,10 +187,10 @@
             <div>
               <div>
                 <h1>园区经营指标</h1>
-                <h2>
+                <!-- <h2>
                   更多
                   <span class="iconfont iconpub_right"></span>
-                </h2>
+                </h2> -->
               </div>
 
               <!-- 雷达图 -->
@@ -634,12 +636,7 @@ export default {
           this.xcpztitle = res.data.data;
         });
         //现场品质提示信息
-        this.axios
-          .get(
-            "http://222.180.200.126:9045/api/projectXCPZtype?projectId=" +
-              this.xmid
-          )
-          .then(res => {
+        this.axios.get("/api/projectXCPZtype?projectId=" +this.xmid).then(res => {
             // console.log(res.data.data)
             this.xcpzmsg = res.data.data;
           });
@@ -953,8 +950,8 @@ export default {
       this.titlename = res.data.data;
     });
     // 获取项目能耗用水数据 年度                                              需变更数据
-    this.axios.get("api/projectWaterrentM?projectId=" + this.xmid).then(res => {
-      // console.log(res.data.data[0])
+    this.axios.get("api/projectWaterrentM?projectId="+ this.xmid).then(res => {
+      // console.log(res)
       this.xmnhysqn = [];
       this.xmnhysqn.push(
         res.data.data[0].m1,
@@ -970,7 +967,7 @@ export default {
         res.data.data[0].m11,
         res.data.data[0].m12
       );
-      // console.log(this.xunhysqn)
+      console.log(this.xunhysqn)
     });
     //项目能耗用水数据月度
     this.axios.get("/api/projectWaterMType?projectId="+this.xmid+"&topcount=2").then((res)=>{

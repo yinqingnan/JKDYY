@@ -4,9 +4,19 @@
     <div class="container">
       <div class="center">
         <div class="center_header">
-          <h2>{{cityname}}</h2>
+          <!-- <h2>{{cityname}}</h2> -->
           <div>
-            <el-select v-model="newid" placeholder="请选择" @change="change(newid)">
+              <el-select v-model="cityname"  @change="provinceNamechange(cityname)" style="width:120px;marginLeft:10px">
+                <el-option
+                  v-for="(item,index) in provincelist"
+                  :key="index"
+                  :label="item.provinceName"
+                  :value="item.provinceName"
+                ></el-option>
+              </el-select>
+
+
+            <el-select v-model="newid" placeholder="请选择" @change="change(newid)" style="width:120px;marginLeft:10px">
               <el-option
                 v-for="(item,index) in citylist"
                 :key="index"
@@ -151,13 +161,16 @@ import axios from "axios";
 export default {
   data() {
     return {
+      defailtcity:"",//默认的省份数据
+      name1:"",
       isshow:true,
       newid: "请选择城市",
       name: "",
-      cityname: "",
+      cityname: "",      //默认的省份数据
       list: [], //数据值
       id: "", //默认的城市id
       citylist: [],
+      provincelist:[],
       defaultdata: [], //物业费指导价
       defaultable1: [], //金科自建物业费备案价格
       defaultable2: [], //竞品项目物业费备案价
@@ -171,12 +184,16 @@ export default {
     };
   },
   mounted() {
+    
+    // console.log(this.$route.query.name)
     this.cityname = this.$route.query.name;
+    this.axios.get("/api/cityDataProvince").then((res)=>{
+      // console.log(res.data.data)
+      this.provincelist=res.data.data
+
+    })
     //请求默认显示的初始值id和城市列表
-    axios
-      .get("/api/cityData03?provinceName=" + encodeURI(this.cityname))
-      .then(res => {
-        
+    axios.get("/api/cityData03?provinceName=" + encodeURI(this.cityname)).then(res => {
         // console.log(res.data.data)
         if (res.data.data[0] === undefined) {
           // return false
@@ -243,15 +260,9 @@ export default {
     //省市路由发生变化后执行再次赋值
     $route: {
       handler(newVal) {
-        this.cityname = newVal.fullPath.slice(6);
-        axios
-          .get(
-            "/api/cityData03?provinceName=" +
-              encodeURI(newVal.fullPath.slice(6))
-          )
-          .then(res => {
-            // console.log(res.data.data[0].cityName)
-            // this.id=res.data.data[0].id
+        // console.log(newVal.query.name)
+        this.cityname = newVal.query.name;
+        this.axios.get("/api/cityData03?provinceName=" +encodeURI(this.cityname)).then(res => {
             this.newid = res.data.data[0].cityName;
             this.defaultdata = res.data.data[0];
             this.citylist = res.data.data; //下拉菜单数据
@@ -325,6 +336,10 @@ export default {
       if (rowIndex === 0) {
         return "background-color:#fbfbfb";
       }
+    },
+    provinceNamechange(cityname){
+       this.$router.push({ path: "/city", query: { name: cityname } });
+       location.reload()
     }
   }
 };
@@ -383,10 +398,7 @@ export default {
   line-height: 1;
   margin-top: 6px;
 }
-/* 
-.left_footer{
-    margin-top: 46px
-} */
+
 .left_body > ul {
   display: flex;
 }
@@ -421,11 +433,6 @@ export default {
   margin: 0 10px 0 12px;
 }
 .center_body > div > img {
-  /* width: 100%; */
-  /* height: auto; */
-  /* min-width: 530px; */
-  /* min-height: 400px; */
-  /* max-height: 550px; */
     width: auto;
 	height: auto;
 	/* max-width: 100%; */
@@ -552,6 +559,9 @@ word-break:break-all;
 }
 .el-tooltip__popper {
   max-width:400px;
+}
+.center_header>div{
+  display: flex
 }
 </style>
 
