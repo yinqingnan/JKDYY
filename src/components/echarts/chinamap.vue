@@ -26,16 +26,16 @@ export default {
                 "garageFee": 9.96,
                 "highRiseFee": 9.64,
                 "name": "四川",
-                "value": "20",
+                "value": "5",
                 "villaFee": 9.38,
                 "westernFee": 9.59,
               },
               {
-                "businessFee": 9.85,
+                "businessFee": 2.5,
                 "garageFee": 9.24,
                 "highRiseFee": 9.52,
                 "name": "重庆",
-                "value": "50",
+                "value": "2.5",
                 "villaFee": 9.96,
                 "westernFee": 9.72,
               },
@@ -110,23 +110,22 @@ export default {
         },
 
         dataRange: {
-            color: ["#12c0ff"] , //--------------------------------------------------固定单色
-          show: false,//-------------------------------------------------------------是否显示颜色提示条
-          // min: 0,
-          // max: 100,
-          // realtime: true,
+          // color: ["#12c0ff"] , //--------------------------------------------------固定单色
+          show: true,//-------------------------------------------------------------是否显示颜色提示条
+          min: 0,
+          max: 100,
+          realtime: true,
           // 根据值显示不同的颜色， （值依据数据中的value）
-          // x: 'left',
-          // y: 'center',
-          // splitList: [
+          x: 'left',
+          y: 'center',
+          splitList: [
           // {start: 194, label: '80%以上', color: '#FF6699'},
-          // {start: 0.6, end: 0.8, label: '60-80%', color: '#CC3300'},
-          // {start: 0.4, end: 0.6, label: '40-60%', color: '#F7BB37'},
-          // {start: 0.3, end: 0.4, label: '30-40%', color: '#3BAE56'},
-          // {start: 0.2, end: 0.3, label: '20-30%', color: '#92D050'},
-          // {start: 0.1, end: 0.2, label: '10-20%', color: '#3899FF'},
-          // {start: 0, end: 0.1, label: '0-10%', color: '#BFBFBF'}
-          // ],
+          {start: 4, end: 5, label: '4元以上', color: '#ff6f5b '},
+          {start: 3.5, end: 4 ,label: '3.5元-4元', color: '#fa8737'},
+          {start: 3.0, end: 3.5, label: '3.0元-3.5元', color: '#fba853'},
+          {start: 0, end: 3, label: '3元以下', color: '#ffc188'},
+         
+          ],
         },   
           /*工具按钮组*/
         // toolbox: {
@@ -179,7 +178,7 @@ export default {
               shadowBlur: 20,//-------------------------------------------------------阴影的模糊度
               borderWidth: 0,   //----------------------------------------------------省份的边框宽度
               shadowColor: "rgba(0, 0, 0, 0.5)", //-----------------------------------鼠标经过的阴影颜色
-              areaColor: "#FF7F50", //------------------------------------------------鼠标经过显示的背景颜色
+              areaColor: "#3574c8", //------------------------------------------------鼠标经过显示的背景颜色
             }
           }
         },

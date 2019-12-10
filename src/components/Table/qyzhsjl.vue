@@ -1,6 +1,5 @@
 
 <template>
-  <!-- 项目用电详情页面 -->
   <div>
     <div class="box">
       <div class="boxTitle">

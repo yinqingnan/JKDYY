@@ -5,25 +5,23 @@
         <div class="container" :style="style">
             <div>
                   <div class="container_header" >
-                     <!-- <img :src="data.companyLogo" alt=""> -->
                      <h1>{{data.companyName}}在中国大陆布局图</h1>
                   </div> 
                   <div class="container_body">
                       <div class="container_body_left">
                           <div class="container_body_left_header">
-                              <!-- <h2>{{data.companyName}}</h2> -->
-                                <img :src="data.companyLogo"  
-                                :onerror="defaultlogo"
-                                >
                               <div>
-                                    <ul>
-                                        <li>上市时间：</li>
-                                        <li>{{data.timeToMarket}}</li>
-                                    </ul>
-                                    <ul>
-                                        <li>官方网址：</li>
-                                        <li @click="open(data.officialwebsite)" style="cursor: pointer;">{{data.officialwebsite}}</li>
-                                    </ul>
+                                   <img :src="data.companyLogo"   :onerror="defaultlogo">
+                                   <div>
+                                        <ul>
+                                            <li>上市时间：</li>
+                                            <li>{{data.timeToMarket}}</li>
+                                        </ul>
+                                        <ul>
+                                            <li>官方网址：</li>
+                                            <li @click="open(data.officialwebsite)" style="cursor: pointer;" :title="data.officialwebsite">{{data.officialwebsite}}</li>
+                                        </ul>
+                                   </div>
                               </div>
                               <ul>
                                   <li>
@@ -66,12 +64,12 @@
 import axios from 'axios'
 // import CS from '../components/cs'
 // 管理模块组件
-import GLGM from '../components/echarts/GLGM'
-//总收入组件
-import ZSR from '../components/echarts/ZSR'
+import GLGM from '@/components/echarts/GLGM'
+//总收入/净利润组件
+import ZSR from '@/components/echarts/ZSR'
 
 //收入构成模块
-import SRGC from '../components/echarts/SRGC'
+import SRGC from '@/components/echarts/SRGC'
 
 export default {
     components:{
@@ -116,54 +114,43 @@ export default {
     },
     props:["nameid"],
     watch: {
-    $route:{
-        handler(newVal){
-             //获取公司信息数据
-            axios.get("/api/listedCompany02?id="+newVal.query.id)
-            .then((res=>{
-                this.html= res.data.data[0].companyprofile.replace(/\n|\r\n/g,"<br/><p>")
-                this.id=res.data.data[0].id
-                this.data=res.data.data[0]
-            }))
-
-
-            // 请求管理模块图表数据
-            axios.get("/api/listedCompany03?id="+newVal.query.id)
-            .then((res=>{
-                //  console.log(res.data.data)   
-                this.glgmqn=res.data.data.filter(item => item.reportingType.indexOf('半年'))            //全年数据
-                this.glgmbn=res.data.data.filter(item => item.reportingType.indexOf('全年'))            //半年数据
-                this.GLGM=this.glgmbn     //默认显示半年数据
-            }))
-
-            // 请求总收入图表数据
-            axios.get("/api/listedCompany05?id="+newVal.query.id)
-            .then((res)=>{
-             
-                this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
-                this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
-                this.ZSR=this.zsrbn     //默认显示半年数据
+        $route:{
+            handler(newVal){
+                //获取公司信息数据
+                axios.get("/api/listedCompany02?id="+newVal.query.id)
+                .then((res=>{
+                    this.html= res.data.data[0].companyprofile.replace(/\n|\r\n/g,"<br/><p>")
+                    this.id=res.data.data[0].id
+                    this.data=res.data.data[0]
+                }))
+                // 请求管理模块图表数据
+                axios.get("/api/listedCompany03?id="+newVal.query.id)
+                .then((res=>{
+                    //  console.log(res.data.data)   
+                    this.glgmqn=res.data.data.filter(item => item.reportingType.indexOf('半年'))            //全年数据
+                    this.glgmbn=res.data.data.filter(item => item.reportingType.indexOf('全年'))            //半年数据
+                    this.GLGM=this.glgmbn     //默认显示半年数据
+                }))
+                // 请求总收入图表数据
+                axios.get("/api/listedCompany05?id="+newVal.query.id)
+                .then((res)=>{
                 
-            })
+                    this.zsrbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                    this.zsrqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                    this.ZSR=this.zsrbn     //默认显示半年数据  
+                })
+                // 请求收入构成数据
+                axios.get("/api/listedCompany06?id="+newVal.query.id)
+                .then((res)=>{
+                    this.srgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
+                    this.srgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
+                    this.SRGC=this.srgcbn       //默认显示到半年
 
-
-            // 请求收入构成数据
-            axios.get("/api/listedCompany06?id="+newVal.query.id)
-            .then((res)=>{
-                this.srgcbn=res.data.data.filter(item=>item.reportingType.indexOf("全年"))               //半年数据
-                this.srgcqn=res.data.data.filter(item=>item.reportingType.indexOf("半年"))               //全年数据
-                this.SRGC=this.srgcbn       //默认显示到半年
-
-             
-            })
-             
-        }
-    },
-    deep:true,      //深度监测
-    immediate: true     //将立即以表达式的当前值触发回调
-   
-       
-   
+                })
+            }
+        },
+        deep:true,      //深度监测
+        immediate: true     //将立即以表达式的当前值触发回调
     },
       methods: {
         open(url){
@@ -261,8 +248,8 @@ export default {
 }
 
 .container_header>h1{
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 510;
+    font-size: 32px;
     color: #000;
     line-height: 55px
 }
@@ -298,7 +285,7 @@ background: #fff;
 .container_body_left_header>div:nth-of-type(1){
     display: flex;
     margin: 10px 0;
-    justify-content:space-around;
+    /* justify-content:space-around; */
 
 }
 .container_body_left_header>div:nth-of-type(1)>ul{
@@ -324,14 +311,13 @@ background: #fff;
     height: 14px;
 
 }
-/* .container_body_left_header>div:nth-of-type(1)>ul>li>a{
-    color: #999
-} */
 .container_body_left_header>ul>li{
     display: flex
 }
 .container_body_left_header>ul>li:nth-of-type(1){
     margin-bottom: 10px;
+    width: 160px;
+    margin-right: 100px
 }
 .container_body_left_header>ul>li>h2{
     font-size: 14px;
@@ -416,11 +402,37 @@ background: #fff;
     cursor: pointer;
 
 }
-.container_body_left_header>img{
+.container_body_left_header>div>img{
     width: 160px;
     height: 50px;
     display: block;
 }
+.container_body_left_header>div>div{
+    margin-left: 100px
+}
+.container_body_left_header>div>div>ul{
+    display: flex;
+}
 
-
+.container_body_left_header>div>div>ul>li{
+    font-size: 14px;
+    color: #999;
+    line-height: 1;
+    font-weight: 500;
+    /* width: 70px; */
+}
+.container_body_left_header>div>div>ul>li:nth-of-type(2){
+    width: 160px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.container_body_left_header>div>div>ul:nth-of-type(1){
+    margin-bottom: 13px;
+    margin-top: 6px;
+}
+   
+.container_body_left_header>ul{
+    display: flex;
+}
 </style>

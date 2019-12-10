@@ -383,6 +383,9 @@ export default {
   height: 48px;
   text-align: center;
 }
+.left_header > div > div:hover{
+  background: #a9d0ea
+}
 .left_header > div > div > h1 {
   font-size: 12px;
   color: #666;

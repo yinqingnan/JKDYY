@@ -193,9 +193,9 @@ export default {
                     normal: {
                       borderColor: "#fff", // 拐点边框颜色
                       // label : {show: true},
-                      color: "#56a8e7", //拐点颜色
+                      color: "#a889e9", //拐点颜色
                       lineStyle: {
-                        color: "#56a8e7", //折现颜色
+                        color: "#a889e9", //折现颜色
                         width: 2
                       }
                       // areaStyle: {
@@ -314,9 +314,9 @@ export default {
                     normal: {
                       borderColor: "#fff", // 拐点边框颜色
                       // label : {show: true},
-                      color: "#a889e9", //拐点颜色
+                      color: "#56a8e7", //拐点颜色
                       lineStyle: {
-                        color: "#a889e9", //折现颜色
+                        color: "#56a8e7", //折现颜色
                         width: 2
                       }
                     }

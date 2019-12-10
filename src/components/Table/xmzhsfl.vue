@@ -5,7 +5,7 @@
     <div class="box">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回项目
+          <i class="el-icon-back " ></i>返回上级
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}项目收入一览表</h3>
@@ -136,7 +136,7 @@
           label="单项合计"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="90px"
+          min-width="120px"
         ></el-table-column>
         <el-table-column prop="yieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px"></el-table-column>
         <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>

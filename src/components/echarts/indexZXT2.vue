@@ -176,26 +176,31 @@ export default {
                 {
                   name: "面积",
                    type: "bar",
-                  barWidth: "14px", //宽度
                   symbol: "rect",
                   barGap: "10%",
+                  barWidth: "14px", //宽度
                   itemStyle: {
                     normal: {
-                      color: "#f594be",
-                        lineStyle: {
-                          color: "#f594be",       //折现颜色
-                          width: 2
-                        },
-                      // label: {
-                      //   show: true,
-                      //   textStyle: {
-                      //     color: "#f594be"
-                      //   },
-                      //   position: "insideTop",
-                      //   formatter: function(p) {
-                      //     return p.value > 0 ? p.value : "";
-                      //   }
-                      // }
+                      color: new echarts.graphic.LinearGradient(
+                        0,
+                        0,
+                        0,
+                        1,
+                        [
+                          {
+                            offset: 0,
+                            color: "#f594be" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#f594be" // 100% 处的颜色
+                          }
+                        ],
+                        false
+                      ),
+                      barBorderRadius: [0, 0, 0, 0] //轴的圆角度数
+                      // shadowColor: "rgba(0,255,225,1)",
+                      // shadowBlur: 10     //阴影
                     }
                   },
                   data: this.contractArea
@@ -207,16 +212,16 @@ export default {
                   symbol: "rect",
                   itemStyle: {
                     normal: {
-                      color: "#2cabe3",
+                      color: "#56a8e7",
                      
                       barBorderRadius: 0,
-                      label: {
-                        show: true,
-                        position: "top",
-                        formatter: function(p) {
-                          return p.value > 0 ? p.value : "";
-                        }
-                      }
+                      // label: {
+                      //   show: true,
+                      //   position: "top",
+                      //   formatter: function(p) {
+                      //     return p.value > 0 ? p.value : "";
+                      //   }
+                      // }
                     }
                   },
                   data: this.contractProjectNumber

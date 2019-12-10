@@ -22,16 +22,15 @@ import Xmzhsfl from "../components/Table/xmzhsfl.vue"       //区域公司总收
 import Xmhttz from '../components/Table/xmhttz.vue'         //项目公司合同台账详情表格
 import Xmsbwx from '../components/Table/xmsbwx.vue'         //项目公司设备维修详情表格
 import Zhsjl from "../components/zhsjl/zhsjl.vue"           //综合收缴率主页面
-import Xqhz from "../components/zhsjl/xqhz.vue"             //子页面 小区汇总表
-import Sfkhz from "../components/zhsjl/sfkhz.vue"           //子页面 收费科汇总表
-import Khzymx from "../components/zhsjl/khzymx.vue"         //子页面   客户资源明细表
-import Qyzhsjl from '../components/Table/qyzhsjl'             //区域公司综合收缴率
+import Xqhz from "../components/zhsjl/xqhz.vue"                 //子页面 小区汇总表
+import Sfkhz from "../components/zhsjl/sfkhz.vue"               //子页面 收费科汇总表
+import Khzymx from "../components/zhsjl/khzymx.vue"             //子页面   客户资源明细表
+import Qyzhsjl from '../components/Table/qyzhsjl'           //区域公司综合收缴率
 
 const  router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
     routes:[
-        // {path:"/",redirect:'indexmap'},//设置默认指向的路径
         {path:"/",redirect:'/2'},//设置默认指向的路径  
         {path:"/region",name:"Region",component:Region},      //区域公司页面   4.0  此路由必须携带数据  默认为金科物业重庆区域公司  // http://localhost:8080/project?name=金科物业重庆区域公司
         {path:"/project",name:"project",component:Project},      //项目页面    4.0  此路由必须携带数据  默认为金科物业重庆区域公司 和公司名称       http://localhost:8080/region?quid=250&xmid=1085

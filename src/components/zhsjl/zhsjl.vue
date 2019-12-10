@@ -7,7 +7,7 @@
                 <button @click="TO" class="fhsj">
                     <i class="el-icon-back"></i>返回上级
                 </button>
-                <!-- <h2>综合收缴率统计</h2> -->
+        
             </div>
             <div class="box2">
                     <router-link :to="{path:'/zhsjl/xqhz',query:{xmid:xmid}}" exact>小区汇总表</router-link>

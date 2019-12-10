@@ -230,11 +230,11 @@ export default {
               name: this.incomeName[3],
               type: "line",
               lineStyle: {
-                color: "#333", //连线颜色
+                color: "#FF8C00", //连线颜色
                 width: 3 //宽度
               },
               itemStyle: {
-                color: "#333" //连线颜色
+                color: "#FF8C00" //连线颜色
               },
               smooth: true,
               data: this.data3 //数据入口

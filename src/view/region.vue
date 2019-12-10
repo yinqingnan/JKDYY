@@ -52,7 +52,7 @@
             </li>
           </ul>
           <ul>
-            <li>
+            <li @click="tozsr">
               <h1>{{list2[0]}}</h1>
               <h2 v-for="(item,index) in titlename" :key="index">
                 {{item.totalIncome}}
@@ -372,7 +372,10 @@ export default {
     };
   },
   methods: {
- 
+    // 跳转到项目总收入页面
+    tozsr(){
+       this.$router.push('/xmzhsfl?xmid='+this.xmid)
+    },
     // 项目综合收费率跳转
     zhsfl(){
       this.$router.push("zhsjl?xmid="+this.xmid)
@@ -391,10 +394,8 @@ export default {
     },
 
     selectchange(value) {
-      //区域公司级下拉菜单选中监听
       // console.log(value)
-
-
+      //区域公司级下拉菜单选中监听
       this.value = value;
       this.axios.get("api/projectBycId?companyId=" + value).then(res => {
         // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
@@ -559,6 +560,7 @@ export default {
         this.axios
           .get("/api/projectTotalRate2?projectId=" + this.xmid)
           .then(res => {
+            
             this.zhsfltitle = res.data.data;
           });
         // 获取综合收费率的提示信息
@@ -1319,6 +1321,7 @@ export default {
 }
 .Title > ul:nth-of-type(2) > li:nth-of-type(1) {
   margin-left: 3.125rem;
+  cursor: pointer;
 }
 .Title > ul:nth-of-type(2) > li:nth-of-type(2) {
   margin-left: 4.625rem;

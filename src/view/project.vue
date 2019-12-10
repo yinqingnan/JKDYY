@@ -53,10 +53,11 @@
                         <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                     </div>
                     <div>
+                        <!-- 第一个 -->
                         <div>
                             <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;" @click="zrh">总收入 
                                 <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span>
+                            {{item.changeRate}}%</span>
                             </h1>
                             <h2 >
                                 {{(zsrnumber/10000).toFixed(0)}}<span>万元</span>
@@ -81,22 +82,21 @@
                                     </ul>
                                 </div>
                         </div>
+                        <!-- 第二个 -->
                          <div>
                             <h1>总利润</h1>  
-                            
                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
-                            
-                        <!-- </div> -->
                         </div>
+                        <!-- 第三个 -->
                          <div>
                               <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;">综合收缴率 
                                   <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span>
+                            {{item.changeRate}}%</span>
                             </h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
-                                {{(item.newRate).toFixed(0)}}%
+                                {{item.newRate}}%
                                
                             </h2>
                             <div >
@@ -110,16 +110,15 @@
                             <!-- dqsfl当前收费率 -->
                              <div class=" yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
-                                        <li style="width:50%; display:blank" >当期综合收缴率</li>
-                                        <li style="width:100%;font-weight:600">
-                                            
+                                        <li style="width:41%" title="当期综合收缴率">当期综合收缴率</li>
+                                         <li style="font-weight:600; width:30%" :title="(item.changeRate/10000).toFixed(2)">
                                             <h3>{{(item.changeRate/10000).toFixed(2)}} 万元</h3>
-                                            <h4>  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span></h4>
-
-
+                                          
                                         </li>
-                                      
+                                        <li style="width:29%">
+                                            <h4>  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                                            {{item.changeRate.toFixed(2)}}%</span></h4>
+                                        </li>
                                      
                                     </ul>
                                 </div>
@@ -315,14 +314,14 @@ export default {
                 this.reminder=res.data.data
             })
             // 获取关键指标总收入数据
-            this.axios.get("http://222.180.200.126:9045/api/companyIncomtoOld?companyId="+this.id)        
+            this.axios.get("/api/companyIncomtoOld?companyId="+this.id)        
             .then((res)=>{
                 // console.log(res.data.data)
                 this.zsr=res.data.data
                 this.zsrnumber=res.data.data[0].newReceiptsAll
             })
             // 获取总收入竖向柱状图数据
-            this.axios.get("http://222.180.200.126:9045/api/companyReceipts?year=2019&companyId="+this.id)        
+            this.axios.get("/api/companyReceipts?year=2019&companyId="+this.id)        
             .then((res)=>{
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
                 if(this.date>=7){
@@ -347,19 +346,20 @@ export default {
                 });
             })
             // 获取园区数据
-            this.axios.get("http://222.180.200.126:9045/api/companyTypeMoney?companyId="+this.id)                
+            this.axios.get("/api/companyTypeMoney?companyId="+this.id)                
             .then((res)=>{
                 // console.log(res.data.data)
                 this.zsryq=res.data.data
             })
             
             // 获取综合收费率数据
-            this.axios.get("http://222.180.200.126:9045/api/companyTotalRate?companyId="+this.id)                
+            this.axios.get("/api/companyTotalRate?companyId="+this.id)                
             .then((res)=>{
+                // console.log(res.data.data)
                 this.sfl=res.data.data
             })
             //综合收费率竖向柱状图
-            this.axios.get("http://222.180.200.126:9045/api/companyRates?year=2019&companyId="+this.id)           
+            this.axios.get("/api/companyRates?year=2019&companyId="+this.id)           
             .then((res)=>{  
                 // console.log(res.data.data)
                 if(this.date>=7){
@@ -371,7 +371,7 @@ export default {
                 }
             })
             // 综合收费率横向柱状图
-            this.axios.get("http://222.180.200.126:9045/api/companyRateMaxMinVm").then((res)=>{                  
+            this.axios.get("/api/companyRateMaxMinVm").then((res)=>{                  
                 let arr=res.data.data
                 this.sflhxzzttitle=[];
                 this.sflhxzzt2=[]
@@ -381,7 +381,7 @@ export default {
                 })
             })
                //当前收费率
-            this.axios.get("http://222.180.200.126:9045/api/companyCuMonthRate?companyId="+this.id)                    
+            this.axios.get("/api/companyCuMonthRate?companyId="+this.id)                    
             .then((res)=>{
                 // console.log(res.data.data)
                 this.dqsfl=res.data.data
@@ -881,24 +881,26 @@ export default {
 }
 .yq1>ul{
     margin-top: 26px;
-    margin-left: 26px
+    margin-left: 26px;
+    display: flex;
+    font-size: 14px
 }
-.yq1>ul>li:nth-of-type(1){
+.yq1>ul>li{
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+      line-height: 14px;
+    font-size: 14px;
+    color: #666;
+}
+.yq1>ul>li>h3{
     line-height: 14px;
     font-size: 14px;
     color: #666;
-    font-weight: 500;
-    margin-bottom: 10px
+    /* text-align: center */
 }
-.yq1>ul>li:nth-of-type(2){
-   display: flex;
-   line-height: 14px;
-    font-size: 14px;
-    color: #666;
-}
-.yq1>ul>li:nth-of-type(2)>h4{
-    margin-left: 34px
-}
+
 </style>
 
 <style>

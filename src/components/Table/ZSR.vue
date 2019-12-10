@@ -21,6 +21,7 @@
         </div>
         <h2 @click="exportExcel" class="daochu">导出表格</h2>
       </div>
+
       <el-table
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
@@ -29,6 +30,7 @@
         show-summary
         class="table"
         element-loading-text="请稍后..."
+         @row-click="openDetails"
       >
         <el-table-column
           label="序号"
@@ -499,6 +501,11 @@ export default {
             message: "已取消下载"
           });
         });
+    },
+    openDetails(row){
+      this.axios.get("/api/projectInfoName?projectIdName="+encodeURI(row.projectName)).then((res)=>{
+         this.$router.push('/xmzhsfl?xmid='+res.data.data[0].projectId)
+      })
     }
   }
 };
