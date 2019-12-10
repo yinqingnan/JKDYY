@@ -55,7 +55,7 @@
                     <div>
                         <!-- 第一个 -->
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;" @click="zrh">总收入 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;   color: #49a4d9 ;" @click="zrh">总收入 
                                 <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -90,7 +90,7 @@
                         </div>
                         <!-- 第三个 -->
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;">综合收缴率 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;color: #49a4d9 ;">综合收缴率 
                                   <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -684,7 +684,8 @@ export default {
     font-weight: 500;
     overflow: hidden;
     text-overflow:ellipsis;
-    white-space: normal
+    white-space: normal;
+    color: #666
 }
 .table1>ul>li>h2:nth-of-type(2){
     text-decoration: none;
@@ -831,7 +832,7 @@ export default {
 
 
 .yq{
-    margin-left: 16px
+    margin-left: 6px
 }
 .yq>ul{
     display: flex;
@@ -881,7 +882,7 @@ export default {
 }
 .yq1>ul{
     margin-top: 26px;
-    margin-left: 26px;
+    margin-left: 6px;
     display: flex;
     font-size: 14px
 }

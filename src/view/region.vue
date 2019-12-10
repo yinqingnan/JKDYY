@@ -52,8 +52,8 @@
             </li>
           </ul>
           <ul>
-            <li @click="tozsr">
-              <h1>{{list2[0]}}</h1>
+            <li @click="tozsr" style="color:#49a4d9">
+              <h1 >{{list2[0]}}</h1>
               <h2 v-for="(item,index) in titlename" :key="index">
                 {{item.totalIncome}}
                 <span>万元</span>
@@ -74,15 +74,12 @@
         <div class="Chart">
           <div>
             <h1>关键指标</h1>
-            <!-- <h2>
-              更多
-              <span class="iconfont iconpub_right"></span>
-            </h2> -->
+            <!-- <h2>更多<span class="iconfont iconpub_right"></span></h2> -->
           </div>
           <div>
             <!-- 关键指标图表1 -->
             <div>
-              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:10%;cursor: pointer;" @click="zhsfl">
+              <h1 v-for="(item,index) in zhsfltitle" :key="index" style="marginRight:10%;cursor: pointer; color:#49a4d9" @click="zhsfl">
                 
                     综合收缴率
                 <span :class="item.state==1? 'Green':'Red'">
@@ -116,7 +113,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%;cursor: pointer;">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%;">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -150,7 +147,7 @@
 
             <div>
             
-              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:10%;cursor: pointer;">
+              <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:10%;">
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -1466,6 +1463,7 @@ export default {
   margin-top: 12px;
 }
 .table2 > ul > li > h2 {
+  color: #666;
   font-size: 14px;
   text-decoration: underline;
   min-width: 170px;
@@ -1625,7 +1623,7 @@ export default {
   /* transform: scale(0.8); */
   font-size: 14px;
   font-weight: 600;
-  color: #666;
+  color: #49a4d9 ;
   cursor: pointer;
 
 }

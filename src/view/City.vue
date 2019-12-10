@@ -33,7 +33,6 @@
           </div>
         </div>
         <div class="left_header">
-          <!-- <h1>物业费指导价</h1>                -->
           <div>
             <div>
               <h1>高层</h1>
@@ -491,12 +490,13 @@ word-break:break-all;
 .sign {
   display: flex;
   width: 50%;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin-left: 10%;
 }
 .sign > h1 {
   font-size: 14px;
   font-weight: 600;
+  margin-right: 30px
 }
 .sign > span:nth-of-type(1) {
   font-size: 14px;
@@ -507,6 +507,7 @@ word-break:break-all;
   color: #049d4a;
   padding: 1px 5px;
   border-radius: 5px;
+  margin-right: 20px
 }
 .sign > span:nth-of-type(2) {
   font-size: 14px;

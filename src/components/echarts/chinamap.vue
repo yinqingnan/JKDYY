@@ -44,7 +44,7 @@ export default {
   },
   created() {
     this.axios.get("/api/cityData10").then(res => {
-      // console.log(res.data.data)
+      console.log(res.data.data)
       this.list = res.data.data;
       if (this.list.length == 0) {
         return false;
@@ -116,7 +116,7 @@ export default {
           max: 100,
           realtime: true,
           // 根据值显示不同的颜色， （值依据数据中的value）
-          x: 'left',
+          x: '100',
           y: 'center',
           splitList: [
           // {start: 194, label: '80%以上', color: '#FF6699'},
@@ -124,7 +124,7 @@ export default {
           {start: 3.5, end: 4 ,label: '3.5元-4元', color: '#fa8737'},
           {start: 3.0, end: 3.5, label: '3.0元-3.5元', color: '#fba853'},
           {start: 0, end: 3, label: '3元以下', color: '#ffc188'},
-         
+          {start: 0, end: 0, label: '蓝色暂无数据信息', color: '#479fd2'},
           ],
         },   
           /*工具按钮组*/
@@ -170,7 +170,7 @@ export default {
             normal: {
               borderColor: "#fff", //-------------------------------------------------省份边界线颜色
               borderWidth: 1,   //----------------------------------------------------边框宽度
-              areaColor: "#8295a2" //-------------------------------------------------省份区域默认显示颜色
+              areaColor: "#479fd2" //-------------------------------------------------省份区域默认显示颜色
             },
             emphasis: {     //--------------------------------------------------------鼠标经过效过
               shadowOffsetX: 0,//-----------------------------------------------------阴影的X方向

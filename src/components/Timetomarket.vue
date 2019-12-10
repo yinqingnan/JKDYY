@@ -208,7 +208,8 @@ export default {
     /* height: 180px; */
     height: auto;
     z-index: 10;
-    padding-top: 20px
+    padding-top: 20px;
+    max-height: 260px
 }
 /* 鼠标经过事件 */
 .fuhezi:nth-child(even)>.Label:hover {
@@ -218,7 +219,8 @@ export default {
     /* height: 180px; */
     z-index: 10;
     padding-top: 20px;
-        height: auto;
+    height: auto;
+    max-height: 260px
 
 }
 /* 鼠标经过事件 */
@@ -256,7 +258,8 @@ export default {
     width: 100%;
     font-size: 14px;
     color: #333;
-    text-indent: 24px;
+    /* text-indent: 24px; */
+    text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -379,7 +382,6 @@ export default {
 
 .fuhezi:nth-last-of-type(even) .Label>li:first-child{
          margin-top: 0px
-
 }
 
 </style>
