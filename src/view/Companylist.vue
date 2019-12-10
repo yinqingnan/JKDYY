@@ -261,8 +261,8 @@ export default {
 }
 
 .container_header>h1{
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 24px;
     color: #000;
     line-height: 55px
 }

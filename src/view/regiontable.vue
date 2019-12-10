@@ -93,9 +93,6 @@ import Table3 from "../components/Table/table3"
                   
                 })
             }
-              
-                // this.propsData=[];
-                // this.propsData.push(this.Selection,this.msg)
                 
             },
             // 监听下拉选中项目并赋值给默认项
@@ -109,13 +106,14 @@ import Table3 from "../components/Table/table3"
         },
         mounted(){
             // 获取区域公司列表信息
-            this.axios.get("http://222.180.200.126:9045/api/projectCompanyList").then((res)=>{
+            this.axios.get("/api/projectCompanyList").then((res)=>{
                 // console.log(res.data.data)
                 this.qygslist=res.data.data
                 
             });
             //获取默认显示的table数据
-            this.axios.get("http://222.180.200.126:9045/api/projectinfopage2?companyName="+encodeURI(this.qydefault)).then((res)=>{
+            this.axios.get("/api/projectinfopage2?companyName="+encodeURI(this.qydefault)).then((res)=>{
+                // console.log(res.data.data)
                 // this.tablelength=array.length
                 this.tablemsg=res.data.data
             })
@@ -158,6 +156,7 @@ import Table3 from "../components/Table/table3"
     margin-right: 40px;
     font-size: 16px;
     color: #333;
+    cursor: pointer;
   
 }
 .active{

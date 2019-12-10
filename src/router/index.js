@@ -13,7 +13,7 @@ import Acquisition  from '../components/Table/Acquisitiondetails.vue'       //�
 
 import City from '../view/City.vue'       //城市数据（旧）
 import Indexmap from '../view/indexmap.vue'   //地图页面
-import Regiontable from '../view/regiontable.vue'   //区域项目表格
+import Regiontable from '../view/regiontable.vue'   //区域项目表格 （在管项目 招标物业费 停车备案情况）
 
 import Dyyd from "../components/Table/xmydtab.vue"      //项目当月用电详情
 import Dyys from "../components/Table/xmystab.vue"      //项目当月用水 详情

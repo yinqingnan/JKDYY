@@ -183,10 +183,11 @@ export default {
               series: [
                 {
                   name: "净利率",
-                  type: "line",
+                  type: "bar",
+                  barWidth: "14px", //宽度
                   stack: "总量",
                   symbol: "rect",
-                  symbolSize: 6, //拐点大小
+                  
                   //  itemStyle : { normal: {label : {show: true}}},
                   itemStyle: {
                     normal: {
@@ -221,10 +222,10 @@ export default {
                 },
                 {
                   name: "毛利率",
-                  type: "line",
+                  type: "bar",
+                  barWidth: "14px", //宽度
                   stack: "总量",
                   symbol: "reat",
-                  symbolSize: 6, //拐点大小
                   //  itemStyle : { normal: {label : {show: true}}},
                   itemStyle: {
                     normal: {
@@ -248,11 +249,11 @@ export default {
                 },
 
                 {
-                  name: "营收增长率",
-                  type: "line",
+                  name: "营收增长率",  
+                  type: "bar",
+                  barWidth: "14px", //宽度            
                   stack: "总量",
                   symbol: "rect",
-                  symbolSize: 6, //拐点大小
                   //  itemStyle : { normal: {label : {show: true}}},
                   itemStyle: {
                     normal: {
@@ -277,10 +278,10 @@ export default {
 
                 {
                   name: "利润增长率",
-                  type: "line",
+                  type: "bar",
+                  barWidth: "14px", //宽度
                   stack: "总量",
                   symbol: "reat",
-                  symbolSize: 6, //拐点大小
                   //  itemStyle : { normal: {label : {show: true}}},
                   itemStyle: {
                     normal: {
@@ -304,10 +305,10 @@ export default {
                 },
                 {
                   name: "ROE",
-                  type: "line",
+                  type: "bar",
+                  barWidth: "14px", //宽度
                   stack: "总量",
                   symbol: "reat",
-                  symbolSize: 6, //拐点大小
                   //  itemStyle : { normal: {label : {show: true}}},
                   itemStyle: {
                     normal: {

@@ -51,8 +51,9 @@ export default {
        backgroundColor: "#fff",
         title: {
             text: '收费率分析',
-            top:10,
-            left:14,
+            top:20,
+            // left:14,
+            left:"center",
             textStyle: {
                 color: "#999",
                 fontSize: 12,
@@ -76,7 +77,7 @@ export default {
             fontSize: 12
         },
         data: this.title,
-        selectedMode: "multiple", //强制多选（ multiple ）或单选（ single ）
+        selectedMode: "multiple",     //强制多选（ multiple ）或单选（ single ）
         align: 'right',
         itemWidth: 9, // 设置宽度
         itemHeight: 9 // 设置高度
@@ -124,7 +125,7 @@ export default {
       },
         data:this.data1
     }, {
-        name: '公司评价',
+        name: '公司平均',
         type: 'bar',
         barWidth:16,
         color:"#333",

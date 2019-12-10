@@ -77,10 +77,10 @@ export default {
   methods: {
     handleSizeChange(cpage) {
   
-        // this.pagesize=cpage
+        this.pagesize=cpage
     },
     current_change: function(currentPage) {
-      // this.currentPage = currentPage;
+      this.currentPage = currentPage;
     },
     download(val){
       window.open(val.accessoryBasic)

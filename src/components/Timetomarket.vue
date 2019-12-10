@@ -200,9 +200,34 @@ export default {
 }
 .fuhezi{
     position: relative;
-    /* overflow-y: auto; */
+    width: 110px
+}
+/* 鼠标经过事件 */
+.fuhezi:nth-child(odd)>.Label:hover {
+    position: absolute;
+    /* height: 180px; */
+    height: auto;
+    z-index: 10;
+    padding-top: 20px
+}
+/* 鼠标经过事件 */
+.fuhezi:nth-child(even)>.Label:hover {
+
+    position: absolute;
+    bottom:0px;
+    /* height: 180px; */
+    z-index: 10;
+    padding-top: 20px;
+        height: auto;
 
 }
+/* 鼠标经过事件 */
+.fuhezi:nth-child(odd)>.Label:hover >li{
+    margin-top: 6px
+}
+
+
+
 
 .fuhezi:nth-child(odd){
     top: -116px
@@ -211,6 +236,7 @@ export default {
     bottom: -58px
 }
 .Label{
+   /* transition: all 0.5s; */
     width: 110px ;
     height: 56px;
     background: #fff;

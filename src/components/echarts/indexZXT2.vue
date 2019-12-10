@@ -175,10 +175,8 @@ export default {
               series: [
                 {
                   name: "面积",
-                  type: "line",
-                  
-                  // "stack": "总量",
-                  barMaxWidth: 35,
+                   type: "bar",
+                  barWidth: "14px", //宽度
                   symbol: "rect",
                   barGap: "10%",
                   itemStyle: {
@@ -205,8 +203,7 @@ export default {
                 {
                   name: "项目",
                   type: "bar",
-                  // "stack": "总量",
-                  symbolSize: 4,           //拐点大小
+                  barWidth: "14px", //宽度
                   symbol: "rect",
                   itemStyle: {
                     normal: {

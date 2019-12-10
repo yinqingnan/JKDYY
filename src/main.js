@@ -53,8 +53,6 @@ Vue.prototype.axios = axios         //将axios配置到Vue原型中
 Vue.use(VueAxios, axios)
 
 
-
-
 var vue=new Vue({
   router,
   store,
