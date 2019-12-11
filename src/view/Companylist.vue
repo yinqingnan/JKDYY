@@ -14,12 +14,13 @@
                                    <img :src="data.companyLogo"   :onerror="defaultlogo">
                                    <div>
                                         <ul>
-                                            <li>上市时间：</li>
-                                            <li>{{data.timeToMarket}}</li>
-                                        </ul>
-                                        <ul>
+                                            
                                             <li>官方网址：</li>
                                             <li @click="open(data.officialwebsite)" style="cursor: pointer;" :title="data.officialwebsite">{{data.officialwebsite}}</li>
+                                        </ul>
+                                        <ul>
+                                            <li>上市时间：</li>
+                                            <li>{{data.timeToMarket}}</li>
                                         </ul>
                                    </div>
                               </div>
@@ -359,6 +360,7 @@ background: #fff;
         -ms-overflow-style:none;
         /*火狐下隐藏滚动条*/
         overflow:-moz-scrollbars-none;
+            scrollbar-width: none
 }
 .container_body_left_body>div::-webkit-scrollbar {display:none}
 

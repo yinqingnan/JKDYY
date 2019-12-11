@@ -182,6 +182,7 @@ export default {
         -ms-overflow-style:none;
         /*火狐下隐藏滚动条*/
         overflow:-moz-scrollbars-none;
+            scrollbar-width: none
 }
 .right>div>ul::-webkit-scrollbar {
     display: none;

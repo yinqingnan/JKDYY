@@ -239,9 +239,8 @@ export default {
               // console.log(res.data.data)
             });
             // 城市当地政府物业费指导价上浮说明数据
-            this.axios.get("/api/cityDataBuoyancyThat").then((res)=>{
-              // 
-              this.sfsm=res.data.data[0].itemName
+            this.axios.get("/api/cityDataRemark?id="+this.id).then((res)=>{
+              this.sfsm=res.data.data[0].remark
             })
         }
       });
@@ -315,6 +314,11 @@ export default {
         this.defaultlist = res.data.data;
         // console.log(res.data.data)
       });
+      // 城市当地政府物业费指导价上浮说明数据
+        this.axios.get("/api/cityDataRemark?id="+this.id).then((res)=>{
+          // console.log(res.data.data[0].remark)
+          this.sfsm=res.data.data[0].remark
+        })
     },
     control(index) {
       this.num = index;
@@ -553,10 +557,12 @@ word-break:break-all;
   height: 42px;
   overflow: hidden;
   overflow-y: auto;
+  text-indent: 2em;
   /* 当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
   /*火狐下隐藏滚动条*/
-  overflow: -moz-scrollbars-none;
+   overflow:-moz-scrollbars-none;
+       scrollbar-width: none
 }
 .Explain > p::-webkit-scrollbar {
   display: none;
@@ -568,15 +574,6 @@ word-break:break-all;
   display: flex
 }
 </style>
-
-
-
-
-
-
-
-
-
 <style >
 /* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */
 .el-tooltip__popper {

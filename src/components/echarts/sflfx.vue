@@ -55,8 +55,8 @@ export default {
             // left:14,
             left:"center",
             textStyle: {
-                color: "#999",
-                fontSize: 12,
+                color: "#666",
+                fontSize: 14,
                 fontWeight: "600"
             }
         },

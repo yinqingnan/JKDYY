@@ -661,6 +661,7 @@ export default {
     -ms-overflow-style:none;
     /*火狐下隐藏滚动条*/
     overflow:-moz-scrollbars-none;
+        scrollbar-width: none
   
 }
 /* 谷歌浏览器溢出滚动 */
@@ -707,6 +708,7 @@ export default {
         -ms-overflow-style:none;
         /*火狐下隐藏滚动条*/
         overflow:-moz-scrollbars-none;
+        scrollbar-width: none
 }
 /* 谷歌浏览器溢出滚动 */
 .table2>ul::-webkit-scrollbar {display:none}

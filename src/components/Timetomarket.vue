@@ -5,31 +5,9 @@
     <div>
         <div class="box">
             <h1>上市时间图</h1>
-                <!-- <div class="line"> -->
-                    <!-- <div class="sjx" @click="rightbtn"></div>  -->
-                    <!-- <div class="box_header"> -->
-                        <!-- <div  ref="tabs"> -->
-                            <!-- <ul v-for="(item,index) in list" :key="index"  > -->
-                                <!-- <li class="year">{{item.year}}</li>
-                                <li :title="item.companyName.split(',')[0]" >{{item.companyName.split(",")[0]}}</li>
-                                <li :title="item.companyName.split(',')[1]" >{{item.companyName.split(",")[1]}}</li> 
-                                <li :title="item.companyName.split(',')[2]">{{item.companyName.split(",")[2]}}</li>
-                                <li :title="item.companyName.split(',')[3]">{{item.companyName.split(",")[3]}}</li>
-                                <li :title="item.companyName.split(',')[4]">{{item.companyName.split(",")[4]}}</li>
-                                <li :title="item.companyName.split(',')[5]">{{item.companyName.split(",")[5]}}</li>
-                                <li :title="item.companyName.split(',')[6]">{{item.companyName.split(",")[6]}}</li>
-                                <li :title="item.companyName.split(',')[7]">{{item.companyName.split(",")[7]}}</li>
-                                <li :title="item.companyName.split(',')[8]">{{item.companyName.split(",")[8]}}</li>
-                                <li :title="item.companyName.split(',')[9]">{{item.companyName.split(",")[9]}}</li>
-                                <li :title="item.companyName.split(',')[10]">{{item.companyName.split(",")[10]}}</li>
-                                <li :title="item.companyName.split(',')[11]">{{item.companyName.split(",")[11]}}</li> -->
-                            <!-- </ul> -->
-                        <!-- </div> -->
-                      
-                    <!-- </div> -->
-                    <!-- <div class="sjx1" @click="leftbtn"></div> -->
-                <!-- </div> -->
                  <div class="container">
+                    <div class="fuhezi_left"></div>
+                    <div class="fuhezi_right"></div>
                     <span class="sjx" @click="rightbtn"></span>
                     <div class="Line">
                         <div>
@@ -51,7 +29,6 @@
                                         <li :title="item.companyName.split(',')[9]">{{item.companyName.split(",")[9]}}</li>
                                         <li :title="item.companyName.split(',')[10]">{{item.companyName.split(",")[10]}}</li>
                                         <li :title="item.companyName.split(',')[11]">{{item.companyName.split(",")[11]}}</li> 
-                                       
                                     </ul> 
                                      <li class="year">{{item.year}}年</li>
                                 </div>
@@ -164,7 +141,7 @@ export default {
     border-top-color: transparent;
     border-right: transparent;
     border-bottom-color: transparent;
-    right: 9px;
+    right: 23px;
     top: 168px;
     z-index: 2;
     cursor: pointer;
@@ -176,7 +153,7 @@ export default {
     border-top-color: transparent;
     border-left: transparent;
     border-bottom-color: transparent;
-    left: 9px;
+    left: 23px;
     top: 168px;
     z-index: 2;
     cursor: pointer;transition: all 0.1s
@@ -229,8 +206,6 @@ export default {
 }
 
 
-
-
 .fuhezi:nth-child(odd){
     top: -116px
 }
@@ -249,7 +224,9 @@ export default {
     -ms-overflow-style:none;
     /*火狐下隐藏滚动条*/
     overflow:-moz-scrollbars-none;
+    scrollbar-width: none
 }
+/* 清除谷歌的浏览器 */
 .Label::-webkit-scrollbar {display:none}
 
 
@@ -383,5 +360,20 @@ export default {
 .fuhezi:nth-last-of-type(even) .Label>li:first-child{
          margin-top: 0px
 }
-
+.fuhezi_left{
+    width: 22px;
+    background: #fff;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.fuhezi_right{
+    width: 22px;
+    background: #fff;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
 </style>

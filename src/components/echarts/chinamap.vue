@@ -44,7 +44,7 @@ export default {
   },
   created() {
     this.axios.get("/api/cityData10").then(res => {
-      console.log(res.data.data)
+      // console.log(res.data.data)
       this.list = res.data.data;
       if (this.list.length == 0) {
         return false;

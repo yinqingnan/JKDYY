@@ -86,7 +86,7 @@ export default {
                  top: "20%",
                 right: "8%",
                 left: "10%",
-                bottom: "20%"
+                bottom: "26%"
               },
               legend: {
                 right:"10",
@@ -118,7 +118,7 @@ export default {
                   },
                   axisLabel: {
                     interval:0,
-                    rotate:40,
+                    rotate:30,
                     color: "#333",
                     // formatter: function(value) {
                     //   //X轴文字众向排列
@@ -134,18 +134,25 @@ export default {
                   }
                 }
               ],
-              //   dataZoom: [        //滚动条功能
-              //   {
-              //       type: 'slider',
-              //       show: true,
-              //       xAxisIndex: [0],
-              //       left: '9%',
-              //       bottom: -5,
-              //       start: 10,
-              //       end: 90 //初始化滚动条
-              //   }
-
-              // ],
+                dataZoom: [        //滚动条功能
+                              {
+                      type: 'slider',
+                      show: true,    //是否显示 组件。如果设置为 false，不会显示，但是数据过滤的功能还存在。
+                       backgroundColor:"rgba(47,69,84,0)",  //组件的背景颜色
+                      //  dataBackground:{                        //数据阴影的样式。
+                      //     lineStyle:mylineStyle,              //阴影的线条样式
+                      //     areaStyle:myareaStyle,              //阴影的填充样式
+                      // },
+                      fillerColor:"rgba(167,183,204,0.4)",  //选中范围的填充颜色。
+                      borderColor:"#ddd",                     //边框颜色。
+                      xAxisIndex:[0],                            //设置 dataZoom-inside 组件控制的 x轴,可以用数组表示多个轴
+                      height:20,
+                      left: '9%',
+                      bottom: 0,
+                      start: 0,           //数据窗口范围的起始百分比
+                      end: 50,             //数据窗口范围的结束百分比
+                  }
+              ],
               yAxis: [
                {
                   show: true,
