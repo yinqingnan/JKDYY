@@ -56,11 +56,11 @@
                         <!-- 第一个 -->
                         <div>
                             <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;   color: #49a4d9 ;" @click="zrh">总收入 
-                                <span :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                                <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
                             <h2 >
-                                {{(zsrnumber/10000).toFixed(0)}}<span>万元</span>
+                                {{zsrnumber}}<span v-show="zsrnumber>0">万元</span>
                             </h2>
                             <div>
                                 <div style="width:100%">
@@ -91,12 +91,12 @@
                         <!-- 第三个 -->
                          <div>
                               <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;color: #49a4d9 ;">综合收缴率 
-                                  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                                  <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
                           
                             <h2 v-for="(item,index) in sfl " :key="index+1" >
-                                {{item.newRate}}%
+                                {{item.newRate}} <span v-show="item.newRate" >%</span> 
                                
                             </h2>
                             <div >
@@ -318,7 +318,7 @@ export default {
             .then((res)=>{
                 // console.log(res.data.data)
                 this.zsr=res.data.data
-                this.zsrnumber=res.data.data[0].newReceiptsAll
+                this.zsrnumber=(res.data.data[0].newReceiptsAll/1000).toFixed(0)
             })
             // 获取总收入竖向柱状图数据
             this.axios.get("/api/companyReceipts?year=2019&companyId="+this.id)        
@@ -608,8 +608,9 @@ export default {
     font-weight: 600;
     color: #333333 ;
     margin-left: 33px;
-    margin-bottom: 42px;
+    /* margin-bottom: 42px; */
     font-size: 24px;
+    height: 70px
     
 }
 .Chart>div:nth-of-type(2)>div>h2>span{

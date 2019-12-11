@@ -14,8 +14,6 @@
                                 <h3>{{item.recordTime.split(" ")[0]}}</h3>
                             </div>
                         </li>
-                     
-                        <!-- <li v-show="isshow" class="yc" ref="yc1">{{item.recordTime.split(" ")[0]}}</li> -->
                     </ul>
                 </div>
             </div>         
@@ -34,9 +32,7 @@ export default {
     watch:{
         xmid:{
             handler(newval){
-                // console.log(newval)
                 this.axios.get("/api/projectEvent01?projectid="+newval).then((res)=>{
-                    // console.log(res.data.data)
                     this.list=res.data.data
                 })
             }
