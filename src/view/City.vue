@@ -124,7 +124,6 @@
               <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
             </el-table>
-    
           </div>
         </div>
         <div class="left_footer">
@@ -494,7 +493,6 @@ word-break:break-all;
 .sign {
   display: flex;
   width: 50%;
-  /* justify-content: space-around; */
   margin-left: 10%;
 }
 .sign > h1 {
