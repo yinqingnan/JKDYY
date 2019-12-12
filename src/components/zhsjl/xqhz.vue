@@ -86,11 +86,11 @@
                         </li>
                         <li>
                            <h1>本月收费率：</h1>
-                           <h2>66%</h2>
+                           <h2>{{rate}}%</h2>
                         </li>
                         <li>
                            <h1>本月排名：</h1>
-                           <h2>5名</h2>
+                           <h2>{{ranking}}</h2>
                         </li>
                        
                    </ul>
@@ -156,6 +156,8 @@ export default {
             bypm:"",      //本月排名
             ypjsfl:""  ,    //本月平均收费率
             qnpjsfl:""  ,    //全年平均收费率
+            rate:"",        //收费率
+            ranking:""      //排名
 
 
         }
@@ -180,9 +182,11 @@ export default {
             this.qnpjsfl=res.data.data[0].rate.toFixed(2)
         })
         // 获取当前项目数据
-        // this.axios.get("/api/proChargeRate05?projectId=1085").then((res)=>{
-        //     console.log(res.data.data)
-        // })
+        this.axios.get("/api/proChargeRate05?projectId=1085").then((res)=>{
+            // console.log(res.data.data[0])
+            this.rate=res.data.data[0].Rate
+            this.ranking=res.data.data[0].rowNumber
+        })
 
     },
     methods:{

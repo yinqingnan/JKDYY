@@ -13,10 +13,7 @@ const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
-
-
 // 引入自定义的路由配置
-
 import router from './router';
 
 
@@ -31,8 +28,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 
-
-
 // 引入echarts
 import echarts from "echarts"
 Vue.prototype.$echarts = echarts;
@@ -44,8 +39,10 @@ import store from './store'
 import axios from 'axios'
 import VueAxios  from 'vue-axios'
 
-// axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
-axios.defaults.baseURL="http://219.153.109.174:9045"          //默认地址   金科内部使用
+axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
+// axios.defaults.baseURL="http://219.153.109.174:9045"          //默认地址   金科内部使用
+
+
 
 
 
