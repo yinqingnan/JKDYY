@@ -26,6 +26,10 @@ import Xqhz from "../components/zhsjl/xqhz.vue"                 //子页面 小�
 import Sfkhz from "../components/zhsjl/sfkhz.vue"               //子页面 收费科汇总表
 import Khzymx from "../components/zhsjl/khzymx.vue"             //子页面   客户资源明细表
 import Qyzhsjl from '../components/Table/qyzhsjl'           //区域公司综合收缴率
+import Xmnhzb from "../components/Xmnhzb"
+
+
+
 
 const  router = new VueRouter({
     base: '/',
@@ -58,7 +62,8 @@ const  router = new VueRouter({
                 {path:"/zhsjl/khzymx",component:Khzymx},
 
             ]
-        }
+        },
+        {path:"/xmnhzb",name:"xmnhzb",component:Xmnhzb}
     ]
 })
 

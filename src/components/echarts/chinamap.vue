@@ -16,7 +16,7 @@ import "../../../node_modules/echarts/map/js/china.js"; // 引入中国地图数
 
 
 export default {
-  data() {
+  data() {  
     return {
       // chart: null
       list: [],      //---------------------------------------------------------地图数据

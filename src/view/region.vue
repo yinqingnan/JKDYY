@@ -203,6 +203,7 @@
                 <div class="xmnhxq">
                   <h2 @click="dyys">当月用水详情</h2>
                   <h2 @click="dyyd">当月用电详情</h2>
+                  <!-- <h2 @click="toxmnhzb">更多 <span class="iconfont iconpub_right"></span></h2> -->
                 </div>
               </div>
               <div class="xmnh">
@@ -233,7 +234,7 @@
                     </ul>
                      <div >
                         <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" ></xmnhydqn>
-                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy"  ></xmnhdyyd>
+                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy"></xmnhdyyd>
                     </div>
                   </div>
                 </div>
@@ -260,7 +261,6 @@
         <div class="table1 table3">
           <div class="table3_header">
             <h1>登录其他系统</h1>
-    
           </div>
           <div class="table3_footer">
             <ul>
@@ -297,10 +297,8 @@ import xmbssxzzt from "@/components/echarts/xmbssxzzt";
 import xmzhsflhxzzt from "../components/echarts/xmzhsflhxzzt";
 //项目综合收费率竖向柱状图
 import xmzhsflsxzzt from "../components/echarts/xmzhsflsxzzt";
-
 // 引入雷达图
 import radar from "@/components/echarts/radar";
-
 // 引入现场品质竖向柱状图
 import xcpzsxzzt from "@/components/echarts/xcpzsxzzt";
 // 现场品质横线柱状图
@@ -369,6 +367,10 @@ export default {
     };
   },
   methods: {
+    // 项目能耗指标
+    toxmnhzb(){
+      this.$router.push("/xmnhzb")
+    },
     // 跳转到项目总收入页面
     tozsr(){
        this.$router.push('/xmzhsfl?xmid='+this.xmid)
@@ -1626,6 +1628,10 @@ export default {
   color: #49a4d9 ;
   cursor: pointer;
 
+}
+.xmnhxq>h2>span{
+  font-size: 14px;
+  font-weight: 500;
 }
 .xmnhxq>h2:nth-of-type(2){
   margin-left: 8px
