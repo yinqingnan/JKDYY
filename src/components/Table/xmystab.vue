@@ -100,7 +100,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.$route)
+        // console.log(this.$route)
         this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
         var date=new Date();
         this.month=date.getMonth()+1;
