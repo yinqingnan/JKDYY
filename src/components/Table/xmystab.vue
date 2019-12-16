@@ -4,7 +4,7 @@
     <div>
           <div class="box">
               <div class="boxTitle">
-                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回项目</button>
+                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回上级</button>
                     
                     
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用水量明细表
@@ -100,13 +100,30 @@ export default {
         }
     },
     mounted(){
-        // console.log(this.$route.query.xmid)
+        console.log(this.$route)
         this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
         var date=new Date();
         this.month=date.getMonth()+1;
         this.monthdefaultdefault=date.getMonth()+1+"月";
         this.yeardefaultdefault=date.getFullYear()+"年";
         this.year=date.getFullYear()
+
+        if(this.$route.query.Month==""){
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                this.tablemsg=res.data.data
+                this.totalCount=res.data.data.length
+            })
+        }else{
+            // console.log(this.$route.query.Month)
+            this.month=this.$route.query.Month
+            this.monthdefaultdefault=this.$route.query.Month
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                this.tablemsg=res.data.data
+                this.totalCount=res.data.data.length
+            })
+        }
+
+
         this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
             // console.log(res.data.data)
             this.tablemsg=res.data.data
@@ -160,14 +177,17 @@ export default {
                 // console.log(res.data.data)
                 // res.data.data[0].projectName
                 // 跳转回上级
-                this.$router.push({
-                    path:'/region',
-                    query:{
-                        quid:res.data.data[0].companyId,
-                        xmid:res.data.data[0].projectId
-                    }
-                })
+            //     this.$router.push({
+            //         path:'/region',
+            //         query:{
+            //             quid:res.data.data[0].companyId,
+            //             xmid:res.data.data[0].projectId
+            //         }
+            //     })
+            this.$router.go(-1)
             })
+            
+
           
          
         },

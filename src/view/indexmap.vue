@@ -4,6 +4,7 @@
     <div>
         <div class="box" @click="hide">
             <div class="left">
+                <div class="cover"></div>
                 <div class="positionbox">
                     <h1>金科服务在中国</h1>
                     <div>
@@ -99,6 +100,14 @@ export default {
 
 
 <style scoped>
+.cover{
+    background: transparent;
+    width: 20%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
 .box{
     height: 100%;
     width: 100%;

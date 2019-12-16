@@ -98,6 +98,7 @@ export default {
               color: "#333",
               fontSize: 12
             },
+              // selectedMode: false,
             selectedMode: "multiple", //强制多选（ multiple ）或单选（ single ）
             data: ["面积", "项目数量"],
             itemWidth: 9, // 设置宽度

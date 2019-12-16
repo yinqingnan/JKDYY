@@ -107,23 +107,25 @@ export default {
                   fontSize: 14,   //-------------------------------------------------字体大小
                   fontWeight:500 //--------------------------------------------------字体加粗
                 }                         
-        },
+        },         
+
 
         dataRange: {
           // color: ["#12c0ff"] , //--------------------------------------------------固定单色
           show: true,//-------------------------------------------------------------是否显示颜色提示条
           min: 0,
           max: 100,
-          realtime: true,
+          realtime: false,
           // 根据值显示不同的颜色， （值依据数据中的value）
           x: '100',
           y: 'center',
+          selected: false,
           splitList: [
           // {start: 194, label: '80%以上', color: '#FF6699'},
-          {start: 4, end: 5, label: '4元以上', color: '#ff6f5b '},
-          {start: 3.5, end: 4 ,label: '3.5元-4元', color: '#fa8737'},
+          {start: 4, end: 5, label: '4.0元以上', color: '#ff6f5b '},
+          {start: 3.5, end: 4 ,label: '3.5元-4.0元', color: '#fa8737'},
           {start: 3.0, end: 3.5, label: '3.0元-3.5元', color: '#fba853'},
-          {start: 0, end: 3, label: '3元以下', color: '#ffc188'},
+          {start: 0, end: 3, label: '3.0元以下', color: '#ffc188'},
           {start: 0, end: 0, label: '蓝色暂无数据信息', color: '#479fd2'},
           ],
         },   

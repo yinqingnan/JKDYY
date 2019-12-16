@@ -201,9 +201,9 @@
                   <span class="iconfont iconpub_right"></span>
                 </h2> -->
                 <div class="xmnhxq">
-                  <h2 @click="dyys">当月用水详情</h2>
-                  <h2 @click="dyyd">当月用电详情</h2>
-                  <!-- <h2 @click="toxmnhzb">更多 <span class="iconfont iconpub_right"></span></h2> -->
+                  <!-- <h2 @click="dyys">当月用水详情</h2>
+                  <h2 @click="dyyd">当月用电详情</h2> -->
+                  <h2 @click="toxmnhzb">更多 <span class="iconfont iconpub_right"></span></h2>
                 </div>
               </div>
               <div class="xmnh">
@@ -369,7 +369,7 @@ export default {
   methods: {
     // 项目能耗指标
     toxmnhzb(){
-      this.$router.push("/xmnhzb")
+      this.$router.push("/xmnhzb?xmid="+this.xmid)
     },
     // 跳转到项目总收入页面
     tozsr(){
@@ -380,17 +380,17 @@ export default {
       this.$router.push("zhsjl?xmid="+this.xmid)
 
     },
-    // 当月用水详情跳转
-    dyys(){
-      // console.log(this.xmid)
-      this.$router.push('/dyys?xmid='+this.xmid)
+    // // 当月用水详情跳转
+    // dyys(){
+    //   // console.log(this.xmid)
+    //   this.$router.push('/dyys?xmid='+this.xmid)
 
-    },
-    // 当月用电详情跳转
-    dyyd(){
-      // console.log(this.xmid)
-      this.$router.push('/dyyd?xmid='+this.xmid)
-    },
+    // },
+    // // 当月用电详情跳转
+    // dyyd(){
+    //   // console.log(this.xmid)
+    //   this.$router.push('/dyyd?xmid='+this.xmid)
+    // },
 
     selectchange(value) {
       // console.log(value)

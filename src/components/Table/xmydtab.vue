@@ -4,7 +4,7 @@
     <div>
           <div class="box">
               <div class="boxTitle ">
-                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回项目</button>
+                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回上级</button>
                     
                     
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用电量明细表
@@ -99,19 +99,34 @@ export default {
         }
     },
     mounted(){
-        // console.log(this.$route.query.xmid)
-        this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
-        var date=new Date();
+         var date=new Date();
         this.month=date.getMonth()+1;
         this.monthdefaultdefault=date.getMonth()+1+"月";
         this.yeardefaultdefault=date.getFullYear()+"年";
         this.year=date.getFullYear()
-        // /api/projectElectricity01?projectId=1085&year=2019&month=11
-        this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
-            // console.log(res.data.data)
-            this.tablemsg=res.data.data
-            this.totalCount=res.data.data.length
-        })
+        // console.log(this.$route.query.xmid)
+        this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
+        // console.log(this.$route.query.Month)
+        
+        if(this.$route.query.Month==""){
+            // console.log(1)
+            // console.log(this.month)
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                this.tablemsg=res.data.data
+                this.totalCount=res.data.data.length
+            })
+        }else{
+            // console.log(this.$route.query.Month)
+            this.month=this.$route.query.Month
+            this.monthdefaultdefault=this.$route.query.Month
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                this.tablemsg=res.data.data
+                this.totalCount=res.data.data.length
+            })
+        }
+       
+ 
+    
         // 通过项目ID查询项目名称信息
         this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
             // console.log(res.data.data)
@@ -127,21 +142,21 @@ export default {
         },
         // 选中的年
         yearchange(yeardefaultdefault){
-            // console.log(yeardefaultdefault.slice(0,4))
-            this.year=yeardefaultdefault.slice(0,4)
+            console.log(yeardefaultdefault.slice(0,4))
+            // this.year=yeardefaultdefault.slice(0,4)
         }, 
         // 选中的月
         monthchange(monthdefaultdefault){
-            if(monthdefaultdefault.length==2){
-                this.month=monthdefaultdefault.slice(0,1)
-                this.axios.get("/api/projectInfoName?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+            // console.log(monthdefaultdefault.length)
+            if(monthdefaultdefault.length==3){
+                this.month=monthdefaultdefault.slice(0,2)
+                this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
-
                 })
-            }else{
-                this.month=monthdefaultdefault.slice(0,2)
-                  this.axios.get("/api/projectInfoName?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+            } else if (monthdefaultdefault.length==2){
+                this.month=monthdefaultdefault.slice(0,1)
+                  this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
                 })
@@ -155,17 +170,17 @@ export default {
         this.currentPage = currentPage;
         },
         TO(){
-            this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-                // 跳转回上级
-                this.$router.push({
-                    path:'/region',
-                    query:{
-                        quid:res.data.data[0].companyId,
-                        xmid:res.data.data[0].projectId
-                    }
-                })
-            })
-          
+            // this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
+            //     // 跳转回上级
+            //     this.$router.push({
+            //         path:'/region',
+            //         query:{
+            //             quid:res.data.data[0].companyId,
+            //             xmid:res.data.data[0].projectId
+            //         }
+            //     })
+            // })
+            this.$router.go(-1)
          
         },
          getSummaries(param) {
@@ -195,7 +210,7 @@ export default {
         return sums;
       },
       sc(){
-          console.log(11111)
+        //   console.log(11111)
       },
       exportExcel(){
 
