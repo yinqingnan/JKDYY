@@ -61,7 +61,7 @@
         <div class="container_right_header"> 
           
           <div class="container_right_header_title">
-            <h1>并购信息</h1>
+            <h1>收并购信息</h1>
             <h2 @click="btn1">更多</h2>
           </div>
            <div class="container_left_header_tab">

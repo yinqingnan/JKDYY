@@ -1,4 +1,5 @@
 <template>
+<!-- 报事完结率 -->
     <div>
         <div class="box">
             <div class="box_header">
@@ -9,18 +10,18 @@
         :style="style"
         element-loading-text="请稍后..."
       >
-        <el-table-column
+ <el-table-column
           label="序号"
           type="index"
-          width="50"
+          width="45"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="45px"
         ></el-table-column>
         <el-table-column
           prop="companyName"
           label="所属公司"
-          min-width="60px"
+          min-width="76px"
           :show-overflow-tooltip="true"
           align="center"
         ></el-table-column>
@@ -29,97 +30,115 @@
           label="项目名称"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="76px"
         ></el-table-column>
+<el-table-column label="综合"  align="center">
         <el-table-column
-          prop="incomAmountReceivable"
-          label="应收金额"
+          prop="synthesizeTotal"
+          label="总件次"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="55px"
         ></el-table-column>
         <el-table-column
-          prop="incomAmountReceipts"
-          label="实收金额"
+          prop="synthesizeComplete"
+          label="完成件次"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="60px"
         ></el-table-column>
         <el-table-column
-          prop="Arrearage"
-          label="欠费金额"
+          prop="synthesizeFinishRate"
+          label="完结率"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="55px"
+        ></el-table-column>
+</el-table-column>
+<el-table-column label="审核" align="center">
+        <el-table-column
+          prop="auditTotal"
+          label="应审"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
         ></el-table-column>
         <el-table-column
-          prop="rate"
-          label="收缴率"
+          prop="auditPendingTrial"
+          label="待审"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="55px"
+        ></el-table-column>
+          <el-table-column
+          prop="auditRate"
+          label="审核率"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
+        ></el-table-column>
+</el-table-column>
+<el-table-column label="派工" align="center">
+        <el-table-column
+          prop="jobTotal"
+          label="应派"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
         ></el-table-column>
         <el-table-column
-          prop="remark"
-          label="备注"
+          prop="jobActual"
+          label="实派"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="55px"
         ></el-table-column>
+          <el-table-column
+          prop="jobRate"
+          label="派工率"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
+        ></el-table-column>
+</el-table-column>
+<el-table-column label="完成" align="center" >
+        <el-table-column
+          prop="finishTotal"
+          label="应完成"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
+        ></el-table-column>
+        <el-table-column
+          prop="finishActual"
+          label="实完成"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
+        ></el-table-column>
+          <el-table-column
+          prop="finishRate"
+          label="完成率"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="55px"
+        ></el-table-column>
+         
+</el-table-column>
 
       </el-table>
         </div>
 
         <div class="box_body">
             <div class="box_body_left">
-                <sflfx></sflfx>
+                <xmqndclzst></xmqndclzst>
             </div>
             <div class="box_body_right">
-                <div class="box_body_right_header">
-                    <h1>项目对比分析</h1>
+                <div>
+                    <img src="../../assets/ima/development.png" alt="">
+                    <h1>即将上线</h1>
                 </div>
-                <div class="box_body_right_div">
-                   <ul>
-                        <li style="width:40%">
-                           <h1>本项目：</h1>
-                           <h2 :title="projectName">{{projectName}}</h2>
-                        </li>
-                        <li>
-                           <h1>本月收费率：</h1>
-                           <h2>{{rate}}%</h2>
-                        </li>
-                        <li>
-                           <h1>本月排名：</h1>
-                           <h2>{{ranking}}</h2>
-                        </li>
-                       
-                   </ul>
-                    <ul>
-                        <li style="width:20%">
-                           <h1>全集团：</h1>
-                          
-                        </li>
-                        <li>
-                           <h1>本月平均收费率：</h1>
-                           <h2 >{{ypjsfl}}%</h2>
-                        </li>
-                        <li>
-                           <h1>全年平均收费率：</h1>
-                           <h2>{{qnpjsfl}}%</h2>
-                        </li>
-                       
-                   </ul>
-                </div>
-                <div class="box_body_right_body">
-                    <div class="box_body_right_body_left">
-                       
-                        <gsbg></gsbg>
-                    </div>
-                    <div class="box_body_right_body_right">
-                        <qybg></qybg>
-                    </div>
-
-                </div>
+               
             </div>
         </div>
         </div>
@@ -132,14 +151,12 @@
 
 
 <script>
-import sflfx from '../echarts/sflfx'     //柱状图
-import gsbg from "../echarts/gsbg"      //公司标杆图
-import qybg from "../echarts/qybg"      //区域标杆图
+import xmqndclzst from '../echarts/xmqndclzst'     //柱状图
+
 export default {
     components:{
-        sflfx,
-        gsbg,
-        qybg
+        xmqndclzst,
+        // qybg
     },
     data(){
         return {
@@ -165,29 +182,18 @@ export default {
     mounted(){
         //    this.getheight();
         // console.log(this.$route.query.xmid)
+        // 获取到当前年份
+    var myDate = new Date();
+    var tYear = myDate.getFullYear();
+    // console.log(tYear)
         this.xmid=this.$route.query.xmid
-        this.axios.get("/api/proChargeRate03?projectId="+this.xmid).then((res)=>{
-            // console.log(res.data.data)
+        // 获取表格数据
+        this.axios.get("/api/proBs03?projectId="+this.xmid+"&year="+tYear).then((res)=>{
+            // console.log(res.data.data[0])
             this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
-        // 全集团本月平均收费率
-        this.axios.get("/api/proChargeRate06").then((res)=>{
-            // console.log(res.data.data[0].rate)
-            this.ypjsfl=res.data.data[0].rate.toFixed(2)
-            
-        })
-        // 全集团全年平均收费率
-        this.axios.get("/api/proChargeRate07").then((res)=>{
-            // console.log(res.data.data[0].rate)
-            this.qnpjsfl=res.data.data[0].rate.toFixed(2)
-        })
-        // 获取当前项目数据
-        this.axios.get("/api/proChargeRate05?projectId=1085").then((res)=>{
-            // console.log(res.data.data[0])
-            this.rate=res.data.data[0].Rate
-            this.ranking=res.data.data[0].rowNumber
-        })
+
 
     },
     methods:{
@@ -214,13 +220,13 @@ export default {
 
 }
 .box_body_left{
-    width: 55%;
+    width: 45%;
     border: 1px solid #f0f0f0;
     margin-right: 12px;
     background: #fff
 }
 .box_body_right{
-     width: 45%;
+     width: 55%;
     border: 1px solid #f0f0f0;
     background: #fff
 
@@ -286,40 +292,21 @@ export default {
 }
 .box_body_right_div{
     height: 80px;
-    padding: 0 10px
+    width: 90px;
+    /* padding: 0 10px */
 }
-.box_body_right_div>ul{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 12px
+.box_body_right>div{
+    width: 120px;
+    margin: 164px auto;
+
+
 }
-.box_body_right_div>ul>li{
-    display: flex;
-    width: 40%;
-    
-}
-.box_body_right_div>ul>li>h1{
-    font-size: 14px;
-    line-height: 1;
+.box_body_right>div>h1{
+    text-align: center;
     font-weight: 500;
-    text-align: center;
-    color: #999;
-    white-space: nowrap;
-
-
-}
-.box_body_right_div>ul>li>h2{
-    font-size: 14px;
-    line-height: 1;
-    text-align: center;
-     font-weight: 500;
-    color: #666;
-    white-space: nowrap;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    max-width: 124px;
-
-    
+    font-size: 12px;
+    margin-top: 14px;
+    color: rgb(102, 102, 102);
 }
 </style>>
     

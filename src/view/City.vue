@@ -493,12 +493,13 @@ word-break:break-all;
 .sign {
   display: flex;
   width: 50%;
-  margin-left: 10%;
+  margin-left:5%;
 }
 .sign > h1 {
   font-size: 14px;
   font-weight: 600;
-  margin-right: 30px
+  margin-right: 30px;
+  white-space: nowrap;
 }
 .sign > span:nth-of-type(1) {
   font-size: 14px;

@@ -1,5 +1,5 @@
 <template>
-  <!-- 收费率分析 -->
+  <!-- 项目全年达成率走势图 -->
   <div>
     <div id="zzt" class="zzt"></div>
   </div>
@@ -17,40 +17,40 @@ export default {
         title:[],         //图裂名称
         data1:[],
         data2:[],
+        data3:[],
 
     };
   },
   mounted() {
     // 获取项目id查询数据
     this.xmid=this.$route.query.xmid
-    this.axios.get("/api/proChargeRate04?projectId="+this.xmid).then((res)=>{
+    // 获取图表数据
+    this.axios.get("/api/proBs04?projectId="+this.xmid).then((res)=>{
         // console.log(res.data.data)
         this.title=[]
-        this.title.push(res.data.data[0].TypeName,res.data.data[1].TypeName,)
-        // this.echartsdata=res.data.data
-        if(res.data.data!=""){
-            this.data1=[]
-            this.data2=[]
-            for (let key in res.data.data[0]) {
-                if(key!="TypeName"){
-                    this.data1.push(res.data.data[0][key])
-                }
-            }
-            for (let key in res.data.data[1]) {
-                if(key!="TypeName"){
-                    this.data2.push(res.data.data[1][key].toFixed(2))
-                }
-            }
-        }else{
-            // console.log("没有数据")
-        }
+        this.data1=[]
+
+
+
+        this.title.push(res.data.data[0].stateType,res.data.data[1].stateType,res.data.data[2].stateType)
+        this.data1.push((res.data.data[0].m1*100).toFixed(2),(res.data.data[0].m2*100).toFixed(2),(res.data.data[0].m3*100).toFixed(2),(res.data.data[0].m4*100).toFixed(2),(res.data.data[0].m5*100).toFixed(2),(res.data.data[0].m6*100).toFixed(2),(res.data.data[0].m7*100).toFixed(2),(res.data.data[0].m7*100).toFixed(2),(res.data.data[0].m8*100).toFixed(2),(res.data.data[0].m9*100).toFixed(2),(res.data.data[0].m10*100).toFixed(2),(res.data.data[0].m11*100).toFixed(2),(res.data.data[0].m12*100).toFixed(2),)
+
+
+        this.data2.push((res.data.data[1].m1*100).toFixed(2),(res.data.data[1].m2*100).toFixed(2),(res.data.data[1].m3*100).toFixed(2),(res.data.data[1].m4*100).toFixed(2),(res.data.data[1].m5*100).toFixed(2),(res.data.data[1].m6*100).toFixed(2),(res.data.data[1].m7*100).toFixed(2),(res.data.data[1].m7*100).toFixed(2),(res.data.data[1].m8*100).toFixed(2),(res.data.data[1].m9*100).toFixed(2),(res.data.data[1].m10*100).toFixed(2),(res.data.data[1].m11*100).toFixed(2),(res.data.data[1].m12*100).toFixed(2),)
+
+        this.data3.push((res.data.data[2].m1*100).toFixed(2),(res.data.data[2].m2*100).toFixed(2),(res.data.data[2].m3*100).toFixed(2),(res.data.data[2].m4*100).toFixed(2),(res.data.data[2].m5*100).toFixed(2),(res.data.data[2].m6*100).toFixed(2),(res.data.data[2].m7*100).toFixed(2),(res.data.data[2].m7*100).toFixed(2),(res.data.data[2].m8*100).toFixed(2),(res.data.data[2].m9*100).toFixed(2),(res.data.data[2].m10*100).toFixed(2),(res.data.data[2].m11*100).toFixed(2),(res.data.data[2].m12*100).toFixed(2),)
+ 
+
+   
+
+
 
       let myChart = echarts.init(document.getElementById('zzt'));
 
       let option = {
        backgroundColor: "#fff",
         title: {
-            text: '收费率分析',
+            text: '项目全年达成率走势图',
             top:20,
             // left:14,
             left:"center",
@@ -69,8 +69,10 @@ export default {
             
         },
         legend: {
-        top: "2",
-        right: "10",
+        // top: "2",
+        // right: "10",
+        //  x: '70%',
+        bottom:0,
         inactiveColor: "#999",
         textStyle: {
             color: "#333",
@@ -85,7 +87,7 @@ export default {
         grid: {
             left: '8%',
             right: '6%',
-            bottom: '8%',
+            bottom: '14%',
             top:'20%',
             containLabel: false
         },
@@ -104,18 +106,18 @@ export default {
         ],
         series : [
             {
-        name: '项目值',
+        name: this.title[0],
         type: 'bar',
         barWidth:16,
         itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(0,0,0,1,[{
                     offset: 0,
-                    color: "#56a8e7" // 0% 处的颜色
+                    color: "#69b4e2" // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: "#56a8e7" // 100% 处的颜色
+                    color: "#688ee5" // 100% 处的颜色
                   }
                 ],
                 false
@@ -125,10 +127,33 @@ export default {
       },
         data:this.data1
     }, {
-        name: '公司平均',
+        name: this.title[1],
         type: 'bar',
         barWidth:16,
         color:"#333",
+        itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0,0,0,1,[{
+                    offset: 0,
+                    color: "#ffc288" // 0% 处的颜色
+                  },
+                  {
+                    offset: 1,
+                    color: "#fe961c" // 100% 处的颜色
+                  }
+                ],
+                false
+              ),
+              barBorderRadius: [0, 0, 0, 0] //轴的圆角度数
+            }
+      },
+        data:this.data2
+    },
+     {
+        name: this.title[2],
+        type: 'line',
+        color:"#333",
+        smooth:true,
         itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(0,0,0,1,[{
@@ -145,7 +170,7 @@ export default {
               barBorderRadius: [0, 0, 0, 0] //轴的圆角度数
             }
       },
-        data:this.data2
+        data:this.data3
     }
         ]
       }

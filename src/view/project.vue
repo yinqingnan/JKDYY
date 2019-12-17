@@ -55,7 +55,7 @@
                     <div>
                         <!-- 第一个 -->
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;   color: #49a4d9 ;" @click="zrh">总收入 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;   color: #409eff ;" @click="zrh">总收入 
                                 <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -74,7 +74,7 @@
                                     <ul v-for="(item,index) in zsryq" :key="index">
                                         <li style="width:20%">{{item.incomType}}</li>
                                         <li style="width:30%;font-weight:600">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
-                                        <li style="width:30%">
+                                        <li style="width:30%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" :title="item.changeRate.toFixed(1)">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
                                         </li>
@@ -90,7 +90,7 @@
                         </div>
                         <!-- 第三个 -->
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;color: #49a4d9 ;">综合收缴率 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;color: #409eff ;">综合收缴率 
                                   <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -115,8 +115,8 @@
                                             <h3>{{(item.changeRate/10000).toFixed(2)}} 万元</h3>
                                           
                                         </li>
-                                        <li style="width:29%">
-                                            <h4>  <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
+                                        <li  >
+                                            <h4 style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap; colorr:'#fc6077'">  <span :class="item.state==1? 'Green':'Red'" :title="item.changeRate.toFixed(2)"> <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                                             {{item.changeRate.toFixed(2)}}%</span></h4>
                                         </li>
                                      
@@ -128,7 +128,7 @@
                         <div>
                             <div class="Chart1_header">
                                 <h1>品质服务信息</h1>
-                                <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
+                                <h2 @click="pzfwxx">更多 <span class="iconfont iconpub_right" ></span></h2>
                             </div>
                             <div class="Chart1_footer">
                                 <div class="Chart1_footer1">
@@ -286,6 +286,13 @@ export default {
             this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
                 // console.log(res.data.data[0].companyId)
                 this.$router.push('/qyzhsjl?qyid='+res.data.data[0].companyId) 
+            })
+        },
+        //跳转报事完结率
+        pzfwxx(){
+             this.axios.get("/api/companIdOrName?companIdOrName="+encodeURI(this.value)).then((res)=>{
+                // console.log(res.data.data[0].companyId)
+                this.$router.push('/qybsl?qyid='+res.data.data[0].companyId) 
             })
         }
     },
@@ -807,7 +814,12 @@ export default {
     line-height: 55px;
     cursor: pointer;
 }
-
+.Chart1_header>h2:hover{
+    color:#409eff 
+}
+.Chart1_header>h2:hover span{
+    color:#409eff 
+}
 .Chart1_header>h2>span{
     color:#a0a0a0;
     font-weight: 100;

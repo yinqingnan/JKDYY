@@ -343,9 +343,9 @@ export default {
       )
       .then(res => {
         // console.log(res.data.data)
-        this.tablemsg = res.data.data;
-        this.tablemsgmsg = res.data.data;
-        this.totalCount = res.data.data.length;
+        this.tablemsg = res.data.data;  //下载数据的表格
+        this.tablemsgmsg = res.data.data;   //展示数据的表格
+        this.totalCount = res.data.data.length;  //展示数据的总条数
         // 提前计算好合计金额   （先进行清空）
         this.number=0
         this.number2=0

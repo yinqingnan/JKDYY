@@ -142,8 +142,8 @@ export default {
         },
         // 选中的年
         yearchange(yeardefaultdefault){
-            console.log(yeardefaultdefault.slice(0,4))
-            // this.year=yeardefaultdefault.slice(0,4)
+            // console.log(yeardefaultdefault.slice(0,4))
+            this.year=yeardefaultdefault.slice(0,4)
         }, 
         // 选中的月
         monthchange(monthdefaultdefault){

@@ -35,12 +35,12 @@
                             border
                             style="width: 100%">
                             <el-table-column prop="date" label="分析项" :show-overflow-tooltip="true" align="center" min-width="80px" width="80"></el-table-column>
-                            <!-- <el-table-column prop="name" label="本月总量" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+                            <el-table-column prop="name" label="本月总量" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
                             <el-table-column prop="address" label="运营" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="商收" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column> -->
-                            <!-- <el-table-column prop="address" label="自建" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+                            <el-table-column prop="address" label="商收" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+                            <el-table-column prop="address" label="自建" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
                             <el-table-column prop="address" label="公摊" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="损耗" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column> -->
+                            <el-table-column prop="address" label="损耗" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
                         </el-table>
                     </div>
                     <div class="box_header_right_header">
@@ -329,25 +329,44 @@ export default {
         })
         // 获取到年度用电表格数据
         this.axios.get("/api/projectElectricityM2?projectId="+this.xmid).then((res)=>{
+            // console.log(res.data.data)
             this.table2=res.data.data
         })
         // 获取到本月用量构成表格数据
         this.axios.get("/api/projectElectMType2?projectId="+this.xmid+"&topcount=6").then((res)=>{
-            console.log(res.data.data)
-            this.tabletltle=[]
-            var obj={
-                label:"",
-                prop:"",
-            }
-           
-            res.data.data.forEach(element => {
-                // console.log(element.itemName)
-                // console.log(element)
-                // this.tabletltle.push(obj.label=element.itemName)
-                // console.log(this.tabletltle)
-            });
+            // console.log(res.data.data)
             
-            // console.log(obj)
+
+            let arr = [];
+            // console.log(Object.keys(res.data.data))
+           res.data.data.map((v,i)=>{
+                
+               let length = Object.keys(v).length;
+               for(let x = 0 ; x < length - 2; x++){
+                //    let obj = {
+                //        label:v.itemName,
+                //        prop:
+                //    }
+                // console.log(Object.keys(v));
+               }
+
+            //    if(i <  res.data.data.length){
+            //        var obj={
+            //         label:v.itemName,
+            //         prop:Object.keys(v)[2]
+            //         }
+            //         // var obj1={
+            //         //     label:v.itemName,
+            //         //     prop:Object.keys(v)[0]
+            //         // }
+            //         arr.push(obj);
+            //    }else{
+            //        return
+            //    }
+           })
+
+        //    console.log(arr);
+          
         })
    },
    methods:{

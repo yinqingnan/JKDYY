@@ -28,7 +28,10 @@ import Khzymx from "../components/zhsjl/khzymx.vue"             //子页面   �
 import Qyzhsjl from '../components/Table/qyzhsjl'           //区域公司综合收缴率
 import Xmnhzb from "../components/Xmnhzb"
 
-
+import Qybsl from "../components/Table/qybsl.vue"
+import Bswjl from "../components/bsl/bsl.vue"      //报事完结率
+import Bshzb from "../components/bsl/bshzb.vue" //报事汇总表
+import Flhzb from "../components/bsl/flhzb.vue" //报事汇总表
 
 
 const  router = new VueRouter({
@@ -54,16 +57,27 @@ const  router = new VueRouter({
         {path:"/xmzhsfl",name:"xmzhsfl",component:Xmzhsfl},  //项目公司总收入详情表格
         {path:"/xmhttz",name:"xmhttz",component:Xmhttz} , //项目公司合同台账详情表格
         {path:"/xmsbwx",name:"xmsbwx",component:Xmsbwx},  //项目公司设备维修详情表格
+        {path:"/qybsl",name:"qybsl",component:Qybsl},      //区域公司报事率 （品质服务信息）
         {path:"/zhsjl",component:Zhsjl,       //项目综合收缴率父级组件      
             children:[
                 {path:"/",redirect:'/zhsjl/xqhz'},              
-                {path:"/zhsjl/xqhz",component:Xqhz},            
-                {path:"/zhsjl/sfkhz",component:Sfkhz},          
-                {path:"/zhsjl/khzymx",component:Khzymx},
+                {path:"/zhsjl/xqhz",component:Xqhz},            //小区汇总
+                {path:"/zhsjl/sfkhz",component:Sfkhz},          //收费科汇总
+                {path:"/zhsjl/khzymx",component:Khzymx},        //客户资源明细
 
             ]
         },
-        {path:"/xmnhzb",name:"xmnhzb",component:Xmnhzb}
+        {path:"/xmnhzb",name:"xmnhzb",component:Xmnhzb}, //项目能耗指标详情页
+        {path:"/bswjl",component:Bswjl,       //项目报事完结率     
+            children:[
+                {path:"/",redirect:'/bswjl/bshzb'},              
+                {path:"/bswjl/bshzb",component:Bshzb},               //报事汇总表
+                {path:"/bswjl/flhzb",component:Flhzb},              //分类汇总表
+              
+
+            ]
+        },
+
     ]
 })
 

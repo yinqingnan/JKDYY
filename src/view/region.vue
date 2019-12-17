@@ -113,7 +113,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%;">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%; cursor:pointer" @click="bswjl">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -379,6 +379,9 @@ export default {
     zhsfl(){
       this.$router.push("zhsjl?xmid="+this.xmid)
 
+    },
+    bswjl(){
+      this.$router.push("bswjl?xmid="+this.xmid)
     },
     // // 当月用水详情跳转
     // dyys(){

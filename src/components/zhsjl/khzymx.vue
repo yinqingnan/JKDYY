@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- <h1>收费科汇总</h1> -->
+        <!-- 客户资源明细表 -->
         <div class="box_header">
             <h1>客户资源明细表</h1>
             <h2 @click="exportExcel" class="daochu">导出表格</h2>
