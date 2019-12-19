@@ -293,6 +293,7 @@ export default {
 
       // 获取金科自建物业费备案价  table1
       axios.get("/api/cityData05?id=" + name).then(res => {
+        // console.log(res.data.data)
         this.defaultable1 = res.data.data;
         // console.log(this.defaultable1)
       });

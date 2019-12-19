@@ -150,6 +150,7 @@ export default {
   mounted() {
     // 获取收并购信息
     this.axios.get("/api/listedCompany07?topcount=7").then(res => {
+      // console.log(res.data.data)
         this.Merger = res.data.data;
       });
 

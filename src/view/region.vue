@@ -151,11 +151,11 @@
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeScore}}%
+                  {{item.changeRate}}%
                 </span>
               </h1>
               <h2 v-for="(item,index) in xcpztitle" :key="index+1">
-                {{item.newScore}}<span>%</span>
+                {{item.newScore}}
             
               </h2>
               <div>
@@ -264,7 +264,7 @@
           </div>
           <div class="table3_footer">
             <ul>
-              <li v-for="(item,index) in loginxt" :key="index">
+              <li v-for="(item,index) in loginxt" :key="index" @click="todlqtxt(item.href)">
                 <img :src="item.imagehref" />
                 <h2>{{item.name}}</h2>
               </li>
@@ -394,7 +394,10 @@ export default {
     //   // console.log(this.xmid)
     //   this.$router.push('/dyyd?xmid='+this.xmid)
     // },
-
+  todlqtxt(href){
+    // console.log(href)
+     window.open(href,"_blank")
+  },
     selectchange(value) {
       // console.log(value)
       //区域公司级下拉菜单选中监听

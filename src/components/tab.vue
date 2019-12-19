@@ -65,11 +65,11 @@ export default {
         liebiao(item){
             // 判断type的类型，进行页面跳转
             if(item=="合同台账"){
-                console.log(1)
+                // console.log(1)
                  this.$router.push('/xmhttz?xmid='+this.id)
 
             }else if(item=="设施设备"){
-                console.log(2)
+                // console.log(2)
                  this.$router.push('/xmsbwx?xmid='+this.id)
 
             }

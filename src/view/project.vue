@@ -197,7 +197,7 @@
                     </div>
                     <div class="table3_footer">
                         <ul>
-                            <li v-for="(item,index) in loginxt" :key="index" >
+                            <li v-for="(item,index) in loginxt" :key="index" @click="todlqtxt(item.href)">
                                 <img :src="item.imagehref" >
                                 <h2 :title="item.name">{{item.name}}</h2>
                             </li>
@@ -268,6 +268,10 @@ export default {
         }
     },
     methods: {
+        todlqtxt(href){
+        window.open(href,"_blank")
+            // console.log(href)
+        },
         selectchange(value){            //下拉菜单选中监听输出为该区域的名称
         // console.log(encodeURI(value))
             window.location.href=window.location.href.split("=")[0]+"="+encodeURI(value)
@@ -407,6 +411,7 @@ export default {
                         //获取登录其它系统的数据
                 this.axios.get("/api/systemDocking01")
                 .then((res)=>{
+                //   console.log(res.data.data)
                     this.loginxt=res.data.data
                 })
                 //获取常用报表数据

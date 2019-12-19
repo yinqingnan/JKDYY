@@ -30,7 +30,7 @@
                 <div class="box_header_right">
                     <div class="box_header_right_header">
                         <h2 @click="totable">本月用量构成</h2>
-                          <el-table
+                          <!-- <el-table
                             :data="tableData"
                             border
                             style="width: 100%">
@@ -41,6 +41,11 @@
                             <el-table-column prop="address" label="自建" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
                             <el-table-column prop="address" label="公摊" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
                             <el-table-column prop="address" label="损耗" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+                        </el-table> -->
+                        <el-table :data="tableData" style="width: 100%"  border>
+                            <template v-for="(col ,index) in cols">
+                                <el-table-column  :prop="col.prop" :label="col.label" :key="index" :show-overflow-tooltip="true" align="center"></el-table-column>
+                            </template>
                         </el-table>
                     </div>
                     <div class="box_header_right_header">
@@ -303,19 +308,37 @@ export default {
             xmid:"",
             projectName:"",  //项目名称
             companyName:"",  //区域公司名称
-            // ydl:[],
-            tableData: [{
-                date: '金额',
-                name: '王二虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, 
-                {
-                date: '电量',
-                name: '土狗',
-                address: '上海市普陀区金沙江路 1517 弄'
-            }],
+  
             table2:[],                                    //年度用量统计
-            tabletltle:[]
+            tabletltle:[],
+             cols: [
+                { label: "分析项", prop: "data" },
+                { label: "用途", prop: "amount" },
+                { label: "社区用电", prop: "dosage" },
+                { label: "业主用电", prop: "name" },
+                { label: "工人用电", prop: "msg" },
+                // { label: "公摊用电", prop: "amount" },
+                // { label: "公摊用电", prop: "amount" },
+            ],
+            tableData: [
+                {
+                    data:"电量",
+                    amount: 1548.5,
+                    dosage: 163,
+                    name:200,
+                    msg:100,
+                    msg1:20,
+                    msg2:11,
+                },
+                {
+                    data:"金额",
+                    amount: 1548.5,
+                    dosage: 163,
+                    name:155,
+                    msg:80,msg2:12,msg3:12,msg4:12,msg5:12,msg6:12,msg7:12,msg8:12,msg9:12,
+                },
+                     
+            ]
         }
     },
     mounted(){
@@ -334,21 +357,39 @@ export default {
         })
         // 获取到本月用量构成表格数据
         this.axios.get("/api/projectElectMType2?projectId="+this.xmid+"&topcount=6").then((res)=>{
-            // console.log(res.data.data)
-            
+            console.log(res.data.data)
+            var arr=res.data.data
+            for(let i=0;i<arr.length;i++){
+                console.log(arr[i])
+            }
 
-            let arr = [];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // console.log(Object.keys(res.data.data))
-           res.data.data.map((v,i)=>{
+        //    res.data.data.map((v,i)=>{
                 
-               let length = Object.keys(v).length;
-               for(let x = 0 ; x < length - 2; x++){
+            //    let length = Object.keys(v).length;
+            //    for(let x = 0 ; x < length - 2; x++){
                 //    let obj = {
                 //        label:v.itemName,
                 //        prop:
                 //    }
                 // console.log(Object.keys(v));
-               }
+            //    }
 
             //    if(i <  res.data.data.length){
             //        var obj={
@@ -363,9 +404,8 @@ export default {
             //    }else{
             //        return
             //    }
-           })
+        //    })
 
-        //    console.log(arr);
           
         })
    },

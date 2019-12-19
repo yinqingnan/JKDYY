@@ -189,7 +189,7 @@ export default {
         this.xmid=this.$route.query.xmid
         // 获取表格数据
         this.axios.get("/api/proBs03?projectId="+this.xmid+"&year="+tYear).then((res)=>{
-            // console.log(res.data.data[0])
+            // console.log(res.data.data)
             this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
