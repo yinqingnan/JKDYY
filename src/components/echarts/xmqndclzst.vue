@@ -1,5 +1,5 @@
 <template>
-  <!-- 项目全年达成率走势图 -->
+  <!-- 报事全年完结率 -->
   <div>
     <div id="zzt" class="zzt"></div>
   </div>
@@ -50,7 +50,7 @@ export default {
       let option = {
        backgroundColor: "#fff",
         title: {
-            text: '项目全年达成率走势图',
+            text: '报事全年完结率',
             top:20,
             // left:14,
             left:"center",

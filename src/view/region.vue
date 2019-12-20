@@ -83,7 +83,7 @@
                 
                     综合收缴率
                 <span :class="item.state==1? 'Green':'Red'">
-                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(1)}}%
+                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(2)}}%
                 </span>
               </h1>
               <h2 v-for="(item,index) in bstitle" :key="index+1">
@@ -117,17 +117,17 @@
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeRate.toFixed(1)}}%</span>
+                  {{item.changeRate.toFixed(2)}}%</span>
               </h1>
               <h2 v-for="(item,index) in bstitle" :key="index+1">
                 {{item.newRate.toFixed(2)}}<span>%</span>
               </h2>
               <div>
                 <div style="width:100%">
-                  <xmbssxzzt :bshxzzt="bshxzzt" :xsyf="xsyf" style="width:100%"></xmbssxzzt>
+                  <xmbssxzzt :bssxzzt="bssxzzt" :xsyf="xsyf" style="width:100%"></xmbssxzzt>
                 </div>
                 <div style="width:100%">
-                  <xmbshxzzt :bssxzzt="bssxzzt" style="width:80%"></xmbshxzzt>
+                  <xmbshxzzt :bshxzzt="bshxzzt" style="width:80%"></xmbshxzzt>
                 </div>
               </div>
               <div class="yq">
@@ -151,7 +151,7 @@
                 现场品质
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeRate}}%
+                  {{item.changeRate.toFixed(2)}}%
                 </span>
               </h1>
               <h2 v-for="(item,index) in xcpztitle" :key="index+1">
@@ -169,11 +169,11 @@
               <div class="yq">
                 <ul v-for="(item,index) in xcpzmsg" :key="index">
                   <li style="width:30%">{{item.subjects}}</li>
-                  <li style="width:30%">{{item.newCount.toFixed(0)}}%</li>
+                  <li style="width:30%">{{item.newCount.toFixed(2)}}%</li>
                   <li style="width:30%">
                     <span :class="item.state==1? 'Green':'Red'">
                       <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                      {{((item.changRate)*100).toFixed(0)}}%
+                      {{((item.changRate)*100).toFixed(2)}}%
                     </span>
                   </li>
                 </ul>
@@ -474,27 +474,28 @@ export default {
         this.axios
           .get("/api/projectMNewPYear?projectId=" + this.xmid)
           .then(res => {
+            this.bssxzzt=[]
             // console.log(res.data.data[0])
             // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
             if (this.date >= 7) {
-              this.bshxzzt.push(
-                (res.data.data[0].m7 / 10000).toFixed(0),
-                (res.data.data[0].m8 / 10000).toFixed(0),
-                (res.data.data[0].m9 / 10000).toFixed(0),
-                (res.data.data[0].m10 / 10000).toFixed(0),
-                (res.data.data[0].m11 / 10000).toFixed(0),
-                (res.data.data[0].m12 / 10000).toFixed(0)
+              this.bssxzzt.push(
+                res.data.data[0].m7 ,
+                res.data.data[0].m8 ,
+                res.data.data[0].m9 ,
+                res.data.data[0].m10 ,
+                res.data.data[0].m11,
+                res.data.data[0].m12
               );
 
               this.xsyf = 1;
             } else {
-              this.bshxzzt.push(
-                (res.data.data[0].m1 / 10000).toFixed(0),
-                (res.data.data[0].m2 / 10000).toFixed(0),
-                (res.data.data[0].m3 / 10000).toFixed(0),
-                (res.data.data[0].m4 / 10000).toFixed(0),
-                (res.data.data[0].m5 / 10000).toFixed(0),
-                (res.data.data[0].m6 / 10000).toFixed(0)
+              this.bssxzzt.push(
+                res.data.data[0].m1 ,
+                res.data.data[0].m2 ,
+                res.data.data[0].m3 ,
+                res.data.data[0].m4 ,
+                res.data.data[0].m5 ,
+                res.data.data[0].m6 
               );
              
               this.xsyf = 0;
@@ -503,10 +504,11 @@ export default {
 
         // 获取关键指标报事完成率     横向柱状图数据
         this.axios.get("api/projectRateMaxMinVm").then(res => {
+          // console.log(res.data.data)
           let arr = res.data.data;
-          this.bssxzzt = [];
+          this.bshxzzt = [];
           arr.forEach(element => {
-            this.bssxzzt.push(element.rate.toFixed(2));
+            this.bshxzzt.push(element.rate.toFixed(2));
           });
         });
 
@@ -701,38 +703,43 @@ export default {
 
       // 获取关键指标报事完成率数据 竖向柱状图数据
       this.axios.get("/api/projectMNewPYear?projectId=" + value).then(res => {
+        // console.log(res.data.data)
+        // console.log(this.date)
+        this.bssxzzt=[]
         // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
         if (this.date >= 7) {
-          this.bshxzzt.push(
-            (res.data.data[0].m7 / 10000).toFixed(0),
-            (res.data.data[0].m8 / 10000).toFixed(0),
-            (res.data.data[0].m9 / 10000).toFixed(0),
-            (res.data.data[0].m10 / 10000).toFixed(0),
-            (res.data.data[0].m11 / 10000).toFixed(0),
-            (res.data.data[0].m12 / 10000).toFixed(0)
+          this.bssxzzt.push(
+            res.data.data[0].m7 ,
+           res.data.data[0].m8 ,
+            res.data.data[0].m9 ,
+            res.data.data[0].m10 ,
+            res.data.data[0].m11,
+            res.data.data[0].m12
           );
           this.xsyf = 1;
         } else {
-          this.bshxzzt.push(
-            (res.data.data[0].m1 / 10000).toFixed(0),
-            (res.data.data[0].m2 / 10000).toFixed(0),
-            (res.data.data[0].m3 / 10000).toFixed(0),
-            (res.data.data[0].m4 / 10000).toFixed(0),
-            (res.data.data[0].m5 / 10000).toFixed(0),
-            (res.data.data[0].m6 / 10000).toFixed(0)
+          this.bssxzzt.push(
+            res.data.data[0].m1,
+            res.data.data[0].m2,
+            res.data.data[0].m3,
+            res.data.data[0].m4,
+            res.data.data[0].m5,
+            res.data.data[0].m6
           );
           // console.log(this.bshxzzt)
           this.xsyf = 0;
         }
+      // console.log(this.bssxzzt)
+
       });
 
       // 获取关键指标报事完成率     横向柱状图数据
       this.axios.get("api/projectRateMaxMinVm").then(res => {
         // console.log(res.data.data)
         let arr = res.data.data;
-        this.bssxzzt = [];
+        this.bshxzzt = [];
         arr.forEach(element => {
-          this.bssxzzt.push(element.rate.toFixed(2));
+          this.bshxzzt.push(element.rate.toFixed(2));
         });
       });
 
@@ -995,39 +1002,43 @@ export default {
 
     // 获取报事完成率数据 竖向柱状图数据            需变更数据
     this.axios.get("/api/projectMNewPYear?projectId=" + this.xmid).then(res => {
+      // console.log(res.data.data)
+      // console.log(this.date)
       // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
+      this.bssxzzt=[]
       if (this.date >= 7) {
-        this.bshxzzt.push(
-          (res.data.data[0].m7 / 10000).toFixed(0),
-          (res.data.data[0].m8 / 10000).toFixed(0),
-          (res.data.data[0].m9 / 10000).toFixed(0),
-          (res.data.data[0].m10 / 10000).toFixed(0),
-          (res.data.data[0].m11 / 10000).toFixed(0),
-          (res.data.data[0].m12 / 10000).toFixed(0)
+        this.bssxzzt.push(
+          res.data.data[0].m7 ,
+          res.data.data[0].m8,
+          res.data.data[0].m9 ,
+          res.data.data[0].m10 ,
+          res.data.data[0].m11,
+         res.data.data[0].m12
         );
         // console.log(this.bshxzzt)
         this.xsyf = 1;
       } else {
-        this.bshxzzt.push(
-          (res.data.data[0].m1 / 10000).toFixed(0),
-          (res.data.data[0].m2 / 10000).toFixed(0),
-          (res.data.data[0].m3 / 10000).toFixed(0),
-          (res.data.data[0].m4 / 10000).toFixed(0),
-          (res.data.data[0].m5 / 10000).toFixed(0),
-          (res.data.data[0].m6 / 10000).toFixed(0)
+        this.bssxzzt.push(
+          res.data.data[0].m1,
+          res.data.data[0].m2,
+          res.data.data[0].m3,
+         res.data.data[0].m4,
+          res.data.data[0].m5,
+          res.data.data[0].m6 
         );
         // console.log(this.bshxzzt)
         this.xsyf = 0;
       }
+      // console.log(this.bssxzzt)
     });
 
     // 获取报事完成率     横向柱状图数据            需变更数据
     this.axios.get("api/projectRateMaxMinVm").then(res => {
       // console.log(res.data.data)
       let arr = res.data.data;
-      this.bssxzzt = [];
+      this.bshxzzt = [];
       arr.forEach(element => {
-        this.bssxzzt.push(element.rate.toFixed(2));
+        this.bshxzzt.push(element.rate.toFixed(2));
       });
     });
 
@@ -1201,7 +1212,7 @@ export default {
   border-bottom: 2px solid #49a4d9;
 }
 .yq {
-  margin-left: 16px;
+  margin-left: 7px;
 }
 .yq > ul {
   display: flex;

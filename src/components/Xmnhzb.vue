@@ -30,18 +30,7 @@
                 <div class="box_header_right">
                     <div class="box_header_right_header">
                         <h2 @click="totable">本月用量构成</h2>
-                          <!-- <el-table
-                            :data="tableData"
-                            border
-                            style="width: 100%">
-                            <el-table-column prop="date" label="分析项" :show-overflow-tooltip="true" align="center" min-width="80px" width="80"></el-table-column>
-                            <el-table-column prop="name" label="本月总量" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="运营" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="商收" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="自建" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="公摊" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="损耗" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                        </el-table> -->
+                    
                         <el-table :data="tableData" style="width: 100%"  border>
                             <template v-for="(col ,index) in cols">
                                 <el-table-column  :prop="col.prop" :label="col.label" :key="index" :show-overflow-tooltip="true" align="center"></el-table-column>
@@ -167,17 +156,10 @@
                <div class="box_header_right">
                     <div class="box_header_right_header">
                         <h2 @click="totable1">本月用量构成</h2>
-                          <el-table
-                            :data="tableData"
-                            border
-                            style="width: 100%">
-                            <el-table-column prop="date" label="分析项" :show-overflow-tooltip="true" align="center" min-width="80px" width="80"></el-table-column>
-                            <el-table-column prop="name" label="本月总量" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="运营" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="商收" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="自建" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="公摊" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
-                            <el-table-column prop="address" label="损耗" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+                            <el-table :data="tableData1" style="width: 100%"  border>
+                            <template v-for="(col ,index) in cols1">
+                                <el-table-column  :prop="col.prop" :label="col.label" :key="index" :show-overflow-tooltip="true" align="center"></el-table-column>
+                            </template>
                         </el-table>
                     </div>
                     <div class="box_header_right_header">
@@ -294,6 +276,7 @@ export default {
     },
     data(){
         return{
+           
             num:0,
             num1:0,
             show:true,
@@ -310,35 +293,10 @@ export default {
             companyName:"",  //区域公司名称
   
             table2:[],                                    //年度用量统计
-            tabletltle:[],
-             cols: [
-                { label: "分析项", prop: "data" },
-                { label: "用途", prop: "amount" },
-                { label: "社区用电", prop: "dosage" },
-                { label: "业主用电", prop: "name" },
-                { label: "工人用电", prop: "msg" },
-                // { label: "公摊用电", prop: "amount" },
-                // { label: "公摊用电", prop: "amount" },
-            ],
-            tableData: [
-                {
-                    data:"电量",
-                    amount: 1548.5,
-                    dosage: 163,
-                    name:200,
-                    msg:100,
-                    msg1:20,
-                    msg2:11,
-                },
-                {
-                    data:"金额",
-                    amount: 1548.5,
-                    dosage: 163,
-                    name:155,
-                    msg:80,msg2:12,msg3:12,msg4:12,msg5:12,msg6:12,msg7:12,msg8:12,msg9:12,
-                },
-                     
-            ]
+            cols: [],           //用电当月构成title
+            tableData: [],       //用电当月构成数据
+             cols1: [],           //用水当月构成title
+            tableData1: []       //用水当月构成数据
         }
     },
     mounted(){
@@ -355,58 +313,108 @@ export default {
             // console.log(res.data.data)
             this.table2=res.data.data
         })
-        // 获取到本月用量构成表格数据
-        this.axios.get("/api/projectElectMType2?projectId="+this.xmid+"&topcount=6").then((res)=>{
-            console.log(res.data.data)
-            var arr=res.data.data
-            for(let i=0;i<arr.length;i++){
-                console.log(arr[i])
-            }
+        // 获取到本月用电   构成表格数据   动态表头
+        this.axios.get("/api/projectElectMType2?projectId="+this.xmid+"&topcount=10").then((res)=>{
+            // console.log(res.data.data[0])
+
+            this.cols=[]
+            var list=res.data.data[0]
+            var arr=[]
+            var arr1=[]
+            arr1.push(res.data.data[1],res.data.data[2])
+            // var obj={}
+             for(var item in list){
+              var obj={
+                     label:list[item],
+                     prop:item
+                }
+                arr.push(obj)
+             }
+             for(var i=0;i<arr.length;i++){
+                if(arr[i].prop=="type"){
+                    var type=arr.splice(i,1)[0]
+                }
+             } 
+             for(var k=0;k<arr.length;k++){
+             
+                if(arr[k].prop=="total"){
+                    var total=arr.splice(k,1)[0]
+                }
+             } 
 
 
+            //排序函数
+            function compare(pro) { 
+                return function (obj1, obj2) { 
+                    var val1 = obj1[pro]; 
+                    var val2 = obj2[pro]; 
+                    if (val1 > val2 ) { //正序
+                        return 1; 
+                    } else if (val1 < val2 ) { 
+                        return -1; 
+                    } else { 
+                        return 0; 
+                    } 
+                } 
+            } 
+            //使用排序方法 
+            arr.sort(compare("prop")); 
+            arr.unshift(type,total)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // console.log(Object.keys(res.data.data))
-        //    res.data.data.map((v,i)=>{
-                
-            //    let length = Object.keys(v).length;
-            //    for(let x = 0 ; x < length - 2; x++){
-                //    let obj = {
-                //        label:v.itemName,
-                //        prop:
-                //    }
-                // console.log(Object.keys(v));
-            //    }
-
-            //    if(i <  res.data.data.length){
-            //        var obj={
-            //         label:v.itemName,
-            //         prop:Object.keys(v)[2]
-            //         }
-            //         // var obj1={
-            //         //     label:v.itemName,
-            //         //     prop:Object.keys(v)[0]
-            //         // }
-            //         arr.push(obj);
-            //    }else{
-            //        return
-            //    }
-        //    })
+                this.cols=arr
+                this.tableData=arr1
 
           
+        })
+        // 获取到本月用水    构成表格数据   动态表头
+        this.axios.get("/api/projectWaterMType2?projectId="+this.xmid+"&topcount=6").then((res)=>{
+            // console.log(res.data.data[0])
+            this.cols1=[]
+            var list=res.data.data[0]
+            var arr=[]
+            var arr1=[]
+            arr1.push(res.data.data[1],res.data.data[2])
+            // var obj={}
+             for(var item in list){
+              var obj={
+                     label:list[item],
+                     prop:item
+                }
+                arr.push(obj)
+             }
+             for(var i=0;i<arr.length;i++){
+                if(arr[i].prop=="type"){
+                    var type=arr.splice(i,1)[0]
+                }
+             } 
+             for(var k=0;k<arr.length;k++){
+             
+                if(arr[k].prop=="total"){
+                    var total=arr.splice(k,1)[0]
+                }
+             } 
+
+
+            //排序函数
+            function compare(pro) { 
+                return function (obj1, obj2) { 
+                    var val1 = obj1[pro]; 
+                    var val2 = obj2[pro]; 
+                    if (val1 > val2 ) { //正序
+                        return 1; 
+                    } else if (val1 < val2 ) { 
+                        return -1; 
+                    } else { 
+                        return 0; 
+                    } 
+                } 
+            } 
+            //使用排序方法 
+            arr.sort(compare("prop")); 
+            arr.unshift(type,total)
+
+                this.cols1=arr
+                this.tableData1=arr1
         })
    },
    methods:{

@@ -19,7 +19,7 @@ export default {
   },
   watch: {
 
-    bssxzzt: {
+    bshxzzt: {
       handler(newVal) {
         
         this.bjData = newVal;
@@ -118,7 +118,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["bssxzzt"],
+  props: ["bshxzzt"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("bswjlsxzzt"));
     window.addEventListener("resize", () => {

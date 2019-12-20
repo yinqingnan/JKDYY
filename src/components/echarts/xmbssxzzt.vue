@@ -28,7 +28,7 @@ export default {
             }
         }
       },
-    bshxzzt: {
+    bssxzzt: {
       handler(newVal) {
         // console.log("竖向柱状图"+newVal)
         this.bjData = newVal;
@@ -137,7 +137,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["bshxzzt","xsyf"],
+  props: ["bssxzzt","xsyf"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("bswjlhxzzt"));
     window.addEventListener("resize", () => {
