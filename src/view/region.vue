@@ -155,7 +155,7 @@
                 </span>
               </h1>
               <h2 v-for="(item,index) in xcpztitle" :key="index+1">
-                {{item.newScore}}
+                {{item.newScore || 0}}
             
               </h2>
               <div>
