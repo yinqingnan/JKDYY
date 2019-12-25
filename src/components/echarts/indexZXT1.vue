@@ -156,7 +156,7 @@ export default {
                       left: '9%',
                       bottom: 0,
                       start: 0,           //数据窗口范围的起始百分比
-                      end: 50,             //数据窗口范围的结束百分比
+                      end: 100,             //数据窗口范围的结束百分比
                   }
               ],
               yAxis: [
