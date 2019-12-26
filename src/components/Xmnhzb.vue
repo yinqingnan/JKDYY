@@ -18,15 +18,17 @@
                         v-for="(item,index) in list1"
                         :key="index"
                         >{{item}}</li>
-                    </ul>
-                    <div v-show="show" >
-                        <ydlzxt :xmid="xmid"></ydlzxt>
+                    </ul> 
+                   <div v-show="show" class="tubiao">
+                        <ydlzxt :xmid="xmid" :num="this.num"></ydlzxt>
                      
                     </div>
-                    <div v-show="show1">
-                        <ydlnhgc :xmid="xmid"></ydlnhgc>
-                    </div>
+                    <div v-show="show1" class="tubiao">
+                        <ydlnhgc :xmid="xmid"   :num="this.num"></ydlnhgc>
+                    </div> 
                 </div>
+                
+                
                 <div class="box_header_right">
                     <div class="box_header_right_header">
                         <h2 @click="totable">本月用量构成</h2>
@@ -145,12 +147,11 @@
                         :key="index"
                         >{{item}}</li>
                     </ul>
-                    <div v-show="show3" >
-                        <yslzxt :xmid="xmid"></yslzxt>
-                     
+                    <div v-show="show3" class="tubiao">
+                        <yslzxt :xmid="xmid" :num1="num1"></yslzxt>
                     </div>
-                    <div v-show="show4">
-                        <yslnhgc :xmid="xmid"></yslnhgc>
+                    <div v-show="show4" class="tubiao">
+                        <yslnhgc :xmid="xmid" :num1="num1"></yslnhgc>
                     </div>
                 </div> 
                <div class="box_header_right">
@@ -420,7 +421,9 @@ export default {
    methods:{
         getheight() {
         // 获取当前浏览器的高度赋值给元素
-        this.style.height = window.innerHeight + "px";
+        // console.log(window.innerHeight + "px")
+        this.style.height = window.innerHeight-4 + "px";
+
         },
         TO(){
             this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
@@ -462,17 +465,21 @@ export default {
                 this.show1=false
             }else{
                  this.show=false
-                this.show1=true
+                 this.show1=true
+                 this.num=index
             }
         },
         btnli1(index){
             this.num1=index
             if(index==0){
                 this.show3=true
-                this.show4=false
+                this.show4=false  
+                this.num1=index
             }else{
                 this.show3=false
                 this.show4=true
+                this.num1=index
+
             }
         },
         m1(row){
@@ -747,6 +754,7 @@ export default {
 <style scoped>
 .box{
     background: #eeeeee;
+    min-height: 768px
 
 }
 .header{
@@ -779,6 +787,7 @@ export default {
 }
 .box_header{
     height: 45%;
+    min-height: 420px;
     /* background: #eeeeee; */
     margin: 0 12px;
     margin-bottom: 12px;
@@ -789,7 +798,8 @@ export default {
     background: #fff;
     margin: 0 12px;
     border: 1px solid #e5e5e5;
-    display: flex
+    display: flex;
+    min-height: 420px;
 
 }
 .box_header_left{
@@ -875,7 +885,12 @@ export default {
     margin-bottom: 10px;
     margin-top: 10px;
     font-weight: 500
-}   
+}  
+.tubiao {
+    min-height: 420px;
+    min-width: 420px;
+    width: 100%
+}
 </style>
 
 <style>

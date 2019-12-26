@@ -2,7 +2,7 @@
 <template>
   <div>
     <div id="zzt1" class="ECHARTS"></div>
-      <!-- {{ydl}} -->
+
   </div>
 </template>
 
@@ -19,10 +19,24 @@ export default {
       title:[]  ,   //title名称
     };
   },
+  props: ["xmid","num"],
+  // created(){
+  //   console.log(this.$props)
+  // },
+
   watch: {
+    num(newVal,value){
+          const chartObj = echarts.init(document.getElementById("zzt1"));
+            chartObj.resize();
+        // console.log(chartObj)
+    
+   
+    },
     xmid:{
         handler(newVal){
+          // console.log(newVal)
           this.axios.get("/api/projectElectMType?projectId="+newVal+"&topcount=6").then((res)=>{
+
               this.nhgc=[]
               this.title=[]
                 // console.log(res.data.data)
@@ -64,9 +78,9 @@ export default {
         }
     },
     grid: {
-    left: '10%',
+    left: '12%',
     right: '10%',
-    bottom: '13%',
+    bottom: '20%',
     containLabel: false,
   
     }, 
@@ -97,6 +111,7 @@ export default {
         axisLabel: {
             show: true,
             interval:0,  //设置文字间距
+            rotate:40,
             textStyle: {
                 color: '#666',
             }
@@ -133,6 +148,9 @@ export default {
 
 ]
 };
+
+
+
         //初始化图表
         const chartObj = echarts.init(document.getElementById("zzt1"));
 
@@ -149,8 +167,9 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmid"],
+
   mounted() {
+    
     const chartObj = echarts.init(document.getElementById("zzt1"));
     window.addEventListener("resize", () => {
         // console.log(chartObj)
@@ -164,9 +183,9 @@ export default {
 </script>
 <style  scoped>
 .ECHARTS {
-    /* width: 100%; */
+    width: 100%;
     /* min-width: 440px; */
-    width: 420px;
+    min-width: 420px;
      height: 420px;
 }
 </style>

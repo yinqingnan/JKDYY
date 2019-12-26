@@ -73,7 +73,7 @@
                               <div class="yq">
                                     <ul v-for="(item,index) in zsryq" :key="index">
                                         <li style="width:20%">{{item.incomType}}</li>
-                                        <li style="width:30%;font-weight:600">{{(item.incomMoney/10000).toFixed(2)}} 万元</li>
+                                        <li style="width:30%;font-weight:600">{{item.incomMoney}} 万元</li>
                                         <li style="width:30%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" :title="item.changeRate.toFixed(1)">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate.toFixed(1)}}%</span>
@@ -84,7 +84,7 @@
                         </div>
                         <!-- 第二个 -->
                          <div>
-                            <h1>总利润</h1>  
+                            <!-- <h1>总利润</h1>   -->
                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
                         </div>
@@ -301,7 +301,9 @@ export default {
         }
     },
     mounted() {
+        // console.log(this.$route)
         this.value=this.$route.query.name       //获取到路由的参数
+
         var date=new Date();   
         this.date=date.getMonth()+1    //获取到当前的月份信息            
         // console.log(window.location.href)//获取当前的路由
@@ -865,6 +867,7 @@ export default {
     line-height: 14px;
     font-size: 14px;
     color: #666;
+    white-space: nowrap;
 
 }
 .yq>ul>li>span{

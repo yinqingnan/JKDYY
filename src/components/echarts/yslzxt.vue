@@ -2,7 +2,7 @@
 <template>
   <div>
     <div id="zxt2" class="ECHARTS"></div>
-      <!-- {{ydl}} -->
+      
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     };
   },
   watch: {
+      num1(){
+            const chartObj = echarts.init(document.getElementById("zxt2"));
+          // console.log(chartObj)
+        chartObj.resize();
+    },
     xmid:{
         handler(newVal){
           this.axios.get("/api/projectWaterrentM?projectId="+newVal).then((res)=>{
@@ -38,7 +43,7 @@ export default {
         //   }
       ],
         grid: {
-            left: '10%',
+            left: '14%',
             right: '10%',
             bottom: '13%',
             containLabel: false,
@@ -162,7 +167,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmid"],
+  props: ["xmid","num1"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("zxt2"));
     window.addEventListener("resize", () => {

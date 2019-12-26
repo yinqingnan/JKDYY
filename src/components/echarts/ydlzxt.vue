@@ -2,7 +2,7 @@
 <template>
   <div>
     <div id="zxt1" class="ECHARTS"></div>
-      <!-- {{ydl}} -->
+
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     };
   },
   watch: {
+       num(newVal,value){
+            const chartObj = echarts.init(document.getElementById("zzt1"));
+          // console.log(chartObj)
+        chartObj.resize();
+    },
     xmid:{
         handler(newVal){
           this.axios.get("/api/projectElectricityM?projectId="+newVal).then((res)=>{
@@ -38,7 +43,7 @@ export default {
         //   }
       ],
         grid: {
-            left: '10%',
+            left: '14%',
             right: '10%',
             bottom: '13%',
             containLabel: false,
@@ -151,9 +156,9 @@ export default {
 
           chartObj.setOption(option, true);
             // 设置自适应
-          window.onresize = function() {
-            chartObj.resize();
-          };
+          // window.onresize = function() {
+          //   chartObj.resize();
+          // };
          })
 
         }
@@ -162,7 +167,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmid"],
+  props: ["xmid","num"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("zxt1"));
     window.addEventListener("resize", () => {
@@ -177,7 +182,7 @@ export default {
 </script>
 <style  scoped>
 .ECHARTS {
-    /* width: 100%; */
+    width: 100%;
     min-width: 420px;
      height: 420px;
 }

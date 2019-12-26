@@ -2,7 +2,6 @@
 <template>
   <div>
     <div id="zzt2" class="ECHARTS"></div>
-      <!-- {{ydl}} -->
   </div>
 </template>
 
@@ -20,11 +19,15 @@ export default {
     };
   },
   watch: {
+      num1(){
+        const chartObj = echarts.init(document.getElementById("zzt2"));
+        chartObj.resize();
+    },
     xmid:{
         handler(newVal){
+          // console.log(newVal)
             // /api/projectWaterMType?projectId=1085&topcount=6
           this.axios.get("/api/projectWaterMType?projectId="+this.xmid+"&topcount=6").then((res)=>{
-            //   console.log(res.data.data)
               this.nhgc=[]
               this.title=[]
                 
@@ -39,16 +42,7 @@ export default {
 
    const option = {
     title: [
-        //   {
-        //     text: "单位：度",
-        //     top:10,
-        //     right: 10,
-        //     textStyle: {
-        //       color: "#333",
-        //       fontSize: 14,
-        //       fontWeight: "500"
-        //     }
-        //   }
+
     ],
     tooltip: {
         showContent: true,
@@ -66,9 +60,9 @@ export default {
         }
     },
     grid: {
-    left: '10%',
+    left: '12%',
     right: '10%',
-    bottom: '13%',
+    bottom: '20%',
     containLabel: false,
   
     }, 
@@ -99,6 +93,7 @@ export default {
         axisLabel: {
             show: true,
             interval:0,  //设置文字间距
+             rotate:40,
             textStyle: {
                 color: '#666',
             }
@@ -151,7 +146,7 @@ export default {
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmid"],
+  props: ["xmid","num1"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("zzt2"));
     window.addEventListener("resize", () => {
@@ -166,9 +161,9 @@ export default {
 </script>
 <style  scoped>
 .ECHARTS {
-    /* width: 100%; */
+    width: 100%;
     /* min-width: 440px; */
-    width: 420px;
+    min-width: 420px;
      height: 420px;
 }
 </style>
