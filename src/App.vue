@@ -18,7 +18,7 @@ export default {
 
 <style>
 
-@import url("http://at.alicdn.com/t/font_1437129_rpoab6bvhj.css");
+@import url("http://at.alicdn.com/t/font_1437129_3j8gpx0h1ng.css");
 *{
   margin  :0;
   padding:0;

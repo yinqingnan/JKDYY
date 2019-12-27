@@ -177,7 +177,10 @@ export default {
       myChart.setOption(option)
  
       //自适应屏幕
-      window.addEventListener('resize',function() {myChart.resize()})
+      window.addEventListener('resize',function() {
+          // console.log(myChart.resize())
+        
+        myChart.resize()})
     })
   },
   methods: {

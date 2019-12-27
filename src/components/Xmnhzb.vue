@@ -466,7 +466,7 @@ export default {
             }else{
                  this.show=false
                  this.show1=true
-                 this.num=index
+                //  this.num=index
             }
         },
         btnli1(index){
@@ -474,11 +474,11 @@ export default {
             if(index==0){
                 this.show3=true
                 this.show4=false  
-                this.num1=index
+                // this.num1=index
             }else{
                 this.show3=false
                 this.show4=true
-                this.num1=index
+                // this.num1=index
 
             }
         },

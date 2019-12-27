@@ -35,7 +35,7 @@ export default {
     xmid:{
         handler(newVal){
           // console.log(newVal)
-          this.axios.get("/api/projectElectMType?projectId="+newVal+"&topcount=6").then((res)=>{
+          this.axios.get("/api/projectElectMType3?projectId="+newVal+"&topcount=6").then((res)=>{
 
               this.nhgc=[]
               this.title=[]

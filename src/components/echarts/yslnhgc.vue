@@ -27,7 +27,7 @@ export default {
         handler(newVal){
           // console.log(newVal)
             // /api/projectWaterMType?projectId=1085&topcount=6
-          this.axios.get("/api/projectWaterMType?projectId="+this.xmid+"&topcount=6").then((res)=>{
+          this.axios.get("/api/projectWaterMType3?projectId="+this.xmid+"&topcount=6").then((res)=>{
               this.nhgc=[]
               this.title=[]
                 

@@ -11,6 +11,8 @@ import Listedcompany from "../view/Listedcompany.vue"       //上市公司子路
 import Companylist from "../view/Companylist.vue"       //上市公司子路由    公司页面
 import Acquisition  from '../components/Table/Acquisitiondetails.vue'       //收并购信息详情页
 
+import Zbsjtj from "../view/zbsjtj.vue"     //总部数据统计
+
 import City from '../view/City.vue'       //城市数据（旧）
 import Indexmap from '../view/indexmap.vue'   //地图页面
 import Regiontable from '../view/regiontable.vue'   //区域项目表格 （在管项目 招标物业费 停车备案情况）
@@ -38,7 +40,8 @@ const  router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
     routes:[
-        {path:"/",redirect:'/2'},//设置默认指向的路径  
+        {path:"/",redirect:'/zbsjtj'},//设置默认指向的路径  
+        {path:"/zbsjtj",name:Zbsjtj,component:Zbsjtj},
         {path:"/region",name:"Region",component:Region},      //区域公司页面   4.0  此路由必须携带数据  默认为金科物业重庆区域公司  // http://localhost:8080/project?name=金科物业重庆区域公司
         {path:"/project",name:"project",component:Project},      //项目页面    4.0  此路由必须携带数据  默认为金科物业重庆区域公司 和公司名称       http://localhost:8080/region?quid=250&xmid=1085
         {path:"/2",component:Y2,children:[             //上市公司数据 和子路由
