@@ -141,7 +141,7 @@ export default {
           series: [
             {
               // name: 'Scoring Attributes',
-              barMaxWidth: 20,
+              barWidth: 10,
               type: "bar",
               data: this.msglist
             }

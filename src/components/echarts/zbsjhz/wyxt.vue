@@ -1,5 +1,5 @@
 <template>
-  <!-- 营业收入占比 -->
+  <!-- 物业形态 -->
   <div>
     <div id="dht" class="dht" ref="dht"></div>
   </div>

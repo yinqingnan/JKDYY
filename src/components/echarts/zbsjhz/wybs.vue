@@ -93,7 +93,7 @@ export default {
             formatter: function(objs) {
               // console.log(objs)
               let obj = objs[0];
-              return `${obj.name} </br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${obj.value}个`;
+              return `${obj.name} </br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${obj.value}%`;
             }
           },
           grid: {
@@ -154,7 +154,7 @@ export default {
           series: [
             {
               // name: 'Scoring Attributes',
-              barMaxWidth: 20,
+             barWidth: 10,
               type: "bar",
               data: this.msglist
             }
