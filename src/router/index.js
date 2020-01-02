@@ -1,8 +1,10 @@
-import Vue from 'vue'
+
+
+// import Vue from 'vue'
 
 //引入路由文件
 import VueRouter from 'vue-router';
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
 //引入路由匹配成功后显示的组件
 import Project from "../view/project.vue"      //公司项目详情
 import Region from "../view/region.vue"      //公司项目详情

@@ -6,13 +6,13 @@ Vue.config.productionTip = false
 
 // 引人VueRouter
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+
 // 解决路由重复点击报错的问题
-import Router from 'vue-router'
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err)
-}
+// import Router from 'vue-router'
+// const originalPush = Router.prototype.push
+// Router.prototype.push = function push(location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }
 // 引入自定义的路由配置
 import router from './router';
 
@@ -48,7 +48,7 @@ axios.defaults.baseURL="http://219.153.109.174:9045"       //默认地址   金�
 
 Vue.prototype.axios = axios         //将axios配置到Vue原型中
 Vue.use(VueAxios, axios)
-
+Vue.use(VueRouter)
 
 var vue=new Vue({
   router,

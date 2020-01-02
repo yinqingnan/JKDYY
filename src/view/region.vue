@@ -113,7 +113,7 @@
 
             <!-- 关键指标图表2 -->
             <div>
-              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%; cursor:pointer" @click="bswjl">
+              <h1 v-for="(item,index) in bstitle" :key="index" style="marginRight:10%; cursor:pointer;color:#49a4d9" @click="bswjl">
                 报事完结率
                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
@@ -703,8 +703,6 @@ export default {
 
       // 获取关键指标报事完成率数据 竖向柱状图数据
       this.axios.get("/api/projectMNewPYear?projectId=" + value).then(res => {
-        // console.log(res.data.data)
-        // console.log(this.date)
         this.bssxzzt=[]
         // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
         if (this.date >= 7) {
@@ -1015,7 +1013,6 @@ export default {
           res.data.data[0].m11,
          res.data.data[0].m12
         );
-        // console.log(this.bshxzzt)
         this.xsyf = 1;
       } else {
         this.bssxzzt.push(
@@ -1026,10 +1023,8 @@ export default {
           res.data.data[0].m5,
           res.data.data[0].m6 
         );
-        // console.log(this.bshxzzt)
         this.xsyf = 0;
       }
-      // console.log(this.bssxzzt)
     });
 
     // 获取报事完成率     横向柱状图数据            需变更数据
@@ -1397,6 +1392,7 @@ export default {
   margin: 16px 0 8px 33px;
   line-height: 1;
   font-weight: 100;
+
 }
 .Chart > div:nth-of-type(2) > div > h1 > span {
   line-height: 1;
