@@ -334,7 +334,7 @@ export default {
                 this.zsrnumber=(res.data.data[0].newReceiptsAll/1000).toFixed(0)
             })
             // 获取总收入竖向柱状图数据
-            this.axios.get("/api/companyReceipts?year=2019&companyId="+this.id)        
+            this.axios.get("/api/companyReceipts?year=2020&companyId="+this.id)        
             .then((res)=>{
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
                 if(this.date>=7){
@@ -372,7 +372,7 @@ export default {
                 this.sfl=res.data.data
             })
             //综合收费率竖向柱状图
-            this.axios.get("/api/companyRates?year=2019&companyId="+this.id)           
+            this.axios.get("/api/companyRates?year=2020&companyId="+this.id)           
             .then((res)=>{  
                 // console.log(res.data.data)
                 if(this.date>=7){
