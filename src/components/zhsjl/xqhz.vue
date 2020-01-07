@@ -183,7 +183,7 @@ export default {
             this.qnpjsfl=res.data.data[0].rate.toFixed(2)
         })
         // 获取当前项目数据
-        this.axios.get("/api/proChargeRate05?projectId=1085").then((res)=>{
+        this.axios.get("/api/proChargeRate05?projectId="+this.xmid).then((res)=>{
             // console.log(res.data.data[0])
             this.rate=res.data.data[0].Rate
             this.ranking=res.data.data[0].rowNumber
