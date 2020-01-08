@@ -8,13 +8,11 @@
     import echarts from "echarts";
     export default {
         name: "homeLine",
+        props:['lineData'],
         data(){
             return{
 
             }
-        },
-        mounted() {
-            this.setLine();
         },
         methods:{
             setLine(){
@@ -50,7 +48,7 @@
                     },
                     grid: {
                         left: '2%',
-                        right: '5%',
+                        right: '10%',
                         top: '16%',
                         bottom: '6%',
                         containLabel: true
@@ -108,7 +106,7 @@
                         type: 'line',
                         symbolSize: 8,
                         symbol: 'circle',
-                        data: [20, 11, 13, 42, 30, 42, 30,33, 30, 42, 60,73],
+                        data: this.lineData.list1,
                         areaStyle: {
                             normal: {
                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -128,7 +126,7 @@
                         type: 'line',
                         symbolSize: 8,
                         symbol: 'circle',
-                        data: [10, 50, 50, 87, 90, 80, 70,72, 30, 12, 10,43],
+                        data: this.lineData.list2,
                         areaStyle: {
                             normal: {
                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -148,7 +146,7 @@
                         type: 'line',
                         symbolSize: 8,
                         symbol: 'circle',
-                        data: [10, 22, 20, 32, 15, 20, 19,22, 30, 22, 20,33],
+                        data: this.lineData.list3,
                         areaStyle: {
                             normal: {
                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -169,6 +167,11 @@
                 window.addEventListener("resize", function () {
                     myLine.resize();
                 });
+            }
+        },
+        watch:{
+            lineData:function (nVal,oVal) {
+                this.setLine();
             }
         }
     }

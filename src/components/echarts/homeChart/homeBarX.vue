@@ -9,13 +9,11 @@
 
     export default {
         name: "homeBarX",
+        props:['barXData'],
         data(){
             return {
 
             }
-        },
-        mounted() {
-            this.setBar2();
         },
         methods:{
             setBar2(){
@@ -49,7 +47,7 @@
                     },
                     xAxis: {
                         type: 'category',
-                        data: ['工资', '小区运行费', '维修费用', '保洁费用', '电梯维修费', '垃圾消防费', '垃圾消费费','绿化费','住房公积金'],
+                        data: this.barXData.list1,
                         axisLabel: {
                             show: true,
                             textStyle: {
@@ -76,7 +74,7 @@
                     },
                     series: [{
                         name:'项目成本分析',
-                        data: [120, 200, 150, 80, 70, 110, 130,20,87],
+                        data: this.barXData.list2,
                         type: 'bar',
                         barWidth:'30%',
                         itemStyle: {
@@ -92,6 +90,11 @@
                     myBar.resize();
                 });
 
+            }
+        },
+        watch:{
+            barXData: function (n,o) {
+                this.setBar2();
             }
         }
 

@@ -20,7 +20,7 @@
         methods: {
             setBar() {
                 let myColor = ['#5cc3d2','#fca852','#57a8e8'];
-                let dataAll = [389, 259, 262];
+                let dataAll = this.listData.arr;
                 let yAxisData = [this.title.title,this.title.title,this.title.title];
                 let myBar = echarts.init(this.$refs.bar);
                 let option = {
@@ -97,7 +97,7 @@
 
 <style scoped>
     #histogram{
-        width: 200px;
+        width: 190px;
         height: 100px;
     }
     .bar{

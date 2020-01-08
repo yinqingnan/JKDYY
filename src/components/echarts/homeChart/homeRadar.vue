@@ -9,13 +9,14 @@
 
     export default {
         name: "homeRadar",
+        props:['radarData'],
         data(){
             return{
 
             }
         },
-        mounted() {
-            this.setRadar();
+        created() {
+            console.log(this.radarData);
         },
         methods:{
             setRadar(){
@@ -146,9 +147,7 @@
                             show: true,
                             color: '#fff'
                         },
-                        data: [
-                            [86,86,92,72,82,77,90,88]
-                        ]
+                        data: [this.radarData]
                     },
                     ]
                 }
@@ -157,6 +156,11 @@
                 window.addEventListener("resize", function() {
                     myRadar.resize();
                 });
+            }
+        },
+        watch:{
+            radarData:function (n,o) {
+                this.setRadar();
             }
         }
     }

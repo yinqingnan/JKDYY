@@ -1,6 +1,6 @@
 <template>
     <div id="homePie">
-        <header>利润水平</header>
+        <header>收入构成</header>
         <div id="pie" class="pie" ref="pie"></div>
     </div>
 </template>
@@ -8,14 +8,20 @@
 <script>
     import echarts from "echarts";
     export default {
+        props:['pieData'],
         name: "homePie",
         data() {
             return {
-
+                dataList: this.pieData,
+                list:[],
+                all:[]
             };
         },
+        created() {
+
+        },
         mounted() {
-            this.setPie();
+
         },
         methods: {
             setPie(){
@@ -39,29 +45,24 @@
                         type: 'pie',
                         radius: '60%',
                         center: ['50%', '50%'],
-                        color: ['#18b78e', '#fd8d06', '#ec4a4a', '#1db7e5'],
-                        data: [{
-                            value: 25,
-                            name: '家庭生活'
-                        },{
-                            value: 40,
-                            name: '金融资产'
-                        },{
-                            value: 15,
-                            name: '家居'
-                        },{
-                            value: 20,
-                            name: '园区资源'
-                        }].sort(function(a, b) {
+                        minAngle: 20,
+                        color: [
+                            '#c490bf',
+                            '#ec4a4a',
+                            '#1db7e5',
+                            '#fd8d06',
+                            '#18b78e',
+                            '#88acff'
+                        ],
+                        data: this.list.sort(function(a, b) {
                             return a.value - b.value
                         }),
                         roseType: 'radius',
 
                         label: {
                             normal: {
-                                formatter: ['{b|{b}}', '{c|{c}%}'].join('\n'),
+                                formatter: ['{b|{b}}', '{c|{d}%}'].join('\n'),
                                 rich: {
-
                                     c: {
                                         color: '#fff',
                                         fontSize: 15,
@@ -71,7 +72,7 @@
                                     b: {
                                         color: '#b3c3e4',
                                         fontSize: 12,
-                                        height: 40
+                                        height: 20
                                     },
                                 },
                             }
@@ -95,6 +96,20 @@
                 window.addEventListener("resize", function() {
                     myPie.resize();
                 });
+            }
+        },
+        watch:{
+            'pieData':function(nVal,oVal){
+                this.all = nVal.data.data;
+                this.list = [];
+                this.all.forEach(e => {
+                    let obj = {
+                        value:e.incomAmount,
+                        name:e.incomType
+                    };
+                    this.list.push(obj);
+                });
+                this.setPie();
             }
         }
     }
