@@ -7,19 +7,19 @@
             <ul>
               <li>
                 <h1>收入</h1>
-                <h2>{{yysrtitle.income}}</h2>
+                <h2 :title="yysrtitle.income">{{yysrtitle.income}}</h2>
               </li>
               <li>
                 <h1>利润</h1>
-                <h2>{{yysrtitle.profit}}</h2>
+                <h2 :title="yysrtitle.profit">{{yysrtitle.profit}}</h2>
               </li>
               <li>
-                <h1>汇款</h1>
-                <h2>{{yysrtitle.returnedMoney}}</h2>
+                <h1>回款</h1>
+                <h2 :title="yysrtitle.returnedMoney">{{yysrtitle.returnedMoney}}</h2>
               </li>
               <li>
                 <h1>人均效能</h1>
-                <h2>{{yysrtitle.perCapita}}</h2>
+                <h2 :title="yysrtitle.perCapita">{{yysrtitle.perCapita}}</h2>
               </li>
             </ul>
           </div>
@@ -35,15 +35,15 @@
             <ul>
               <li>
                 <h1>在管项目总数</h1>
-                <h2>{{yysrtitle.projectCount}}</h2>
+                <h2 :title="yysrtitle.projectCount">{{yysrtitle.projectCount}}</h2>
               </li>
               <li>
                 <h1>住宅项目</h1>
-                <h2>{{yysrtitle.projectResidenceCount}}</h2>
+                <h2 :title="yysrtitle.projectResidenceCount">{{yysrtitle.projectResidenceCount}}</h2>
               </li>
               <li>
                 <h1>非住宅项目</h1>
-                <h2>{{yysrtitle.projectNoResidenceCount}}</h2>
+                <h2 :title="yysrtitle.projectNoResidenceCount">{{yysrtitle.projectNoResidenceCount}}</h2>
               </li>
             </ul>
           </div>
@@ -84,15 +84,15 @@
             <ul>
               <li>
                 <h1>在管总面积</h1>
-                <h2>{{yysrtitle.projectTubeArea}}</h2>
+                <h2 :title="yysrtitle.projectTubeArea">{{yysrtitle.projectTubeArea}}</h2>
               </li>
               <li>
                 <h1>住宅项目</h1>
-                <h2>{{yysrtitle.projectTubeAreaResidence}}</h2>
+                <h2 :title="yysrtitle.projectTubeAreaResidence">{{yysrtitle.projectTubeAreaResidence}}</h2>
               </li>
               <li>
                 <h1>非住宅项目</h1>
-                <h2>{{yysrtitle.projectTubeAreaNoResidence}}</h2>
+                <h2 :title="yysrtitle.projectTubeAreaNoResidence">{{yysrtitle.projectTubeAreaNoResidence}}</h2>
               </li>
             </ul>
           </div>
@@ -107,15 +107,15 @@
             <ul>
               <li>
                 <h1>报事总数</h1>
-                <h2>{{yysrtitle.projectNewspapersCount}}</h2>
+                <h2 :title="yysrtitle.projectNewspapersCount">{{yysrtitle.projectNewspapersCount}}</h2>
               </li>
               <li>
                 <h1>完成报事数量</h1>
-                <h2>{{yysrtitle.projectNewspapersCompletedCount}}</h2>
+                <h2 :title="yysrtitle.projectNewspapersCompletedCount">{{yysrtitle.projectNewspapersCompletedCount}}</h2>
               </li>
               <li>
                 <h1>完结率</h1>
-                <h2>{{yysrtitle.projectNewspapersRate}}</h2>
+                <h2 :title="yysrtitle.projectNewspapersRate">{{yysrtitle.projectNewspapersRate}}</h2>
               </li>
             </ul>
           </div>
@@ -142,9 +142,9 @@ import yysrzb from "@/components/echarts/zbsjhz/yysrzb"; //营业收入占比
 import xmfb from "@/components/echarts/zbsjhz/xmfb"; //项目分布
 import TOP from "@/components/echarts/zbsjhz/TOP"; //top节点达成率
 import TOP1 from "@/components/echarts/zbsjhz/TOP1"; //top关键节点达成率
-import wyxt from "../components/echarts/zbsjhz/wyxt"; //物业形态
-import wybs from "../components/echarts/zbsjhz/wybs"; //物业报事
-import pzfwzb from "../components/echarts/zbsjhz/pzfwzb"        //品质服务占比 空数据
+import wyxt from "@/components/echarts/zbsjhz/wyxt"; //物业形态
+import wybs from "@/components/echarts/zbsjhz/wybs"; //物业报事
+import pzfwzb from "@/components/echarts/zbsjhz/pzfwzb"        //品质服务占比 空数据
 export default {
   components: {
     yysrzb,
@@ -365,6 +365,9 @@ export default {
   margin-top: 10px;
   color: #fd7858;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .top_left_body {
   height: 80%;

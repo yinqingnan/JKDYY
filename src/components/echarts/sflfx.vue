@@ -31,16 +31,9 @@ export default {
         if(res.data.data!=""){
             this.data1=[]
             this.data2=[]
-            for (let key in res.data.data[0]) {
-                if(key!="TypeName"){
-                    this.data1.push(res.data.data[0][key])
-                }
-            }
-            for (let key in res.data.data[1]) {
-                if(key!="TypeName"){
-                    this.data2.push(res.data.data[1][key].toFixed(2))
-                }
-            }
+            this.data1.push(res.data.data[0].Rate1.toFixed(2),res.data.data[0].Rate2.toFixed(2),res.data.data[0].Rate3.toFixed(2),res.data.data[0].Rate4.toFixed(2),res.data.data[0].Rate5.toFixed(2),res.data.data[0].Rate6.toFixed(2),res.data.data[0].Rate7.toFixed(2),res.data.data[0].Rate8.toFixed(2),res.data.data[0].Rate9.toFixed(2),res.data.data[0].Rate10.toFixed(2),res.data.data[0].Rate11.toFixed(2),res.data.data[0].Rate12.toFixed(2))
+            this.data2.push(res.data.data[1].Rate1.toFixed(2),res.data.data[1].Rate2.toFixed(2),res.data.data[1].Rate3.toFixed(2),res.data.data[1].Rate4.toFixed(2),res.data.data[1].Rate5.toFixed(2),res.data.data[1].Rate6.toFixed(2),res.data.data[1].Rate7.toFixed(2),res.data.data[1].Rate8.toFixed(2),res.data.data[1].Rate9.toFixed(2),res.data.data[1].Rate10.toFixed(2),res.data.data[1].Rate11.toFixed(2),res.data.data[1].Rate12.toFixed(2))
+
         }else{
             // console.log("没有数据")
         }
