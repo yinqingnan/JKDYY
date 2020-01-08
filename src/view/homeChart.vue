@@ -348,7 +348,7 @@
                         res.data.data[0].tollScore,
                         res.data.data[0].customerServiceScore
                     ]
-                    console.log(list)
+                    // console.log(list)
                     this.radarData = list;
                 })
             }

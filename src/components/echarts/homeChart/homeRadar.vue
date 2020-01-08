@@ -16,7 +16,7 @@
             }
         },
         created() {
-            console.log(this.radarData);
+            // console.log(this.radarData);
         },
         methods:{
             setRadar(){

@@ -21,7 +21,7 @@
             setBar() {
                 let myColor = ['#5cc3d2','#fca852','#57a8e8'];
                 let dataAll = this.listData.arr;
-                let yAxisData = [this.title.title,this.title.title,this.title.title];
+                let yAxisData = [];
                 let myBar = echarts.init(this.$refs.bar);
                 let option = {
                     backgroundColor: 'transparent',
@@ -46,7 +46,9 @@
 
                     ],
                     yAxis: [
-                        {  gridIndex: 0, interval:0,data:yAxisData.reverse(),
+                        {  gridIndex: 0, 
+                            interval:0,
+                            data:yAxisData.reverse(),
                             axisLine: {
                                 show: false,
                             },
