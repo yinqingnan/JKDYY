@@ -86,8 +86,9 @@
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(2)}}%
                 </span>
               </h1>
-              <h2 v-for="(item,index) in bstitle" :key="index+1">
+              <h2 v-for="(item,index) in zhsfltitle" :key="index+1">
                 {{item.newRate.toFixed(2)}}<span>%</span>
+
               </h2>
               <div>
                 <div style="width:100%">
@@ -516,7 +517,6 @@ export default {
         this.axios
           .get("/api/projectTotalRate?projectId=" + this.xmid)
           .then(res => {
-
             this.bstitle = res.data.data;
           });
         // 获取报事完结率   提示信息
@@ -567,7 +567,7 @@ export default {
         this.axios
           .get("/api/projectTotalRate2?projectId=" + this.xmid)
           .then(res => {
-            
+            // console.log(res.data.data)
             this.zhsfltitle = res.data.data;
           });
         // 获取综合收费率的提示信息
@@ -800,7 +800,7 @@ export default {
         this.zhsflmsg = res.data.data;
       });
 
-      // // 获取品质服务信息数据了  雷达图
+      // 获取品质服务信息数据了  雷达图
       this.axios.get("/api/ProjectYuqu?projectId=" + value).then(res => {
         this.radarmsg = [];
         var obj = res.data.data[0];

@@ -112,7 +112,7 @@
                                     <ul v-for="(item,index) in dqsfl" :key="index">
                                         <li style="width:41%" title="当期综合收缴率">当期综合收缴率</li>
                                          <li style="font-weight:600; width:30%" :title="(item.changeRate/10000).toFixed(2)">
-                                            <h3>{{(item.changeRate/10000).toFixed(2)}} 万元</h3>
+                                            <h3>{{(item.newRate/10000).toFixed(2)}} %</h3>
                                           
                                         </li>
                                         <li  >
