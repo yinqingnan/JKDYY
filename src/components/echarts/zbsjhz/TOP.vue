@@ -97,7 +97,6 @@ var option = {
         axisLabel: {
             interval: 0,
             margin: 85,
-            
             textStyle: {
                 color: '#455A74',
                 align: 'center',

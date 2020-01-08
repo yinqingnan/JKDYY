@@ -1,0 +1,186 @@
+<template>
+    <div id="homeLine">
+        <div id="line" class="line" ref="line"></div>
+    </div>
+</template>
+
+<script>
+    import echarts from "echarts";
+    export default {
+        name: "homeLine",
+        data(){
+            return{
+
+            }
+        },
+        mounted() {
+            this.setLine();
+        },
+        methods:{
+            setLine(){
+                let myLine = echarts.init(this.$refs.line);
+                let option = {
+                    backgroundColor: "transparent",
+                    color: ['#5dd4fa', '#39c359', '#ff7676'],
+                    title: [{
+                        text: '单位：个数',
+                        left: '1%',
+                        top: '6%',
+                        textStyle: {
+                            color: '#fff',
+                            fontSize:"12"
+                        }
+                    }],
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        icon:'rect',
+                        top:'4%',
+                        right:15,
+                        textStyle: {
+                            color: '#becff3',
+                        },
+                        fontSize:12,
+                        selectedMode: 'single',
+                        data: ['地产类', '物业类', '其他'],
+                        itemWidth: 12,  // 设置宽度
+                        itemHeight: 12, // 设置高度
+                        itemGap: 15, // 设置间距
+                    },
+                    grid: {
+                        left: '2%',
+                        right: '5%',
+                        top: '16%',
+                        bottom: '6%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        "show": false,
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        "axisLine": {
+                            lineStyle: {
+                                color: '#253151'
+                            }
+                        },
+                        "axisTick": {
+                            "show": false
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        boundaryGap: false,
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月','9月','10月','11月','12月'],
+                        interval:0,
+                    },
+                    yAxis: {
+                        "axisLine": {
+                            lineStyle: {
+                                color: '#253151'
+                            },
+                        },
+                        splitLine: {
+                            show: true,
+                            lineStyle: {
+                                color: '#253151'
+                            }
+                        },
+                        "axisTick": {
+                            "show": false
+                        },
+                        axisLabel: {
+                            textStyle: {
+                                color: '#fff'
+                            }
+                        },
+                        type: 'value'
+                    },
+                    series: [{
+                        name: '地产类',
+                        smooth: true,
+                        type: 'line',
+                        symbolSize: 8,
+                        symbol: 'circle',
+                        data: [20, 11, 13, 42, 30, 42, 30,33, 30, 42, 60,73],
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#57caf0'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'transparent'
+                                    }
+                                ], false),
+                            }
+                        },
+                    }, {
+                        name: '物业类',
+                        smooth: true,
+                        type: 'line',
+                        symbolSize: 8,
+                        symbol: 'circle',
+                        data: [10, 50, 50, 87, 90, 80, 70,72, 30, 12, 10,43],
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#39c359'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'transparent'
+                                    }
+                                ], false),
+                            }
+                        },
+                    }, {
+                        name: '其他',
+                        smooth: true,
+                        type: 'line',
+                        symbolSize: 8,
+                        symbol: 'circle',
+                        data: [10, 22, 20, 32, 15, 20, 19,22, 30, 22, 20,33],
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: '#ff7676'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'transparent'
+                                    }
+                                ], false),
+                            }
+                        },
+                    }],
+                }
+
+                myLine.setOption(option);
+                window.addEventListener("resize", function () {
+                    myLine.resize();
+                });
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    #homeLine{
+        width: 100%;
+        height: calc(100% - 56px);
+    }
+    #line{
+        width: 100%;
+        height: 100%;
+    }
+</style>

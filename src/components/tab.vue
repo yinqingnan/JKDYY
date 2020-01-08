@@ -13,7 +13,7 @@
             </ul>
             <div class="tabCon">
        
-                <ul v-if="isshow">
+                <ul v-if="isshow" class="isScroll">
                     <li class="list" v-for="(item,index) in list1" :key="index" @click="liebiao(item.remindType)">
                         <h2>{{item.remindTitle}}</h2>
                         <h2>{{item.remindTime.split(" ")[0]}}</h2>
@@ -114,6 +114,20 @@ export default {
     /* justify-content: space-around; */
     border-bottom: 1px solid #f0f0f0
 }
+.isScroll{
+    overflow-y: auto;
+    height: 310px;
+    /*  当IE下溢出，仍然可以滚动*/
+    -ms-overflow-style:none;
+    /*火狐下隐藏滚动条*/
+    overflow:-moz-scrollbars-none;
+    scrollbar-width: none
+
+}
+/* 谷歌浏览器溢出滚动 */
+.isScroll::-webkit-scrollbar {display:none}
+
+
 .title>li{
     line-height: 1;
     font-size: 16px;
