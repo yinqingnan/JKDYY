@@ -81,6 +81,7 @@ const  router = new VueRouter({
                 {path:"/bswjl/flhzb",component:Flhzb},              //分类汇总表
             ]
         },
+
         {path:"/homeChart",name:"homeChart",component:homeChart}
 
     ]
