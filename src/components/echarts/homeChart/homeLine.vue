@@ -22,7 +22,7 @@
                     color: ['#5dd4fa', '#39c359', '#ff7676'],
                     title: [{
                         text: '单位：个数',
-                        left: '1%',
+                        left: '7%',
                         top: '6%',
                         textStyle: {
                             color: '#fff',
@@ -46,12 +46,11 @@
                         itemHeight: 12, // 设置高度
                         itemGap: 15, // 设置间距
                     },
-                    grid: {
-                        left: '2%',
-                        right: '10%',
-                        top: '16%',
-                        bottom: '6%',
-                        containLabel: true
+                     grid: {
+                            top: "14%",
+                            right: "10%",
+                            left: "16%",
+                            bottom: "14%"
                     },
                     toolbox: {
                         "show": false,

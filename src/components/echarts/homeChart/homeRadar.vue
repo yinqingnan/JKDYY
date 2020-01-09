@@ -45,7 +45,7 @@
                     },
 
                     radar: {
-                        radius: '60%',
+                        radius: '80%',
                         splitNumber: 3,
                         center: ['50%', '50%'],
                         startAngle: 0,

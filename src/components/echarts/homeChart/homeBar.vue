@@ -99,11 +99,11 @@
 
 <style scoped>
     #histogram{
-        width: 190px;
+        min-width: 190px;
         height: 100px;
     }
     .bar{
-        width: 150px;
+        min-width: 150px;
         height: 100px;
     }
 </style>

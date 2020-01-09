@@ -22,13 +22,19 @@
                     backgroundColor: 'transparent',
                     title: [{
                         text: '单位/百万元',
-                        left: '1%',
+                        left: '7%',
                         top: '6%',
                         textStyle: {
                             color: '#fff',
                             fontSize:"12"
                         }
                     }],
+                     grid: {
+                            top: "14%",
+                            right: "10%",
+                            left: "16%",
+                            bottom: "14%"
+                    },
                     legend: {
                         top:'4%',
                         right:15,

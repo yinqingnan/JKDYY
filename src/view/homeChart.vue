@@ -13,14 +13,14 @@
                 <div class="lbBox">
                     <header>单位能效</header>
                     <div class="colorBox">
-                        <div class="sCloor" v-for="item in colorList">
+                        <div class="sCloor" v-for="(item,index) in colorList" :key="index">
                             <span class="cBox" :style="{background:item.color}"></span>
                             <p class="txt">{{item.txt}}</p>
                         </div>
                     </div>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
-                    <homeBar class="echarts1" v-for="item in list" :listData="item"></homeBar>
+                    <homeBar class="echarts1" v-for="(item,index) in list" :listData="item" :key="index"></homeBar>
                 </div>
             </div>
             <div class="centerBox">
@@ -231,6 +231,7 @@
             //收入赋值
             setProfit(val){
                 this.axios.get("/api/tj005?projectId=" + val).then((res)=>{
+                    // console.log(res)
                     this.pieData = res;
                 })
             },
@@ -238,7 +239,6 @@
             setEfficiency(val){
                 this.axios.get("/api/tj002?projectId=" + val).then((res)=>{
                     this.barData = res.data.data;
-
                     // 'PeopleRevenue', //人均营收
                     // 'tubeAreaRevenue', //方均营收
                     // 'GardenPeopleRevenue', //园区人均营收
@@ -526,7 +526,7 @@
     }
     .iconBook{
         display: flex;
-        width: 165px;
+        width: 30%;
         height: 85px;
         justify-content: center;
         align-items: center;
@@ -563,11 +563,11 @@
         font-size: 12px;
     }
     .iconWrap{
-        width: 88%;
+        width: 90%;
         min-width: 525px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
         margin:30px 0 20px;
     }
     .tip{
