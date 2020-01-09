@@ -337,13 +337,17 @@ export default {
             this.axios.get("/api/companyReceipts?year=2020&companyId="+this.id)        
             .then((res)=>{
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                if(this.date>=7){
+                console.log(res.data.data)
+                if(res.data.data!=""){
+                      if(this.date>=7){
                     this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
                     this.zsrsxzztm=1
                 }else{
                     this.zsrsxzzt1.push((res.data.data[0].Receipts1/10000).toFixed(0),(res.data.data[0].Receipts2/10000).toFixed(0),(res.data.data[0].Receipts3/10000).toFixed(0),(res.data.data[0].Receipts4/10000).toFixed(0),(res.data.data[0].Receipts5/10000).toFixed(0),(res.data.data[0].Receipts6/10000).toFixed(0))
                     this.zsrsxzztm=0
                 }
+                }
+              
             })
               // 获取总收入横向柱状图数据
             this.axios.get("api/companyIncomeMaxMin")                                                      
@@ -375,13 +379,16 @@ export default {
             this.axios.get("/api/companyRates?year=2020&companyId="+this.id)           
             .then((res)=>{  
                 // console.log(res.data.data)
-                if(this.date>=7){
+                if(res.data.data!=""){
+                     if(this.date>=7){
                     this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
                     this.zsrsxzztm=1
-                }else{
-                    this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(0),(res.data.data[0].Rates2).toFixed(0),(res.data.data[0].Rates3).toFixed(0),(res.data.data[0].Rates4).toFixed(0),(res.data.data[0].Rates5).toFixed(0),(res.data.data[0].Rates6).toFixed(0))
-                    this.zsrsxzztm=0
+                    }else{
+                        this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(0),(res.data.data[0].Rates2).toFixed(0),(res.data.data[0].Rates3).toFixed(0),(res.data.data[0].Rates4).toFixed(0),(res.data.data[0].Rates5).toFixed(0),(res.data.data[0].Rates6).toFixed(0))
+                        this.zsrsxzztm=0
+                    }
                 }
+               
             })
             // 综合收费率横向柱状图
             this.axios.get("/api/companyRateMaxMinVm").then((res)=>{                  
@@ -469,7 +476,8 @@ export default {
 .select{
     line-height: 55px;
     height: 55px;
-    padding-bottom: 1px
+    padding-bottom: 1px;
+    padding-left: 10px;
 }
 
 .Downmenu>h1{
@@ -527,7 +535,7 @@ export default {
     top: 36px;
     left: 0;
     line-height: 1;
-    font-size: 24px;
+    font-size: 20px;
     white-space: nowrap;
     color: #333
 }
@@ -591,23 +599,25 @@ export default {
 .Chart>div:nth-of-type(2){
     display: flex;
     justify-content: space-around;
-    padding: 0 20px
+    padding: 0 20px;
+
 }
 .Chart>div:nth-of-type(2)>div{
-    /* width: 33%; */
-    flex: 1;
+    width: 33%;
+    /* flex: 1; */
     height: 324px;
     background: #f0eded;
     min-width: 200px;
+    padding: 0 10px
 }
 .Chart>div:nth-of-type(2)>div:nth-of-type(2){
-    margin: 0 23px
+    margin: 0 15px
 
 }
 .Chart>div:nth-of-type(2)>div>h1{
     font-size: 14px;
     color: #666;
-    margin:16px 0 8px 33px;
+    margin:16px 0 8px 10px;
     line-height: 1;
     font-weight: 100
 }
@@ -621,7 +631,7 @@ export default {
 .Chart>div:nth-of-type(2)>div>h2{
     font-weight: 600;
     color: #333333 ;
-    margin-left: 33px;
+    margin-left: 10px;
     /* margin-bottom: 42px; */
     font-size: 24px;
     height: 70px
@@ -753,6 +763,7 @@ export default {
 
 .table3_footer>ul{
     display: flex;
+    padding: 0 16px;
     justify-content: space-around
 }
 .table3_footer>ul>li{
@@ -777,20 +788,21 @@ export default {
 /* 尾部 */
 .Chart1{
     margin-top: 20px;
-    padding: 0 14px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px
 }
 .Chart1>div{
-    width: 30%;
+    width: 33%;
     height: 326px;
     border: 1px solid #e0dfe8
 }
 .Chart1>div:nth-of-type(2){
-    width: 40%;
+    /* width: 40%;
     margin-left: 10px;
-    margin-right: 8px
+    margin-right: 8px */
+    margin:0 15px
 }
 
 .Chart1_header{
@@ -801,13 +813,13 @@ export default {
 }
 
 .Chart1>div:nth-of-type(1) .Chart1_header{
-    padding: 0 7px 0 23px
+    padding: 0 7px 0 7px
 }
 .Chart1>div:nth-of-type(2) .Chart1_header{
-    padding: 0 23px 0 8px
+    padding: 0 23px 0 7px
 }
 .Chart1>div:nth-of-type(3) .Chart1_header{
-    padding: 0 12px 0 20px
+    padding: 0 12px 0 7px
 }
 .Chart1_header>h1{
     line-height: 55px;
@@ -868,7 +880,11 @@ export default {
     font-size: 14px;
     color: #666;
     white-space: nowrap;
+    text-align: center
 
+}
+.yq>ul>li:nth-of-type(1){
+    text-align: left
 }
 .yq>ul>li>span{
     font-size: 14px
@@ -905,9 +921,12 @@ export default {
 }
 .yq1>ul{
     margin-top: 26px;
-    margin-left: 6px;
+    margin-left: 10px;
     display: flex;
     font-size: 14px
+}
+.yq1>ul>li:nth-of-type(1){
+    text-align: left
 }
 .yq1>ul>li{
   line-height: 1;
@@ -917,6 +936,7 @@ export default {
       line-height: 14px;
     font-size: 14px;
     color: #666;
+    text-align: center
 }
 .yq1>ul>li>h3{
     line-height: 14px;
@@ -934,5 +954,8 @@ export default {
 }
 .selects .el-input__icon{
     width: 56px
+}
+.el-input__inner{
+    font-size: 16px
 }
 </style>

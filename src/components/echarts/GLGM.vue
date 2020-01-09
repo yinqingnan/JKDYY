@@ -36,7 +36,8 @@ export default {
             {
             text: "管理规模",
             top:0,
-            y: 20,
+            left:34,
+            // y: 20,
             textStyle: {
               color: "#333",
               fontSize: 14,
@@ -46,7 +47,7 @@ export default {
           {
             text: "单位：个",
             top:36,
-            y: 20,
+            left: 34,
             textStyle: {
               color: "#666",
               fontSize: 12,
@@ -56,7 +57,7 @@ export default {
            {
             text: "单位：百万平方米",
             top:36,
-            right:20,
+            right:34,
             // x: 20,
             textStyle: {
               color: "#666",
@@ -93,7 +94,7 @@ export default {
           legend: {
             icon: "ract",
             top: 0,
-            right: 20,
+            right:34,
             textStyle: {
               color: "#333",
               fontSize: 12

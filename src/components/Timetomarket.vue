@@ -89,10 +89,10 @@ export default {
         },
         rightbtn(){
             this.number--
-           if(this.number>=-8){
+           if(this.number>=-6){
                 this.$refs.tabs.style.left=(this.number*90)+"px"
             }else{
-               this.number=-8
+               this.number=-6
             }
         }
     }
@@ -185,7 +185,6 @@ export default {
     /* height: 180px; */
     height: auto;
     z-index: 10;
-    padding-top: 20px;
     max-height: 260px
 }
 /* 鼠标经过事件 */
@@ -193,9 +192,9 @@ export default {
 
     position: absolute;
     bottom:0px;
-    /* height: 180px; */
+    height: 89px !important;
     z-index: 10;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     height: auto;
     max-height: 260px
 
@@ -206,10 +205,10 @@ export default {
 }
 
 
-.fuhezi:nth-child(odd){
+.fuhezi:nth-child(even){
     top: -116px
 }
-.fuhezi:nth-child(even){
+.fuhezi:nth-child(odd){
     bottom: -58px
 }
 .Label{

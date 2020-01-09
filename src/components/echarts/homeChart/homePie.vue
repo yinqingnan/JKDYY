@@ -40,10 +40,12 @@
                         inRange: {
                         }
                     },
+                    
+
                     series: [{
                         name: '访问来源',
                         type: 'pie',
-                        radius: '60%',
+                        radius: '80%',
                         center: ['50%', '50%'],
                         minAngle: 20,
                         color: [

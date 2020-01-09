@@ -48,7 +48,7 @@ export default {
 <style scoped>
 .box{
     padding-left: 10px;
-    background: #fff
+    background: #eee
 
 }
 .box>div>a{

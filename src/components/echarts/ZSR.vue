@@ -38,7 +38,8 @@ export default {
         const option = {
           title: [ {
             top: 0,
-            y: 20,
+            // y: 20,
+            left:36,
             text: "总收入/净利润",
             textStyle: {
               color: "#333",
@@ -48,7 +49,7 @@ export default {
           },  {
             text: "单位：百万元",
             top:36,
-            y: 20,
+            left:36,
             textStyle: {
               color: "#666",
               fontSize: 12,
@@ -62,7 +63,8 @@ export default {
           legend: {
             icon: "rect",
              top: 0,
-            right: 20,
+            right: 34,
+            
             textStyle: {
               color: "#333",
               fontSize: 12

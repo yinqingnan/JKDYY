@@ -412,7 +412,7 @@ export default {
       const { columns, data } = param;
       const sums = [];
       columns.forEach((column, index) => {
-        if (index === 1) {
+        if (index === 14) {
           sums[index] = "汇总";
           return;
         }
@@ -510,12 +510,14 @@ export default {
   background: #fff;
 }
 .boxTitle > h3 {
-  font-size: 16px;
-  color: #333;
-  font-weight: 500;
+  font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
 }
 .boxTitle > h2 {
-  font-size: 10px;
+  font-size: 14px;
   color: #666;
   font-weight: 500;
   /* margin-left: 20px */

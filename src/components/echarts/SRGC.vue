@@ -82,7 +82,7 @@ export default {
           title: [{
             text: "收入构成",
             top:0,
-            y: 20,
+            left:36,
             textStyle: {
               color: "#333",
               fontSize: 14,
@@ -91,7 +91,7 @@ export default {
           },{
             text: "单位：百分比",
             top:36,
-            y: 20,
+            left:36,
             textStyle: {
               color: "#666",
               fontSize: 12,

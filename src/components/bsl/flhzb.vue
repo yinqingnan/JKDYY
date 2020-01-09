@@ -1,8 +1,9 @@
 <template>
   <div>
-    <!-- 分类汇总表 -->
+    <div class="box">
+         <!-- 分类汇总表 -->
     <div class="box_header">
-      <h1>分类汇总表</h1>
+      <h1>{{projectName}}分类汇总表</h1>
       <h2 @click="exportExcel" class="daochu">导出表格</h2>
     </div>
     <div class="box_body">
@@ -14,6 +15,7 @@
         :summary-method="getSummaries"
         show-summary
         class="table"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         element-loading-text="请稍后..."
        
       >
@@ -289,6 +291,8 @@
         ></el-pagination>
       </div>
     </div>
+    </div>
+   
   </div>
 </template>
 
@@ -302,6 +306,7 @@ import XLSX from "xlsx";
 export default {
   data() {
     return {
+      
       xmid: "",
       num: 1,
       show: false,
@@ -331,14 +336,26 @@ export default {
       number9: 1,
       number10: 1,
       number11: 1,
-      number12: 1
+      number12: 1,
+      projectName:""
     };
   },
   mounted() {
+
+
+   
+
     var date = new Date();
     this.yeardefaultdefault = date.getFullYear() + "年";
     this.year = date.getFullYear();
     this.xmid = this.$route.query.xmid;
+
+      this.axios.get("/api/proBs03?projectId="+this.xmid+"&year="+ this.year).then((res)=>{
+            this.projectName=res.data.data[0].projectName
+        })
+
+
+
     //获取表格数据
     this.axios
       .get("/api/proBs02?projectId=" + this.xmid + "&year=" + this.year)
@@ -361,12 +378,6 @@ export default {
         this.number10=0
         this.number11=0
         this.number12=0
-
-
-
-
-
-
 
         res.data.data.forEach(item=>{
           // console.log(item)
@@ -396,7 +407,7 @@ export default {
   methods: {
     getheight() {
       // 获取当前浏览器的高度赋值给元素
-      this.style.height = window.innerHeight - 150 + "px";
+      this.style.height = window.innerHeight - 150-12 + "px";
     },
     exportExcel() {
       this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
@@ -605,26 +616,32 @@ export default {
   color: #fff !important;
   position: absolute;
   top: 4px;
-  right: 10px;
+  right: 12px;
   font-size: 14px;
   cursor: pointer;
 }
 .box_header {
   width: 100%;
-  background: #f0f0f0;
+  background: #fff;
   line-height: 50px;
   height: 50px;
   position: relative;
 }
 .box_header > h1 {
-  font-size: 16px;
-  color: #666;
-  line-height: 50px;
-  text-align: center;
-  font-weight: 500;
+    font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
 }
-.box_body {
+.box {
   padding: 0 12px;
   background: #eee;
+  padding-bottom: 12px
+}
+.box1{
+  height: 50px;
+  /* line-height: 50px; */
+  background: #fff
 }
 </style>

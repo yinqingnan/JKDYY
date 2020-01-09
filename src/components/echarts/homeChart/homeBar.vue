@@ -14,8 +14,8 @@
                 title:this.listData
             }
         },
-        mounted() {
-            this.setBar();
+        mounted(){
+             this.setBar();
         },
         methods: {
             setBar() {
@@ -26,7 +26,7 @@
                 let option = {
                     backgroundColor: 'transparent',
                     title:[
-                        {text:this.title.title,x: '7%', y: '3%',textStyle:{color:"#fff",fontSize:"12"}},
+                        {text:this.listData.title,x: '7%', y: '3%',textStyle:{color:"#fff",fontSize:"12"}},
                     ],
                     grid: [
                         {x: '10%', y: '7%', width: '45%', height: '90%'},
@@ -92,6 +92,11 @@
                 window.addEventListener("resize", function () {
                     myBar.resize();
                 });
+            }
+        },
+        watch:{
+            'listData':function(n,o){
+                 this.setBar();
             }
         }
     }

@@ -2,12 +2,16 @@
 <!-- 报事完结率 -->
     <div>
         <div class="box">
+             <div class="box_header">
+      <h1>{{projectName}}报事汇总表</h1>
+    </div>
             <div class="box_header">
         <el-table
         :data="tablemsg"
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         :style="style"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         element-loading-text="请稍后..."
       >
  <el-table-column
@@ -165,7 +169,7 @@ export default {
             tablemsg:[],           //小区表格数据
             style: {
             width: "100%",
-            height: "158px",
+            height: "288px",
             },
             echartsdata:[],           //图表数据
             msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32],
@@ -184,12 +188,12 @@ export default {
         // console.log(this.$route.query.xmid)
         // 获取到当前年份
     var myDate = new Date();
-    var tYear = myDate.getFullYear();
+    var Year = myDate.getFullYear();
     // console.log(tYear)
         this.xmid=this.$route.query.xmid
         // 获取表格数据
-        this.axios.get("/api/proBs03?projectId="+this.xmid+"&year="+tYear).then((res)=>{
-            // console.log(res.data.data)
+        this.axios.get("/api/proBs03?projectId="+this.xmid+"&year="+Year).then((res)=>{
+            // window.console.log(res.data.data)
             this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
@@ -206,6 +210,8 @@ export default {
 
 .box{
     padding: 0 12px;
+    padding-bottom: 12px;
+    background: #eee
 }
 .box_header>h1{
     font-size: 16px;color: #666;
@@ -307,6 +313,15 @@ export default {
     font-size: 12px;
     margin-top: 14px;
     color: rgb(102, 102, 102);
+}
+.box_header>h1{
+    background: #fff;
+    font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
+
 }
 </style>>
     

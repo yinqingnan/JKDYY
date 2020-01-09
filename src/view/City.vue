@@ -1,7 +1,7 @@
 <template>
   <!-- 城市页面子页面 -->
   <div>
-    <div class="container">
+    <div class="container" :style="style">
       <div class="center">
         <div class="center_header">
           <!-- <h2>{{cityname}}</h2> -->
@@ -82,7 +82,7 @@
       </div>
       <div class="left">
         <div class="left_body">
-          <div class="left_body_header">
+          <div class="">
             <!-- table1 -->
             <h1 class="titlezt">竞品项目物业费备案价</h1>
             <el-table
@@ -104,49 +104,52 @@
               <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
               <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
             </el-table>
-          
-            <h1 class="titlezt">金科自建项目物业费备案价</h1>
+          </div>
+          <div>
+              <h1 class="titlezt">金科自建项目物业费备案价</h1>
+              <el-table
+                border
+                :data="defaultable1"
+                :row-style="tableRowStyle"
+                :header-cell-style="tableHeaderColor"
+                height="200"
+                fit:true
+                style="font-size:10px;min-width:100%;width:100%"
+              >
+                <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
+                <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
+                <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="businessFee" min-width="30px" label="商业" align="center"></el-table-column>
+                <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
+              </el-table>
+          </div>
+          <div>
+              <h1 class="titlezt">当地政府物业费指导价</h1>
             <el-table
               border
-              :data="defaultable1"
+              :data="defaultable3"
+              height="200"
+            
+              fit:true
               :row-style="tableRowStyle"
               :header-cell-style="tableHeaderColor"
-              height="200"
-              fit:true
-              style="font-size:10px;min-width:100%;width:100%"
+              style="width: 100%;min-width:100%;font-size:10px"
             >
-              <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
-              <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
-              <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="businessFee" min-width="30px" label="商业" align="center"></el-table-column>
-              <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
+              <el-table-column prop="propertyClass" label="物业类别" align="left"></el-table-column>
+              <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
+              <el-table-column prop="standardPrice" label="最高基准价" min-width="68px" align="center"></el-table-column>
+              <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>
             </el-table>
-          </div>
-        </div>
-        <div class="left_footer">
-          <h1 class="titlezt">当地政府物业费指导价</h1>
-          <el-table
-            border
-            :data="defaultable3"
-            height="200"
-            fit:true
-            :row-style="tableRowStyle"
-            :header-cell-style="tableHeaderColor"
-            style="width: 100%;min-width:100%;font-size:10px"
-          >
-            <el-table-column prop="propertyClass" label="物业类别" align="left"></el-table-column>
-            <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
-            <el-table-column prop="standardPrice" label="最高基准价" min-width="68px" align="center"></el-table-column>
-            <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>
-          </el-table>
           <div class="Explain">
             <h1>上浮说明</h1>
             <p>{{sfsm}}</p>
           </div>
+          </div>
         </div>
+ 
       </div>
     </div>
   </div>
@@ -178,11 +181,14 @@ export default {
       num: 0,
       xs: false,
       xs1: true,
-      sfsm:""
+      sfsm:"",
+      style:{
+        height:''
+      }
     };
   },
   mounted() {
-    
+     this.getheight()
     // console.log(this.$route.query.name)
     this.cityname = this.$route.query.name;
     this.axios.get("/api/cityDataProvince").then((res)=>{
@@ -280,6 +286,11 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   methods: {
+     getheight() {
+      // console.log(window.innerHeight- 130)
+      // 获取当前浏览器的高度赋值给元素
+      this.style.height = window.innerHeight - 20 + "px";
+    },
     change(name) {
       // 拿到当前选中的城市id
       // console.log(name)
@@ -404,7 +415,9 @@ export default {
   line-height: 1;
   margin-top: 6px;
 }
-
+.left_body{
+  height: 100%
+}
 .left_body > ul {
   display: flex;
 }
@@ -418,6 +431,18 @@ export default {
   margin-bottom: 12px;
   padding-bottom: 8px;
 }
+
+.left_body>div:nth-of-type(1){
+  height: 32%;
+  /* min-height: 300px */
+}
+.left_body>div:nth-of-type(2){
+  height: 32%
+}
+.left_body>div:nth-of-type(3){
+  height: 34%
+}
+
 .left_footer > h1 {
   font-size: 14px;
   color: #333;
@@ -445,7 +470,7 @@ export default {
 	max-height: 100%;
     display: block;
     margin: 20px auto 0 auto;
-    max-width: 578px;
+    max-width: 535px;
 
 }
 .right {
@@ -554,10 +579,12 @@ word-break:break-all;
   width: 100%;
   font-size: 10px;
   color: #606266;
-  height: 42px;
+  height: 30px;
   overflow: hidden;
   overflow-y: auto;
   text-indent: 2em;
+  padding-top: 12px;
+
   /* 当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
   /*火狐下隐藏滚动条*/
@@ -584,6 +611,9 @@ word-break:break-all;
   padding: 0;
   font-size: 12px
 }
+.left_body_header{
+  height: 100%
+}
 .left_footer .el-table td, .el-table th{
   padding: 0
 }
@@ -596,5 +626,8 @@ word-break:break-all;
 }
 .left_footer .cell{
   font-size: 14px
+}
+.container{
+  min-width: 1100px;
 }
 </style>

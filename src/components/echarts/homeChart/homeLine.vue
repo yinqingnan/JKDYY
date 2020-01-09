@@ -22,7 +22,7 @@
                     color: ['#5dd4fa', '#39c359', '#ff7676'],
                     title: [{
                         text: '单位：个数',
-                        left: '7%',
+                        left: '14%',
                         top: '6%',
                         textStyle: {
                             color: '#fff',
@@ -35,7 +35,7 @@
                     legend: {
                         icon:'rect',
                         top:'4%',
-                        right:15,
+                        right:'10%',
                         textStyle: {
                             color: '#becff3',
                         },

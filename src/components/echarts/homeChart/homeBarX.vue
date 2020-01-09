@@ -22,7 +22,7 @@
                     backgroundColor: 'transparent',
                     title: [{
                         text: '单位/百万元',
-                        left: '7%',
+                        left: '16%',
                         top: '6%',
                         textStyle: {
                             color: '#fff',
@@ -37,7 +37,7 @@
                     },
                     legend: {
                         top:'4%',
-                        right:15,
+                        right:'10%',
                         textStyle: {
                             color: '#becff3',
                         },
@@ -50,6 +50,14 @@
                     tooltip: {
                         backgroundColor:'rgba(0,104,183,0.8)',
                         formatter: '{b}'+"<br>"+'{c}百万元',
+                        trigger: "axis",
+                        axisPointer: {
+                        type: "shadow",
+                        label: {
+                            show: false, //是否出现title提示文字
+                            backgroundColor: "#7B7DDC"
+                        }
+                        }
                     },
                     xAxis: {
                         type: 'category',

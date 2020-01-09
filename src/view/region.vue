@@ -9,7 +9,7 @@
               v-model="value"
               placeholder="请选择"
               class="selects"
-              style="width:200px;border:0"
+              style="width:200px;border:0;"
               @change="selectchange(value)"
             >
               <el-option
@@ -24,7 +24,7 @@
               v-model="value1"
               placeholder="请选择项目"
               class="selects"
-              style="width:200px;border:0"
+              style="width:200px;border:0;"
               @change="selectchange1(value1)"
               filterable
             >
@@ -53,8 +53,8 @@
           </ul>
           <ul>
             <li @click="tozsr" style="color:#49a4d9">
-              <h1 >{{list2[0]}}</h1>
-              <h2 v-for="(item,index) in titlename" :key="index">
+              <h1 style="color:#49a4d9" >{{list2[0]}}</h1>
+              <h2 v-for="(item,index) in titlename" :key="index" >
                 {{item.totalIncome}}
                 <span>万元</span>
               </h2>
@@ -1207,11 +1207,12 @@ export default {
   border-bottom: 2px solid #49a4d9;
 }
 .yq {
-  margin-left: 7px;
+  margin-left: 5px;
 }
 .yq > ul {
   display: flex;
   margin-top: 26px;
+  text-align: center;
   justify-content: space-around;
 }
 .yq > ul > li {
@@ -1220,6 +1221,9 @@ export default {
   color: #666;
   overflow: hidden;
   min-width: 44px;
+}
+.yq > ul > li:nth-of-type(1){
+  text-align: left
 }
 .yq > ul > li > span {
   font-size: 12px;
@@ -1264,6 +1268,7 @@ export default {
 }
 .select {
   line-height: 54px;
+  padding-left: 10px
 }
 
 .Downmenu > h1 {
@@ -1305,7 +1310,7 @@ export default {
   margin-right: 40px;
 }
 .Title > ul:nth-of-type(1) > li > h1 {
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
   line-height: 1;
   font-weight: 500;
@@ -1338,13 +1343,19 @@ export default {
   margin-left: 4.625rem;
 }
 .Title > ul:nth-of-type(2) > li > h1 {
-  font-size: 12px;
+  /* font-size: 14px;
   font-weight: 100;
   line-height: 1;
-  white-space: nowrap;
+  white-space: nowrap; */
+      font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    color: #666;
+
 }
 .Title > ul:nth-of-type(2) > li > h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1;
   margin-top: 9px;
@@ -1380,16 +1391,21 @@ export default {
 .Chart > div:nth-of-type(2) {
   display: flex;
   justify-content: space-around;
+  padding: 0 20px;
 }
 .Chart > div:nth-of-type(2) > div {
-  width: 30%;
+  width: 33%;
   height: 340px;
   background: #f0eded;
+  padding: 0 10px
+}
+.Chart > div:nth-of-type(2) > div:nth-of-type(2){
+  margin: 0 15px
 }
 .Chart > div:nth-of-type(2) > div > h1 {
   font-size: 14px;
   color: #666;
-  margin: 16px 0 8px 33px;
+  margin: 16px 0 8px 10px;
   line-height: 1;
   font-weight: 100;
 
@@ -1404,7 +1420,7 @@ export default {
 .Chart > div:nth-of-type(2) > div > h2 {
   font-weight: 600;
   color: #333333;
-  margin-left: 33px;
+  margin-left: 10px;
   margin-bottom: 54px;
   font-size: 24px;
   font-weight: 500
@@ -1511,6 +1527,8 @@ export default {
 .table3_footer > ul {
   display: flex;
   justify-content: space-around;
+  padding: 0 20px
+  
 }
 .table3_footer > ul > li {
   width: 64px;
@@ -1531,7 +1549,7 @@ export default {
 .Chart1 {
   display: flex;
   justify-content: space-between;
-  padding: 0 1.375rem;
+  padding: 0 20px;
   margin-top: 20px;
   /* height:446px; */
   margin-bottom: 24px;
@@ -1652,14 +1670,21 @@ export default {
 .yq>ul>li{
   white-space: nowrap
 }
+.xmyd>ul>li{
+  cursor: pointer;
+}
 </style>
 
 <style>
-/* 自己添加一个父类div来操作下面的需要修改的class样式 */
+
 .selects > div > .el-input__inner {
   border: 0;
 }
 .selects .el-input__icon {
   width: 56px;
+}
+.el-input__inner{
+  font-size: 16px !important
+
 }
 </style>

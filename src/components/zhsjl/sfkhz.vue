@@ -1,6 +1,7 @@
 <template>
     <div>
-        <!-- <h1>收费科汇总</h1> -->
+      <div class="box">
+          <!-- <h1>收费科汇总</h1> -->
         <div class="box_header">
             <h1>收费科汇总</h1>
             <h2 @click="exportExcel" class="daochu">导出表格</h2>
@@ -161,6 +162,8 @@
             ></el-pagination>
       </div>
         </div>
+      </div>
+      
     </div>
 </template>
 
@@ -212,7 +215,7 @@ export default {
     methods:{
           getheight() {
         // 获取当前浏览器的高度赋值给元素
-        this.style.height = window.innerHeight - 150 + "px";
+        this.style.height = window.innerHeight - 150-12 + "px";
         },
         exportExcel() {
         this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
@@ -286,18 +289,27 @@ export default {
 }
 .box_header{
     width: 100%;
-    background: #f0f0f0;
+    background: #ffff;
      line-height:50px;
      height: 50px;
      position: relative;
 }
 .box_header>h1{
-    font-size: 16px;color: #666;
+    font-size: 20px;
+    color: #666;
     line-height: 50px;
     text-align: center;
-    font-weight: 500
+    font-weight: 600
 }
 .table{
   min-height: 600px
+}
+.box{
+  padding: 0 12px 12px 12px;
+  background: #eee
+}
+.box1{
+  height: 50px;
+  background: #fff
 }
 </style>

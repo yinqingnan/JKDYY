@@ -148,7 +148,7 @@ export default {
             tablemsg:[],           //小区表格数据
             style: {
             width: "100%",
-            height: "158px",
+            height: "340px",
             },
             echartsdata:[],           //图表数据
             msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32],
@@ -200,6 +200,8 @@ export default {
 
 .box{
     padding: 0 12px;
+    padding-bottom: 12px;
+    background: #eee
 }
 .box_header>h1{
     font-size: 16px;color: #666;

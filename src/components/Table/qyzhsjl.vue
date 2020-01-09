@@ -27,7 +27,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         element-loading-text="请稍后..."
-        @row-click="openDetails"
+
       >
         <el-table-column
           label="序号"
@@ -50,7 +50,15 @@
           :show-overflow-tooltip="true"
           align="center"
           min-width="40px"
-        ></el-table-column>
+        >
+        <template slot-scope="scope">
+        <span
+          size="mini"
+          style="cursor:pointer"
+          @click="handleEdit(scope.row)">{{ scope.row.projectName }}</span>
+       
+        </template>
+        </el-table-column>
         <el-table-column
           prop="incomAmountReceivable"
           label="应收金额"
@@ -321,8 +329,7 @@ export default {
           });
         });
     },
-    openDetails(row){
-      // console.log(row.projectId)
+    handleEdit(row){
        this.$router.push("zhsjl?xmid="+row.projectId)
     }
   }
@@ -354,12 +361,15 @@ export default {
   background: #fff;
 }
 .boxTitle > h3 {
-  font-size: 16px;
-  color: #333;
-  font-weight: 500;
+   font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
+
 }
 .boxTitle > h2 {
-  font-size: 10px;
+  font-size: 14px;
   color: #666;
   font-weight: 500;
   /* margin-left: 20px */

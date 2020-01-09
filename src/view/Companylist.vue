@@ -15,11 +15,11 @@
                                    <div>
                                         <ul>
                                             
-                                            <li>官方网址：</li>
+                                            <li>官方网址:</li>
                                             <li @click="open(data.officialwebsite)" style="cursor: pointer;" :title="data.officialwebsite">{{data.officialwebsite}}</li>
                                         </ul>
                                         <ul>
-                                            <li>上市时间：</li>
+                                            <li>上市时间:</li>
                                             <li>{{data.timeToMarket}}</li>
                                         </ul>
                                    </div>
@@ -29,7 +29,7 @@
                                       <h2>上市地<span>:</span> </h2> <h2>{{data.listingPlace}}</h2>
                                   </li>
                                   <li>
-                                      <h2>总部地址<span>:</span> </h2> <h2>{{data.headquartersAddress}}</h2>
+                                      <h2>总部地址:<span></span> </h2> <h2>{{data.headquartersAddress}}</h2>
                                   </li>
                               </ul>
                           </div>

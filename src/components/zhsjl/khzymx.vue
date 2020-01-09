@@ -1,6 +1,7 @@
 <template>
     <div>
-        <!-- 客户资源明细表 -->
+      <div class="box">
+                <!-- 客户资源明细表 -->
         <div class="box_header">
             <h1>客户资源明细表</h1>
             <h2 @click="exportExcel" class="daochu">导出表格</h2>
@@ -216,6 +217,7 @@
             ></el-pagination>
       </div>
         </div>
+      </div>
     </div>
 </template>
 
@@ -268,7 +270,7 @@ export default {
     methods:{
           getheight() {
         // 获取当前浏览器的高度赋值给元素
-        this.style.height = window.innerHeight - 150 + "px";
+        this.style.height = window.innerHeight - 150 -12+ "px";
         },
         exportExcel() {
         this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
@@ -301,7 +303,7 @@ export default {
                         name + ".xlsx"
                     );
                     } catch (e) {
-                    if (typeof console !== "undefined") console.log(e, wbout);
+                    if (typeof console !== "undefined") window.console.log(e, wbout);
                     }
                     return wbout;
                 });
@@ -341,15 +343,24 @@ export default {
 }
 .box_header{
     width: 100%;
-    background: #f0f0f0;
+    background: #fff;
      line-height:50px;
      height: 50px;
      position: relative;
 }
 .box_header>h1{
-    font-size: 16px;color: #666;
+    font-size: 20px;
+    color: #666;
     line-height: 50px;
     text-align: center;
-    font-weight: 500
+    font-weight: 600
 }
+.box{
+  padding: 0 12px 12px 12px ;
+  background: #eee
+  }
+  .box1{
+    height: 50px;
+    background: #fff
+  }
 </style>

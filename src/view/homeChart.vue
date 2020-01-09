@@ -239,13 +239,13 @@
             setEfficiency(val){
                 this.axios.get("/api/tj002?projectId=" + val).then((res)=>{
                     this.barData = res.data.data;
+                    // window.console.log( res.data.data)
                     // 'PeopleRevenue', //人均营收
                     // 'tubeAreaRevenue', //方均营收
                     // 'GardenPeopleRevenue', //园区人均营收
                     // 'GardentubeAreaRevenue', //园区方均营收
                     // 'ProfitPeopleRevenue', //人均利润
                     // 'ProfittubeAreaRevenue' //方均利润
-
                     let list = [{
                         title: '人均营收（含外包）',
                         arr:[this.barData[2].PeopleRevenue,this.barData[0].PeopleRevenue,this.barData[1].PeopleRevenue]
