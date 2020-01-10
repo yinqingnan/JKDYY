@@ -45,7 +45,7 @@
                     series: [{
                         name: '访问来源',
                         type: 'pie',
-                        radius: '80%',
+                        radius: '76%',
                         center: ['50%', '50%'],
                         minAngle: 20,
                         color: [

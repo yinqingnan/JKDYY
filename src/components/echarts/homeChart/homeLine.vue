@@ -21,7 +21,7 @@
                     backgroundColor: "transparent",
                     color: ['#5dd4fa', '#39c359', '#ff7676'],
                     title: [{
-                        text: '单位：个数',
+                        text: '单位：%',
                         left: '14%',
                         top: '6%',
                         textStyle: {

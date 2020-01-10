@@ -74,12 +74,12 @@
                                     show:true,
                                     position:"right",
                                     formatter:function(param){
-                                        let all = 0;
-                                        for(let i = 0 ; i < dataAll.length ; i++){
-                                            all += dataAll[i]
-                                        }
-                                        all = param.value / all *100
-                                        return all.toFixed(2) + '%';
+                                        // let all = 0;
+                                        // for(let i = 0 ; i < dataAll.length ; i++){
+                                        //     all += dataAll[i]
+                                        // }
+                                        // all = param.value / all *100
+                                        // return all.toFixed(2) + '%';
                                     },
                                 }
                             },

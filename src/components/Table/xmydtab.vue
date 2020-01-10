@@ -4,7 +4,7 @@
     <div>
           <div class="box">
               <div class="boxTitle ">
-                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回上级</button>
+                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回</button>
                     
                     
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用电量明细表
@@ -28,14 +28,15 @@
                             </el-option>
                         </el-select>
                     </div>
-                    <h2 @click="exportExcel" class="daochu">导出表格</h2>
+                    <h2 @click="exportExcel" class="daochu">导出</h2>
               
               </div>
       <el-table
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
-         :summary-method="getSummaries"
+        :summary-method="getSummaries"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
          show-summary
       class="table"
       >
@@ -49,7 +50,6 @@
         <el-table-column prop="amount" label="金额" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="payer" label="缴费人" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="ascription" label="用电归属" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <!-- <el-table-column prop="accessoryBasic" label="备注" :show-overflow-tooltip="true" align="center"></el-table-column> -->
       </el-table> 
        <div class="box1">
         <el-pagination
@@ -92,10 +92,12 @@ export default {
             pagesize: 12, //------------------------------------每页显示的数据条数
             style:{
                 width:"100%",
-                height:''
+                height:'',
             },
-            // getmonth:null           //切换后的月
-      
+
+
+            number1: null, //总计的第一个值
+            number2: null //总计的第二个值
         }
     },
     mounted(){
@@ -109,11 +111,15 @@ export default {
         // console.log(this.$route.query.Month)
         
         if(this.$route.query.Month==""){
-            // console.log(1)
-            // console.log(this.month)
+            
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
+
+                      res.data.data.forEach(item=>{
+                this.number1+=item.dosage
+                this.number2+=item.amount
+            })
             })
         }else{
             // console.log(this.$route.query.Month)
@@ -122,6 +128,16 @@ export default {
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
+                this.number1=0
+                this.number2=0
+
+                
+                res.data.data.forEach(item=>{
+                this.number1+=item.dosage
+                this.number2+=item.amount
+                })
+             
+            
             })
         }
        
@@ -153,12 +169,25 @@ export default {
                 this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+                    
+                      res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
+                
                 })
             } else if (monthdefaultdefault.length==2){
                 this.month=monthdefaultdefault.slice(0,1)
                   this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+
+                    
+                      res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
+                   
                 })
             }    
 
@@ -187,24 +216,32 @@ export default {
         const { columns, data } = param;
         const sums = [];
         columns.forEach((column, index) => {
-          if (index === 1) {
+          if (index ===4) {
             sums[index] = '汇总';
             return;
           }
           const values = data.map(item => Number(item[column.property]));
-        //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
-         if (column.property == 'dosage' ||column.property =='amount' ){
-             sums[index] = values.reduce((prev, curr) => {
-                const value = Number(curr);
-                if (!isNaN(value)) {
-                return prev + curr;
-                } else {
-                return prev;
-                }
-            }, 0);
-							sums[index];
-
-         }
+    
+               if (column.property == "dosage") {
+                //  console.log(column.property)
+                sums[index] = values.reduce(() => {
+                    if(this.number1==0){
+                    return 0
+                    }else{
+                    return this.number1.toFixed(2)
+                    }
+                }, 0);
+                } 
+                 if (column.property == "amount") {
+                //  console.log(column.property)
+                sums[index] = values.reduce(() => {
+                    if(this.number2==0){
+                    return 0
+                    }else{
+                    return this.number2.toFixed(2)
+                    }
+                }, 0);
+                } 
         });
 
         return sums;
@@ -243,7 +280,7 @@ export default {
                 name + ".xlsx"
                 );
             } catch (e) {
-                if (typeof console !== "undefined") console.log(e, wbout);
+                if (typeof console !== "undefined") window.console.log(e, wbout);
             }
             return wbout;
 
@@ -291,18 +328,22 @@ export default {
   
 }
 .boxTitle >button{
-    width: 90px;
+    width:62px;
     border: 0;
     cursor: pointer;
-    height: 35px;
-    line-height: 35px;
-    margin-top: 10px;
-    background: #fff
+    height: 26px;
+    line-height: 26px;
+    margin-top: 15px;
+    background: #fff;
+    font-size: 12px
 }
 .boxTitle>h3{
-    font-size: 16px;
-    color: #333;
-    font-weight: 500
+ font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: 500;
 }
 .boxTitle>h2{
     font-size: 10px;
@@ -312,7 +353,7 @@ export default {
     cursor: pointer;
 }
 .select{
-    margin-right: 22px
+    margin-right: 80px
 }
 .box1{
     /* width: 100% */
@@ -321,13 +362,25 @@ export default {
 }
 .daochu{
     border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
-    margin-top: 7px;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important 
+    color: #fff !important;
+    position: absolute;
+    top: 14px;
+    text-align: center;
+    right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .fhsj{
     border: 1px solid #4ac48b !important;

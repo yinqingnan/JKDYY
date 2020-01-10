@@ -4,6 +4,7 @@
       <el-table
         :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         style="width: 100%;height:714px"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         :default-sort="{prop: 'date', order: 'descending'}"
       >
         <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
@@ -51,7 +52,7 @@ export default {
       totalCount: null, //--------------------------------默认数据总数
       currentPage: 1, //----------------------------------默认开始页面
     //   istag: true,
-      pagesize: 10, //------------------------------------每页显示的数据条数
+      pagesize: 11, //------------------------------------每页显示的数据条数
       // istag: true,
     };
   },
@@ -92,7 +93,7 @@ export default {
 
   background: #eee;
   padding: 12px;
-  height: 764px;
+  height: 760px;
   margin-top: 3px
 
 }
@@ -105,6 +106,10 @@ export default {
   color: #409eff;
   cursor: pointer;
 }
+.box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px
+}
 </style>
 <style>
 .el-pagination{
@@ -114,4 +119,5 @@ export default {
     margin-top: 10px
     /* margin-top: 500px */
 }
+
 </style>

@@ -1,28 +1,28 @@
 
 <template>
-  <!-- 项目用电详情页面 -->
+ 
   <div>
 
-    <div class="box">
+    <div class="box" id="httz">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回项目
+          <i class="el-icon-back " ></i>返回
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}合同台账</h3>
  
-         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;margin-right:10px" 
-            placeholder="请输入合同名称进行查询">
+         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;margin-right:80px" 
+            placeholder="输入合同名称查询">
         </el-input>
         <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button>
-        <h2 @click="exportExcel" class="daochu">导出表格</h2>
+        <h2 @click="exportExcel" class="daochu">导出</h2>
       </div>
       <!-- 显示表格 -->
       <el-table
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
-
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"   
         class="table"
         element-loading-text="请稍后..."
       >
@@ -283,13 +283,14 @@ export default {
   justify-content: space-between;
 }
 .boxTitle > button {
-  width: 100px;
+  width: 62px;
   border: 0;
   cursor: pointer;
-  height: 35px;
-  line-height: 35px;
-  margin-top: 10px;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 15px;
   background: #fff;
+  font-size: 12px;
 }
 .boxTitle > h3 {
     font-size: 20px;
@@ -301,11 +302,14 @@ export default {
 }
 .boxTitle > h2 {
   font-size: 14px;
+  width: 50px;
   color: #666;
   font-weight: 500;
   cursor: pointer;
-      height: 35px;
-    line-height: 35px;
+  height:26px;
+  line-height: 26px;
+  margin-top: 19px;
+  margin-right:10px 
 }
 .select {
   margin-right: 22px;
@@ -316,20 +320,36 @@ export default {
 }
 
 .daochu{
-    /* border: 1px solid #4ac48b !important; */
-    /* height:40px !important; */
-    /* line-height:40px !important; */
-    margin-top: 7px !important;
-    padding: 0 5px !important;
-    border-radius: 5px !important;
-    background: #4ac48b !important;
-    color:#fff !important 
+    border: 1px solid #4ac48b;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: #4ac48b;
+    color: #fff !important;
+    position: absolute;
+    top: 4px;
+    text-align: center;
+    right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .fhsj{
     border: 1px solid #4ac48b !important;
     background: #4ac48b !important;
     color: #fff !important;
     border-radius: 5px; 
+}
+.box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px !important;
 }
 </style>
 
@@ -354,5 +374,9 @@ export default {
 }
 .is-scrolling-right:-webkit-scrollbar {
   display: none;
+}
+
+#httz .has-gutter> tr>th{
+  padding: 0 !important
 }
 </style>

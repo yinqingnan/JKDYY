@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="box">
+        <div class="box" id="xqhz">
+            <div class="box_header">
+                <h1>{{projectName}}小区汇总表</h1>
+            </div>
             <div class="box_header">
         <el-table
         :data="tablemsg"
@@ -8,6 +11,7 @@
         class="table"
         :style="style"
         element-loading-text="请稍后..."
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
       >
         <el-table-column
           label="序号"
@@ -80,7 +84,7 @@
                 </div>
                 <div class="box_body_right_div">
                    <ul>
-                        <li style="width:40%">
+                        <li>
                            <h1>本项目：</h1>
                            <h2 :title="projectName">{{projectName}}</h2>
                         </li>
@@ -95,7 +99,7 @@
                        
                    </ul>
                     <ul>
-                        <li style="width:20%">
+                        <li>
                            <h1>全集团：</h1>
                           
                         </li>
@@ -112,7 +116,6 @@
                 </div>
                 <div class="box_body_right_body">
                     <div class="box_body_right_body_left">
-                       
                         <gsbg></gsbg>
                     </div>
                     <div class="box_body_right_body_right">
@@ -148,7 +151,7 @@ export default {
             tablemsg:[],           //小区表格数据
             style: {
             width: "100%",
-            height: "340px",
+            height: "288px",
             },
             echartsdata:[],           //图表数据
             msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32],
@@ -167,7 +170,6 @@ export default {
         // console.log(this.$route.query.xmid)
         this.xmid=this.$route.query.xmid
         this.axios.get("/api/proChargeRate03?projectId="+this.xmid).then((res)=>{
-            // console.log(res.data.data)
             this.projectName=res.data.data[0].projectName
             this.tablemsg=res.data.data
         })
@@ -197,7 +199,9 @@ export default {
 </script>
 
 <style scoped>
-
+.table{
+    padding: 0 12px
+}
 .box{
     padding: 0 12px;
     padding-bottom: 12px;
@@ -227,14 +231,14 @@ export default {
     background: #fff
 
 }
-.box_header{
+/* .box_header{
     border: 1px solid #f0f0f0
-}
+} */
 .box_body_right_header>h1{
     font-size: 14px;
     color: #666;
     text-align: center;
-    margin: 22px 0 33px 0
+    margin: 22px 0 24px 0
 }
 .box_body_right_body{
     display: flex
@@ -297,7 +301,7 @@ export default {
 }
 .box_body_right_div>ul>li{
     display: flex;
-    width: 40%;
+    width: 33%;
     
 }
 .box_body_right_div>ul>li>h1{
@@ -323,5 +327,23 @@ export default {
 
     
 }
-</style>>
+.box_header>h1{
+    font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 600;
+    background: #fff
+}
+.box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px !important;
+}
+</style>
+<style>
+  #xqhz .has-gutter> tr>th{
+  padding: 0 !important
+}
+
+</style>
     

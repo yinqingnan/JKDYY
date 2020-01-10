@@ -62,7 +62,7 @@ export default {
             
         },
         legend: {
-        top: "2",
+        top: "13%",
         right: "10",
         inactiveColor: "#999",
         textStyle: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box" id="flhzb">
          <!-- 分类汇总表 -->
     <div class="box_header">
       <h1>{{projectName}}分类汇总表</h1>
@@ -606,19 +606,27 @@ export default {
 </script>
 
 <style scoped>
-.daochu {
-  border: 1px solid #4ac48b;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 5px;
-  border-radius: 5px;
-  background: #4ac48b;
-  color: #fff !important;
-  position: absolute;
-  top: 4px;
-  right: 12px;
-  font-size: 14px;
-  cursor: pointer;
+.daochu{
+    border: 1px solid #4ac48b;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: #4ac48b;
+    color: #fff !important;
+    position: absolute;
+    top: 4px;
+    text-align: center;
+    right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .box_header {
   width: 100%;
@@ -644,4 +652,14 @@ export default {
   /* line-height: 50px; */
   background: #fff
 }
+  .box >>> .el-table__header-wrapper{
+  /* height: 118px !important; */
+  line-height: 60px !important;
+}
 </style>
+
+<style>
+#flhzb .has-gutter> tr>th{
+  padding: 0 !important
+}
+</style

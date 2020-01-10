@@ -38,7 +38,7 @@ export default {
     background: #fff;
     height: 265px;
     overflow: hidden;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #f0f0f0;
     /* padding:  10px; */
     box-sizing: border-box;
     overflow-y:auto;
@@ -56,15 +56,16 @@ export default {
     font-weight: 500;
     color: #333;
     line-height: 44px;
-    text-indent:14px;
+    text-indent:10px;
     /* margin-right: 100px; */
+    text-indent: 10px;
     border-bottom: 1px solid #f0f0f0
 }
 .box>ul{
     width: 100%;
 }
 .box>ul>li{
-    margin-left: 19px;
+    margin-left: 10px;
     font-size: 14px;
 }
 .box>ul>li:nth-of-type(1){

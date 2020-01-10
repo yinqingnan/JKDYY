@@ -37,7 +37,7 @@ import Bshzb from "../components/bsl/bshzb.vue" //报事汇总表
 import Flhzb from "../components/bsl/flhzb.vue" //报事汇总表
 
 import homeChart from "../view/homeChart.vue" //新首页
-
+import Qygssr from "../components/Table/qygssr.vue"          //区域公司收入（由总部数据收入点击进入）
 
 const  router = new VueRouter({
     base: '/',
@@ -82,8 +82,10 @@ const  router = new VueRouter({
             ]
         },
 
-        {path:"/homeChart",name:"homeChart",component:homeChart}
-
+        {path:"/homeChart",name:"homeChart",component:homeChart,meta: {
+            title: '金科服务项目体检表'
+        }},
+        {path:"/qygssr",name:"qygssr",component:Qygssr}
     ]
 })
 

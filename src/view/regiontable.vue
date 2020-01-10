@@ -19,7 +19,7 @@
                         <el-input v-model="msg" placeholder="请输入项目名称" ></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">查询</el-button>
+                    <button type="primary" @click="onSubmit" class="btn">查询</button>
                 </el-form-item>
                 </el-form>
             </div>
@@ -62,8 +62,8 @@ import Table3 from "../components/Table/table3"
             show3:false,
             msg:"",//---------------------------------------------------表单绑定
             qygslist:[],//-----------------------------------------------区域公司列表数据
-            qydefault:"金科物业重庆区域公司",//----------------------------默认显示的区域公司
-            Selection:"金科物业重庆区域公司",//----------------------------------------------区域公司选中项
+            qydefault:"物业重庆区域公司",//----------------------------默认显示的区域公司
+            Selection:"物业重庆区域公司",//----------------------------------------------区域公司选中项
             list:["在管项目基本情况","招标物业费情况","停车备案情况"],// 显示的项目信息
             num:0,//-----------------------------------------------------默认显示的列表
             tablelength:'',//-------------------------------------------table长度
@@ -171,6 +171,17 @@ import Table3 from "../components/Table/table3"
     margin-top: 2px
     /* background: pink; */
     /* z-index: -1 */
+}
+.btn{
+    width: 50px;
+    border: 1px solid #4ac48b;
+    background: #4ac48b;
+    font-size: 12px;
+    color: #fff;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 </style>
 <style >

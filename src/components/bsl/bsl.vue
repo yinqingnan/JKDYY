@@ -5,7 +5,7 @@
         <div class="box">
             <div class="box1">
                 <button @click="TO" class="fhsj">
-                    <i class="el-icon-back"></i>返回上级
+                    <i class="el-icon-back"></i>返回
                 </button>
         
             </div>
@@ -70,11 +70,11 @@ export default {
     color: #fff!important;
     border-radius: 5px;
     outline: none;
-    width: 100px;
-    line-height: 40px;
+    width: 62px;
+    line-height: 26px;
     cursor: pointer;
-    height: 40px;
-    margin-top: 5px
+    height: 26px;
+    margin-top: 15px
 }
 .box1{
     display: flex

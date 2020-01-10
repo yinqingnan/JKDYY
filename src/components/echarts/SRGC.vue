@@ -82,7 +82,7 @@ export default {
           title: [{
             text: "收入构成",
             top:0,
-            left:36,
+            left:16,
             textStyle: {
               color: "#333",
               fontSize: 14,
@@ -91,7 +91,7 @@ export default {
           },{
             text: "单位：百分比",
             top:36,
-            left:36,
+            left:16,
             textStyle: {
               color: "#666",
               fontSize: 12,
@@ -117,15 +117,15 @@ export default {
           legend: {
             data: this.incomeName,
             textStyle: {
-              color: "#3B53A2",
-              fontSize: 10
+              color: "#333",
+              fontSize: 12
             },
-            itemWidth: 10, // 标志图形的长度
-            itemHeight: 10, // 标志图形的宽度
-            inactiveColor: "#CDD9F0",
+            itemWidth: 9, // 标志图形的长度
+            itemHeight: 9, // 标志图形的宽度
+            // inactiveColor: "#CDD9F0",
             top: 0,
             icon: "ract", //点的形状
-            right: 20 //点的位置
+            right: 34 //点的位置
           },
           grid: {
             top: "26%",

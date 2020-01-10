@@ -3,7 +3,7 @@
     <div>
         <div>
              <div class="box"> 
-                <el-table :data="Merger1" style="width: auto" fit:true  :cell-style="cellStyle" >
+                <el-table :data="Merger1" style="width: auto" fit:true  :cell-style="cellStyle" :header-cell-style="{background:'#f5f7fa',color:'#606266'}" >
                 <el-table-column prop="acquiringfirm" label="收购方" :show-overflow-tooltip="true"  align="left" style="marginRight:10px"></el-table-column>
                 <el-table-column prop="acquiree" label="被收购方" :show-overflow-tooltip="true" align="left"></el-table-column>
                 <el-table-column prop="acquisitiontime" label="日期" :show-overflow-tooltip="true" align="center"></el-table-column>

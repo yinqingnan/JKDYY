@@ -5,7 +5,7 @@
         <div class="box">
 
             <div class="header">
-                <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回项目</button>
+                <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回</button>
                 <div>
                     <h2>所属机构 : {{companyName}} > <span>{{projectName}}</span> </h2>
                 </div>
@@ -191,7 +191,7 @@
                         </div>
                         
                           <el-table
-                            :data="table2"
+                            :data="table1"
                             border
                             :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
                             style="width: 100%">
@@ -320,7 +320,7 @@ export default {
             xmid:"",
             projectName:"",  //项目名称
             companyName:"",  //区域公司名称
-  
+            table1:[],
             table2:[],                                    //年度用量统计
             cols: [],           //用电当月构成title
             tableData: [],       //用电当月构成数据
@@ -341,6 +341,10 @@ export default {
         this.axios.get("/api/projectElectricityM2?projectId="+this.xmid).then((res)=>{
             // console.log(res.data.data)
             this.table2=res.data.data
+        })
+          this.axios.get("/api/projectWaterrentM2?projectId="+this.xmid).then((res)=>{
+            // console.log(res.data.data)
+            this.table1=res.data.data
         })
         // 获取到本月用电   构成表格数据   动态表头
         this.axios.get("/api/projectElectMType2?projectId="+this.xmid+"&topcount=10").then((res)=>{
@@ -794,12 +798,13 @@ export default {
     display: flex
 }
 .header>button{
-        width: 90px;
+        width: 62px;
     border: 0;
     cursor: pointer;
-    height: 35px;
-    line-height: 35px;
-    margin-top: 10px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 15px;
+    font-size: 12px
 }
 .header>div{
     display: flex;
@@ -951,9 +956,9 @@ export default {
 .box_header_right_header>div>h5{
     font-size: 12px;
     font-weight: 500;
-    color: #666;
     line-height: 55px;
     cursor: pointer;
+    color:#49b8ea
 }
 .box_header_right_header>div>h5>span{
     font-weight: 500;

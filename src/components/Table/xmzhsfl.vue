@@ -1,11 +1,11 @@
 
 <template>
-  <!-- 项目用电详情页面 -->
+  <!-- 收入一览表页面 -->
   <div>
-    <div class="box">
+    <div class="box" id="srylb">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回上级
+          <i class="el-icon-back " ></i>返回
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}项目收入一览表</h3>
@@ -28,6 +28,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         :summary-method="getSummaries"
         show-summary
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         class="table"
         element-loading-text="请稍后..."
       >
@@ -501,13 +502,14 @@ export default {
   justify-content: space-between;
 }
 .boxTitle > button {
-  width: 100px;
+  width: 62px;
   border: 0;
   cursor: pointer;
-  height: 35px;
-  line-height: 35px;
-  margin-top: 10px;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 15px;
   background: #fff;
+  font-size: 12px;
 }
 .boxTitle > h3 {
   font-size: 20px;
@@ -526,7 +528,7 @@ export default {
     line-height: 35px;
 }
 .select {
-  margin-right: 22px;
+  margin-right: 80px;
 }
 .box1 {
   /* width: 100% */
@@ -535,20 +537,40 @@ export default {
 }
 
 .daochu{
-    border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
-    margin-top: 7px;
+     border: 1px solid #4ac48b;
+    height: 26px !important;;
+    width: 50px !important;;
+    line-height: 26px !important;;
+    margin-top: 8px !important;;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important 
+    color: #fff !important;
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    right: 24px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px !important;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .fhsj{
     border: 1px solid #4ac48b !important;
     background: #4ac48b !important;
     color: #fff !important;
     border-radius: 5px; 
+}
+.boxTitle > button:hover{
+   border: 1px solid #3c8dbc;
+    box-shadow: none;
+}
+.box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px !important;
 }
 </style>
 
@@ -573,5 +595,8 @@ export default {
 }
 .is-scrolling-right:-webkit-scrollbar {
   display: none;
+}
+#srylb .has-gutter> tr>th{
+  padding: 0 !important
 }
 </style>

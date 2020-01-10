@@ -1,7 +1,7 @@
 <template>
 <!-- 报事完结率 -->
     <div>
-        <div class="box">
+        <div class="box" id="bshzb">
              <div class="box_header">
       <h1>{{projectName}}报事汇总表</h1>
     </div>
@@ -169,7 +169,7 @@ export default {
             tablemsg:[],           //小区表格数据
             style: {
             width: "100%",
-            height: "288px",
+            height: "239px",
             },
             echartsdata:[],           //图表数据
             msg:[1,5,2,6,5,4,32,3,1,2,43,1,321,31,321,31,32],
@@ -323,5 +323,14 @@ export default {
     font-weight: 600;
 
 }
-</style>>
+  .box >>> .el-table__header-wrapper{
+  /* height: 118px !important; */
+  line-height: 60px !important;
+}
+</style>
+<style>
+    #bshzb .has-gutter> tr>th{
+  padding: 0 !important
+}
+</style>
     

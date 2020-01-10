@@ -4,7 +4,7 @@
     <div>
           <div class="box">
               <div class="boxTitle">
-                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回上级</button>
+                    <button @click="TO" class="fhsj"><i class="el-icon-back"></i>返回</button>
                     
                     
                     <h3 style="margin:0 auto">{{projectName}}小区{{year}}年{{month}}月用水量明细表
@@ -28,7 +28,7 @@
                             </el-option>
                         </el-select>
                     </div>
-                    <h2 @click="exportExcel" class="daochu">导出表格</h2>
+                    <h2 @click="exportExcel" class="daochu">导出</h2>
                 <!-- {{getyear}}
                 {{getmonth}} -->
               </div>
@@ -36,6 +36,7 @@
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
          :summary-method="getSummaries"
          show-summary
       class="table"
@@ -297,18 +298,24 @@ export default {
   
 }
 .boxTitle >button{
-    width: 90px;
+    width: 62px;
     border: 0;
+    font-size: 12px;
     cursor: pointer;
-    height: 35px;
-    line-height: 35px;
-    margin-top: 10px;
-    background: #fff
+    height: 26px;
+    line-height: 26px;
+    margin-top: 15px;
+    background: #fff;
+    font-size: 12px
 }
+
 .boxTitle>h3{
-    font-size: 16px;
-    color: #333;
-    font-weight: 500
+    font-size: 20px;
+    color: #666;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: 500;
 }
 .boxTitle>h2{
     font-size: 10px;
@@ -318,7 +325,7 @@ export default {
     cursor: pointer;
 }
 .select{
-    margin-right: 22px
+    margin-right: 80px
 }
 .box1{
     /* width: 100% */
@@ -327,13 +334,25 @@ export default {
 }
 .daochu{
     border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
-    margin-top: 7px;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important 
+    color: #fff !important;
+    position: absolute;
+    top: 14px;
+    text-align: center;
+    right: 22px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .fhsj{
     border: 1px solid #4ac48b !important;

@@ -55,7 +55,7 @@
                     <div>
                         <!-- 第一个 -->
                         <div>
-                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:10%;cursor: pointer;   color: #409eff ;" @click="zrh">总收入 
+                            <h1 v-for="(item,index) in zsr" :key="index" style="marginRight:30%;cursor: pointer;   color: #409eff ;" @click="zrh">总收入 
                                 <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" ><i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -67,7 +67,7 @@
                                     <qugszsr1 :zsrsxzzt1="zsrsxzzt1" :zsrsxzztm="zsrsxzztm"></qugszsr1>
                                 </div>
                                 <div style="width:100%">
-                                    <qugszsr2 :zsrhxzzttitle="zsrhxzzttitle" :zsrhxzzt2="zsrhxzzt2" style="width:80%"></qugszsr2>
+                                    <qugszsr2 :zsrhxzzttitle="zsrhxzzttitle" :zsrhxzzt2="zsrhxzzt2" style="width:100%"></qugszsr2>
                                 </div>
                             </div>
                               <div class="yq">
@@ -90,7 +90,7 @@
                         </div>
                         <!-- 第三个 -->
                          <div>
-                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:10%;cursor: pointer;color: #409eff ;">综合收缴率 
+                              <h1 @click="zhsfl" v-for="(item,index) in sfl" :key="index" style="marginRight:20%;cursor: pointer;color: #409eff ;">综合收缴率 
                                   <span v-show="item.changeRate" :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                             {{item.changeRate}}%</span>
                             </h1>
@@ -104,7 +104,7 @@
                                     <qygssfl1 :sflsxzzt1="sflsxzzt1" :zsrsxzztm="zsrsxzztm"></qygssfl1>
                                 </div>
                                 <div style="width:100%">
-                                    <qygssfl2 :sflhxzzttitle="sflhxzzttitle" :sflhxzzt2="sflhxzzt2" style="width:80%"></qygssfl2>
+                                    <qygssfl2 :sflhxzzttitle="sflhxzzttitle" :sflhxzzt2="sflhxzzt2" style="width:100%"></qygssfl2>
                                 </div>
                             </div>
                             <!-- dqsfl当前收费率 -->
@@ -337,7 +337,7 @@ export default {
             this.axios.get("/api/companyReceipts?year=2020&companyId="+this.id)        
             .then((res)=>{
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 if(res.data.data!=""){
                       if(this.date>=7){
                     this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
@@ -507,6 +507,7 @@ export default {
 .Title>ul:nth-of-type(1){
     display: flex;
     width: 40%;
+    min-width: 317px;
     border-right: 1px dashed #e0dfe8
 }
 .Title>ul:nth-of-type(1)>li{
@@ -617,7 +618,7 @@ export default {
 .Chart>div:nth-of-type(2)>div>h1{
     font-size: 14px;
     color: #666;
-    margin:16px 0 8px 10px;
+    margin:10px 0 8px 0;
     line-height: 1;
     font-weight: 100
 }
@@ -631,7 +632,7 @@ export default {
 .Chart>div:nth-of-type(2)>div>h2{
     font-weight: 600;
     color: #333333 ;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     /* margin-bottom: 42px; */
     font-size: 24px;
     height: 70px
@@ -648,7 +649,7 @@ export default {
 .Chart>div:nth-of-type(2)>div>div:nth-of-type(1){
     display: flex;
     justify-content: space-between;
-    padding: 0 6px;
+    /* padding: 0 6px; */
     height: 94px ;
     /* width:100% */
 }
@@ -681,7 +682,8 @@ export default {
 }
 .table1>ul{
     overflow-y: auto;
-    height: 310px;
+    height: 280px;
+    margin-top: 10px;
     /*  当IE下溢出，仍然可以滚动*/ 
     -ms-overflow-style:none;
     /*火狐下隐藏滚动条*/
@@ -787,7 +789,7 @@ export default {
 
 /* 尾部 */
 .Chart1{
-    margin-top: 20px;
+    margin-top:15px;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -813,13 +815,13 @@ export default {
 }
 
 .Chart1>div:nth-of-type(1) .Chart1_header{
-    padding: 0 7px 0 7px
+    padding: 0 7px 0 10px
 }
 .Chart1>div:nth-of-type(2) .Chart1_header{
-    padding: 0 23px 0 7px
+    padding: 0 23px 0 10px
 }
 .Chart1>div:nth-of-type(3) .Chart1_header{
-    padding: 0 12px 0 7px
+    padding: 0 12px 0 10px
 }
 .Chart1_header>h1{
     line-height: 55px;
@@ -829,9 +831,9 @@ export default {
 .Chart1_header>h2{
     font-size: 12px;
     font-weight: 500;
-    color: #666;
     line-height: 55px;
     cursor: pointer;
+    color: #409eff
 }
 .Chart1_header>h2:hover{
     color:#409eff 
@@ -840,14 +842,14 @@ export default {
     color:#409eff 
 }
 .Chart1_header>h2>span{
-    color:#a0a0a0;
+     color: #409eff;
     font-weight: 100;
     font-size: 12px
 }
 .Chart1_footer1{
     height: 82px;
     border-bottom: 1px dashed #e0dfe8;
-    margin-left: 8px;
+    margin-left: 10px;
      display: flex;
      width: 100%;
     
@@ -860,18 +862,18 @@ export default {
     line-height: 82px;
     font-weight: 500;
     color: #333;
-    width: 30%;
+    width: 28%;
     overflow: hidden;
 }
 
-
+/* 
 .yq{
     margin-left: 6px
-}
+} */
 .yq>ul{
     display: flex;
     margin-top: 26px;
-    justify-content: space-around
+    justify-content: space-between
 }
 
 /* 园区信息 */
@@ -921,7 +923,7 @@ export default {
 }
 .yq1>ul{
     margin-top: 26px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: flex;
     font-size: 14px
 }

@@ -600,6 +600,10 @@ word-break:break-all;
 .center_header>div{
   display: flex
 }
+.left_body >>> .el-table__header-wrapper{
+  height: 57px !important;
+  line-height: 56px !important
+}
 </style>
 <style >
 /* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */

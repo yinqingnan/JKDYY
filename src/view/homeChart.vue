@@ -1,5 +1,5 @@
 <template>
-    <div id="homeChart" :style="{height:cHeight + 'px'}">
+    <div id="homeChart">
         <div class="header">
             <P>金科服务-项目体验表</P>
         </div>
@@ -48,8 +48,8 @@
                         </el-select>
                     </div>
                     <div class="txtBox">
-                        <span class="spTxt">{{num.txt}}</span>
-                        <p style="color:#8f9ebe"><span style="color:red">{{num.n1}}</span>/{{num.n2}}</p>
+                        <span class="spTxt">{{projectType}}</span>
+                        <p style="color:#8f9ebe"><span style="color:red">{{nodeCompleted}}</span>/{{nodeNumber}}</p>
                     </div>
 
                 </div>
@@ -133,7 +133,7 @@
                     <homeBarX class="echarts" :barXData="barXData"></homeBarX>
                 </div>
                 <div class="rbBox">
-                    <header>项目成本分析</header>
+                    <header>说明内容</header>
                     <p class="text">{{text}}</p>
                 </div>
             </div>
@@ -171,11 +171,6 @@
                   label: '金科十年城'
               }],
               value2: '1',
-              num:{
-                  txt:'成熟期',
-                  n1:77,
-                  n2:116
-              },
               num1:'1301',
               num2:'1301',
               num3:'1301',
@@ -186,7 +181,10 @@
               barData:[],
               lineData:[],
               barXData:[],
-              radarData:[]
+              radarData:[],
+              nodeNumber:"",
+              projectType:"",
+              nodeCompleted:''
           }
         },
         created() {
@@ -276,8 +274,18 @@
                     let data = res.data.data;
                     let list = {
                         list1:[
-                            data[0].m01,data[0].m02,data[0].m03,data[0].m04,data[0].m05,data[0].m06,
-                            data[0].m07,data[0].m08,data[0].m09, data[0].m10,data[0].m11,data[0].m12
+                            data[0].m01,
+                            data[0].m02,
+                            data[0].m03,
+                            data[0].m04,
+                            data[0].m05,
+                            data[0].m06,
+                            data[0].m07,
+                            data[0].m08,
+                            data[0].m09,
+                             data[0].m10,
+                             data[0].m11,
+                            data[0].m12,
                         ],
                         list2:[
                             data[1].m01,
@@ -291,7 +299,7 @@
                             data[1].m09,
                             data[1].m10,
                             data[1].m11,
-                            data[1].m12
+                            data[1].m12,
                         ],
                         list3:[
                             data[2].m01,
@@ -305,7 +313,7 @@
                             data[2].m09,
                             data[2].m10,
                             data[2].m11,
-                            data[2].m12
+                            data[2].m12,
                         ]
                     };
                     this.lineData = list;
@@ -330,6 +338,10 @@
             setOctagon(val){
                 this.axios.get("/api/tj001?projectId=" + val).then((res)=>{
                     // this.pieData = res;
+                    this.nodeNumber=res.data.data[0].nodeNumber
+                    this.projectType=res.data.data[0].projectType
+                    this.nodeCompleted=res.data.data[0].nodeCompleted
+                    
                     this.text = res.data.data[0].commentExplain;
                     this.num1 = res.data.data[0].projectRevenue;
                     this.num2 = res.data.data[0].projectProfit;
@@ -410,7 +422,7 @@
         height: 33%;
         border:1px solid #2e447e;
         border-radius: 8px;
-        margin-top: 29px;
+        margin-top: 1px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -465,7 +477,7 @@
         margin-top: 8px;
     }
     .rbBox{
-        margin-top: 8px;
+        margin-top: 5px;
         border:1px solid #2e447e;
         border-radius: 8px;
     }

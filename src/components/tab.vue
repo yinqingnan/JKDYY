@@ -106,6 +106,8 @@ export default {
 <style  scoped>
 .box{
     background: #fff;
+    height: 345px;
+    overflow: hidden;
 }
 .title{
     font-size:20px;
@@ -116,7 +118,8 @@ export default {
 }
 .isScroll{
     overflow-y: auto;
-    height: 310px;
+    height: 273px;
+    margin-top: 20px;
     /*  当IE下溢出，仍然可以滚动*/
     -ms-overflow-style:none;
     /*火狐下隐藏滚动条*/
@@ -147,7 +150,9 @@ export default {
     border-bottom:2px solid #49a4d9
 
 }  
-
+/* .tabCon{
+    padding: 20px 0
+} */
 .tabCon>ul>li>span:nth-of-type(1){
     text-decoration: underline;
     max-width: 180px;
@@ -167,6 +172,7 @@ export default {
     font-size: 14px; 
     max-width: 280px;
     line-height: 34px;
+    height: 34px;
     white-space: nowrap;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -177,7 +183,7 @@ export default {
     margin: 0 20px;
     cursor: pointer;
     overflow: hidden;
-    margin-top: 20px
+    /* margin-top: 20px */
  
 }
 .list>h2{

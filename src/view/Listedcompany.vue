@@ -62,7 +62,9 @@
           
           <div class="container_right_header_title">
             <h1>收并购信息</h1>
-            <h2 @click="btn1">更多</h2>
+            <h2 @click="btn1">更多
+                <span class="iconfont iconpub_right" style="font-size:12px;font-weight:500;"></span>
+            </h2>
           </div>
            <div class="container_left_header_tab">
             <el-table :data="Merger" style="width: auto;height:312px" fit:true  border > 
@@ -268,12 +270,12 @@ export default {
   line-height: 39px;
   /* border-bottom: 1px solid #e0dfe8 ; */
   padding: 0 10px;
-  border: 1px solid #e0dfe8;
+  border: 1px solid #f0f0f0;
   border-bottom-color: transparent
 }
 .container_right_header_title>h1{
   font-size: 14px;font-weight: 500;
-  color: #666;
+  color: #333;
 
 }
 
@@ -281,12 +283,14 @@ export default {
   font-size: 12px;font-weight: 500;
   color: #2cabe3;
     cursor: pointer;
-  text-decoration: underline
+  /* text-decoration: underline */
 }
 .container_right_body{
   margin:12px 0
 }
-
+.container_left_header_tab >>> .el-table--border{
+  border: 1px solid #f0f0f0
+}
 </style>
 
 

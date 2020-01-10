@@ -54,7 +54,7 @@ export default {
  let option = {
     title: {
         text: "全年排名",
-        x:10,
+        x:"45%",
         // padding: [0, 0, 0, "20px"], //上右下左
         y: 0,
         textStyle: {

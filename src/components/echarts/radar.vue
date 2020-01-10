@@ -69,7 +69,7 @@ export default {
 
               ],
               center: ['46%', '50%'], // 位置
-              radius: 94, //大小
+              radius:"80%", //大小
           },
        
           series: [{

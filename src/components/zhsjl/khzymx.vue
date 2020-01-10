@@ -1,10 +1,10 @@
 <template>
     <div>
-      <div class="box">
+      <div class="box" id="khzy">
                 <!-- 客户资源明细表 -->
         <div class="box_header">
-            <h1>客户资源明细表</h1>
-            <h2 @click="exportExcel" class="daochu">导出表格</h2>
+            <h1>{{projectName}}客户资源明细表</h1>
+            <h2 @click="exportExcel" class="daochu">导出</h2>
         </div>
         <div class="box_body">
              <!-- 显示表格 -->
@@ -14,6 +14,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         min-height="600px"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         element-loading-text="请稍后..."
       >
         <el-table-column
@@ -247,7 +248,8 @@ export default {
                 paddingRight:"12px",
             },
             yeardefaultdefault:"",
-            year:""
+            year:"",
+            projectName:""
         }
     },
     mounted(){
@@ -266,6 +268,10 @@ export default {
         })
 
         this.getheight();
+
+        this.axios.get("/api/proChargeRate03?projectId="+this.xmid).then((res)=>{
+          this.projectName=res.data.data[0].projectName
+        })
     },
     methods:{
           getheight() {
@@ -329,17 +335,25 @@ export default {
 <style scoped>
 .daochu{
     border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important;
+    color: #fff !important;
     position: absolute;
-    top:4px;
+    top: 4px;
+    text-align: center;
     right: 10px;
     font-size: 14px;
     cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .box_header{
     width: 100%;
@@ -363,4 +377,16 @@ export default {
     height: 50px;
     background: #fff
   }
+
+  .box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px !important;
+}
+</style>
+
+<style>
+  #khzy .has-gutter> tr>th{
+  padding: 0 !important
+}
+
 </style>

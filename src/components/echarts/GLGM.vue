@@ -36,7 +36,7 @@ export default {
             {
             text: "管理规模",
             top:0,
-            left:34,
+            left:16,
             // y: 20,
             textStyle: {
               color: "#333",
@@ -47,7 +47,7 @@ export default {
           {
             text: "单位：个",
             top:36,
-            left: 34,
+            left: 16,
             textStyle: {
               color: "#666",
               fontSize: 12,

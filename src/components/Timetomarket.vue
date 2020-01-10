@@ -77,13 +77,6 @@ export default {
     },
     methods:{
         leftbtn(){
-            // this.number++
-            //  this.number++
-            // if(this.number>=0){
-            //       this.$refs.tabs.style="left:0px"
-            // }else if(this.number<0){
-            //     this.$refs.tabs.style.left=(this.number*80)+"px"
-            // }
             this.number=0
             this.$refs.tabs.style.left=0+"px"
         },
@@ -104,7 +97,8 @@ export default {
     background:#fff;
     position: relative;
     height: 400px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
 }
 .box>h1{
   font-size: 14px;
@@ -115,8 +109,8 @@ export default {
   font-weight: 500;
   text-align: left;
   text-indent: 10px;
-   padding: 0 6px ;
-  border-bottom: 1px solid #e0dfe8
+   /* padding: 0 6px ; */
+  border-bottom: 1px solid #f0f0f0
 }
 .container{
     height: 352px;

@@ -100,9 +100,9 @@
               </div>
               <div class="yq">
                 <ul v-for="(item,index) in zhsflmsg" :key="index">
-                  <li style="width:30%">当期收缴率</li>
-                  <li style="width:30%">{{item.newRate.toFixed(0)}}%</li>
-                  <li style="width:30%">
+                  <li style="width:33%">当期收缴率</li>
+                  <li style="width:33%">{{item.newRate.toFixed(0)}}%</li>
+                  <li style="width:33%">
                     <span :class="item.state==1? 'Green':'Red'">
                       <i :class="item.state==1? 'Greensj':'Redsj'"></i>
                       {{item.changeRate.toFixed(0)}}%
@@ -202,8 +202,6 @@
                   <span class="iconfont iconpub_right"></span>
                 </h2> -->
                 <div class="xmnhxq">
-                  <!-- <h2 @click="dyys">当月用水详情</h2>
-                  <h2 @click="dyyd">当月用电详情</h2> -->
                   <h2 @click="toxmnhzb">更多 <span class="iconfont iconpub_right"></span></h2>
                 </div>
               </div>
@@ -265,9 +263,9 @@
           </div>
           <div class="table3_footer">
             <ul>
-              <li v-for="(item,index) in loginxt" :key="index" @click="todlqtxt(item.href)">
+              <li v-for="(item,index) in loginxt" :key="index" @click="todlqtxt(item.href)" :title="item.name">
                 <img :src="item.imagehref" />
-                <h2>{{item.name}}</h2>
+                <h2 >{{item.name}}</h2>
               </li>
             </ul>
           </div>
@@ -1163,7 +1161,7 @@ export default {
 
 <style scoped>
 .xmnh {
-  padding: 18px 7px 0 14px;
+  padding: 18px 7px 0 10px;
 }
 .xmnh > div {
   height: 148px;
@@ -1206,9 +1204,9 @@ export default {
   color: #49a4d9 !important ;
   border-bottom: 2px solid #49a4d9;
 }
-.yq {
+/* .yq {
   margin-left: 5px;
-}
+} */
 .yq > ul {
   display: flex;
   margin-top: 26px;
@@ -1298,6 +1296,7 @@ export default {
 .Title > ul:nth-of-type(1) {
   display: flex;
   width: 40%;
+  min-width: 317px;
   border-right: 1px dashed #e0dfe8;
 }
 .Title > ul:nth-of-type(1) > li {
@@ -1336,11 +1335,11 @@ export default {
   padding-top: 14px;
 }
 .Title > ul:nth-of-type(2) > li:nth-of-type(1) {
-  margin-left: 3.125rem;
+  margin-left: 13%;
   cursor: pointer;
 }
 .Title > ul:nth-of-type(2) > li:nth-of-type(2) {
-  margin-left: 4.625rem;
+  margin-left:20%;
 }
 .Title > ul:nth-of-type(2) > li > h1 {
   /* font-size: 14px;
@@ -1405,7 +1404,7 @@ export default {
 .Chart > div:nth-of-type(2) > div > h1 {
   font-size: 14px;
   color: #666;
-  margin: 16px 0 8px 10px;
+  margin: 10px 0 8px 0px;
   line-height: 1;
   font-weight: 100;
 
@@ -1420,7 +1419,7 @@ export default {
 .Chart > div:nth-of-type(2) > div > h2 {
   font-weight: 600;
   color: #333333;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-bottom: 54px;
   font-size: 24px;
   font-weight: 500
@@ -1439,7 +1438,7 @@ export default {
 .table1 {
   background: #fff;
   border: 1px solid #e0dfe8;
-  height: 365px;
+  height: 345px;
 }
 .table1 > h1 {
   font-size: 16px;
@@ -1528,7 +1527,7 @@ export default {
   display: flex;
   justify-content: space-around;
   padding: 0 20px
-  
+
 }
 .table3_footer > ul > li {
   width: 64px;
@@ -1544,6 +1543,11 @@ export default {
   color: #666;
   line-height: 1;
   margin-top: 8px;
+  white-space:nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis
+   
+ 
 }
 
 .Chart1 {
@@ -1565,7 +1569,7 @@ export default {
 .Chart1 > div:nth-of-type(1) > div:nth-of-type(1) {
   display: flex;
   justify-content: space-between;
-  padding: 22px 18px 18px 18px;
+  padding: 22px 18px 18px 10px;
   background: #fff;
   border-bottom: 1px solid #e0dfe8;
 }
@@ -1598,7 +1602,7 @@ export default {
 .Chart1 > div:nth-of-type(2) > div:nth-of-type(1) {
   display: flex;
   justify-content: space-between;
-  padding: 22px 18px 18px 18px;
+  padding: 22px 18px 18px 10px;
   border-bottom: 1px solid #e0dfe8;
 }
 
@@ -1666,6 +1670,9 @@ export default {
 }
 .xmnhxq>h2:nth-of-type(2){
   margin-left: 8px
+}
+.yq>ul{
+  justify-content: space-between
 }
 .yq>ul>li{
   white-space: nowrap

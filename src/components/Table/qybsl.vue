@@ -1,10 +1,10 @@
 
 <template>
   <div>
-    <div class="box">
+    <div class="box" id="bsl">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回上级
+          <i class="el-icon-back " ></i>返回
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}报事率</h3>
@@ -13,12 +13,12 @@
             v-model="yeardefaultdefault"
             placeholder="请选择年份"
             @change="yearchange(yeardefaultdefault)"
-            style="width:100px;text-align: center;margin-right:10px"
+            style="width:100px;text-align: center;margin-right:80px"
           >
             <el-option v-for="(item,index) in years" :key="index" :value="item"></el-option>
           </el-select>
         </div>
-        <h2 @click="exportExcel" class="daochu">导出表格</h2>
+        <h2 @click="exportExcel" class="daochu">导出</h2>
       </div>
       <!-- 显示表格 -->
       <el-table
@@ -27,6 +27,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         element-loading-text="请稍后..."
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
       
       >
         <el-table-column
@@ -475,13 +476,14 @@ export default {
   justify-content: space-between;
 }
 .boxTitle > button {
-  width: 100px;
+  width: 60px;
   border: 0;
   cursor: pointer;
-  height: 35px;
-  line-height: 35px;
-  margin-top: 10px;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 15px;
   background: #fff;
+  font-size: 12px;
 }
 .boxTitle > h3 {
     font-size: 20px;
@@ -491,7 +493,7 @@ export default {
     font-weight: 600;
 }
 .boxTitle > h2 {
-  font-size: 14px;
+  font-size: 12px;
   color: #666;
   font-weight: 500;
   /* margin-left: 20px */
@@ -507,22 +509,37 @@ export default {
   background: #fff;
   height: 50px;
 }
-
 .daochu{
     border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
-    margin-top: 7px;
+    height: 26px !important;
+    width: 50px !important;
+    line-height: 26px !important;
+    margin-top: 8px;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important 
+    color: #fff !important;
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px !important;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .fhsj{
     border: 1px solid #4ac48b !important;
     background: #4ac48b !important;
     color: #fff !important;
     border-radius: 5px; 
+}
+  .box >>> .el-table__header-wrapper{
+  height: 118px !important;
+  line-height: 60px !important;
 }
 </style>
 
@@ -547,5 +564,8 @@ export default {
 }
 .is-scrolling-right:-webkit-scrollbar {
   display: none;
+}
+  #bsl .has-gutter> tr>th{
+  padding: 0 !important
 }
 </style>

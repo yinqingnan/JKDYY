@@ -39,7 +39,7 @@ export default {
           title: [ {
             top: 0,
             // y: 20,
-            left:36,
+            left:16,
             text: "总收入/净利润",
             textStyle: {
               color: "#333",
@@ -49,7 +49,7 @@ export default {
           },  {
             text: "单位：百万元",
             top:36,
-            left:36,
+            left:16,
             textStyle: {
               color: "#666",
               fontSize: 12,

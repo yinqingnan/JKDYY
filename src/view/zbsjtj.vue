@@ -5,8 +5,8 @@
         <div class="top_left">
           <div class="top_left_header">
             <ul>
-              <li>
-                <h1>收入</h1>
+              <li @click="toSR">
+                <h1 style="color:#2cabe3">收入</h1>
                 <h2 :title="yysrtitle.income">{{yysrtitle.income}}</h2>
               </li>
               <li>
@@ -67,10 +67,11 @@
           <div class="top_right_body">
               <div>
                     <div class="top_right_body_one" v-if="show">
-                        <TOP :topone="topone" :num1="num1"></TOP>
+                        <topone :topone="topone" :num1="num1"></topone>
                     </div>
                     <div class="top_right_body_two" v-if="show1">
-                        <TOP1 :toptwo="toptwo" :num1="num1"></TOP1>
+                        <!-- <TOP1 :toptwo="toptwo" :num1="num1"></TOP1> -->
+                         <toptwo :toptwo="toptwo" :num1="num1"></toptwo>
                     </div>
               </div>
            
@@ -140,8 +141,8 @@
 <script>
 import yysrzb from "@/components/echarts/zbsjhz/yysrzb"; //营业收入占比
 import xmfb from "@/components/echarts/zbsjhz/xmfb"; //项目分布
-import TOP from "@/components/echarts/zbsjhz/TOP"; //top节点达成率
-import TOP1 from "@/components/echarts/zbsjhz/TOP1"; //top关键节点达成率
+import topone from "@/components/echarts/zbsjhz/TOPone"; //top节点达成率
+import toptwo from "@/components/echarts/zbsjhz/TOPtwo"; //top关键节点达成率
 import wyxt from "@/components/echarts/zbsjhz/wyxt"; //物业形态
 import wybs from "@/components/echarts/zbsjhz/wybs"; //物业报事
 import pzfwzb from "@/components/echarts/zbsjhz/pzfwzb"        //品质服务占比 空数据
@@ -149,11 +150,11 @@ export default {
   components: {
     yysrzb,
     xmfb,
-    TOP,
-    TOP1,
+    topone,
+    toptwo,
     wyxt,
     wybs,
-    pzfwzb
+    // pzfwzb
   },
   data() {
     return {
@@ -215,7 +216,10 @@ export default {
     });
   },
   methods: {
-   
+      toSR(){
+        // this.$router
+          this.$router.push("/qygssr")
+      },
        xmfbpxsx() {  //   项目分布排序   升序
             this.axios.get("/api/zb_006").then(res => {
             var obj = res.data.data;
@@ -395,7 +399,7 @@ export default {
 }
 .top_right > ul {
   display: flex;
-  height:13%;
+  height:18%;
   min-height: 60px;
   margin: 0 16px;
   /* background: powderblue */
@@ -443,5 +447,8 @@ export default {
 }
 .container{
     min-width: 1110px
+}
+.top_left_header>ul>li:nth-of-type(1){
+  cursor: pointer;
 }
 </style>

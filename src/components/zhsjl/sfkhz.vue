@@ -1,10 +1,10 @@
 <template>
     <div>
-      <div class="box">
+      <div class="box" id="sfkhz">
           <!-- <h1>收费科汇总</h1> -->
         <div class="box_header">
-            <h1>收费科汇总</h1>
-            <h2 @click="exportExcel" class="daochu">导出表格</h2>
+            <h1>{{projectName}}收费科汇总</h1>
+            <h2 @click="exportExcel" class="daochu">导出</h2>
         </div>
         <div class="box_body">
              <!-- 显示表格 -->
@@ -13,7 +13,7 @@
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
-        
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         element-loading-text="请稍后..."
       >
         <el-table-column
@@ -193,7 +193,8 @@ export default {
                 paddingRight:"12px",
             },
             yeardefaultdefault:"",
-            year:""
+            year:"",
+            projectName:""
         }
     },
     mounted(){
@@ -204,13 +205,15 @@ export default {
         this.xmid=this.$route.query.xmid
         //获取表格数据
         this.axios.get("/api/proChargeRate02?projectId="+this.xmid).then((res)=>{
-            // console.log(res.data.data)
             this.tablemsgmsg=res.data.data  //下载数据的表格
             this.tablemsg=res.data.data      //展示数据的表格
             this.totalCount=res.data.data.length    //展示数据的总条数
         })
 
         this.getheight();
+          this.axios.get("/api/proChargeRate03?projectId="+this.xmid).then((res)=>{
+            this.projectName=res.data.data[0].projectName
+        })
     },
     methods:{
           getheight() {
@@ -274,18 +277,25 @@ export default {
 <style scoped>
 .daochu{
     border: 1px solid #4ac48b;
-    height:40px;
-    line-height:40px;
-    /* margin-top: 7px; */
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+    margin-top: 8px;
     padding: 0 5px;
     border-radius: 5px;
     background: #4ac48b;
-    color:#fff !important;
+    color: #fff !important;
     position: absolute;
-    top:4px;
+    top: 4px;
+    text-align: center;
     right: 10px;
     font-size: 14px;
     cursor: pointer;
+    font-size: 12px;
+}
+.daochu:hover{
+ border: 1px solid #3c8dbc;
+    box-shadow: none;
 }
 .box_header{
     width: 100%;
@@ -312,4 +322,15 @@ export default {
   height: 50px;
   background: #fff
 }
+.box >>> .el-table__header-wrapper{
+  height: 60px !important;
+  line-height: 60px !important;
+}
+</style>
+
+<style>
+  #sfkhz .has-gutter> tr>th{
+  padding: 0 !important
+}
+
 </style>

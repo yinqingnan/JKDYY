@@ -16,17 +16,17 @@
                                         <ul>
                                             
                                             <li>官方网址:</li>
-                                            <li @click="open(data.officialwebsite)" style="cursor: pointer;" :title="data.officialwebsite">{{data.officialwebsite}}</li>
+                                            &nbsp;<li @click="open(data.officialwebsite)" style="cursor: pointer;color:#007af4;text-decoration:underline; " :title="data.officialwebsite">{{data.officialwebsite}}</li>
                                         </ul>
                                         <ul>
                                             <li>上市时间:</li>
-                                            <li>{{data.timeToMarket}}</li>
+                                            &nbsp; <li>{{data.timeToMarket}}</li>
                                         </ul>
                                    </div>
                               </div>
                               <ul>
                                   <li>
-                                      <h2>上市地<span>:</span> </h2> <h2>{{data.listingPlace}}</h2>
+                                      <h2 style="width:56px">上市地:</h2> <h2>{{data.listingPlace}}</h2>
                                   </li>
                                   <li>
                                       <h2>总部地址:<span></span> </h2> <h2>{{data.headquartersAddress}}</h2>
@@ -325,7 +325,7 @@ background: #fff;
     color: #999;
     line-height: 1;
     font-weight: 500;
-    width: 70px
+    width: 66px
 }
 .container_body_left_header>ul>li:nth-of-type(1)>h2>span{
     margin-left: 15px;

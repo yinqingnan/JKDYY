@@ -15,8 +15,13 @@ import VueRouter from 'vue-router'
 // }
 // 引入自定义的路由配置
 import router from './router';
-
-
+ /* 路由发生变化修改页面title */
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+  document.title = to.meta.title
+  }
+  next()
+})
 
 // 清除默认样式
 // import "normalize.css"
@@ -39,11 +44,8 @@ import store from './store'
 import axios from 'axios'
 import VueAxios  from 'vue-axios'
 
-axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
-// axios.defaults.baseURL="http://219.153.109.174:9045"       //默认地址   金科内部使用
-
-
-
+// axios.defaults.baseURL="http://222.180.200.126:9045"          //默认地址   上线后统一更换自用
+axios.defaults.baseURL="http://219.153.109.174:9045"            //默认地址   金科内部使用
 
 
 Vue.prototype.axios = axios         //将axios配置到Vue原型中
