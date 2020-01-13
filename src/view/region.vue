@@ -101,11 +101,11 @@
               <div class="yq">
                 <ul v-for="(item,index) in zhsflmsg" :key="index">
                   <li style="width:33%">当期收缴率</li>
-                  <li style="width:33%">{{item.newRate.toFixed(0)}}%</li>
+                  <li style="width:33%">{{item.newRate.toFixed(2)}}%</li>
                   <li style="width:33%">
                     <span :class="item.state==1? 'Green':'Red'">
                       <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                      {{item.changeRate.toFixed(0)}}%
+                      {{item.changeRate.toFixed(2)}}%
                     </span>
                   </li>
                 </ul>

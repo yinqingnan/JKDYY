@@ -110,12 +110,11 @@
                             <!-- dqsfl当前收费率 -->
                              <div class=" yq1">
                                     <ul v-for="(item,index) in dqsfl" :key="index">
-                                        <li style="width:41%" title="当期综合收缴率">当期综合收缴率</li>
-                                         <li style="font-weight:600; width:30%" :title="(item.changeRate/10000).toFixed(2)">
-                                            <h3>{{(item.newRate/10000).toFixed(2)}} %</h3>
-                                          
+                                        <li style="width:33%" title="当期综合收缴率">当期综合收缴率</li>
+                                        <li style="font-weight:600; width:30%;text-aline:center" :title="(item.newRate).toFixed(2)">
+                                            <h3>{{(item.newRate).toFixed(2)}} %</h3>
                                         </li>
-                                        <li  >
+                                        <li style="width:30%">
                                             <h4 style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap; colorr:'#fc6077'">  <span :class="item.state==1? 'Green':'Red'" :title="item.changeRate.toFixed(2)"> <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
                                             {{item.changeRate.toFixed(2)}}%</span></h4>
                                         </li>
