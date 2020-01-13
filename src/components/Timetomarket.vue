@@ -77,15 +77,22 @@ export default {
     },
     methods:{
         leftbtn(){
+            // this.number++
+            //  this.number++
+            // if(this.number>=0){
+            //       this.$refs.tabs.style="left:0px"
+            // }else if(this.number<0){
+            //     this.$refs.tabs.style.left=(this.number*80)+"px"
+            // }
             this.number=0
             this.$refs.tabs.style.left=0+"px"
         },
         rightbtn(){
             this.number--
-           if(this.number>=-6){
+           if(this.number>=-8){
                 this.$refs.tabs.style.left=(this.number*90)+"px"
             }else{
-               this.number=-6
+               this.number=-8
             }
         }
     }
@@ -93,11 +100,10 @@ export default {
 </script>
 <style scoped>
 .box{
-    /* width: 100%; */
     background:#fff;
     position: relative;
     height: 400px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #e5e5e5;
     overflow: hidden;
 }
 .box>h1{
@@ -109,14 +115,14 @@ export default {
   font-weight: 500;
   text-align: left;
   text-indent: 10px;
-   /* padding: 0 6px ; */
-  border-bottom: 1px solid #f0f0f0
+   padding: 0 6px ;
+  border-bottom: 1px solid #e0dfe8
 }
 .container{
     height: 352px;
     width: 100%;
     /* background: seashell; */
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
 
 }
@@ -125,7 +131,7 @@ export default {
     border-bottom: 1px dashed #999;
     position: absolute;
     height: 1px;
-    top: 50%;left :5%;right: 0;bottom: 0;
+    top: 53%;left :5%;right: 0;bottom: 0;
     /* margin: auto */
     /* overflow: hidden; */
 }
@@ -136,7 +142,7 @@ export default {
     border-right: transparent;
     border-bottom-color: transparent;
     right: 23px;
-    top: 168px;
+    top: 203px;
     z-index: 2;
     cursor: pointer;
     transition: all 0.5s
@@ -148,11 +154,11 @@ export default {
     border-left: transparent;
     border-bottom-color: transparent;
     left: 23px;
-    top: 168px;
+    top: 203px;
     z-index: 2;
     cursor: pointer;transition: all 0.1s
 }
-.sjx1:hover{
+/* .sjx1:hover{
     border: 13px solid #999;
      border-top-color: transparent;
     border-left: transparent;
@@ -165,10 +171,8 @@ export default {
     border-right: transparent;
     border-bottom-color: transparent;
     top: 165px
-}
-.assembly{
-    display: flex
-}
+} */
+
 .fuhezi{
     position: relative;
     width: 110px
@@ -179,6 +183,7 @@ export default {
     /* height: 180px; */
     height: auto;
     z-index: 10;
+    padding-top: 20px;
     max-height: 260px
 }
 /* 鼠标经过事件 */
@@ -186,9 +191,9 @@ export default {
 
     position: absolute;
     bottom:0px;
-    height: 89px !important;
+    /* height: 180px; */
     z-index: 10;
-    /* padding-top: 20px; */
+    padding-top: 20px;
     height: auto;
     max-height: 260px
 
@@ -199,11 +204,11 @@ export default {
 }
 
 
-.fuhezi:nth-child(even){
-    top: -116px
-}
 .fuhezi:nth-child(odd){
-    bottom: -58px
+    top: 36px
+}
+.fuhezi:nth-child(even){
+    bottom: 136px
 }
 .Label{
    /* transition: all 0.5s; */
@@ -279,7 +284,9 @@ export default {
 .assembly{
     width: 1000px;
     position: absolute;
-    transition: all 0.5s
+    transition: all 0.5s;
+    display: flex;
+    top: 21px;
 }
 /* 向上的尖角 */
 .fuhezi:nth-last-child(even) .Arrow{
@@ -351,7 +358,7 @@ export default {
 }
 
 .fuhezi:nth-last-of-type(even) .Label>li:first-child{
-         margin-top: 0px
+    margin-top: 0px
 }
 .fuhezi_left{
     width: 22px;

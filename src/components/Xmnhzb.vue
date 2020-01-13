@@ -57,88 +57,90 @@
                                 :data="table2"
                                 border
                                 :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
-                                style="width: 100%">
+                                style="width: 100%"
+                                :cell-style="cellStyle"
+                                >
                                 <el-table-column prop="stateType" label="分析项" :show-overflow-tooltip="true" align="center" min-width="58px" ></el-table-column>
                                 <el-table-column prop="m1" label="1月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span 
                                         size="mini"
                                         @click="m1(scope.$index, scope.row)">{{scope.row.m1}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m2" label="2月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m2(scope.$index, scope.row)">{{scope.row.m2}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m3" label="3月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m3(scope.$index, scope.row)">{{scope.row.m3}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m4" label="4月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m4(scope.$index, scope.row)">{{scope.row.m4}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m5" label="5月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m5(scope.$index, scope.row)">{{scope.row.m5}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m6" label="6月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m6(scope.$index, scope.row)">{{scope.row.m6}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m7" label="7月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m7(scope.$index, scope.row)">{{scope.row.m7}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m8" label="8月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m8(scope.$index, scope.row)">{{scope.row.m8}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m9" label="9月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m9(scope.$index, scope.row)">{{scope.row.m9}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m10" label="10月" :show-overflow-tooltip="true" align="center" min-width="52px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m10(scope.$index, scope.row)">{{scope.row.m10}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m11" label="11月" :show-overflow-tooltip="true" align="center" min-width="50px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m11(scope.$index, scope.row)">{{scope.row.m11}}</span>
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="m12" label="12月" :show-overflow-tooltip="true" align="center" min-width="52px">
                                     <template slot-scope="scope">
-                                        <span style="cursor: pointer;"
+                                        <span    
                                         size="mini"
                                         @click="m12(scope.$index, scope.row)">{{scope.row.m12}}</span>
                                     </template>
@@ -194,88 +196,89 @@
                             :data="table1"
                             border
                             :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
+                            :cell-style="cellStyle"
                             style="width: 100%">
                             <el-table-column prop="stateType" label="分析项" :show-overflow-tooltip="true" align="center" min-width="58px" ></el-table-column>
                             <el-table-column prop="m1" label="1月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm1(scope.$index, scope.row)">{{scope.row.m1}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m2" label="2月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm2(scope.$index, scope.row)">{{scope.row.m2}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m3" label="3月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm3(scope.$index, scope.row)">{{scope.row.m3}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m4" label="4月" :show-overflow-tooltip="true" align="center" min-width="45px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm4(scope.$index, scope.row)">{{scope.row.m4}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m5" label="5月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm5(scope.$index, scope.row)">{{scope.row.m5}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m6" label="6月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm6(scope.$index, scope.row)">{{scope.row.m6}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m7" label="7月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm7(scope.$index, scope.row)">{{scope.row.m7}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m8" label="8月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm8(scope.$index, scope.row)">{{scope.row.m8}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m9" label="9月" :show-overflow-tooltip="true" align="center" min-width="46px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm9(scope.$index, scope.row)">{{scope.row.m9}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m10" label="10月" :show-overflow-tooltip="true" align="center" min-width="52px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm10(scope.$index, scope.row)">{{scope.row.m10}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m11" label="11月" :show-overflow-tooltip="true" align="center" min-width="50px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm11(scope.$index, scope.row)">{{scope.row.m11}}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="m12" label="12月" :show-overflow-tooltip="true" align="center" min-width="52px">
                                 <template slot-scope="scope">
-                                    <span style="cursor: pointer;"
+                                    <span    
                                     size="mini"
                                     @click="mm12(scope.$index, scope.row)">{{scope.row.m12}}</span>
                                 </template>
@@ -777,7 +780,35 @@ export default {
                     }
                 })
             }          
+        },
+        cellStyle({row, column, rowIndex, columnIndex}){
+            if(rowIndex === 0 && columnIndex === 1){ //指定坐标
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex === 2){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex === 3){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex === 4){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===5){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===6){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===7){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===8){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===9){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===10){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===11){
+                return 'cursor: pointer'
+            }else if(rowIndex === 0 && columnIndex ===12){
+                return 'cursor: pointer'
+            }
         }
+
    }
 }
 </script>
@@ -787,7 +818,8 @@ export default {
 .box{
     background: #eeeeee;
     min-height: 768px;
-    padding-bottom:14px
+    padding-bottom:14px;
+    
 
 }
 .header{
@@ -967,6 +999,9 @@ export default {
 .box_header_right_header>div>h5:hover{
     color: #49a4d9
 }
+.el-table .cell, .el-table th div {
+    padding-right: 0;
+}
 </style>
 
 <style>
@@ -983,4 +1018,6 @@ export default {
 .box_header_right_header .container_left_header .el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
     padding: 4px
 }
+
+
 </style>

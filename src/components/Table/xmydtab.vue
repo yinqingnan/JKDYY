@@ -106,25 +106,25 @@ export default {
         this.monthdefaultdefault=date.getMonth()+1+"月";
         this.yeardefaultdefault=date.getFullYear()+"年";
         this.year=date.getFullYear()
-        // console.log(this.$route.query.xmid)
         this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
-        // console.log(this.$route.query.Month)
-        
+      
+
         if(this.$route.query.Month==""){
-            
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
+                this.number1=0
+                this.number2=0
 
-                      res.data.data.forEach(item=>{
-                this.number1+=item.dosage
-                this.number2+=item.amount
-            })
+                res.data.data.forEach(item=>{
+                    this.number1+=item.dosage
+                    this.number2+=item.amount
+                })
             })
         }else{
             // console.log(this.$route.query.Month)
-            this.month=this.$route.query.Month
-            this.monthdefaultdefault=this.$route.query.Month
+            this.month=this.$route.query.Month 
+            this.monthdefaultdefault=this.$route.query.Month +"月"
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
@@ -160,15 +160,28 @@ export default {
         yearchange(yeardefaultdefault){
             // console.log(yeardefaultdefault.slice(0,4))
             this.year=yeardefaultdefault.slice(0,4)
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.monthdefaultdefault.slice(0,-1)).then((res)=>{
+                        this.tablemsg=res.data.data
+                        this.totalCount=res.data.data.length
+                        this.number1=0
+                        this.number2=0
+                        res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
+            })
+
         }, 
         // 选中的月
         monthchange(monthdefaultdefault){
-            // console.log(monthdefaultdefault.length)
+          
             if(monthdefaultdefault.length==3){
                 this.month=monthdefaultdefault.slice(0,2)
                 this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+                    this.number1=0
+                    this.number2=0
                     
                       res.data.data.forEach(item=>{
                         this.number1+=item.dosage
@@ -181,6 +194,8 @@ export default {
                   this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+                    this.number1=0
+                    this.number2=0
 
                     
                       res.data.data.forEach(item=>{
@@ -199,18 +214,7 @@ export default {
         this.currentPage = currentPage;
         },
         TO(){
-            // this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-            //     // 跳转回上级
-            //     this.$router.push({
-            //         path:'/region',
-            //         query:{
-            //             quid:res.data.data[0].companyId,
-            //             xmid:res.data.data[0].projectId
-            //         }
-            //     })
-            // })
             this.$router.go(-1)
-         
         },
          getSummaries(param) {
         const { columns, data } = param;
@@ -221,7 +225,6 @@ export default {
             return;
           }
           const values = data.map(item => Number(item[column.property]));
-    
                if (column.property == "dosage") {
                 //  console.log(column.property)
                 sums[index] = values.reduce(() => {
@@ -243,16 +246,10 @@ export default {
                 }, 0);
                 } 
         });
-
         return sums;
       },
-      sc(){
-        //   console.log(11111)
-      },
+    
       exportExcel(){
-
-
-      
         this.$confirm('即将下载该表格, 是否继续下载?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',

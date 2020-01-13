@@ -92,7 +92,7 @@
                             </div>
                             <div class="iTxtBox">
                                 <span>收费率</span>
-                                <p>{{num4}}<span class="sml">万元</span></p>
+                                <p>{{num4}}<span class="sml">%</span></p>
                             </div>
                         </li>
                         <li class="iconBook">
@@ -101,7 +101,7 @@
                             </div>
                             <div class="iTxtBox">
                                 <span>目标书得分</span>
-                                <p>{{num5}}<span class="sml">万元</span></p>
+                                <p>{{num5}}<span class="sml"></span></p>
                             </div>
                         </li>
                         <li class="iconBook">
@@ -110,7 +110,7 @@
                             </div>
                             <div class="iTxtBox">
                                 <span>综合得分</span>
-                                <p>{{num6}}<span class="sml">万元</span></p>
+                                <p>{{num6}}<span class="sml"></span></p>
                             </div>
                         </li>
                     </ul>
@@ -411,6 +411,7 @@
     .ltBox{
         position: relative;
         width: 100%;
+        min-height: 350px;
         height: 40%;
         border:1px solid #2e447e;
         border-radius: 8px;
@@ -438,7 +439,7 @@
         right: 0;
     }
     .lbBox{
-        margin-top: 8px;
+        margin-top:6px;
         position: relative;
         width: 100%;
         height: 57%;
@@ -471,10 +472,11 @@
     .rtBox{
         position: relative;
         width: 100%;
+        min-height: 352px;
         height: 40%;
         border:1px solid #2e447e;
         border-radius: 8px;
-        margin-top: 8px;
+        margin-top: 6px;
     }
     .rbBox{
         margin-top: 5px;
@@ -602,6 +604,13 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
+    .echarts{
+        height: 300px;
+    }
+    .echarts1{
+        width: 50%;
+
+    }
 </style>
 
 <style>
@@ -610,6 +619,7 @@
     }
     #homeChart .el-input__inner{
         height: 30px;
+        line-height: 30px;
         background: transparent;
         border:1px solid #09477a;
         outline: none;

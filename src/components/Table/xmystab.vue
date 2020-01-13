@@ -96,31 +96,43 @@ export default {
                 width:"100%",
                 height:''
             },
-          
+            number1:"",
+            number2:""
       
         }
     },
     mounted(){
-        // console.log(this.$route)
-        this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
-        var date=new Date();
+           var date=new Date();
         this.month=date.getMonth()+1;
         this.monthdefaultdefault=date.getMonth()+1+"月";
         this.yeardefaultdefault=date.getFullYear()+"年";
         this.year=date.getFullYear()
+        this.xmid=this.$route.query.xmid    //获取到路由参数 （项目的id）
 
         if(this.$route.query.Month==""){
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
+                this.number1=0
+                this.number2=0
+                res.data.data.forEach(item=>{
+                    this.number1+=item.dosage
+                    this.number2+=item.amount
+                })
             })
         }else{
             // console.log(this.$route.query.Month)
             this.month=this.$route.query.Month
-            this.monthdefaultdefault=this.$route.query.Month
+            this.monthdefaultdefault=this.$route.query.Month +"月"
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
+                this.number1=0
+                this.number2=0
+                 res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
             })
         }
 
@@ -145,8 +157,20 @@ export default {
         },
         // 选中的年
         yearchange(yeardefaultdefault){
-            // console.log(yeardefaultdefault.slice(0,4))
-            this.year=yeardefaultdefault.slice(0,4)
+             this.year=yeardefaultdefault.slice(0,4)
+            // console.log(this.monthdefaultdefault.slice(0,-1))
+            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.monthdefaultdefault.slice(0,-1)).then((res)=>{
+                        this.tablemsg=res.data.data
+                        this.totalCount=res.data.data.length
+                        this.number1=0
+                        this.number2=0
+                        res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
+            })
+
+
         }, 
         // 选中的月
         monthchange(monthdefaultdefault){
@@ -155,6 +179,12 @@ export default {
                 this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+                      this.number1=0
+                        this.number2=0
+                        res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
 
                 })
             }else{
@@ -162,6 +192,7 @@ export default {
                   this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
+                    
                 })
             }    
 
@@ -196,7 +227,7 @@ export default {
         const { columns, data } = param;
         const sums = [];
         columns.forEach((column, index) => {
-          if (index === 1) {
+          if (index === 4) {
             sums[index] = '汇总';
             return;
           }
@@ -211,7 +242,7 @@ export default {
                 return prev;
                 }
             }, 0);
-							sums[index];
+				sums[index];
 
          }
         });
@@ -233,9 +264,6 @@ export default {
                 type: 'success',
                 message: '下载成功!'})
                      this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-            // console.log(res.data.data[0].projectName)       //当前的项目名称
-            // console.log(this.year)                          //当前的年份
-            // console.log(this.month)                         //当前的月份
             let name=res.data.data[0].projectName+this.year+"年"+this.month+"月"+"用水量明细表"
             var wb = XLSX.utils.table_to_book(document.querySelector(".table"));
             var wbout = XLSX.write(wb, {

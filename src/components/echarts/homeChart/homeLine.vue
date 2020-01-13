@@ -179,7 +179,8 @@
 <style scoped>
     #homeLine{
         width: 100%;
-        height: calc(100% - 56px);
+        /* height: calc(100% - 56px); */
+        height: 302px
     }
     #line{
         width: 100%;

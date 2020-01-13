@@ -781,6 +781,8 @@ export default {
     color: #666;
     line-height: 1;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     margin-top: 8px;
     height: 12px
 }

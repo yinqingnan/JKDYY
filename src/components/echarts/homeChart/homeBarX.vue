@@ -118,7 +118,8 @@
 <style scoped>
     #homeBarX{
          width: 100%;
-         height: calc(100% - 56px);;
+         /* height: calc(100% - 56px);; */
+         height: 302px
      }
     #bar{
         width: 100%;
