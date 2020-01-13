@@ -6,38 +6,38 @@
 import VueRouter from 'vue-router';
 // Vue.use(VueRouter)
 //引入路由匹配成功后显示的组件
-import Project from "../view/project.vue"      //公司项目详情
-import Region from "../view/region.vue"      //公司项目详情
-import Y2 from "../view/2.vue"      //上市公司数据
-import Listedcompany from "../view/Listedcompany.vue"       //上市公司子路由 首页
-import Companylist from "../view/Companylist.vue"       //上市公司子路由    公司页面
-import Acquisition  from '../components/Table/Acquisitiondetails.vue'       //收并购信息详情页
+import Project from "@/view/project.vue"      //公司项目详情
+import Region from "@/view/region.vue"      //公司项目详情
+import Y2 from "@/view/2.vue"      //上市公司数据
+import Listedcompany from "@/view/Listedcompany.vue"       //上市公司子路由 首页
+import Companylist from "@/view/Companylist.vue"       //上市公司子路由    公司页面
+import Acquisition  from '@/components/Table/Acquisitiondetails.vue'       //收并购信息详情页
 
-import Zbsjtj from "../view/zbsjtj.vue"     //总部数据统计
-import City from '../view/City.vue'       //城市数据（旧）
-import Indexmap from '../view/indexmap.vue'   //地图页面
-import Regiontable from '../view/regiontable.vue'   //区域项目表格 （在管项目 招标物业费 停车备案情况）
+import Zbsjtj from "@/view/zbsjtj.vue"     //总部数据统计
+import City from '@/view/City.vue'       //城市数据（旧）
+import Indexmap from '@/view/indexmap.vue'   //地图页面
+import Regiontable from '@/view/regiontable.vue'   //区域项目表格 （在管项目 招标物业费 停车备案情况）
 
-import Dyyd from "../components/Table/xmydtab.vue"      //项目当月用电详情
-import Dyys from "../components/Table/xmystab.vue"      //项目当月用水 详情
-import ZSR from "../components/Table/ZSR.vue"       //区域公司总收入详情
-import Xmzhsfl from "../components/Table/xmzhsfl.vue"       //区域公司总收入详情
-import Xmhttz from '../components/Table/xmhttz.vue'         //项目公司合同台账详情表格
-import Xmsbwx from '../components/Table/xmsbwx.vue'         //项目公司设备维修详情表格
-import Zhsjl from "../components/zhsjl/zhsjl.vue"           //综合收缴率主页面
-import Xqhz from "../components/zhsjl/xqhz.vue"                 //子页面 小区汇总表
-import Sfkhz from "../components/zhsjl/sfkhz.vue"               //子页面 收费科汇总表
-import Khzymx from "../components/zhsjl/khzymx.vue"             //子页面   客户资源明细表
-import Qyzhsjl from '../components/Table/qyzhsjl'           //区域公司综合收缴率
-import Xmnhzb from "../components/Xmnhzb"
+import Dyyd from "@/components/Table/xmydtab.vue"      //项目当月用电详情
+import Dyys from "@/components/Table/xmystab.vue"      //项目当月用水 详情
+import ZSR from "@/components/Table/ZSR.vue"       //区域公司总收入详情
+import Xmzhsfl from "@/components/Table/xmzhsfl.vue"       //区域公司总收入详情
+import Xmhttz from '@/components/Table/xmhttz.vue'         //项目公司合同台账详情表格
+import Xmsbwx from '@/components/Table/xmsbwx.vue'         //项目公司设备维修详情表格
+import Zhsjl from "@/components/zhsjl/zhsjl.vue"           //综合收缴率主页面
+import Xqhz from "@/components/zhsjl/xqhz.vue"                 //子页面 小区汇总表
+import Sfkhz from "@/components/zhsjl/sfkhz.vue"               //子页面 收费科汇总表
+import Khzymx from "@/components/zhsjl/khzymx.vue"             //子页面   客户资源明细表
+import Qyzhsjl from '@/components/Table/qyzhsjl'           //区域公司综合收缴率
+import Xmnhzb from "@/components/Xmnhzb"
 
-import Qybsl from "../components/Table/qybsl.vue"
-import Bswjl from "../components/bsl/bsl.vue"      //报事完结率
-import Bshzb from "../components/bsl/bshzb.vue" //报事汇总表
-import Flhzb from "../components/bsl/flhzb.vue" //报事汇总表
+import Qybsl from "@/components/Table/qybsl.vue"
+import Bswjl from "@/components/bsl/bsl.vue"      //报事完结率
+import Bshzb from "@/components/bsl/bshzb.vue" //报事汇总表
+import Flhzb from "@/components/bsl/flhzb.vue" //报事汇总表
 
-import homeChart from "../view/homeChart.vue" //新首页
-import Qygssr from "../components/Table/qygssr.vue"          //区域公司收入（由总部数据收入点击进入）
+import homeChart from "@/view/homeChart.vue" //新首页
+import Qygssr from "@/components/Table/qygssr.vue"          //区域公司收入（由总部数据收入点击进入）
 
 const  router = new VueRouter({
     base: '/',

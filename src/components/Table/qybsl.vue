@@ -55,7 +55,7 @@
         <template slot-scope="scope">
         <span
           size="mini"
-           style="cursor:pointer"
+           style="cursor:pointer;text-decoration: underline;"
           @click="handleEdit(scope.row)">{{ scope.row.projectName }}</span>
        
         </template>

@@ -27,7 +27,6 @@
                         </ul> 
                     <div v-show="show" class="tubiao">
                             <ydlzxt :xmid="xmid" :num="this.num"></ydlzxt>
-                        
                         </div>
                         <div v-show="show1" class="tubiao">
                             <ydlnhgc :xmid="xmid"   :num="this.num"></ydlnhgc>
@@ -40,6 +39,7 @@
                             <div>
                                 <h2 >本月用量构成</h2>
                                 <h5 @click="totable">更多 <span class="iconfont iconpub_right" ></span></h5>
+                                <img src="@/assets/ima/alert.png" alt="" v-if="jbone">
                             </div>
                             
                             <el-table :data="tableData" style="width: 100%"  border    :header-cell-style="{background:'#f5f7fa',color:'#606266'}">
@@ -180,6 +180,7 @@
                         <div>
                             <h2 >本月用量构成</h2>
                             <h5 @click="totable1">更多 <span class="iconfont iconpub_right" ></span></h5>
+                             <img src="@/assets/ima/alert.png" alt="" v-if="jbtwo">
                         </div>
                             <el-table :data="tableData1" style="width: 100%"  border    :header-cell-style="{background:'#f5f7fa',color:'#606266'}">
                             <template v-for="(col ,index) in cols1">
@@ -297,10 +298,10 @@
 
 
 <script>
-import ydlzxt from "../components/echarts/ydlzxt"   //用电量折线图
-import ydlnhgc from "../components/echarts/ydlnhgc"   //用电量能耗构成
-import yslzxt from "../components/echarts/yslzxt"   //用水量折线图
-import yslnhgc from "../components/echarts/yslnhgc"   //用水量能耗构成
+import ydlzxt from "@/components/echarts/ydlzxt"   //用电量折线图
+import ydlnhgc from "@/components/echarts/ydlnhgc"   //用电量能耗构成
+import yslzxt from "@/components/echarts/yslzxt"   //用水量折线图
+import yslnhgc from "@/components/echarts/yslnhgc"   //用水量能耗构成
 
 export default {
     components:{
@@ -328,7 +329,9 @@ export default {
             cols: [],           //用电当月构成title
             tableData: [],       //用电当月构成数据
              cols1: [],           //用水当月构成title
-            tableData1: []       //用水当月构成数据
+            tableData1: [] ,      //用水当月构成数据
+            jbone:"",
+            jbtwo:""
         }
     },
     mounted(){
@@ -452,6 +455,19 @@ export default {
                 this.cols1=arr
                 this.tableData1=arr1
         })
+        this.axios.get("/api/projectWaterrentWar?projectId="+this.xmid).then((res)=>{
+            if(res.data.data[0].WaterrentState==0){
+                this.jbone=false
+            }else{
+                this.jbone=true
+            }
+            if(res.data.data[0].ElectricityState==0){
+                this.jbone=false
+            }else{
+                this.jbone=true
+            }
+        })
+
    },
    methods:{
         getheight() {
@@ -983,7 +999,13 @@ export default {
 }
 .box_header_right_header>div:nth-of-type(1){
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    position: relative;
+}
+.box_header_right_header>div:nth-of-type(1)>img{
+    position: absolute;
+    right: 60px;
+    top: 10px;
 }
 .box_header_right_header>div>h5{
     font-size: 12px;

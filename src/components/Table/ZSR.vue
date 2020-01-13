@@ -49,11 +49,11 @@
           align="center"
         >
            <template slot-scope="scope">
-        <span
-          size="mini"
-           style="cursor:pointer"
-          @click="handleEdit(scope.row)">{{ scope.row.projectName }}</span>
-        </template>
+              <span
+                size="mini"
+                style="cursor:pointer;text-decoration: underline;"
+                @click="handleEdit(scope.row)">{{ scope.row.projectName }}</span>
+            </template>
         </el-table-column>
         <el-table-column prop="target" label="目标值" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column

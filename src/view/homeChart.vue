@@ -143,6 +143,8 @@
             <div class="star"></div>
             <div class="star pink"></div>
             <div class="star blue"></div>
+            <div class="star red"></div>
+            <div class="star yellow"></div>
     </div>
 </template>
 
@@ -433,7 +435,8 @@
         position: relative;
         width: 100%;
         min-height: 350px;
-        height: 40%;
+        /* height: 40%; */
+        height: 360px;
         border:1px solid #2e447e;
         border-radius: 8px;
         margin-top: 8px;
@@ -441,7 +444,7 @@
     .cbBox{
         position: relative;
         width: 100%;
-        height: 303px;
+        height: 310px;
         border:1px solid #2e447e;
         border-radius: 8px;
         margin-top: 1px;
@@ -493,7 +496,8 @@
         position: relative;
         width: 100%;
         min-height: 352px;
-        height: 40%;
+        /* height: 40%; */
+        height: 355px;
         border:1px solid #2e447e;
         border-radius: 8px;
         margin-top: 6px;
@@ -628,6 +632,8 @@
     .echarts1{
         width: 50%;
     }
+
+    /* 流星效果start */
     .star {
     display: block;
     width: 5px;
@@ -642,7 +648,7 @@
     -webkit-animation:star-ani 5s linear infinite;
     box-shadow: 0 0 5px 5px rgba(255, 255, 255, .3);
     opacity: 0;
-    z-index: 2;
+    z-index: 0;
 }
 .star:after {
     content: '';
@@ -679,10 +685,39 @@
     -moz-animation-delay: 7s;
 }
 .blue:after {
-     border-color: transparent transparent transparent fff;
+     border-color: transparent transparent transparent #fff;
     -webkit-animation-delay: 7s;
     -moz-animation-delay: 7s;
     animation-delay: 7s;
+}
+.red {
+    top: 180px;
+    left: 800px;
+    background: fff;
+    animation-delay: 9s;
+    -webkit-animation-delay: 9s;
+    -moz-animation-delay: 9s;
+}
+.red:after {
+     border-color: transparent transparent transparent fff;
+    -webkit-animation-delay: 9s;
+    -moz-animation-delay: 9s;
+    animation-delay: 9s;
+}
+
+.yellow {
+    top:200px;
+    left: 1400px;
+    background: fff;
+    animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    -moz-animation-delay: 5s;
+}
+.yellow:after {
+     border-color: transparent transparent transparent fff;
+    -webkit-animation-delay: 5s;
+    -moz-animation-delay: 5s;
+    animation-delay: 5s;
 }
   @keyframes star-ani {
     0% {
@@ -710,6 +745,8 @@
         transform: scale(1.2) translate3d(-400px, 380px, 0);
     }
 }
+    /* 流星效果end */
+
 
 
 

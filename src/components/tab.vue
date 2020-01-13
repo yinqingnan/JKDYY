@@ -100,7 +100,6 @@ export default {
     watch:{
         xmid:{
             handler(newval){
-                // console.log(newval)
                 // 获取重要提醒
                 this.id=newval
                 this.axios.get("/api/importantReminder02?topcount=10&projectId="+newval).then((res)=>{
@@ -109,9 +108,7 @@ export default {
                 })
                 // 获取系统公告
                 this.axios.get("/api/projectNotice?topcount=2").then((res)=>{
-                    // console.log(res.data.data)
                      this.list2=res.data.data
-                // console.log(this.tabContents[1])
                 })
             }
         },

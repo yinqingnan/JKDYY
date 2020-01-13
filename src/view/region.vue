@@ -1363,6 +1363,9 @@ export default {
 .Title > ul:nth-of-type(2) > li > h2 > span {
   font-size: 12px;
 }
+.Chart{
+  margin-top: 32px
+}
 .Chart > div:nth-of-type(1) {
   display: flex;
   justify-content: space-between;
