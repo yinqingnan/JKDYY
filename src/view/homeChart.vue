@@ -1,5 +1,5 @@
 <template>
-    <div id="homeChart">
+    <div id="homeChart" :class="{'h100': isHeight == true }">
         <div class="header">
             <P>金科服务-项目体验表</P>
         </div>
@@ -11,16 +11,18 @@
                     <homePie class="echarts" :pieData="pieData"></homePie>
                 </div>
                 <div class="lbBox">
-                    <header>单位能效</header>
+                    <div class="tHeader">单位能效</div>
                     <div class="colorBox">
-                        <div class="sCloor" v-for="(item,index) in colorList" :key="index">
+                        <div class="sCloor" :class="{'mr15': index > 1 }" v-for="(item,index) in colorList" :key="index">
                             <span class="cBox" :style="{background:item.color}"></span>
                             <p class="txt">{{item.txt}}</p>
                         </div>
                     </div>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
-                    <homeBar class="echarts1" v-for="(item,index) in list" :listData="item" :key="index"></homeBar>
+                    <div class="lbWrap">
+                        <homeBar class="echarts1" v-for="(item,index) in list" :listData="item" :key="index"></homeBar>
+                    </div>
                 </div>
             </div>
             <div class="centerBox">
@@ -121,20 +123,20 @@
             </div>
             <div class="rightBox">
                 <div class="rtBox">
-                    <header>项目管理</header>
+                    <div class="tHeader">项目管理</div>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
                     <homeLine class="echarts" :lineData="lineData"></homeLine>
                 </div>
                 <div class="rtBox">
-                    <header>项目成本分析</header>
+                    <div class="tHeader">项目成本分析</div>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
                     <homeBarX class="echarts" :barXData="barXData"></homeBarX>
                 </div>
                 <div class="rbBox">
-                    <header>说明内容</header>
-                    <p class="text">{{text}}</p>
+                    <div class="tHeader">说明内容</div>
+                    <p class="text" :title="text">{{text}}</p>
                 </div>
             </div>
         </div>
@@ -154,7 +156,8 @@
         name: "homeChart",
         data() {
           return {
-              cHeight:document.documentElement.clientHeight,
+              cHeight:1800,
+              isHeight:true,
               list:[],
               colorList:[{
                   color:'#00a0e9',
@@ -193,6 +196,10 @@
         created() {
             // window.console.log(this.$route.query.projectId)
             this.getRegion();
+            this.cHeight = document.documentElement.clientWidth;
+            if(this.cHeight <=1366 ) {
+                this.isHeight = false;
+            }
         },
         methods:{
             //获取区域
@@ -383,9 +390,11 @@
         display: flex;
         flex-direction: column;
         min-width: 1366px;
-        height: 100%;
         background: url("../assets/ima/Nbj.png");
         background-size: cover;
+    }
+    #homeChart.h100{
+        height: 100%;
     }
     #homeChart .header{
         width: 100%;
@@ -407,6 +416,15 @@
         flex-grow: 1;
         width: 100%;
     }
+    .mr15{
+        margin-right: 15px;
+    }
+    .lbWrap{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height:385px;
+    }
     .leftBox{
         width: 29%;
         height: 100%;
@@ -423,34 +441,33 @@
     .cbBox{
         position: relative;
         width: 100%;
-        height: 33%;
+        height: 303px;
         border:1px solid #2e447e;
         border-radius: 8px;
         margin-top: 1px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        min-height:300px;
     }
     .iconP{
         height: 100%;
         width: 1px;
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
     }
     .iconP.iconR{
-        right: 0;
+        left: 0;
     }
     .lbBox{
         margin-top:6px;
         position: relative;
         width: 100%;
-        height: 57%;
+        height: 487px;
         border:1px solid #2e447e;
         border-radius: 8px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        min-height: 487px;
     }
     .centerBox{
         width: 39%;
@@ -491,8 +508,8 @@
         display: flex;
         justify-content: flex-end;
         width: 100%;
-        margin-top: -37px;
         margin-right: 15px;
+        height: 68px;
     }
     .sCloor{
         width: 60px;
@@ -514,7 +531,7 @@
     }
 
     .text{
-        height: 93px;
+        height: 86px;
         font-size: 12px;
         color:#c5d6f8;
         padding: 0 15px;
@@ -586,6 +603,7 @@
         flex-wrap: wrap;
         justify-content: space-around;
         margin:30px 0 20px;
+        align-items: center;
     }
     .tip{
         font-size: 16px;
@@ -595,7 +613,7 @@
     }
 
 
-    header{
+    .tHeader{
         width: 100%;
         height: 46px;
         line-height: 46px;
@@ -607,12 +625,8 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
-    .echarts{
-        height: 300px;
-    }
     .echarts1{
         width: 50%;
-
     }
     .star {
     display: block;
