@@ -6,9 +6,9 @@
             <div>
                 <span></span>
                 <div>
-                    <ul v-for="(item,index) in  list" :key="index"  >
+                    <ul v-for="(item,index) in  list" :key="index"  @mouseover="itemmouseenter(index)" >
                         <li class="ulul" >
-                            <div v-show="isshow" class="yc" ref="yc" :title="item.recordname">
+                            <div v-show="isshow" ref="yc" :title="item.recordname"  :class="{yc:index == num}">
                                 <span></span>
                                 <h1>{{item.recordname}}</h1>
                                 <h3>{{item.recordTime.split(" ")[0]}}</h3>
@@ -25,7 +25,8 @@ export default {
     data(){
         return {
             list:[],
-            isshow:true
+            isshow:true,
+            num:null
         }
     },
     props:["xmid"],
@@ -33,6 +34,7 @@ export default {
         xmid:{
             handler(newval){
                 this.axios.get("/api/projectEvent01?projectid="+newval).then((res)=>{
+                    // console.log(res.data.data)
                     this.list=res.data.data
                 })
             }
@@ -41,8 +43,11 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
     },
     methods:{
- 
+        itemmouseenter(index){
+            this.num=index
+        }
     }
+
 }
 </script>
 
@@ -133,20 +138,22 @@ export default {
     border-radius: 5px;
     background: #c9e4f0;
     opacity: 0;
-    z-index: -1
+    /* z-index: -1 */
     
 }
-.ulul:hover .yc {
+/* .ulul:hover .yc {
     opacity: 1;
     z-index: 1;
-    
+} */
+.yc{
+    opacity: 1 !important;
+    /* z-index: 1 !important; */
 }
 .TimeAxis>div>div>ul>li{
     transition: all 0.5s
 }
 .TimeAxis>div>div>ul>li:hover{
     background: #688fe4
-
 }
 .yc{
     transition: all 1s

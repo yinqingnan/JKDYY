@@ -19,10 +19,15 @@
                         <h2>{{item.remindTime.split(" ")[0]}}</h2>
                     </li>
                 </ul>
-                <ul v-if="isshow1">
+                <ul v-if="isshow1" style="padding:20px 0 " class="tabul">
                     <li v-for="(item,index) in list2" :key="index" class="list">
                         <h2 :title="item.notice">{{item.notice}}</h2>
                         <h2>{{item.noticeDate.split(" ")[0]}}</h2>
+                    </li>
+                </ul>
+                <ul v-if="isshow2" style="padding:20px 0 " class="tabul" > 
+                    <li v-for="(item,index) in list3" :key="index" class="list" @click="Ledger(index)">
+                        {{item}}
                     </li>
                 </ul>
             </div>  
@@ -40,13 +45,15 @@
 export default {
        data() {
            return {
-                tabs: ["重要提醒", "系统公告"],
+                tabs: ["重要提醒", "系统公告","台账报表"],
                 list1:[],
                 list2:[],
                 num: 0,
                 isshow:true,
                 isshow1:false,
-                id:""
+                isshow2:false,
+                id:"",
+                list3:["合同台账","设备维修台账"]
            }
         
     },
@@ -57,9 +64,15 @@ export default {
             if(index==0){
                 this.isshow=true
                 this.isshow1=false
-            }else{
-                 this.isshow=false
+                this.isshow2=false
+            }else if(index==1){
+                this.isshow=false
                 this.isshow1=true
+                this.isshow2=false
+            }else{
+                this.isshow=false
+                this.isshow1=false
+                this.isshow2=true
             }
         },
         liebiao(item){
@@ -71,6 +84,15 @@ export default {
             }else if(item=="设施设备"){
                 // console.log(2)
                  this.$router.push('/xmsbwx?xmid='+this.id)
+            }
+        },
+        Ledger(index){
+            switch(index){
+                case 0:
+                    this.$router.push('/xmhttz?xmid='+this.id)      
+                    break;  
+                case 1:
+                    this.$router.push('/xmsbwx?xmid='+this.id)
 
             }
         }
@@ -82,7 +104,6 @@ export default {
                 // 获取重要提醒
                 this.id=newval
                 this.axios.get("/api/importantReminder02?topcount=10&projectId="+newval).then((res)=>{
-                    // console.log(res.data.data)
                     this.list1=res.data.data
 
                 })
@@ -91,8 +112,6 @@ export default {
                     // console.log(res.data.data)
                      this.list2=res.data.data
                 // console.log(this.tabContents[1])
-
-
                 })
             }
         },
@@ -130,21 +149,32 @@ export default {
 /* 谷歌浏览器溢出滚动 */
 .isScroll::-webkit-scrollbar {display:none}
 
-
+.tabul{
+     overflow-y: auto;
+    height: 273px;
+    /* margin-top: 20px; */
+    /*  当IE下溢出，仍然可以滚动*/
+    -ms-overflow-style:none;
+    /*火狐下隐藏滚动条*/
+    overflow:-moz-scrollbars-none;
+    scrollbar-width: none
+}
+.tabul::-webkit-scrollbar {display:none}
 .title>li{
     line-height: 1;
     font-size: 16px;
     color: #333;
     margin-top:22px ;
     cursor: pointer;
+    margin-left: 10px
 }
-.title>li:nth-of-type(1){
+/* .title>li:nth-of-type(1){
     margin-left: 20px
 }
 .title>li:nth-of-type(2){
     margin-left: 36px
 
-}
+} */
 .active{
     color: #49a4d9 !important ;
     border-bottom:2px solid #49a4d9
@@ -171,7 +201,7 @@ export default {
 .list{
     font-size: 14px; 
     max-width: 280px;
-    line-height: 34px;
+    line-height: 1;
     height: 34px;
     white-space: nowrap;
     display: -webkit-box;
@@ -183,6 +213,7 @@ export default {
     margin: 0 20px;
     cursor: pointer;
     overflow: hidden;
+    text-decoration: underline
     /* margin-top: 20px */
  
 }
