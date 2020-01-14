@@ -19,7 +19,7 @@
                 <div class="Title">
                     <ul>
                         <li>
-                            <img src="../assets/ima/home_node.png" alt="">
+                            <img src="@/assets/ima/home_node.png" alt="">
                         </li>
                         <li>
                             <h1>{{list1[0]}}</h1> 
@@ -85,7 +85,7 @@
                         <!-- 第二个 -->
                          <div>
                             <!-- <h1>总利润</h1>   -->
-                            <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
+                            <img src="@/assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
                         </div>
                         <!-- 第三个 -->
@@ -149,7 +149,7 @@
                                 <h1>外拓规模信息</h1>
                                 <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                             </div>
-                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
+                             <img src="@/assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
                         </div>
                         <div>
@@ -157,7 +157,7 @@
                                 <h1>人力资源信息</h1>
                                 <!-- <h2>更多 <span class="iconfont iconpub_right" ></span></h2> -->
                             </div>
-                             <img src="../assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
+                             <img src="@/assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
                             <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">即将上线</h3>
                         </div>
                     </div>
@@ -213,15 +213,15 @@
 
 
 // 引入折线图
-import Qualityservice from  "../components/echarts/Qualityservice"
-import Qualityservice2 from "../components/echarts/Qualityservice2"
-import Qualityservice3 from "../components/echarts/Qualityservice3"
+import Qualityservice from  "@/components/echarts/Qualityservice"
+import Qualityservice2 from "@/components/echarts/Qualityservice2"
+import Qualityservice3 from "@/components/echarts/Qualityservice3"
 // 引入总收入柱状图
-import qugszsr1 from "../components/echarts/qugszsr1"
-import qugszsr2 from "../components/echarts/qugszsr2"
+import qugszsr1 from "@/components/echarts/qugszsr1"
+import qugszsr2 from "@/components/echarts/qugszsr2"
 // 引入综合收费率图表
-import qygssfl1 from "../components/echarts/qygssfl1"
-import qygssfl2 from "../components/echarts/qygssfl2"
+import qygssfl1 from "@/components/echarts/qygssfl1"
+import qygssfl2 from "@/components/echarts/qygssfl2"
 export default {
     components:{
         Qualityservice,Qualityservice2,Qualityservice3,qugszsr2,qugszsr1,qygssfl1,qygssfl2

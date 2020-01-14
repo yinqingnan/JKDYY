@@ -28,8 +28,8 @@ import Zhsjl from "@/components/zhsjl/zhsjl.vue"           //综合收缴率主�
 import Xqhz from "@/components/zhsjl/xqhz.vue"                 //子页面 小区汇总表
 import Sfkhz from "@/components/zhsjl/sfkhz.vue"               //子页面 收费科汇总表
 import Khzymx from "@/components/zhsjl/khzymx.vue"             //子页面   客户资源明细表
-import Qyzhsjl from '@/components/Table/qyzhsjl'           //区域公司综合收缴率
-import Xmnhzb from "@/components/Xmnhzb"
+import Qyzhsjl from '@/components/Table/qyzhsjl.vue'           //区域公司综合收缴率
+import Xmnhzb from "@/components/Xmnhzb.vue"
 
 import Qybsl from "@/components/Table/qybsl.vue"
 import Bswjl from "@/components/bsl/bsl.vue"      //报事完结率
@@ -38,6 +38,10 @@ import Flhzb from "@/components/bsl/flhzb.vue" //报事汇总表
 
 import homeChart from "@/view/homeChart.vue" //新首页
 import Qygssr from "@/components/Table/qygssr.vue"          //区域公司收入（由总部数据收入点击进入）
+import Timeaxis from "@/components/Table/Timeaxis.vue"      //项目重大节点表格
+import error from "@/view/error.vue"
+
+
 
 const  router = new VueRouter({
     base: '/',
@@ -85,7 +89,12 @@ const  router = new VueRouter({
         {path:"/homeChart",name:"homeChart",component:homeChart,meta: {
             title: '金科服务项目体检表'
         }},
-        {path:"/qygssr",name:"qygssr",component:Qygssr}
+        {path:"/qygssr",name:"qygssr",component:Qygssr},            //区域公司一览表
+        {path:"/timeaxis",name:"timeaxis",component:Timeaxis},      //项目重大节点表格
+        // {path:"/404",component:error}
+        
+        {path: "/404",name: "notFound",component: error}, 
+        {path: "*",redirect: "/404"}
     ]
 })
 

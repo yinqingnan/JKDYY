@@ -46,7 +46,7 @@
 
 
 <script>
-import Chinamap from '../components/echarts/chinamap'
+import Chinamap from '@/components/echarts/chinamap'
 
 
 export default {

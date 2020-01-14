@@ -63,7 +63,7 @@
 <script>
 // 引入axios
 import axios from 'axios'
-// import CS from '../components/cs'
+// import CS from '@/components/cs'
 // 管理模块组件
 import GLGM from '@/components/echarts/GLGM'
 //总收入/净利润组件
@@ -216,10 +216,10 @@ export default {
     },
     computed:{
         defaultlogo(){
-            return 'this.src="' + require ('../assets/ima/defaultlogo.png')+' " '
+            return 'this.src="' + require ('@/assets/ima/defaultlogo.png')+' " '
         },
         defaultmap(){
-            return 'this.src="' + require ('../assets/ima/defaultmap.png')+' " '
+            return 'this.src="' + require ('@/assets/ima/defaultmap.png')+' " '
         }
     }
  

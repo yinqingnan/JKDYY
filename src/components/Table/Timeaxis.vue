@@ -1,13 +1,13 @@
 
 <template>
-  <!-- 收入一览表页面 -->
+  <!-- 项目生命周期记录 -->
   <div>
-    <div class="box" id="srylb">
+    <div class="box" id="xmsmzq">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
           <i class="el-icon-back"></i>返回
         </button>
-        <h3 style="margin:0 auto">区域公司一览表</h3>
+        <h3 style="margin:0 auto">{{projectName}}项目周期记录</h3>
       </div>
       <!-- 显示表格 -->
       <el-table
@@ -32,32 +32,37 @@
           min-width="90px"
           :show-overflow-tooltip="true"
           align="center"
-        >
-          <template slot-scope="scope">
-            <span
-              size="mini"
-              style="cursor:pointer;text-decoration: underline"
-              @click="handleEdit(scope.row)"
-            >{{ scope.row.companyName }}</span>
-          </template>
-        </el-table-column>
+        ></el-table-column>
         <el-table-column
-          prop="incomAmount"
-          label="收入金额"
+          prop="companyName"
+          label="项目名称"
+          min-width="90px"
+          :show-overflow-tooltip="true"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="recordTime"
+          label="时间"
           :show-overflow-tooltip="true"
           align="center"
           min-width="90"
-        ></el-table-column>
+        >
+            <template slot-scope="scope">
+               <span>
+                   {{ scope.row.recordTime.split(" ")[0]}}
+               </span>
+            </template>
+        </el-table-column>
         <el-table-column
-          prop="tubeArea"
-          label="在管面积"
+          prop="recordname"
+          label="重大事项"
           :show-overflow-tooltip="true"
           align="center"
           min-width="90px"
         ></el-table-column>
         <el-table-column
           prop="nodeRate"
-          label="节点达成率"
+          label="备注"
           :show-overflow-tooltip="true"
           align="center"
           min-width="90px"
@@ -101,14 +106,28 @@ export default {
       style: {
         width: "100%",
         height: ""
-      }
+      },
+      companyName:""
     };
   },
   mounted() {
     // console.log(this.$route.query.xmid)
-    this.axios.get("/api/projectCompanyList").then(res => {
-      this.tablemsg = res.data.data;
+    this.xmid=this.$route.query.xmid
+    this.axios.get("/api/projectEvent01?projectid="+this.xmid).then(res => {
+             this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((a)=>{
+                 this.companyName=a.data.data[0].companyName
+                this.projectName=a.data.data[0].projectName
+                let array=[]
+                let obj=res.data.data
+                obj.map((item)=>{
+                    array.push(
+                        Object.assign({},item,{companyName:this.companyName},{projectName:this.projectName})
+                    )
+                })
+                 this.tablemsg =array
+            })
     });
+  
     this.getheight();
   },
   methods: {
@@ -210,7 +229,7 @@ export default {
 .is-scrolling-right:-webkit-scrollbar {
   display: none;
 }
-#srylb .has-gutter > tr > th {
+#xmsmzq .has-gutter > tr > th {
   padding: 0 !important;
 }
 </style>

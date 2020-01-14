@@ -40,6 +40,12 @@ Vue.prototype.$echarts = echarts;
 // 注入vuex
 import store from './store'
 
+
+// 引入星空特效
+import VueParticles from 'vue-particles'  
+Vue.use(VueParticles) 
+
+
 // 引入axios
 import axios from 'axios'
 import VueAxios  from 'vue-axios'

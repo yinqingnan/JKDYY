@@ -128,7 +128,7 @@
         </div>
         <div class="top_right bottom_right">
             <div>
-                <img src="../assets/ima/development.png" alt="">
+                <img src="@/assets/ima/development.png" alt="">
                 <h1>即将上线</h1>
                 <!-- <pzfwzb></pzfwzb> -->
             </div>

@@ -97,17 +97,17 @@
 
 
 // 行业数据资料
-import industrydata from "../components/industrydata";
+import industrydata from "@/components/industrydata";
 // // 引入vuex的数据
 // import { mapState, mapMutations } from "vuex";
 // 引入首页柱状图
-import indexZZT from "../components/echarts/indexZZT";
+import indexZZT from "@/components/echarts/indexZZT";
 //引入首页折线图1
-import indexZXT1 from "../components/echarts/indexZXT1";
+import indexZXT1 from "@/components/echarts/indexZXT1";
 // 引入首页折线图2
-import indexZXT2 from '../components/echarts/indexZXT2'
+import indexZXT2 from '@/components/echarts/indexZXT2'
 //引入上市时间图
-import Timetomarket from "../components/Timetomarket"
+import Timetomarket from "@/components/Timetomarket"
 
 export default {
   components: {

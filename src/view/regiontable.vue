@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import Table1 from "../components/Table/table1"
-import Table2 from "../components/Table/table2"
-import Table3 from "../components/Table/table3"
+import Table1 from "@/components/Table/table1"
+import Table2 from "@/components/Table/table2"
+import Table3 from "@/components/Table/table3"
      export default {
          components:{
              Table1,Table2,Table3

@@ -4,7 +4,7 @@
         <div class="TimeAxis">
             <div>
                 <h1>项目生命周期全纪录点</h1>
-                 <h2>更多
+                 <h2 @click="toTimeaxis">更多
                   <span class="iconfont iconpub_right"></span>
                 </h2>
             </div>
@@ -40,13 +40,16 @@ export default {
         return {
             list:[],
             isshow:true,
-            num:null
+            num:null,
+            id:""
         }
     },
     props:["xmid"],
     watch:{
         xmid:{
             handler(newval){
+                // console.log(newval)
+                this.id=newval
                 this.axios.get("/api/projectEvent01?projectid="+newval).then((res)=>{
                     this.list=res.data.data
                 })
@@ -58,9 +61,17 @@ export default {
     methods:{
         itemmouseenter(index){
             this.num=index
+        },
+        toTimeaxis(){
+            // console.log(this.id)
+            this.$router.push({
+                path:"/timeaxis",
+                query:{
+                    xmid:this.id
+                }
+            })
         }
     }
-
 }
 </script>
 
@@ -99,6 +110,7 @@ export default {
     color: #49a4d9;
     cursor: pointer;
     margin-top: 16px;
+
 }
 .TimeAxis>div:nth-of-type(1)>h2>span{
     font-size: 14px;

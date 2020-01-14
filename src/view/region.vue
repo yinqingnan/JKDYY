@@ -40,7 +40,7 @@
         <div class="Title">
           <ul>
             <li>
-              <img src="../assets/ima/home_node.png" alt />
+              <img src="@/assets/ima/home_node.png" alt />
             </li>
             <li>
               <h1>{{list1[0]}}</h1>
@@ -293,9 +293,9 @@ import xmbshxzzt from "@/components/echarts/xmbshxzzt";
 //项目报事完结率竖向柱状图
 import xmbssxzzt from "@/components/echarts/xmbssxzzt";
 // 项目综合收费率横向柱状图
-import xmzhsflhxzzt from "../components/echarts/xmzhsflhxzzt";
+import xmzhsflhxzzt from "@/components/echarts/xmzhsflhxzzt";
 //项目综合收费率竖向柱状图
-import xmzhsflsxzzt from "../components/echarts/xmzhsflsxzzt";
+import xmzhsflsxzzt from "@/components/echarts/xmzhsflsxzzt";
 // 引入雷达图
 import radar from "@/components/echarts/radar";
 // 引入现场品质竖向柱状图
