@@ -2,7 +2,6 @@
 <template>
 
   <div>
-
     <div class="box" id="sbwx">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
@@ -11,11 +10,13 @@
 
         <h3 style="margin:0 auto">{{projectName}}设施设备台账</h3>
  
-         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;margin-right:80px" 
+         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;"  :class="isShow===true ? 'info':'success'"
             placeholder="输入设备名称查询">
         </el-input>
         <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button>
         <h2 @click="exportExcel" class="daochu">导出</h2>
+        <h2 @click="Backstage" class="Backstage" v-if="isShow">后台管理</h2>
+
       </div>
       <!-- 显示表格 -->
       <el-table
@@ -116,7 +117,9 @@ export default {
         height: ""
       },
         filterTableDataEnd:[],      //过滤后的数据
-        flag:false                  //
+        flag:false ,                 //
+        isShow:"",
+        url:this.GLOBAL.Url
     
     };
   },
@@ -135,7 +138,15 @@ export default {
                 this.tablemsgmsg=res.data.data
             })
       });
-   
+       this.axios.get("/api/userToProject?staffId=10000&projectId="+this.xmid).then((res)=>{
+      // console.log(res.data.data[0].state)
+      if(res.data.data[0].state==0){
+        this.isShow=false
+      }else{
+        this.isShow=true
+
+      }
+    })
  
 
     this.getheight();
@@ -165,6 +176,9 @@ export default {
                     }
                 })
             })
+    },
+    Backstage(){
+          window.location.href = (this.url+"jkData/data/daq/projectContract/index")
     },
 
 
@@ -308,7 +322,7 @@ export default {
 .daochu{
     border: 1px solid #4ac48b;
     height: 26px !important;
-    width: 50px !important;
+    width: 55px !important;
     line-height: 26px !important;
     margin-top: 19px;
     padding: 0 5px;
@@ -322,10 +336,7 @@ export default {
     cursor: pointer;
     font-size: 12px;
 }
-.daochu:hover{
- border: 1px solid #3c8dbc;
-    box-shadow: none;
-}
+
 .fhsj{
     border: 1px solid #4ac48b !important;
     background: #4ac48b !important;
@@ -335,6 +346,30 @@ export default {
 .box >>> .el-table__header-wrapper{
   height: 60px !important;
   line-height: 60px !important;
+}
+.success{
+  margin-right:80px;
+}
+.info{
+  margin-right:180px;
+}
+.Backstage{
+    border: 1px solid #409eff;
+    height: 26px !important;
+    width: 55px !important;
+    line-height: 26px !important;
+    margin-top: 8px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background: #409eff;
+    color: #fff !important;
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    right: 92px;
+    font-size: 14px;
+    cursor: pointer;
+    font-size: 12px;
 }
 </style>
 

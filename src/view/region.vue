@@ -170,7 +170,7 @@
               <div class="yq">
                 <ul v-for="(item,index) in xcpzmsg" :key="index">
                   <li style="width:30%">{{item.subjects}}</li>
-                  <li style="width:30%">{{item.newCount.toFixed(2)}}%</li>
+                  <li style="width:30%">{{item.newCount.toFixed(2)}}</li>
                   <li style="width:30%">
                     <span :class="item.state==1? 'Green':'Red'">
                       <i :class="item.state==1? 'Greensj':'Redsj'"></i>

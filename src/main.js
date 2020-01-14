@@ -38,13 +38,16 @@ import echarts from "echarts"
 Vue.prototype.$echarts = echarts;
 
 // 注入vuex
-import store from './store'
+import store from '@/store'
 
 
 // 引入星空特效
 import VueParticles from 'vue-particles'  
 Vue.use(VueParticles) 
 
+// 引入全局变量
+import global_ from "@/api/Global.vue"
+Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
 
 // 引入axios
 import axios from 'axios'

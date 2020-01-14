@@ -191,10 +191,8 @@ export default {
 .Today>b{
     position: relative;
 }
-.Today>b>img{
-    /* display: block */
-}
 .Today>b>span{
+    display: inline-block;
     width: 32px;
     position: absolute;
     bottom: -13px;
