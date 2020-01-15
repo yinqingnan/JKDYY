@@ -389,15 +389,16 @@ export default {
      window.open(href,"_blank")
   },
     selectchange(value) {
-      // console.log(value)
+      console.log(value)
       //区域公司级下拉菜单选中监听
       this.value = value;
       this.axios.get("api/projectBycId?companyId=" + value).then(res => {
         // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
+        console.log(res.data.data)
         this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
         this.value1 = res.data.data[0].projectName;
        this.xmid=res.data.data[0].projectId     //切换后使用新id来进行数据的切换
-        // 获取项目详情数据（根据路由携带的项目id查询数据）
+     
         this.axios
           .get("api/projectInfoById?projectId=" + this.xmid)
           .then(res => {
@@ -464,6 +465,7 @@ export default {
         this.axios
           .get("/api/projectMNewPYear?projectId=" + this.xmid)
           .then(res => {
+            // console.log(res.data.data)
             this.bssxzzt=[]
             // console.log(res.data.data[0])
             // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
@@ -521,36 +523,35 @@ export default {
           this.zhsflsxzzt=[]
           if (this.date >= 7) {
             this.zhsflsxzzt.push(
-              res.data.data[0].Rate7.toFixed(1),
-              res.data.data[0].Rate8.toFixed(1),
-              res.data.data[0].Rate9.toFixed(1),
-              res.data.data[0].Rate10.toFixed(1),
-              res.data.data[0].Rate11.toFixed(1),
-              res.data.data[0].Rate12.toFixed(1)
+              res.data.data[0].Rate7.toFixed(2),
+              res.data.data[0].Rate8.toFixed(2),
+              res.data.data[0].Rate9.toFixed(2),
+              res.data.data[0].Rate10.toFixed(2),
+              res.data.data[0].Rate11.toFixed(2),
+              res.data.data[0].Rate12.toFixed(2)
             );
    
             this.xsyf = 1;
           } else {
             this.zhsflsxzzt.push(
-              res.data.data[0].Rate1.toFixed(1),
-              res.data.data[0].Rate2.toFixed(1),
-              res.data.data[0].Rate3.toFixed(1),
-              res.data.data[0].Rate4.toFixed(1),
-              res.data.data[0].Rate5.toFixed(1),
-              res.data.data[0].Rate6.toFixed(1)
+              res.data.data[0].Rate1.toFixed(2),
+              res.data.data[0].Rate2.toFixed(2),
+              res.data.data[0].Rate3.toFixed(2),
+              res.data.data[0].Rate4.toFixed(2),
+              res.data.data[0].Rate5.toFixed(2),
+              res.data.data[0].Rate6.toFixed(2)
             );
             this.xsyf = 0;
           }
         });
         // 获取综合收费率  横向柱状图数据
-        this.axios.get("/api/companyRateMaxMinVm").then(res => {
-          // console.log(res.data.data)
-          let arr = res.data.data;
-          this.zhsflhxzzt = [];
-          arr.forEach(element => {
-            this.zhsflhxzzt.push(element.rate.toFixed(2));
-          });
-        });
+          this.axios.get("/api/projectRateAvg?projectId="+this.xmid).then((res)=>{
+              let arr = res.data.data;
+              this.zhsflhxzzt = [];
+              arr.forEach(element => {
+                this.zhsflhxzzt.push(element.rate.toFixed(2));
+              });
+        })
 
         // 获取综合收费率 title
         this.axios
@@ -580,22 +581,22 @@ export default {
           this.xcpzsxzzt = [];
           if (this.date >= 7) {
             this.xcpzsxzzt.push(
-              res.data.data[0].m7.toFixed(1),
-              res.data.data[0].m8.toFixed(1),
-              res.data.data[0].m9.toFixed(1),
-              res.data.data[0].m10.toFixed(1),
-              res.data.data[0].m11.toFixed(1),
-              res.data.data[0].m12.toFixed(1)
+              res.data.data[0].m7.toFixed(2),
+              res.data.data[0].m8.toFixed(2),
+              res.data.data[0].m9.toFixed(2),
+              res.data.data[0].m10.toFixed(2),
+              res.data.data[0].m11.toFixed(2),
+              res.data.data[0].m12.toFixed(2)
             );
             this.xsyf = 1;
           } else {
             this.xcpzsxzzt.push(
-              res.data.data[0].m1.toFixed(1),
-              res.data.data[0].m2.toFixed(1),
-              res.data.data[0].m3.toFixed(1),
-              res.data.data[0].m4.toFixed(1),
-              res.data.data[0].m5.toFixed(1),
-              res.data.data[0].m6.toFixed(1)
+              res.data.data[0].m1.toFixed(2),
+              res.data.data[0].m2.toFixed(2),
+              res.data.data[0].m3.toFixed(2),
+              res.data.data[0].m4.toFixed(2),
+              res.data.data[0].m5.toFixed(2),
+              res.data.data[0].m6.toFixed(2)
             );
             this.xsyf = 0;
           }
@@ -748,37 +749,36 @@ export default {
 
         if (this.date >= 7) {
           this.zhsflsxzzt.push(
-            res.data.data[0].Rate7.toFixed(1),
-            res.data.data[0].Rate8.toFixed(1),
-            res.data.data[0].Rate9.toFixed(1),
-            res.data.data[0].Rate10.toFixed(1),
-            res.data.data[0].Rate11.toFixed(1),
-            res.data.data[0].Rate12.toFixed(1)
+            res.data.data[0].Rate7.toFixed(2),
+            res.data.data[0].Rate8.toFixed(2),
+            res.data.data[0].Rate9.toFixed(2),
+            res.data.data[0].Rate10.toFixed(2),
+            res.data.data[0].Rate11.toFixed(2),
+            res.data.data[0].Rate12.toFixed(2)
           );
           // console.log(this.bshxzzt)
           this.xsyf = 1;
         } else {
           this.zhsflsxzzt.push(
-            res.data.data[0].Rate1.toFixed(1),
-            res.data.data[0].Rate2.toFixed(1),
-            res.data.data[0].Rate3.toFixed(1),
-            res.data.data[0].Rate4.toFixed(1),
-            res.data.data[0].Rate5.toFixed(1),
-            res.data.data[0].Rate6.toFixed(1)
+            res.data.data[0].Rate1.toFixed(2),
+            res.data.data[0].Rate2.toFixed(2),
+            res.data.data[0].Rate3.toFixed(2),
+            res.data.data[0].Rate4.toFixed(2),
+            res.data.data[0].Rate5.toFixed(2),
+            res.data.data[0].Rate6.toFixed(2)
           );
           // console.log(this.bshxzzt)
           this.xsyf = 0;
         }
       });
       // 获取综合收费率  横向柱状图数据
-      this.axios.get("/api/companyRateMaxMinVm").then(res => {
-        // console.log(res.data.data)
-        let arr = res.data.data;
-        this.zhsflhxzzt = [];
-        arr.forEach(element => {
-          this.zhsflhxzzt.push(element.rate.toFixed(2));
-        });
-      });
+        this.axios.get("/api/projectRateAvg?projectId="+this.xmid).then((res)=>{
+              let arr = res.data.data;
+              this.zhsflhxzzt = [];
+              arr.forEach(element => {
+                this.zhsflhxzzt.push(element.rate.toFixed(2));
+              });
+     })
 
       // 获取综合收费率 title
       this.axios.get("/api/projectTotalRate2?projectId=" + value).then(res => {
@@ -806,23 +806,23 @@ export default {
         this.xcpzsxzzt = [];
         if (this.date >= 7) {
           this.xcpzsxzzt.push(
-            res.data.data[0].m7.toFixed(1),
-            res.data.data[0].m8.toFixed(1),
-            res.data.data[0].m9.toFixed(1),
-            res.data.data[0].m10.toFixed(1),
-            res.data.data[0].m11.toFixed(1),
-            res.data.data[0].m12.toFixed(1)
+            res.data.data[0].m7.toFixed(2),
+            res.data.data[0].m8.toFixed(2),
+            res.data.data[0].m9.toFixed(2),
+            res.data.data[0].m10.toFixed(2),
+            res.data.data[0].m11.toFixed(2),
+            res.data.data[0].m12.toFixed(2)
           );
           // console.log(this.bshxzzt)
           this.xsyf = 1;
         } else {
           this.xcpzsxzzt.push(
-            res.data.data[0].m1.toFixed(1),
-            res.data.data[0].m2.toFixed(1),
-            res.data.data[0].m3.toFixed(1),
-            res.data.data[0].m4.toFixed(1),
-            res.data.data[0].m5.toFixed(1),
-            res.data.data[0].m6.toFixed(1)
+            res.data.data[0].m1.toFixed(2),
+            res.data.data[0].m2.toFixed(2),
+            res.data.data[0].m3.toFixed(2),
+            res.data.data[0].m4.toFixed(2),
+            res.data.data[0].m5.toFixed(2),
+            res.data.data[0].m6.toFixed(2)
           );
           // console.log(this.bshxzzt)
           this.xsyf = 0;
@@ -885,7 +885,6 @@ export default {
 
   // 通过项目id来获取到默认显示的项目的名称
   this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-    // console.log(res.data.data[0].projectName)
     this.value1=res.data.data[0].projectName
   })
 
@@ -1044,37 +1043,37 @@ export default {
       // console.log(res.data.data[0])
       if (this.date >= 7) {
         this.zhsflsxzzt.push(
-          res.data.data[0].Rate7.toFixed(1),
-          res.data.data[0].Rate8.toFixed(1),
-          res.data.data[0].Rate9.toFixed(1),
-          res.data.data[0].Rate10.toFixed(1),
-          res.data.data[0].Rate11.toFixed(1),
-          res.data.data[0].Rate12.toFixed(1)
+          res.data.data[0].Rate7.toFixed(2),
+          res.data.data[0].Rate8.toFixed(2),
+          res.data.data[0].Rate9.toFixed(2),
+          res.data.data[0].Rate10.toFixed(2),
+          res.data.data[0].Rate11.toFixed(2),
+          res.data.data[0].Rate12.toFixed(2)
         );
         // console.log(this.bshxzzt)
         this.xsyf = 1;
       } else {
         this.zhsflsxzzt.push(
-          res.data.data[0].Rate1.toFixed(1),
-          res.data.data[0].Rate2.toFixed(1),
-          res.data.data[0].Rate3.toFixed(1),
-          res.data.data[0].Rate4.toFixed(1),
-          res.data.data[0].Rate5.toFixed(1),
-          res.data.data[0].Rate6.toFixed(1)
+          res.data.data[0].Rate1.toFixed(2),
+          res.data.data[0].Rate2.toFixed(2),
+          res.data.data[0].Rate3.toFixed(2),
+          res.data.data[0].Rate4.toFixed(2),
+          res.data.data[0].Rate5.toFixed(2),
+          res.data.data[0].Rate6.toFixed(2)
         );
         // console.log(this.bshxzzt)
         this.xsyf = 0;
       }
     });
     // 获取综合收费率  横向柱状图数据           数据替换
-    this.axios.get("/api/companyRateMaxMinVm").then(res => {
-      // console.log(res.data.data)
-      let arr = res.data.data;
-      this.zhsflhxzzt = [];
-      arr.forEach(element => {
-        this.zhsflhxzzt.push(element.rate.toFixed(2));
-      });
-    });
+    this.axios.get("/api/projectRateAvg?projectId="+this.xmid).then((res)=>{
+      console.log(res.data.data)
+              let arr = res.data.data;
+              this.zhsflhxzzt = [];
+              arr.forEach(element => {
+                this.zhsflhxzzt.push(element.rate.toFixed(2));
+              });
+     })
 
     // 获取综合收费率 title                      数据替换
     this.axios
@@ -1105,23 +1104,23 @@ export default {
       this.xcpzsxzzt = [];
       if (this.date >= 7) {
         this.xcpzsxzzt.push(
-          res.data.data[0].m7.toFixed(1),
-          res.data.data[0].m8.toFixed(1),
-          res.data.data[0].m9.toFixed(1),
-          res.data.data[0].m10.toFixed(1),
-          res.data.data[0].m11.toFixed(1),
-          res.data.data[0].m12.toFixed(1)
+          res.data.data[0].m7.toFixed(2),
+          res.data.data[0].m8.toFixed(2),
+          res.data.data[0].m9.toFixed(2),
+          res.data.data[0].m10.toFixed(2),
+          res.data.data[0].m11.toFixed(2),
+          res.data.data[0].m12.toFixed(2)
         );
         // console.log(this.bshxzzt)
         this.xsyf = 1;
       } else {
         this.xcpzsxzzt.push(
-          res.data.data[0].m1.toFixed(1),
-          res.data.data[0].m2.toFixed(1),
-          res.data.data[0].m3.toFixed(1),
-          res.data.data[0].m4.toFixed(1),
-          res.data.data[0].m5.toFixed(1),
-          res.data.data[0].m6.toFixed(1)
+          res.data.data[0].m1.toFixed(2),
+          res.data.data[0].m2.toFixed(2),
+          res.data.data[0].m3.toFixed(2),
+          res.data.data[0].m4.toFixed(2),
+          res.data.data[0].m5.toFixed(2),
+          res.data.data[0].m6.toFixed(2)
         );
         // console.log(this.bshxzzt)
         this.xsyf = 0;

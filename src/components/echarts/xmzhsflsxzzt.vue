@@ -19,18 +19,15 @@ export default {
   watch: {
       xsyf:{
         handler(newVal){
-            // console.log(newVal)
             if(newVal==1){
                 this.date=["7月","8月","9月","10月","11月","12月",]
             }else{
                 this.date=["1月","2月","3月","4月","5月","6月",]
-
             }
         }
       },
     zhsflsxzzt: {
       handler(newVal) {
-        // console.log("竖向柱状图"+newVal)
         this.bjData = newVal;
         // 图表设置信息
         const option = {
@@ -54,7 +51,6 @@ export default {
                       backgroundColor: '#7B7DDC'
                   }
               }
-
             },
           xAxis: [
             {

@@ -8,13 +8,15 @@
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}合同台账</h3>
- 
-         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'" 
+        <div class="queryParent">
+          <el-input @focus="inputfocus" @keyup.enter.native="search()" v-model="tableDataEnd" style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'" 
             placeholder="输入合同名称查询" class="sss">
         </el-input>
-        <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button>
-        <h2 @click="exportExcel" class="daochu">导出</h2>
+        <img @click="btnbtn" class="query" src="@/assets/ima/search.png"></img>
+        </div>
+      
         <h2 @click="Backstage" class="Backstage" v-if="isShow">后台管理</h2>
+        <h2 @click="exportExcel" class="daochu" :class="isShow===true ? 'info1':'success1'">导出</h2>
       </div>
       <!-- 显示表格 -->
       <el-table
@@ -241,11 +243,9 @@ export default {
           return;
         }
     
-        // this.tablemsg=[];                   //每次手动将数据置空,因为会出现多次点击搜索情况
+        //每次手动将数据置空,因为会出现多次点击搜索情况
         this.filterTableDataEnd=[]
-        
             this.tablemsg.forEach((value) => {
-                // console.log(value.contractName)
               
             if(value.contractName){
                 if(value.contractName.indexOf(this.tableDataEnd)>=0){
@@ -255,11 +255,30 @@ export default {
             });
             this.tablemsg=this.filterTableDataEnd
     },
+    search(){
+         // 模糊搜索
+          if (this.tableDataEnd  == "") {
+          this.$message.warning("查询条件不能为空！");
+          return;
+        }
+    
+        //每次手动将数据置空,因为会出现多次点击搜索情况
+        this.filterTableDataEnd=[]
+            this.tablemsg.forEach((value) => {
+              
+            if(value.contractName){
+                if(value.contractName.indexOf(this.tableDataEnd)>=0){
+                this.filterTableDataEnd.push(value)
+                }
+            }
+            });
+            this.tablemsg=this.filterTableDataEnd
+	
+    },
+
     inputfocus(){
-        // console.log(this.xmid)
         this.tableDataEnd=""
             this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
-      //   console.log(res.data.data[0].projectName)
             this.projectName=res.data.data[0].projectName
             this.xmid=this.$route.query.xmid
                 this.axios.get("/api/projectContract?projectId="+this.xmid).then((res)=>{
@@ -294,7 +313,22 @@ export default {
   padding: 0 12px;
   justify-content: space-between;
 }
-.boxTitle > button {
+.query{
+  font-size: 12px;
+  border: 0;
+   height: 26px;
+  line-height: 26px;
+  position: absolute;
+  left:170px;
+  top: 18px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.queryParent{
+  position: relative;
+}
+.fhsj{
   width: 62px;
   border: 0;
   cursor: pointer;
@@ -314,7 +348,7 @@ export default {
 }
 .boxTitle > h2 {
   font-size: 14px;
-  width: 50px;
+  width: 55px;
   color: #666;
   font-weight: 500;
   cursor: pointer;
@@ -344,7 +378,7 @@ export default {
     position: absolute;
     top: 4px;
     text-align: center;
-    right: 10px;
+    right: 82px;
     font-size: 14px;
     cursor: pointer;
     font-size: 12px !important;
@@ -368,7 +402,7 @@ export default {
   margin-right:80px;
 }
 .info{
-  margin-right:180px;
+  margin-right:143px;
 }
 .Backstage{
     border: 1px solid #409eff;
@@ -383,7 +417,7 @@ export default {
     position: absolute;
     top: 4px;
     text-align: center;
-    right:78px;
+    right:10px;
     font-size: 14px;
     cursor: pointer;
     font-size: 12px !important;
@@ -392,6 +426,16 @@ export default {
   font-size:14px !important;
   height:29px;
 }
+.success1{
+  right: 10px !important
+}
+.sss{
+  position: relative;
+}
+/* .query{
+  position: absolute;
+  left: 0;
+} */
 </style>
 
 

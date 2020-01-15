@@ -341,7 +341,7 @@ export default {
             // 获取重要提醒数据
             this.axios.get("/api/importantReminder01?topcount=10&companyId="+this.id)                
             .then((res)=>{
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 this.reminder=res.data.data
             })
             // 获取关键指标总收入数据
@@ -358,10 +358,10 @@ export default {
                 // console.log(res.data.data)
                 if(res.data.data!=""){
                       if(this.date>=7){
-                    this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(0),(res.data.data[0].Receipts8/10000).toFixed(0),(res.data.data[0].Receipts9/10000).toFixed(0),(res.data.data[0].Receipts10/10000).toFixed(0),(res.data.data[0].Receipts11/10000).toFixed(0),(res.data.data[0].Receipts12/10000).toFixed(0))
+                    this.zsrsxzzt1.push((res.data.data[0].Receipts7/10000).toFixed(2),(res.data.data[0].Receipts8/10000).toFixed(2),(res.data.data[0].Receipts9/10000).toFixed(2),(res.data.data[0].Receipts10/10000).toFixed(2),(res.data.data[0].Receipts11/10000).toFixed(2),(res.data.data[0].Receipts12/10000).toFixed(2))
                     this.zsrsxzztm=1
                 }else{
-                    this.zsrsxzzt1.push((res.data.data[0].Receipts1/10000).toFixed(0),(res.data.data[0].Receipts2/10000).toFixed(0),(res.data.data[0].Receipts3/10000).toFixed(0),(res.data.data[0].Receipts4/10000).toFixed(0),(res.data.data[0].Receipts5/10000).toFixed(0),(res.data.data[0].Receipts6/10000).toFixed(0))
+                    this.zsrsxzzt1.push((res.data.data[0].Receipts1/10000).toFixed(2),(res.data.data[0].Receipts2/10000).toFixed(2),(res.data.data[0].Receipts3/10000).toFixed(2),(res.data.data[0].Receipts4/10000).toFixed(2),(res.data.data[0].Receipts5/10000).toFixed(2),(res.data.data[0].Receipts6/10000).toFixed(2))
                     this.zsrsxzztm=0
                 }
                 }
@@ -370,14 +370,14 @@ export default {
               // 获取总收入横向柱状图数据
             this.axios.get("api/companyIncomeMaxMin")                                                      
             .then((res)=>{
-                // console.log(res.data.data)
+                console.log(res.data.data)
                 let arr=res.data.data
                 this.zsrhxzzttitle=[]
                 this.zsrhxzzt2=[]
                 arr.forEach(element => {
                     // console.log(element.ReceiptsAll)
                     this.zsrhxzzttitle.push(element.state)
-                    this.zsrhxzzt2.push((element.ReceiptsAll/10000).toFixed(0))
+                    this.zsrhxzzt2.push((element.ReceiptsAll/10000).toFixed(2))
                 });
             })
             // 获取园区数据
@@ -399,17 +399,18 @@ export default {
                 // console.log(res.data.data)
                 if(res.data.data!=""){
                      if(this.date>=7){
-                    this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(0),(res.data.data[0].Rates8).toFixed(0),(res.data.data[0].Rates9).toFixed(0),(res.data.data[0].Rates10).toFixed(0),(res.data.data[0].Rates11).toFixed(0),(res.data.data[0].Rates12).toFixed(0))
+                    this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(2),(res.data.data[0].Rates8).toFixed(2),(res.data.data[0].Rates9).toFixed(2),(res.data.data[0].Rates10).toFixed(2),(res.data.data[0].Rates11).toFixed(2),(res.data.data[0].Rates12).toFixed(2))
                     this.zsrsxzztm=1
                     }else{
-                        this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(0),(res.data.data[0].Rates2).toFixed(0),(res.data.data[0].Rates3).toFixed(0),(res.data.data[0].Rates4).toFixed(0),(res.data.data[0].Rates5).toFixed(0),(res.data.data[0].Rates6).toFixed(0))
+                        this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(2),(res.data.data[0].Rates2).toFixed(2),(res.data.data[0].Rates3).toFixed(2),(res.data.data[0].Rates4).toFixed(2),(res.data.data[0].Rates5).toFixed(2),(res.data.data[0].Rates6).toFixed(2))
                         this.zsrsxzztm=0
                     }
                 }
                
             })
             // 综合收费率横向柱状图
-            this.axios.get("/api/companyRateMaxMinVm").then((res)=>{                  
+            this.axios.get("/api/companyRateMaxMinVm").then((res)=>{      
+                // console.log(res.data.data)            
                 let arr=res.data.data
                 this.sflhxzzttitle=[];
                 this.sflhxzzt2=[]
@@ -418,6 +419,8 @@ export default {
                     this.sflhxzzt2.push(element.rate.toFixed(2))
                 })
             })
+
+           
                //当前收费率
             this.axios.get("/api/companyCuMonthRate?companyId="+this.id)                    
             .then((res)=>{

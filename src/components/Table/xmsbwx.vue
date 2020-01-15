@@ -10,11 +10,17 @@
 
         <h3 style="margin:0 auto">{{projectName}}设施设备台账</h3>
  
-         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;"  :class="isShow===true ? 'info':'success'"
+         <div class="queryParent">
+          <el-input @focus="inputfocus" @keyup.enter.native="search()" v-model="tableDataEnd" style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'" 
+            placeholder="输入合同名称查询" class="sss">
+        </el-input>
+        <img @click="btnbtn" class="query" src="@/assets/ima/search.png"></img>
+        </div>
+         <!-- <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;"  :class="isShow===true ? 'info':'success'"
             placeholder="输入设备名称查询" class="sss">
         </el-input>
-        <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button>
-        <h2 @click="exportExcel" class="daochu">导出</h2>
+        <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button> -->
+        <h2 @click="exportExcel" class="daochu" :class="isShow===true ? 'info1':'success1'">导出</h2>
         <h2 @click="Backstage" class="Backstage" v-if="isShow">后台管理</h2>
 
       </div>
@@ -248,6 +254,26 @@ export default {
             });
             this.tablemsg=this.filterTableDataEnd
     },
+    search(){
+         // 模糊搜索
+          if (this.tableDataEnd  == "") {
+          this.$message.warning("查询条件不能为空！");
+          return;
+        }
+    
+        //每次手动将数据置空,因为会出现多次点击搜索情况
+        this.filterTableDataEnd=[]
+            this.tablemsg.forEach((value) => {
+              
+            if(value.contractName){
+                if(value.contractName.indexOf(this.tableDataEnd)>=0){
+                this.filterTableDataEnd.push(value)
+                }
+            }
+            });
+            this.tablemsg=this.filterTableDataEnd
+	
+    },
     inputfocus(){
         // console.log(this.xmid)
         this.tableDataEnd=""
@@ -305,12 +331,28 @@ export default {
     font-weight: 600;
 
 }
+.query{
+  font-size: 12px;
+  border: 0;
+   height: 26px;
+  line-height: 26px;
+  position: absolute;
+  left:170px;
+  top: 18px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.queryParent{
+  position: relative;
+}
 .boxTitle > h2 {
   font-size: 12px;
   color: #666;
   font-weight: 500;
   cursor: pointer;
-      height: 35px;
+  height: 35px;
     line-height: 35px;
 }
 .select {
@@ -334,11 +376,13 @@ export default {
     position: absolute;
     top: 4px;
     text-align: center;
-    right: 20px;
+    right: 92px;
     cursor: pointer;
     font-size: 12px;
 }
-
+.success1{
+  right: 20px !important
+}
 .fhsj{
     border: 1px solid #4ac48b !important;
     background: #4ac48b !important;
@@ -353,7 +397,7 @@ export default {
   margin-right:80px;
 }
 .info{
-  margin-right:180px;
+  margin-right:143px;
 }
 .Backstage{
     border: 1px solid #409eff;
@@ -368,7 +412,7 @@ export default {
     position: absolute;
     top: 15px;
     text-align: center;
-    right: 92px;
+    right: 20px;
     font-size: 14px;
     cursor: pointer;
     font-size: 12px;

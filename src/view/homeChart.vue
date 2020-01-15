@@ -140,25 +140,26 @@
                 </div>
             </div>
         </div>
+        <!-- 流星特效 -->
             <div class="star"></div>
             <div class="star pink"></div>
             <div class="star blue"></div>
             <div class="star red"></div>
             <div class="star yellow"></div>
-
+        <!-- canvas特效 -->
             <!-- <vue-particles
             color="#dedede"
             :particleOpacity="0.4"
-            :particlesNumber="80"
+            :particlesNumber="20"
             shapeType="polygon"
             :particleSize="4"
             linesColor="#FFFFFF"
             :linesWidth="2"
-            :lineLinked="true"
+            :lineLinked="false"
             :lineOpacity="0.4"
             :linesDistance="150"
             :moveSpeed="3"
-            :hoverEffect="true"
+            :hoverEffect="false"
             hoverMode="grab"
             :clickEffect="true"
             clickMode="push"
@@ -773,6 +774,8 @@
     position:fixed;
     top:0;
     width:100%;
+    z-index:0
+    
 }
 
 
