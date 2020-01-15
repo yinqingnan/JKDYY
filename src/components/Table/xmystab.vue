@@ -53,6 +53,34 @@
         <el-table-column prop="ascription" label="用水归属" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="remarks" label="备注" :show-overflow-tooltip="true" align="center"></el-table-column>
       </el-table> 
+
+
+      
+        <!-- 下载数据的表格 -->
+    <el-table
+        :data="tablemsg"
+        :style="style"
+        :default-sort="{prop: 'date', order: 'descending'}"
+        :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
+         :summary-method="getSummaries"
+         show-summary
+      class="download"
+      >
+        <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
+        <el-table-column prop="itemName" label="名称" min-width="106px" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="waterMeter" label="表号" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="beginNumber" label="起数" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="endNumber" label="止数" :show-overflow-tooltip="true" align="center" min-width="122px"></el-table-column>
+        <el-table-column prop="dosage" label="用量（吨）" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="unitPrice" label="单价" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="amount" label="金额" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="payer" label="缴费人" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="ascription" label="用水归属" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="remarks" label="备注" :show-overflow-tooltip="true" align="center"></el-table-column>
+      </el-table> 
+
+
+
        <div class="box1">
         <el-pagination
           @size-change="handleSizeChange"
@@ -64,6 +92,8 @@
           background
           :total="totalCount"
         ></el-pagination>
+
+
       </div>
      
     </div>
@@ -111,6 +141,7 @@ export default {
 
         if(this.$route.query.Month==""){
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                // console.log(res.data.data)
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
                 this.number1=0
@@ -125,6 +156,8 @@ export default {
             this.month=this.$route.query.Month
             this.monthdefaultdefault=this.$route.query.Month +"月"
             this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                // console.log(res.data.data)
+
                 this.tablemsg=res.data.data
                 this.totalCount=res.data.data.length
                 this.number1=0
@@ -158,8 +191,8 @@ export default {
         // 选中的年
         yearchange(yeardefaultdefault){
              this.year=yeardefaultdefault.slice(0,4)
-            // console.log(this.monthdefaultdefault.slice(0,-1))
-            this.axios.get("/api/projectElectricity01?projectId="+this.xmid+"&year="+this.year+"&month="+this.monthdefaultdefault.slice(0,-1)).then((res)=>{
+            this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
+                // console.log(this.xmid+this.year+this.month)
                         this.tablemsg=res.data.data
                         this.totalCount=res.data.data.length
                         this.number1=0
@@ -174,13 +207,13 @@ export default {
         }, 
         // 选中的月
         monthchange(monthdefaultdefault){
-            if(monthdefaultdefault.length==2){
+            this.number1=0
+            this.number2=0
+            if(this.monthdefaultdefault.length==2){
                 this.month=monthdefaultdefault.slice(0,1)
                 this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
-                      this.number1=0
-                        this.number2=0
                         res.data.data.forEach(item=>{
                         this.number1+=item.dosage
                         this.number2+=item.amount
@@ -192,7 +225,10 @@ export default {
                   this.axios.get("/api/projectWaterrent01?projectId="+this.xmid+"&year="+this.year+"&month="+this.month).then((res)=>{
                     this.tablemsg=res.data.data
                     this.totalCount=res.data.data.length
-                    
+                      res.data.data.forEach(item=>{
+                        this.number1+=item.dosage
+                        this.number2+=item.amount
+                    })
                 })
             }    
 
@@ -204,11 +240,11 @@ export default {
         this.currentPage = currentPage;
         },
         TO(){
-            this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
+            // this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
                 // console.log(res.data.data.companyId)
                 // console.log(res.data.data)
                 // res.data.data[0].projectName
-                // 跳转回上级
+                
             //     this.$router.push({
             //         path:'/region',
             //         query:{
@@ -216,8 +252,8 @@ export default {
             //             xmid:res.data.data[0].projectId
             //         }
             //     })
-            this.$router.go(-1)
-            })
+            // })
+            this.$router.go(-1)// 跳转回上级
             
 
           
@@ -271,9 +307,9 @@ export default {
                  this.$message({
                 type: 'success',
                 message: '下载成功!'})
-                     this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
+            this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
             let name=res.data.data[0].projectName+this.year+"年"+this.month+"月"+"用水量明细表"
-            var wb = XLSX.utils.table_to_book(document.querySelector(".table"));
+            var wb = XLSX.utils.table_to_book(document.querySelector(".download"));
             var wbout = XLSX.write(wb, {
                 bookType: "xlsx",
                 bookSST: true,
@@ -395,6 +431,9 @@ export default {
     background: #4ac48b !important;
     color: #fff !important;
     border-radius: 5px; 
+}
+.download{
+    display: none
 }
 </style>
 

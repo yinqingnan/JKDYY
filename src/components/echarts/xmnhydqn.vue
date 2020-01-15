@@ -47,7 +47,7 @@ export default {
             showContent: true,
             trigger: "axis",
             formatter: function(a) {
-              return a[0].seriesName + ":" + a[0].value+"度";
+              return a[0].seriesName + ":" + a[0].value + "度";
               // console.log(a)
             },
             axisPointer: {
@@ -150,13 +150,19 @@ export default {
         };
       }
     },
+    num1: {
+      handler() {
+        const chartObj = echarts.init(document.getElementById("xmnhdyys"));
+        chartObj.resize();
+      }
+    },
 
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmnhysqn"],
+  props: ["xmnhysqn", "num1"],
   mounted() {
-    const chartObj = echarts.init(document.getElementById("zxt2"));
+    const chartObj = echarts.init(document.getElementById("xmnhdyys"));
     window.addEventListener("resize", () => {
       // console.log(chartObj)
       chartObj.resize();
@@ -167,7 +173,6 @@ export default {
 <style  scoped>
 .ECHARTS {
   width: 100%;
-  /* margin: 0 auto; */
   min-width: 347px;
   height: 148px;
 }

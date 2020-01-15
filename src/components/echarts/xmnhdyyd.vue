@@ -55,7 +55,7 @@ export default {
         left:'10%',
         itemWidth: 7,
         itemHeight: 7,
-        itemGap: 40,
+        itemGap: 10,
         textStyle:{
             color:'#89A7AF',
         },
@@ -137,41 +137,6 @@ export default {
             }]
         },
         {
-            name:'',
-            type:'line',
-            barWidth:0,
-            markPoint: {
-                symbol:'triangle',
-                symbolRotate:'180',
-                itemStyle:{
-                  color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 1,
-                        y2: 0,
-                        colorStops: [{
-                            offset: 0, color: '#E8A61F' // 0% 处的颜色
-                        }, {
-                            offset: 1, color: '#E8A61F' // 100% 处的颜色
-                        }],
-                        globalCoord: false // 缺省为 false
-                    }  
-                },
-                symbolSize:[6,5],// 容器大小
-                symbolOffset:[0,-15],//位置偏移
-                data:[{
-                    // coord: [53.11/2]
-                }],
-                label: {
-                    normal: {
-                        show: false
-                    },
-                    offset: [0, 0],
-                }
-            }
-        },
-        {
             name:this.title[1],
             type:'bar',
             barWidth:16,
@@ -214,41 +179,7 @@ export default {
             }
             }]
         },
-        {
-            name:'',
-            type:'line',
-            barWidth:0,
-            markPoint: {
-                symbol:'triangle',
-                symbolRotate:'180',
-                itemStyle:{
-                  color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 1,
-                        y2: 0,
-                        colorStops: [{
-                            offset: 0, color: '#E67C26' // 0% 处的颜色
-                        }, {
-                            offset: 1, color: '#E67C26' // 100% 处的颜色
-                        }],
-                        globalCoord: false // 缺省为 false
-                    }  
-                },
-                symbolSize:[6,5],// 容器大小
-                symbolOffset:[0,-15],//位置偏移
-                data:[{
-                    // coord: [53.11 + 23/2]
-                }],
-                label: {
-                    normal: {
-                        show: false
-                    },
-                    offset: [0, 0],
-                }
-            }
-        },
+        
         {
             name:this.title[2],
             type:'bar',
@@ -293,40 +224,147 @@ export default {
             }]
         },
         {
-            name:'',
-            type:'line',
-            barWidth:0,
-            markPoint: {
-                symbol:'triangle',
-                symbolRotate:'180',
-                itemStyle:{
-                  color: {
-                        type: 'linear',
-                        x: 0,
-                        y: 0,
-                        x2: 1,
-                        y2: 0,
-                        colorStops: [{
-                            offset: 0, color: '#39A8F7' // 0% 处的颜色
-                        }, {
-                            offset: 1, color: '#39A8F7' // 100% 处的颜色
-                        }],
-                        globalCoord: false // 缺省为 false
-                    }  
-                },
-                symbolSize:[6,5],// 容器大小
-                symbolOffset:[0,-15],//位置偏移
-                data:[{
-                    // coord: [53.11 + 23 + 1/2]
-                }],
-                label: {
-                    normal: {
-                        show: false
-                    },
-                    offset: [0, 0],
+              name: this.title[3],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#8d8cd9" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#8d8cd9",
+                  backgroundColor: "#8d8cd9",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
                 }
-            }
-        }
+              },
+              data: [
+                {
+                  value: this.bjData[3],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#8d8cd9" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#8d8cd9" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              name: this.title[4],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#00c07b" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#00c07b",
+                  backgroundColor: "#00c07b",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
+                }
+              },
+              data: [
+                {
+                  value: this.bjData[4],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#00c07b" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#00c07b" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+             {
+              name: this.title[5],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#ffadd5" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#ffadd5",
+                  backgroundColor: "#ffadd5",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
+                }
+              },
+              data: [
+                {
+                  value: this.bjData[5],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#ffadd5" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#ffadd5" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+        
     ]
         //   
         };
@@ -337,9 +375,14 @@ export default {
            // 设置自适应
         window.onresize = function() {
           chartObj.resize();
-        // console.log(chartObj)
 
         };
+      }
+    },
+    num1:{
+      handler(){
+        const chartObj = echarts.init(document.getElementById("xmnhdyyd"));
+        chartObj.resize();
       }
     },
 
@@ -348,7 +391,7 @@ export default {
   },
 // <!-- // xmnhyddyname   xmnhyddy -->
 
-  props: ["xmnhyddy","xmnhyddyname","xmid"],
+  props: ["xmnhyddy","xmnhyddyname","xmid","num1"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("xmnhdyyd"));
     window.addEventListener("resize", () => {
@@ -364,9 +407,8 @@ export default {
 <style  scoped>
 .ECHARTS {
     width: 100%;
- margin: 0 auto;
-    min-width: 347px;
-     height: 148px;
-     width: 347px
+  margin: 0 auto;
+  min-width: 347px;
+  height: 148px;
 }
 </style>

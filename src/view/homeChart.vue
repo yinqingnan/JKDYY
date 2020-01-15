@@ -791,7 +791,7 @@
         border:1px solid #09477a;
         outline: none;
         color:#fff;
-        font-size: 12px;
+        font-size: 12px !important;
     }
     #homeChart .el-select{
         width: 150px;

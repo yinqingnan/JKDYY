@@ -173,7 +173,7 @@
                 <div class="table1">
                     <h1>重要提醒</h1>
                     <ul>
-                        <li v-for="(item,index) in reminder" :key="index">
+                        <li v-for="(item,index) in reminder" :key="index" @click="contract(item)">
                             <h2 :title="item.remindTitle">{{item.remindTitle}}</h2>
                             <h2>{{item.remindTime.split(" ")[0]}}</h2>
                         </li>
@@ -297,6 +297,25 @@ export default {
                 // console.log(res.data.data[0].companyId)
                 this.$router.push('/qybsl?qyid='+res.data.data[0].companyId) 
             })
+        },
+        contract(item){
+            // console.log(item)
+            // if(item.remindType=="合同台账"){
+            //     console.log(item.projectId)
+            // }
+            switch (item.remindType) {
+                case "合同台账":
+                    // console.log(item.projectId)
+                     this.$router.push('/xmhttz?xmid='+item.projectId)
+
+                    break;
+                case "设备维修":
+                    // console.log(item.projectId)
+                    this.$router.push('/xmsbwx?xmid='+item.projectId)
+                    break;
+                default:
+                    break;
+            }
         }
     },
     mounted() {
@@ -322,7 +341,7 @@ export default {
             // 获取重要提醒数据
             this.axios.get("/api/importantReminder01?topcount=10&companyId="+this.id)                
             .then((res)=>{
-                // console.log(res.data.data)
+                console.log(res.data.data)
                 this.reminder=res.data.data
             })
             // 获取关键指标总收入数据

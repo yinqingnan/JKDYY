@@ -216,8 +216,8 @@
                     >{{item}}</li>
                   </ul>
                   <div >
-                        <xmnhysqn :xmnhysqn="xmnhysqn" v-show="show"></xmnhysqn>
-                        <xmnhdyys :xmnhdyys="xmnhdyys" :xmnhdyysname="xmnhdyysname" v-show="show1"></xmnhdyys>
+                        <xmnhysqn :xmnhysqn="xmnhysqn" v-show="show" :num=num></xmnhysqn>
+                        <xmnhdyys :xmnhdyys="xmnhdyys" :xmnhdyysname="xmnhdyysname" v-show="show1" :num=num></xmnhdyys>
                   </div>
                  
                 </div>
@@ -232,8 +232,8 @@
                       >{{item}}</li>
                     </ul>
                      <div >
-                        <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" ></xmnhydqn>
-                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy"></xmnhdyyd>
+                        <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" :num1=num1></xmnhydqn>
+                        <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy" :num1=num1></xmnhdyyd>
                     </div>
                   </div>
                 </div>
@@ -383,16 +383,7 @@ export default {
       this.$router.push("bswjl?xmid="+this.xmid)
     },
     // // 当月用水详情跳转
-    // dyys(){
-    //   // console.log(this.xmid)
-    //   this.$router.push('/dyys?xmid='+this.xmid)
-
-    // },
-    // // 当月用电详情跳转
-    // dyyd(){
-    //   // console.log(this.xmid)
-    //   this.$router.push('/dyyd?xmid='+this.xmid)
-    // },
+   
   todlqtxt(href){
     // console.log(href)
      window.open(href,"_blank")
@@ -527,7 +518,7 @@ export default {
 
         // 获取综合收费率  竖向柱状图数据           数据替换
         this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
-
+          this.zhsflsxzzt=[]
           if (this.date >= 7) {
             this.zhsflsxzzt.push(
               res.data.data[0].Rate7.toFixed(1),
@@ -753,6 +744,8 @@ export default {
       // 获取综合收费率  竖向柱状图数据           数据替换
       this.axios.get("/api/projectYMRs?projectId=" + value).then(res => {
         // console.log(res.data.data[0])
+          this.zhsflsxzzt=[]
+
         if (this.date >= 7) {
           this.zhsflsxzzt.push(
             res.data.data[0].Rate7.toFixed(1),

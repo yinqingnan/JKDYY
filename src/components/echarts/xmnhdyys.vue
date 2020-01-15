@@ -18,13 +18,13 @@ export default {
   watch: {
     xmnhdyysname: {
       handler(newVal) {
-        console.log(newVal)
+      
         this.title = newVal;
       }
     },
     xmnhdyys: {
       handler(newVal) {
-        // console.log(newVal)
+ 
         this.bjData = newVal;
 
         // 图表设置信息
@@ -49,7 +49,7 @@ export default {
             left: "10%",
             itemWidth: 7,
             itemHeight: 7,
-            itemGap: 40,
+            itemGap: 10,
             textStyle: {
               // color:'#89A7AF',
             },
@@ -237,7 +237,7 @@ export default {
               barWidth: 16,
               stack: "危货种类占比",
               itemStyle: {
-                color: "#39A8F7" //小圆点颜色
+                color: "#8d8cd9" //小圆点颜色
               },
               label: {
                 normal: {
@@ -246,8 +246,8 @@ export default {
                   align: "center",
                   verticalAlign: "middle",
                   borderRadius: 1,
-                  borderColor: "#39A8F7",
-                  backgroundColor: "#39A8F7",
+                  borderColor: "#8d8cd9",
+                  backgroundColor: "#8d8cd9",
                   show: true,
                   position: "top",
                   formatter: "{c}%",
@@ -264,11 +264,105 @@ export default {
                         colorStops: [
                           {
                             offset: 0,
-                            color: "#39A8F7" // 0% 处的颜色
+                            color: "#8d8cd9" // 0% 处的颜色
                           },
                           {
                             offset: 1,
-                            color: "#39A8F7" // 100% 处的颜色
+                            color: "#8d8cd9" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              name: this.title[4],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#00c07b" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#00c07b",
+                  backgroundColor: "#00c07b",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
+                }
+              },
+              data: [
+                {
+                  value: this.bjData[4],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#00c07b" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#00c07b" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+             {
+              name: this.title[5],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#ffadd5" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#ffadd5",
+                  backgroundColor: "#ffadd5",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
+                }
+              },
+              data: [
+                {
+                  value: this.bjData[5],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#ffadd5" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#ffadd5" // 100% 处的颜色
                           }
                         ],
                         globalCoord: false // 缺省为 false
@@ -292,10 +386,16 @@ export default {
         };
       }
     },
+    num:{
+      handler(){
+        const chartObj = echarts.init(document.getElementById("xmnhdyys"));
+        chartObj.resize();
+      }
+    },
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
-  props: ["xmnhdyys", "xmnhdyysname"],
+  props: ["xmnhdyys", "xmnhdyysname","num"],
   mounted() {
     const chartObj = echarts.init(document.getElementById("xmnhdyys"));
     window.addEventListener("resize", () => {
@@ -312,6 +412,5 @@ export default {
   margin: 0 auto;
   min-width: 347px;
   height: 148px;
-  width: 347px;
 }
 </style>

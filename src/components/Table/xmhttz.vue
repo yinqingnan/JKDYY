@@ -9,8 +9,8 @@
 
         <h3 style="margin:0 auto">{{projectName}}合同台账</h3>
  
-         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'"
-            placeholder="输入合同名称查询">
+         <el-input @focus="inputfocus" v-model="tableDataEnd" style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'" 
+            placeholder="输入合同名称查询" class="sss">
         </el-input>
         <button @click="btnbtn"  class="daochu" style="width:60px;marginRight:10px">查询</button>
         <h2 @click="exportExcel" class="daochu">导出</h2>
@@ -163,7 +163,6 @@ export default {
       window.open(val.attachment)
     },
     getheight() {
-      // console.log(window.innerHeight)
       // 获取当前浏览器的高度赋值给元素
       this.style.height = window.innerHeight - 130 + "px";
     },
@@ -175,16 +174,18 @@ export default {
     },
 
     TO() {
-       this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-                // 跳转回上级
-                this.$router.push({
-                    path:'/region',
-                    query:{
-                        quid:res.data.data[0].companyId,
-                        xmid:res.data.data[0].projectId
-                    }
-                })
-            })
+      //  this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
+      //           // 跳转回上级
+      //           this.$router.push({
+      //               path:'/region',
+      //               query:{
+      //                   quid:res.data.data[0].companyId,
+      //                   xmid:res.data.data[0].projectId
+      //               }
+      //           })
+      //       })
+      this.$router.go(-1)
+
     },
     Backstage(){
       window.location.href = (this.url+"jkData/data/daq/projectContract/index")
@@ -386,6 +387,10 @@ export default {
     font-size: 14px;
     cursor: pointer;
     font-size: 12px !important;
+}
+.sss>>>.el-input__inner{
+  font-size:14px !important;
+  height:29px;
 }
 </style>
 
