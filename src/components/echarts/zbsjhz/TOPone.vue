@@ -148,7 +148,7 @@ export default {
 .dht {
   width: 100%;
   margin: 0 auto;
-  min-width: 380px;
+  min-width: 320px;
   height: 100%;
   min-height: 320px;
 }

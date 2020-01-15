@@ -233,18 +233,26 @@ export default {
           }
           const values = data.map(item => Number(item[column.property]));
         //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
-         if (column.property == 'dosage' ||column.property =='amount' ){
-             sums[index] = values.reduce((prev, curr) => {
-                const value = Number(curr);
-                if (!isNaN(value)) {
-                return prev + curr;
-                } else {
-                return prev;
-                }
-            }, 0);
-				sums[index];
-
-         }
+         if (column.property == "dosage") {
+                //  console.log(column.property)
+                sums[index] = values.reduce(() => {
+                    if(this.number1==0){
+                    return 0
+                    }else{
+                    return this.number1.toFixed(2)
+                    }
+                }, 0);
+                } 
+                 if (column.property == "amount") {
+                //  console.log(column.property)
+                sums[index] = values.reduce(() => {
+                    if(this.number2==0){
+                    return 0
+                    }else{
+                    return this.number2.toFixed(2)
+                    }
+                }, 0);
+                } 
         });
 
         return sums;

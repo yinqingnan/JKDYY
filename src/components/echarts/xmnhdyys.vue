@@ -18,7 +18,7 @@ export default {
   watch: {
     xmnhdyysname: {
       handler(newVal) {
-        // console.log(newVal)
+        console.log(newVal)
         this.title = newVal;
       }
     },
@@ -138,48 +138,6 @@ export default {
               ]
             },
             {
-              name: "",
-              type: "line",
-              barWidth: 0,
-              markPoint: {
-                symbol: "triangle",
-                symbolRotate: "180",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 1,
-                    y2: 0,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#E8A61F" // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#E8A61F" // 100% 处的颜色
-                      }
-                    ],
-                    globalCoord: false // 缺省为 false
-                  }
-                },
-                symbolSize: [6, 5], // 容器大小
-                symbolOffset: [0, -15], //位置偏移
-                data: [
-                  {
-                    // coord: [53.11/2]
-                  }
-                ],
-                label: {
-                  normal: {
-                    show: false
-                  },
-                  offset: [0, 0]
-                }
-              }
-            },
-            {
               name: this.title[1],
               type: "bar",
               barWidth: 16,
@@ -225,48 +183,6 @@ export default {
                   }
                 }
               ]
-            },
-            {
-              name: "",
-              type: "line",
-              barWidth: 0,
-              markPoint: {
-                symbol: "triangle",
-                symbolRotate: "180",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 1,
-                    y2: 0,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#E67C26" // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#E67C26" // 100% 处的颜色
-                      }
-                    ],
-                    globalCoord: false // 缺省为 false
-                  }
-                },
-                symbolSize: [6, 5], // 容器大小
-                symbolOffset: [0, -15], //位置偏移
-                data: [
-                  {
-                    // coord: [53.11 + 23/2]
-                  }
-                ],
-                label: {
-                  normal: {
-                    show: false
-                  },
-                  offset: [0, 0]
-                }
-              }
             },
             {
               name: this.title[2],
@@ -316,47 +232,53 @@ export default {
               ]
             },
             {
-              name: "其他三角形",
-              type: "line",
-              barWidth: 0,
-              markPoint: {
-                symbol: "triangle",
-                symbolRotate: "180",
-                itemStyle: {
-                  color: {
-                    type: "linear",
-                    x: 0,
-                    y: 0,
-                    x2: 1,
-                    y2: 0,
-                    colorStops: [
-                      {
-                        offset: 0,
-                        color: "#39A8F7" // 0% 处的颜色
-                      },
-                      {
-                        offset: 1,
-                        color: "#39A8F7" // 100% 处的颜色
-                      }
-                    ],
-                    globalCoord: false // 缺省为 false
-                  }
-                },
-                symbolSize: [6, 5], // 容器大小
-                symbolOffset: [0, -15], //位置偏移
-                data: [
-                  {
-                    // coord: [53.11 + 23 + 1/2]
-                  }
-                ],
-                label: {
-                  normal: {
-                    show: false
-                  },
-                  offset: [0, 0]
+              name: this.title[3],
+              type: "bar",
+              barWidth: 16,
+              stack: "危货种类占比",
+              itemStyle: {
+                color: "#39A8F7" //小圆点颜色
+              },
+              label: {
+                normal: {
+                  borderWidth: 10,
+                  distance: 20,
+                  align: "center",
+                  verticalAlign: "middle",
+                  borderRadius: 1,
+                  borderColor: "#39A8F7",
+                  backgroundColor: "#39A8F7",
+                  show: true,
+                  position: "top",
+                  formatter: "{c}%",
+                  color: "#000"
                 }
-              }
-            }
+              },
+              data: [
+                {
+                  value: this.bjData[3],
+                  itemStyle: {
+                    normal: {
+                      color: {
+                        type: "bar",
+                        colorStops: [
+                          {
+                            offset: 0,
+                            color: "#39A8F7" // 0% 处的颜色
+                          },
+                          {
+                            offset: 1,
+                            color: "#39A8F7" // 100% 处的颜色
+                          }
+                        ],
+                        globalCoord: false // 缺省为 false
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+           
           ]
         };
         //初始化图表

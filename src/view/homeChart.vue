@@ -414,9 +414,12 @@
         min-width: 1366px;
         background: url("../assets/ima/Nbj.png");
         background-size: cover;
+        background-size: 100% 100%;
+        padding-bottom: 12px;
     }
     #homeChart.h100{
         height: 100%;
+        padding-bottom: 0;
     }
     #homeChart .header{
         width: 100%;

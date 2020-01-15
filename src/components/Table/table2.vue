@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box" id="box">
       <el-table
         :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         style="width: 100% ;height:714px"
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         :default-sort="{prop: 'date', order: 'descending'}"
-      >
+      > 
         <el-table-column label="序号" type="index" width="50" :show-overflow-tooltip="true" align="center" min-width="40px"></el-table-column>
         <el-table-column prop="companyName" label="区域" :show-overflow-tooltip="true" align="center" min-width="100px"></el-table-column>
         <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true" align="center"></el-table-column>
@@ -115,5 +115,7 @@ export default {
 .el-pagination{
 margin-top: 10px;
 }
-
+#box .has-gutter > tr > th{
+ padding: 0 !important;
+}
 </style>

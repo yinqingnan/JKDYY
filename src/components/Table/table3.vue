@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box" id="box">
       <el-table
         :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         style="width: 100%;height:714px"

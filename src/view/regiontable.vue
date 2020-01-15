@@ -19,7 +19,7 @@
                         <el-input v-model="msg" placeholder="请输入项目名称" ></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <button type="primary" @click="onSubmit" class="btn">查询</button>
+                    <button type="button"  @click="btnone" class="btn">查询</button>
                 </el-form-item>
                 </el-form>
             </div>
@@ -74,14 +74,10 @@ import Table3 from "@/components/Table/table3"
         } ,
         methods: {
             // 查询点击事件
-            onSubmit() {
-
+            btnone() {
             if(this.msg===""){
                 this.axios.get("http://222.180.200.126:9045/api/projectinfopage2?companyName="+encodeURI(this.Selection)).then((res)=>{
                     this.tablemsg=res.data.data
-
-
-
                 })
             }else{
                 this.axios.get("http://222.180.200.126:9045/api/projectinfopage?companyName="+encodeURI(this.Selection)+"&projectName="+encodeURI(this.msg))
@@ -89,8 +85,6 @@ import Table3 from "@/components/Table/table3"
                     if(res.data.data != undefined){
                         this.tablemsg=res.data.data
                     }
-                
-                  
                 })
             }
                 
@@ -107,15 +101,21 @@ import Table3 from "@/components/Table/table3"
         mounted(){
             // 获取区域公司列表信息
             this.axios.get("/api/projectCompanyList").then((res)=>{
-                // console.log(res.data.data)
                 this.qygslist=res.data.data
                 
             });
             //获取默认显示的table数据
             this.axios.get("/api/projectinfopage2?companyName="+encodeURI(this.qydefault)).then((res)=>{
-                // console.log(res.data.data)
-                // this.tablelength=array.length
-                this.tablemsg=res.data.data
+                this.tablemsg=res.data.data;
+                // let obj=res.data.data
+                // obj.map((item=>{
+                //     if(item.firstApproach != null){
+                //        item.firstApproach.split(" ")[0]
+                //     }
+                //     return item
+                // }))
+                // this.tablemsg=obj;
+
             })
 
         }

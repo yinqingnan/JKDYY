@@ -15,7 +15,18 @@ export default {
   },
   mounted() {
     this.axios.get("/api/zb_003").then(res => {
+      res.data.data.map((item)=>{
+        // console.log(item.typeName.length)
+        // if(item.typeName.length>12){
+        //  return item.typeName.slice(0,12)
+        //   console.log(item.typeName.slice(0,12))
+        // }
+      })
+      // console.log(res.data.data)
       this.data = res.data.data;
+
+
+
       var myChart = echarts.init(this.$refs.dht);
 
       var arrName = getArrayValue(this.data, "typeName");
@@ -37,7 +48,7 @@ export default {
 
       function array2obj(array, key) {
         var resObj = {};
-        for (var i = 0; i < array.length; i++) {
+        for (var i = 0; i < array.length; i++){
           resObj[array[i][key]] = array[i];
         }
         return resObj;
@@ -54,8 +65,8 @@ export default {
             type: "pie",
             clockWise: false, //顺时加载
             hoverAnimation: false, //鼠标移入变大
-            radius: [75 - i * 15 + "%", 67 - i * 15 + "%"],
-            center: ["30%", "55%"],
+            radius: [88 - i * 12 + "%", 82 - i * 12 + "%"],
+            center: ["36%", "55%"],
             label: {
               show: false //是否显示名称
             },
@@ -94,8 +105,8 @@ export default {
             z: 1,
             clockWise: false, //顺时加载
             hoverAnimation: true, //鼠标移入变大
-            radius: [75 - i * 15 + "%", 67 - i * 15 + "%"],
-            center: ["30%", "55%"],
+            radius: [88 - i * 12 + "%", 82 - i * 12 + "%"],
+            center: ["36%", "55%"],
             label: {
               show: false
             },
@@ -112,7 +123,7 @@ export default {
               {
                 value: 7.5, //环形切口角度
                 itemStyle: {
-                  color: "#aaaaaa", //环形背景色
+                  color: "#eee", //环形背景色
                   borderWidth: 0
                 },
                 tooltip: {
@@ -153,23 +164,24 @@ export default {
         },
         backgroundColor: "#fff",
         legend: {
-          show: true,
-          top: "center",
-          left: "60%",
+          // show: true,
+          // top: "center",
+          top:"10%",
+          // bottom:"20%",
+          left: "70%",
           data: arrName,
-          width: 100,
-          itemWidth: 15,
-          itemHeight: 15,
+          width: 80,
+          itemWidth: 12,
+          itemHeight: 12,
 
           // padding: [0, 5],
-          itemGap: 30,
+          itemGap: 20,
           formatter: function(name) {
-            //   console.log(objData[name])
+            if(name.length>4){
+              return name.slice(0,3) +"：" + ((objData[name].income / sumValue) * 100).toFixed(2) +"%"
+            }
             return (
-              name +
-              "：" +
-              ((objData[name].income / sumValue) * 100).toFixed(2) +
-              "%"
+              name + "：" + ((objData[name].income / sumValue) * 100).toFixed(2) +"%"
             );
           },
           textStyle: {
@@ -179,24 +191,40 @@ export default {
                 color: "#666"
               }
             }
+          },
+           tooltip: {
+              show: true,
+
+              formatter:function(item){
+                if(item.name.length>4){
+                  return item.name
+                }
+              }
           }
         },
         tooltip: {
           show: true,
           // trigger: "item",
-          formatter: "{b}:{c}元；占比：({d}%)<br>"
+          // formatter: "{b}:{c}元；占比：({d}%)<br>"
+          formatter(name){
+            if(name.data.name.length>4){
+                return name.data.name.slice(0,5)+"</br>"+name.data.name.slice(0,5)+":"+name.data.value +"元"
+            }
+            return  name.data.name.slice(0,5)+"</br>"+name.data.name+":"+name.data.value +"元"
+          }
         },
-        color: ["#18b78e", "#01b3ee", "#9c73ca", "#5d83b7", "#f19ec2"],
+        color: ["#18b78e", "#01b3ee", "#9c73ca", "#5d83b7", "#f19ec2","#fd8db4","#5fcdc7","#908edb"],
         grid: {
-          top: "17%",
+          top: "10%",
           bottom: "48%",
-          left: "30%",
-          containLabel: false
+          left: "36%",
+          // containLabel: false
         },
         yAxis: [
           {
-            //   x:50,
-            //   y:1000,
+              x:100,
+              // y:1000,
+            // top:"20%",
             type: "category",
             inverse: true,
             axisLine: {
@@ -206,14 +234,16 @@ export default {
               show: false
             },
             axisLabel: {
+              // top:10,
+              padding:[28,0,16,0],
               interval: 0,
               inside: true,
               textStyle: {
                 color: "#666",
-                fontSize: 14,
+                fontSize: 16,
                 rich: {
                   a: {
-                    fontSize: 14
+                    fontSize: 12
                   }
                 }
               },

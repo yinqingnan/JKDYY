@@ -5,7 +5,7 @@
         <div class="top_left">
           <div class="top_left_header">
             <ul>
-              <li @click="toSR">
+              <li @click="toSR" style="cursor: pointer;">
                 <h1 style="color:#2cabe3">收入</h1>
                 <h2 :title="yysrtitle.income">{{yysrtitle.income}}</h2>
               </li>
@@ -448,7 +448,7 @@ export default {
 .container{
     min-width: 1110px
 }
-.top_left_header>ul>li:nth-of-type(1){
+/* .top_left_header>ul>li:nth-of-type(1){
   cursor: pointer;
-}
+} */
 </style>

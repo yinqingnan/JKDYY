@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box">
+    <div class="box" id="box">
       <el-table
         :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         style="width: 100%;height:714px"
@@ -14,8 +14,11 @@
         <el-table-column prop="appointCompany" label="合同约定的管理公司" :show-overflow-tooltip="true" align="center" min-width="122px"></el-table-column>
         <el-table-column prop="actualCompany" label="实际管理公司" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="projectName" label="项目名称" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="firsthand" label="项目首次交房时间" :show-overflow-tooltip="true" align="center"></el-table-column>
-        <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="firsthand" label="项目首次交房时间" :show-overflow-tooltip="true" align="center" :formatter="formatSex">
+        </el-table-column>
+        <el-table-column prop="firstApproach" label="项目初次进场时间" :show-overflow-tooltip="true" align="center" :formatter="formatSex">
+
+        </el-table-column>
         <el-table-column prop="ItemFormat" label="项目业态" :show-overflow-tooltip="true" align="center"></el-table-column>
         <el-table-column prop="accessoryBasic" label="相关附件" :show-overflow-tooltip="true" align="center">
             <template slot-scope="scope">
@@ -59,6 +62,7 @@ export default {
   watch: {
     tablemsg: {
       handler(newVal) {
+        // console.log(newVal[0].firstApproach.split(" ")[0])
         this.num=1
         this.currentPage=1
         this.totalCount = newVal.length;
@@ -86,12 +90,14 @@ export default {
     download(val){
       window.open(val.accessoryBasic)
     },
+    formatSex:function(row,colunmn,cellValue){
+      if(cellValue!=null){
+        return cellValue.split(" ")[0]
+      }
+    }
    
  
   },
-//   created: function() {
-//     this.total = this.tableData.length;
-//   }
 };
 </script>
 <style scoped>
@@ -122,7 +128,7 @@ export default {
 .el-pagination{
   float: right
 }
-/* .box .el-table__header-wrapper{
-  height: 87px !important
-} */
+#box .has-gutter > tr > th{
+ padding: 0 !important;
+}
 </style>
