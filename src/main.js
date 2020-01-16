@@ -1,3 +1,7 @@
+//语法兼容
+import '@babel/polyfill'
+
+
 import Vue from 'vue'
 import App from './App.vue'
 
@@ -41,9 +45,6 @@ Vue.prototype.$echarts = echarts;
 import store from '@/store'
 
 
-// 引入星空特效
-import VueParticles from 'vue-particles'  
-Vue.use(VueParticles) 
 
 // 引入全局变量
 import global_ from "@/api/Global.vue"

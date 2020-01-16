@@ -8,7 +8,7 @@
                         <el-select v-model="value" placeholder="请选择" class="selects" style="width:200px;border:0" @change="selectchange(value)">
                             <el-option
                             v-for="item in getProjectList"
-                              :key="item.value"
+                            :key="item.value"
                             :label="item.companyName"
                             :value="item.companyName"
                             >
@@ -86,7 +86,7 @@
                          <div>
                             <!-- <h1>总利润</h1>   -->
                             <img src="@/assets/ima/development.png" alt="" style="margin:0 auto;display: block;marginTop: 66px;">
-                            <h3 style="    text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
+                            <h3 style="text-align: center;fontWeight:500;fontSize:14px;marginTop: 14px;color:#666">即将上线</h3>
                         </div>
                         <!-- 第三个 -->
                          <div>
@@ -138,7 +138,7 @@
                                     <Qualityservice2 :Realestates="Others" style="width:70%"></Qualityservice2>
                                     <h2 style="min-width:60px;text-align:center">{{Other}}</h2>
                                 </div>
-                                <div class="Chart1_footer1 Chart1_footer2">
+                                <div class="Chart1_footer1">
                                     <Qualityservice3 :Realestates="Propertycategorys" style="width:70%"></Qualityservice3>
                                     <h2 style="min-width:60px;text-align:center">{{Propertycategory}}</h2>
                                 </div>
@@ -827,8 +827,6 @@ export default {
     height: 12px
 }
 
-
-
 /* 尾部 */
 .Chart1{
     margin-top:15px;
@@ -843,9 +841,6 @@ export default {
     border: 1px solid #e0dfe8
 }
 .Chart1>div:nth-of-type(2){
-    /* width: 40%;
-    margin-left: 10px;
-    margin-right: 8px */
     margin:0 15px
 }
 
@@ -853,7 +848,6 @@ export default {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e0dfe8;
-    /* line-height: 55px */
 }
 
 .Chart1>div:nth-of-type(1) .Chart1_header{
@@ -893,12 +887,8 @@ export default {
     border-bottom: 1px dashed #e0dfe8;
     margin-left: 10px;
      display: flex;
-     width: 100%;
-    
 }
-.Chart1_footer2{
-    border: 0
-}
+
 .Chart1_footer1>h2{
     font-size: 12px;
     line-height: 82px;
@@ -908,10 +898,6 @@ export default {
     overflow: hidden;
 }
 
-/* 
-.yq{
-    margin-left: 6px
-} */
 .yq>ul{
     display: flex;
     margin-top: 26px;

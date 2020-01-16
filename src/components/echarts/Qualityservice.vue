@@ -4,7 +4,6 @@
   <div>
     <div class="box">
       <div id="zxt1" class="ECHARTS"></div>
-        <!-- <h2>/月</h2> -->
     </div>
    
   </div>
@@ -167,14 +166,5 @@ export default {
     min-width: 170px;
      height: 86px;
 }
-.box{
-  position: relative;
-}
-.box>h2{
-  position: absolute;
-  bottom: 0;
-  right: -10px;
-  font-size: 10px;
-  font-weight: 500;
-}
+
 </style>

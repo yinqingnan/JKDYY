@@ -145,7 +145,7 @@
                                         @click="m12(scope.$index, scope.row)">{{scope.row.m12}}</span>
                                     </template>
                                 </el-table-column>
-                                <el-table-column prop="remark" label="备注" :show-overflow-tooltip="true" align="center" min-width="50px"></el-table-column>
+                                <!-- <el-table-column prop="remark" label="备注" :show-overflow-tooltip="true" align="center" min-width="50px"></el-table-column> -->
                             </el-table>
                         </div>
                     </div>
@@ -284,7 +284,7 @@
                                     @click="mm12(scope.$index, scope.row)">{{scope.row.m12}}</span>
                                 </template>
                             </el-table-column>
-                             <el-table-column prop="remark" label="备注" :show-overflow-tooltip="true" align="center" min-width="50px"></el-table-column>
+                             <!-- <el-table-column prop="remark" label="备注" :show-overflow-tooltip="true" align="center" min-width="50px"></el-table-column> -->
                         </el-table>
                     </div>
                 </div>
@@ -1022,6 +1022,9 @@ export default {
     color: #49a4d9
 }
 .el-table .cell, .el-table th div {
+    padding-right: 0;
+}
+.box>>> .el-table .cell, .el-table th div {
     padding-right: 0;
 }
 </style>
