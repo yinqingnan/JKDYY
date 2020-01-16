@@ -88,7 +88,6 @@ export default {
                         login:this.login
                     }
                 })
-
             }else if(item=="设施设备"){
                 // console.log(2)
                 //  this.$router.push('/xmsbwx?xmid='+this.id)

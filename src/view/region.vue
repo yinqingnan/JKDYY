@@ -134,11 +134,11 @@
               <div class="yq">
                 <ul v-for="(item,index) in bsmsg" :key="index">
                   <li style="width:20%">{{item.newspapersCateType}}</li>
-                  <li style="width:30%">{{item.newRate.toFixed(0)}}%</li>
+                  <li style="width:30%">{{item.newRate.toFixed(2)}}%</li>
                   <li style="width:30%">
                     <span :class="item.state==1? 'Green':'Red'">
                       <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                      {{item.changRate.toFixed(0)}}%
+                      {{item.changRate.toFixed(2)}}%
                     </span>
                   </li>
                 </ul>

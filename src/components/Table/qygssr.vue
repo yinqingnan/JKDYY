@@ -1,6 +1,6 @@
 
 <template>
-  <!-- 收入一览表页面 -->
+  <!-- 区域公司一览表页面 -->
   <div>
     <div class="box" id="srylb">
       <div class="boxTitle">

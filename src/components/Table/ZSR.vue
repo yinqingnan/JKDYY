@@ -147,7 +147,11 @@
           align="center"
           min-width="90px"
         ></el-table-column>
-        <el-table-column prop="yieldRate" label="达成率" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="yieldRate" label="达成率" :show-overflow-tooltip="true" align="center" >
+            <template slot-scope="scope">
+              <span v-show="scope.row.yieldRate">{{scope.row.yieldRate}}%</span>
+            </template>
+        </el-table-column>
       </el-table>
 
       <el-table
@@ -267,7 +271,8 @@
           align="center"
           min-width="90px"
         ></el-table-column>
-        <el-table-column prop="yieldRate" label="达成率" :show-overflow-tooltip="true" align="center"></el-table-column>
+        <el-table-column prop="yieldRate" label="达成率" :show-overflow-tooltip="true" align="center">
+        </el-table-column>
       </el-table>
 
       <div class="box1">
@@ -507,16 +512,11 @@ export default {
           });
         });
     },
-    // openDetails(row){
-    //   this.axios.get("/api/projectInfoName?projectIdName="+encodeURI(row.projectName)).then((res)=>{
-    //      this.$router.push('/xmzhsfl?xmid='+res.data.data[0].projectId)
-    //   })
-    // }
     handleEdit(row){
     this.axios.get("/api/projectInfoName?projectIdName="+encodeURI(row.projectName)).then((res)=>{
             this.$router.push('/xmzhsfl?xmid='+res.data.data[0].projectId)
       })
-    }
+    },
   }
 };
 </script>

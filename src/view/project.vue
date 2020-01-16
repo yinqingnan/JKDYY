@@ -74,9 +74,9 @@
                                     <ul v-for="(item,index) in zsryq" :key="index">
                                         <li style="width:20%">{{item.incomType}}</li>
                                         <li style="width:30%;font-weight:600">{{item.incomMoney}} 万元</li>
-                                        <li style="width:30%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" :title="item.changeRate.toFixed(1)">
+                                        <li style="width:30%;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;" :title="item.changeRate.toFixed(2)">
                                             <span :class="item.state==1? 'Green':'Red'" > <i :class="item.state==1? 'Greensj':'Redsj'"></i> 
-                            {{item.changeRate.toFixed(1)}}%</span>
+                            {{item.changeRate.toFixed(2)}}%</span>
                                         </li>
                                      
                                     </ul>
@@ -260,6 +260,8 @@ export default {
             sflhxzzttitle:[] ,         //------------------------------收费率横向柱状图X轴title
             dqsfl:[]  ,        //--------------------------------------收费率当前收费率
             titlename:[],                   //-----------------------------节点达成率等数据
+            encry:""
+
 
 
 
@@ -306,12 +308,26 @@ export default {
             switch (item.remindType) {
                 case "合同台账":
                     // console.log(item.projectId)
-                     this.$router.push('/xmhttz?xmid='+item.projectId)
+                    //  this.$router.push('/xmhttz?xmid='+item.projectId)
+                         this.$router.push({
+                            path:"/xmhttz",
+                            query:{
+                                xmid:this.id,
+                                login:this.encry
+                            }
+                        })
 
                     break;
                 case "设备维修":
                     // console.log(item.projectId)
-                    this.$router.push('/xmsbwx?xmid='+item.projectId)
+                    // this.$router.push('/xmsbwx?xmid='+item.projectId)
+                      this.$router.push({
+                            path:"/xmsbwx",
+                            query:{
+                                xmid:this.id,
+                                login:this.login
+                            }
+                        })
                     break;
                 default:
                     break;
@@ -321,11 +337,12 @@ export default {
     mounted() {
         // console.log(this.$route)
         this.value=this.$route.query.name       //获取到路由的参数
+        this.encry=this.$route.query.encry
 
         var date=new Date();   
         this.date=date.getMonth()+1    //获取到当前的月份信息            
         // console.log(window.location.href)//获取当前的路由
-
+        var year = date.getFullYear()
         // 获取项目列表
         this.axios.get('/api/projectCompanyList').then((res)=>{
             // console.log(res.data.data)
@@ -352,8 +369,10 @@ export default {
                 this.zsrnumber=(res.data.data[0].newReceiptsAll/1000).toFixed(0)
             })
             // 获取总收入竖向柱状图数据
-            this.axios.get("/api/companyReceipts?year=2020&companyId="+this.id)        
+            
+            this.axios.get("/api/companyReceipts?year="+year+"&companyId="+this.id)        
             .then((res)=>{
+                
                 // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
                 // console.log(res.data.data)
                 if(res.data.data!=""){
@@ -370,7 +389,7 @@ export default {
               // 获取总收入横向柱状图数据
             this.axios.get("api/companyIncomeMaxMin")                                                      
             .then((res)=>{
-                console.log(res.data.data)
+                // console.log(res.data.data)
                 let arr=res.data.data
                 this.zsrhxzzttitle=[]
                 this.zsrhxzzt2=[]
@@ -394,7 +413,7 @@ export default {
                 this.sfl=res.data.data
             })
             //综合收费率竖向柱状图
-            this.axios.get("/api/companyRates?year=2020&companyId="+this.id)           
+            this.axios.get("/api/companyRates?year="+year+"&companyId="+this.id)           
             .then((res)=>{  
                 // console.log(res.data.data)
                 if(res.data.data!=""){
