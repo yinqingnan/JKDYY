@@ -31,7 +31,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
           :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         class="table"
-        element-loading-text="请稍后..."
       >
             <el-table-column
             label="序号"
@@ -61,7 +60,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         v-show="show"
         class="xiazai"
-        element-loading-text="请稍后..."
       >
             <el-table-column
             label="序号"
@@ -125,12 +123,14 @@ export default {
         filterTableDataEnd:[],      //过滤后的数据
         flag:false ,                 //
         isShow:"",
-        url:this.GLOBAL.Url
+        url:this.GLOBAL.Url,
+        login:""
     
     };
   },
   mounted() {
-    // console.log(this.$route.query.xmid)
+    // console.log(this.$route.query.login)
+    this.login=this.$route.query.login
     this.xmid = this.$route.query.xmid; //获取到路由参数 （项目的id）
     // // 通过项目id查询到区域公司的id并查询数据
     this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
@@ -138,14 +138,12 @@ export default {
         this.projectName=res.data.data[0].projectName
         this.xmid=this.$route.query.xmid
             this.axios.get("/api/projectEquipment?projectId="+this.xmid).then((res)=>{
-                // console.log(res.data.data)
                 this.totalCount=res.data.data.length
                 this.tablemsg=res.data.data
                 this.tablemsgmsg=res.data.data
             })
       });
        this.axios.get("/api/userToProject?staffId=10000&projectId="+this.xmid).then((res)=>{
-      // console.log(res.data.data[0].state)
       if(res.data.data[0].state==0){
         this.isShow=false
       }else{
@@ -186,7 +184,7 @@ export default {
 
     },
     Backstage(){
-          window.location.href = (this.url+"jkData/data/daq/projectContract/index")
+          window.location.href = (this.url+"jkData/data/daq/projectContract/index?loginName="+this.login+"&token=1")
     },
 
 
@@ -278,11 +276,9 @@ export default {
         // console.log(this.xmid)
         this.tableDataEnd=""
             this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
-      //   console.log(res.data.data[0].projectName)
             this.projectName=res.data.data[0].projectName
             this.xmid=this.$route.query.xmid
                    this.axios.get("/api/projectEquipment?projectId="+this.xmid).then((res)=>{
-                    // console.log(res.data.data)
                     this.totalCount=res.data.data.length
                     this.tablemsg=res.data.data
                     this.tablemsgmsg=res.data.data

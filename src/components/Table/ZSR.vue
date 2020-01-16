@@ -30,7 +30,7 @@
         show-summary
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         class="table"
-        element-loading-text="请稍后..."
+         
       
       >
         <el-table-column
@@ -158,7 +158,7 @@
         show-summary
         class="xiazai"
         v-show="show"
-        element-loading-text="请稍后..."
+         
       >
         <el-table-column
           label="序号"

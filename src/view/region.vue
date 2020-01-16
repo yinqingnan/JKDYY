@@ -246,7 +246,7 @@
       <div class="Right">
         <!-- 重要提醒tab组件 -->
         <div class="table1">
-          <tab :xmid="xmid"></tab>
+          <tab :xmid="xmid" :encry="encry"></tab>
         </div>
         <div class="table1 table2">
           <h1>常用报表</h1>
@@ -362,7 +362,8 @@ export default {
       xcpzhxzzt: [], //------------------------------现场品质横向柱状图
       xcpzsxzzt: [], //------------------------------现场品质竖向柱状图
       xcpztitle: [], //------------------------------现场品质title信息
-      xcpzmsg: [] //---------------------------------现场品质提示信息
+      xcpzmsg: [] ,//---------------------------------现场品质提示信息
+      encry:""
     };
   },
   methods: {
@@ -388,7 +389,8 @@ export default {
     // console.log(href)
      window.open(href,"_blank")
   },
-    selectchange(value) {
+// 区域公司切换
+selectchange(value) {
       // console.log(value)
       //区域公司级下拉菜单选中监听
       this.value = value;
@@ -619,13 +621,9 @@ export default {
             this.xcpzmsg = res.data.data;
           });
       });
-    },
-
-
-
-
-
-    selectchange1(value) {
+},
+// 项目公司切换
+selectchange1(value) {
       //项目公司下拉菜单监听
       this.xmid = value;
 
@@ -853,7 +851,7 @@ export default {
           this.xcpzmsg = res.data.data;
         });
 
-    },
+},
     btn(index) {
       this.num = index;
       if (index == 1) {
@@ -881,7 +879,8 @@ export default {
     // 通过获取的区域公司id和项目id来显示默认数据
     this.quid = this.$route.query.quid; //区域公司id
     this.xmid = this.$route.query.xmid; //项目id
-  // console.log(this.$route.query)
+    // console.log(this.$route.query)
+    this.encry=this.$route.query.encry
 
   // 通过项目id来获取到默认显示的项目的名称
   this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
@@ -1067,7 +1066,6 @@ export default {
     });
     // 获取综合收费率  横向柱状图数据           数据替换
     this.axios.get("/api/projectRateAvg?projectId="+this.xmid).then((res)=>{
-      console.log(res.data.data)
               let arr = res.data.data;
               this.zhsflhxzzt = [];
               arr.forEach(element => {

@@ -27,7 +27,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
         class="table"
-        element-loading-text="请稍后..."
 
       >
         <el-table-column
@@ -107,7 +106,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="xiazai"
         v-show="show"
-        element-loading-text="请稍后..."
       >
        <el-table-column
           label="序号"

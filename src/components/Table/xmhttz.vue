@@ -25,7 +25,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"   
         class="table"
-        element-loading-text="请稍后..."
       >
             <el-table-column
             label="序号"
@@ -59,7 +58,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         v-show="show"
         class="xiazai"
-        element-loading-text="请稍后..."
       >
             <el-table-column
             label="序号"
@@ -128,12 +126,14 @@ export default {
         filterTableDataEnd:[],      //过滤后的数据
         flag:false ,                 //
         isShow:"",
-        url:this.GLOBAL.Url
+        url:this.GLOBAL.Url,
+        login:""
     
     };
   },
   mounted() {
-    // console.log(this.$route.query.xmid)
+    // console.log(this.$route.query.login)
+    this.login=this.$route.query.login
     this.xmid = this.$route.query.xmid; //获取到路由参数 （项目的id）
     // // 通过项目id查询到区域公司的id并查询数据
     this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
@@ -190,7 +190,8 @@ export default {
 
     },
     Backstage(){
-      window.location.href = (this.url+"jkData/data/daq/projectContract/index")
+      // console.log(this.url+"jkData/data/daq/projectContract/index?loginName="+this.login)
+      window.location.href = (this.url+"jkData/data/daq/projectContract/index?loginName="+this.login+"&token=1")
     },
 
     exportExcel() {

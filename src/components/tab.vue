@@ -53,11 +53,12 @@ export default {
                 isshow1:false,
                 isshow2:false,
                 id:"",
-                list3:["合同台账","设备维修台账"]
+                list3:["合同台账","设备维修台账"],
+                login:""
            }
         
     },
-    props:["xmid"],
+    props:["xmid","encry"],
     methods: {
         tab(index) {
             this.num = index;
@@ -79,20 +80,48 @@ export default {
             // 判断type的类型，进行页面跳转
             if(item=="合同台账"){
                 // console.log(1)
-                 this.$router.push('/xmhttz?xmid='+this.id)
+                //  this.$router.push('/xmhttz?xmid='+this.id)
+                this.$router.push({
+                    path:"/xmhttz",
+                    query:{
+                        xmid:this.id,
+                        login:this.login
+                    }
+                })
 
             }else if(item=="设施设备"){
                 // console.log(2)
-                 this.$router.push('/xmsbwx?xmid='+this.id)
+                //  this.$router.push('/xmsbwx?xmid='+this.id)
+                 this.$router.push({
+                    path:"/xmsbwx",
+                    query:{
+                        xmid:this.id,
+                        login:this.login
+                    }
+                })
             }
         },
         Ledger(index){
             switch(index){
                 case 0:
-                    this.$router.push('/xmhttz?xmid='+this.id)      
+                    // this.$router.push('/xmhttz?xmid='+this.id)   
+                    this.$router.push({
+                        path:"/xmhttz",
+                        query:{
+                            xmid:this.id,
+                            login:this.login
+                        }
+                    })   
                     break;  
                 case 1:
-                    this.$router.push('/xmsbwx?xmid='+this.id)
+                    // this.$router.push('/xmsbwx?xmid='+this.id)
+                        this.$router.push({
+                            path:"/xmsbwx",
+                            query:{
+                                xmid:this.id,
+                                login:this.login
+                            }
+                        })
 
             }
         }
@@ -110,6 +139,12 @@ export default {
                 this.axios.get("/api/projectNotice?topcount=2").then((res)=>{
                      this.list2=res.data.data
                 })
+            }
+        },
+        encry:{
+            handler(newval){
+                // console.log(newval)
+                this.login=newval
             }
         },
         deep: true, //深度监测

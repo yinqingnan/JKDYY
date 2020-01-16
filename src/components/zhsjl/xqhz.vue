@@ -10,7 +10,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         :style="style"
-        element-loading-text="请稍后..."
+         
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
       >
         <el-table-column

@@ -15,7 +15,6 @@
         class="table"
         min-height="600px"
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
-        element-loading-text="请稍后..."
       >
         <el-table-column
           label="序号"
@@ -23,7 +22,7 @@
           width="50"
           :show-overflow-tooltip="true"
           align="center"
-          min-width="40px"
+          min-width="36px"
         ></el-table-column>
         <el-table-column
           prop="projectName"
@@ -36,8 +35,8 @@
           prop="resouresName"
           label="资源名称"
           :show-overflow-tooltip="true"
-          align="center"
-          min-width="40px"
+          align="left"
+          min-width="46px"
         ></el-table-column>
         <el-table-column
           prop="floorName"
@@ -115,7 +114,7 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="xiazai"
         v-show="show"
-        element-loading-text="请稍后..."
+         
       >
             <el-table-column
           label="序号"
@@ -381,6 +380,9 @@ export default {
   .box >>> .el-table__header-wrapper{
   height: 60px !important;
   line-height: 60px !important;
+}
+.box >>> .has-gutter >tr >th{
+  text-align: center
 }
 </style>
 
