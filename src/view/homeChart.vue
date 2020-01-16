@@ -59,19 +59,20 @@
                     <homeRadar class="echarts" :radarData="radarData"></homeRadar>
                     <img class="ring" src="@/assets/ima/chart_radar.png" alt="">
                 </div>
-                <div class="cbBox">
+                <div class="cbBox" >
+               
                     <ul class="iconWrap">
-                        <li class="iconBook">
-                            <div class="iconBox">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " ref="Effect1" :class=" 0 ===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconshouru "></span>
                             </div>
                             <div class="iTxtBox">
-                                <span>收入</span>
+                                <span  >收入</span>
                                 <p>{{num1}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook">
-                            <div class="iconBox" style="background: #88acff">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " style="background: #88acff" :class="1===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconlirun "></span>
                             </div>
                             <div class="iTxtBox">
@@ -79,8 +80,8 @@
                                 <p>{{num2}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook">
-                            <div class="iconBox" style="background: #5bc3d2">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " style="background: #5bc3d2" :class="2===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconyuanqu "></span>
                             </div>
                             <div class="iTxtBox">
@@ -88,8 +89,8 @@
                                 <p>{{num3}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook">
-                            <div class="iconBox" style="background: #00b7ee">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " style="background: #00b7ee" :class="3===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconshoufeishuai "></span>
                             </div>
                             <div class="iTxtBox">
@@ -97,8 +98,8 @@
                                 <p>{{num4}}<span class="sml">%</span></p>
                             </div>
                         </li>
-                        <li class="iconBook">
-                            <div class="iconBox" style="background: #fca751">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " style="background: #fca751" :class="4===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconmubiaoshu "></span>
                             </div>
                             <div class="iTxtBox">
@@ -106,8 +107,8 @@
                                 <p>{{num5}}<span class="sml"></span></p>
                             </div>
                         </li>
-                        <li class="iconBook">
-                            <div class="iconBox" style="background: #c490bf">
+                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                            <div class="iconBox " style="background: #c490bf" :class="5===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconzonghe "></span>
                             </div>
                             <div class="iTxtBox">
@@ -146,26 +147,6 @@
             <div class="star blue"></div>
             <div class="star red"></div>
             <div class="star yellow"></div>
-        <!-- canvas特效 -->
-            <!-- <vue-particles
-            color="#dedede"
-            :particleOpacity="0.4"
-            :particlesNumber="20"
-            shapeType="polygon"
-            :particleSize="4"
-            linesColor="#FFFFFF"
-            :linesWidth="2"
-            :lineLinked="false"
-            :lineOpacity="0.4"
-            :linesDistance="150"
-            :moveSpeed="3"
-            :hoverEffect="false"
-            hoverMode="grab"
-            :clickEffect="true"
-            clickMode="push"
-            class="cash"
-            >
-        </vue-particles> -->
     </div>
 </template>
 
@@ -175,6 +156,8 @@
     import homeLine from '../components/echarts/homeChart/homeLine'
     import homeBarX from '../components/echarts/homeChart/homeBarX'
     import homeRadar from '../components/echarts/homeChart/homeRadar'
+
+    
     export default {
         name: "homeChart",
         data() {
@@ -213,7 +196,10 @@
               radarData:[],
               nodeNumber:"",
               projectType:"",
-              nodeCompleted:''
+              nodeCompleted:'',
+              iconBoxnum:0,
+              time:"",
+              datetiem:2500
           }
         },
         created() {
@@ -224,7 +210,34 @@
                 this.isHeight = false;
             }
         },
+        mounted() {
+                this.time=setInterval(()=>{
+                    this.animation()
+                    if(this.iconBoxnum==6){
+                        this.iconBoxnum=0
+                    }
+                },this.datetiem)
+            
+        },
+      
         methods:{
+            animation(){
+               this.iconBoxnum++
+            },
+            LImouseover(){
+                    this.iconBoxnum=10
+                    clearInterval(this.time)
+            },
+            LImouseout(){
+                this.iconBoxnum=0
+                clearInterval(this.time)
+                this.time=setInterval(()=>{
+                    this.animation()
+                    if(this.iconBoxnum==6){
+                        this.iconBoxnum=0
+                    }
+                },this.datetiem)
+            },
             //获取区域
             getRegion(){
                 this.axios.get("/api/projectCompanyList").then((res)=>{
@@ -237,7 +250,6 @@
             //获取项目
             getProject(){
                 this.axios.get("/api/projectBycId?companyId=" + this.value).then((res)=>{
-                    // this.list=res.data.data
                     this.options2 = res.data.data;
                     this.value2 = res.data.data[0].projectId;
                     this.setProfit(this.value2);
@@ -382,6 +394,7 @@
                     this.num4 = res.data.data[0].projectToll;
                     this.num5 = res.data.data[0].targetScore;
                     this.num6 = res.data.data[0].synthesizeScore;
+
                     //园区 利润 营收 年度目标 人均效能 人员管理 收费 客服
                     let list = [
                         res.data.data[0].gardenScore,
@@ -398,6 +411,7 @@
                 })
             }
         },
+ 
         components:{
             homePie,
             homeBar,
@@ -459,7 +473,6 @@
         position: relative;
         width: 100%;
         min-height: 350px;
-        /* height: 40%; */
         height: 360px;
         border:1px solid #2e447e;
         border-radius: 8px;
@@ -612,6 +625,7 @@
     }
     .iTxtBox{
         margin-left: 10px;
+        width: 60px;
     }
     .iTxtBox > p{
         color:#fff;
@@ -778,6 +792,41 @@
     
 }
 
+
+/* 图标特效 */
+
+
+ .Effect4{
+    -webkit-animation-name: scaleDraw; 
+    -webkit-animation-timing-function: ease-in-out; 
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 5s; 
+    -webkit-animation-delay:0s
+}
+ @keyframes scaleDraw {  
+    0%{
+        transform: scale(1);  
+    }
+    25%{
+        transform: scale(1.2); 
+    }
+    50%{
+        transform: scale(1);
+    }
+    75%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.iconBook:hover .iconBox{
+    -webkit-animation-name: scaleDraw; 
+    -webkit-animation-timing-function: ease-in-out; 
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 5s; 
+    -webkit-animation-delay:0s
+}
 
 
 

@@ -46,7 +46,7 @@ const  router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
     routes:[
-        {path:"/",redirect:'/2'},//设置默认指向的路径
+        {path:"/",redirect:'/homeChart'},//设置默认指向的路径
         {path:"/zbsjtj",name:Zbsjtj,component:Zbsjtj},          //总部数据汇总
         {path:"/region",name:"Region",component:Region},      //区域公司页面   4.0  此路由必须携带数据  默认为金科物业重庆区域公司  // http://localhost:8080/project?name=物业重庆区域公司
         {path:"/project",name:"project",component:Project},      //项目页面    4.0  此路由必须携带数据  默认为金科物业重庆区域公司 和公司名称       http://localhost:8080/region?quid=250&xmid=1085
