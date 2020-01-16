@@ -634,7 +634,7 @@
         align-items: center;
     }
     .tip{
-        font-size: 16px;
+        font-size: 14px;
         color:#c0d1f3;
         width: 88%;
         min-width: 525px;

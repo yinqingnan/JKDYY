@@ -59,7 +59,7 @@
                         data: this.list.sort(function(a, b) {
                             return a.value - b.value
                         }),
-                        roseType: 'radius',
+                        // roseType: 'radius',
 
                         label: {
                             normal: {

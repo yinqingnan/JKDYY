@@ -340,7 +340,6 @@ export default {
       },
       // height:""
       number: 100000, //总计的第一个值
-      number2: 584520 //总计的第二个值
     };
   },
   mounted() {
@@ -361,11 +360,8 @@ export default {
         this.totalCount = res.data.data.length;  //展示数据的总条数
         // 提前计算好合计金额   （先进行清空）
         this.number=0
-        this.number2=0
         res.data.data.forEach(item=>{
           this.number+=item.projectCount
-          this.number2+=item.yieldRate
-        
         })
      
 
@@ -399,11 +395,8 @@ export default {
         this.totalCount = res.data.data.length;
         // 切换后提前计算好合计金额   （先进行清空）
         this.number=0
-        this.number2=0
          res.data.data.forEach(item=>{
           this.number+=item.projectCount
-          this.number2+=item.yieldRate
-
         })
     
 
@@ -416,11 +409,9 @@ export default {
     current_change: function(currentPage) {
       this.currentPage = currentPage;
     },
-
     TO() {
       this.axios.get("/api/companIdOrName?companIdOrName=" + this.qyid)
         .then(res => {
-          //   console.log(res.data.data[0].companyName)
           this.$router.push({
             path: "/project",
             query: {
@@ -430,7 +421,6 @@ export default {
         });
     },
     getSummaries(param) {
-      //  console.log(param)
       const { columns, data } = param;
       const sums = [];
       columns.forEach((column, index) => {
@@ -440,28 +430,13 @@ export default {
         }
         const values = data.map(item => Number(item[column.property]));
         //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
-        // console.log(values)    ||
         if (column.property == "projectCount") {
-          //  console.log(column.property)
           sums[index] = values.reduce(() => {
-              // return this.number
-              if(this.number==0){
-                // console.log(2)
-                return 0
-              }else{
-                  return this.number.toFixed(2)
+              if(this.number!=0){
+                  return this.number.toFixed(2)+"元"
               }
           }, 0);
-        } else if (column.property == "yieldRate") {
-          sums[index] = values.reduce(() => {
-              // return this.number2
-              if(this.number2==0){
-                return 0
-              }else{
-                return this.number2.toFixed(2)
-              }
-          }, 0);
-        }
+        } 
       });
 
       return sums;

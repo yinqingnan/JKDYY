@@ -1038,8 +1038,6 @@ export default {
     font-weight: 600;
     font-size: 20px
 }
-
-
 .box_header_right_header .container_left_header .el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
     padding: 4px
 }

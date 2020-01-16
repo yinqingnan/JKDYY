@@ -110,7 +110,7 @@
                         }
                     },
                     series: [{
-                        name: '一级权重分析',
+                        // name: '一级权重分析',
                         type: 'radar',
                         areaStyle: {
                             normal: {
