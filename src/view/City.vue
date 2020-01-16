@@ -89,7 +89,7 @@
               :data="defaultable2"
               :row-style="tableRowStyle"
               :header-cell-style="tableHeaderColor"
-              height="200"
+              height="80%"
               fit:true
               border
               style="width: 100%;font-size:10px;min-width:100%;"
@@ -112,7 +112,7 @@
                 :data="defaultable1"
                 :row-style="tableRowStyle"
                 :header-cell-style="tableHeaderColor"
-                height="200"
+                height="80%"
                 fit:true
                 style="font-size:10px;min-width:100%;width:100%"
               >
@@ -131,7 +131,7 @@
             <el-table
               border
               :data="defaultable3"
-              height="200"
+              height="96%"
             
               fit:true
               :row-style="tableRowStyle"
@@ -343,7 +343,7 @@ export default {
     },
     // 修改table tr行的背景色
     tableRowStyle() {
-      return "background-color: #fbfbfb";
+      // return "background-color: #fbfbfb";
     },
     // 修改table header的背景色
     tableHeaderColor({ rowIndex }) {
@@ -431,16 +431,18 @@ export default {
   margin-bottom: 12px;
   padding-bottom: 8px;
 }
-
+.left_body>div{
+  overflow: hidded;
+}
 .left_body>div:nth-of-type(1){
-  height: 32%;
+  height: 30%;
   /* min-height: 300px */
 }
 .left_body>div:nth-of-type(2){
-  height: 32%
+  height: 30%
 }
 .left_body>div:nth-of-type(3){
-  height: 34%
+  height: 31%
 }
 
 .left_footer > h1 {

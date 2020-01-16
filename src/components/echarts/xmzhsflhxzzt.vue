@@ -11,7 +11,7 @@ import echarts from "echarts"; //引入echarts
 export default {
   data() {
     return {
-      list: ["最小", "最大", "平均"],
+      list: ["最大", "最小", "平均"],
       bjData: [],
       title: []
     };
@@ -19,7 +19,6 @@ export default {
   watch: {
     zhsflhxzzt: {
       handler(newVal) {
-        console.log(newVal)
         this.bjData = newVal;
         // 图表设置信息
         const option = {

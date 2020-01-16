@@ -389,12 +389,12 @@ export default {
      window.open(href,"_blank")
   },
     selectchange(value) {
-      console.log(value)
+      // console.log(value)
       //区域公司级下拉菜单选中监听
       this.value = value;
       this.axios.get("api/projectBycId?companyId=" + value).then(res => {
         // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
-        console.log(res.data.data)
+        // console.log(res.data.data)
         this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
         this.value1 = res.data.data[0].projectName;
        this.xmid=res.data.data[0].projectId     //切换后使用新id来进行数据的切换

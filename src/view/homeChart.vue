@@ -416,11 +416,11 @@
         background: url("../assets/ima/Nbj.png");
         background-size: cover;
         background-size: 100% 100%;
-        padding-bottom: 12px;
+        padding-bottom: 16px;
     }
     #homeChart.h100{
-        height: 100%;
-        padding-bottom: 0;
+        /* height: 100%; */
+        padding-bottom: 16px;
     }
     #homeChart .header{
         width: 100%;
