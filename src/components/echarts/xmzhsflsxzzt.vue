@@ -31,6 +31,7 @@ export default {
         this.bjData = newVal;
         // 图表设置信息
         const option = {
+         
           backgroundColor: "#eee",
           grid: {
             top: "0%",

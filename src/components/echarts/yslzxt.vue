@@ -30,17 +30,17 @@ export default {
               this.ydl=[]
               this.ydl.push(res.data.data[0].m1,res.data.data[0].m2,res.data.data[0].m3,res.data.data[0].m4,res.data.data[0].m5,res.data.data[0].m6,res.data.data[0].m7,res.data.data[0].m8,res.data.data[0].m9,res.data.data[0].m10,res.data.data[0].m11,res.data.data[0].m12)
     const option = {
-      title:[
-        // {
-        //     text: "单位：度",
-        //     top:10,
-        //     right: 10,
-        //     textStyle: {
-        //       color: "#333",
-        //       fontSize: 14,
-        //       fontWeight: "500"
-        //     }
-        //   }
+ title:[
+        {
+            text: "单位：吨",
+            top:"10%",
+            left: "12%",
+            textStyle: {
+              color: "#333",
+              fontSize: 14,
+              fontWeight: "500"
+            }
+          }
       ],
         grid: {
             left: '14%',

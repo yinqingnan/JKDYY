@@ -50,18 +50,18 @@ export default {
 
 
    const option = {
-    title: [
-        //   {
-        //     text: "单位：度",
-        //     top:10,
-        //     right: 10,
-        //     textStyle: {
-        //       color: "#333",
-        //       fontSize: 14,
-        //       fontWeight: "500"
-        //     }
-        //   }
-    ],
+     title:[
+              {
+                  text: "单位：度",
+                  top:"10%",
+                  left: "12%",
+                  textStyle: {
+                    color: "#333",
+                    fontSize: 14,
+                    fontWeight: "500"
+                  }
+                }
+          ],
     tooltip: {
         showContent: true,
         trigger: "axis",
