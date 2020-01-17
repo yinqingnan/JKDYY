@@ -4,7 +4,7 @@
     <div class="box" id="bsl">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
-          <i class="el-icon-back " ></i>返回
+          <i class="el-icon-back"></i>返回
         </button>
 
         <h3 style="margin:0 auto">{{projectName}}报事率</h3>
@@ -27,7 +27,6 @@
         :default-sort="{prop: 'date', order: 'descending'}"
         class="table"
         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
-      
       >
         <el-table-column
           label="序号"
@@ -50,244 +49,235 @@
           :show-overflow-tooltip="true"
           align="center"
           min-width="76px"
-        > 
-        <template slot-scope="scope">
-        <span
-          size="mini"
-           style="cursor:pointer;text-decoration: underline;"
-          @click="handleEdit(scope.row)">{{ scope.row.projectName }}</span>
-       
-        </template>
-        
-        
+        >
+          <template slot-scope="scope">
+            <span
+              size="mini"
+              style="cursor:pointer;text-decoration: underline;"
+              @click="handleEdit(scope.row)"
+            >{{ scope.row.projectName }}</span>
+          </template>
         </el-table-column>
-      <el-table-column label="综合"  align="center">
-        <el-table-column
-          prop="synthesizeTotal"
-          label="总件次"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-        <el-table-column
-          prop="synthesizeComplete"
-          label="完成件次"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="60px"
-        ></el-table-column>
-        <el-table-column
-          prop="synthesizeFinishRate"
-          label="完结率"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-</el-table-column>
-<el-table-column label="审核" align="center">
-        <el-table-column
-          prop="auditTotal"
-          label="应审"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-        <el-table-column
-          prop="auditPendingTrial"
-          label="待审"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
+        <el-table-column label="综合" align="center">
           <el-table-column
-          prop="auditRate"
-          label="审核率"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-</el-table-column>
-<el-table-column label="派工" align="center">
-        <el-table-column
-          prop="jobTotal"
-          label="应派"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-        <el-table-column
-          prop="jobActual"
-          label="实派"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
+            prop="synthesizeTotal"
+            label="总件次"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
           <el-table-column
-          prop="jobRate"
-          label="派工率"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-</el-table-column>
-<el-table-column label="完成" align="center" >
-        <el-table-column
-          prop="finishTotal"
-          label="应完成"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-        <el-table-column
-          prop="finishActual"
-          label="实完成"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
+            prop="synthesizeComplete"
+            label="完成件次"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="60px"
+          ></el-table-column>
           <el-table-column
-          prop="finishRate"
-          label="完成率"
-          :show-overflow-tooltip="true"
-          align="center"
-          min-width="55px"
-        ></el-table-column>
-         
-</el-table-column>
+            prop="synthesizeFinishRate"
+            label="完结率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+        </el-table-column>
+        <el-table-column label="审核" align="center">
+          <el-table-column
+            prop="auditTotal"
+            label="应审"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="auditPendingTrial"
+            label="待审"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="auditRate"
+            label="审核率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+        </el-table-column>
+        <el-table-column label="派工" align="center">
+          <el-table-column
+            prop="jobTotal"
+            label="应派"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="jobActual"
+            label="实派"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="jobRate"
+            label="派工率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+        </el-table-column>
+        <el-table-column label="完成" align="center">
+          <el-table-column
+            prop="finishTotal"
+            label="应完成"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="finishActual"
+            label="实完成"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="finishRate"
+            label="完成率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+        </el-table-column>
       </el-table>
 
+      <!-- 下载表格 -->
 
-
-
-        <!-- 下载表格 -->
-
-         <el-table
+      <el-table
         :data="tablemsgmsg"
         :style="style"
         :default-sort="{prop: 'date', order: 'descending'}"
         class="xiazai"
         v-show="show"
-        
-        >
+      >
         <el-table-column
-                label="序号"
-                type="index"
-                width="45"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="45px"
-            ></el-table-column>
-            <el-table-column
-                prop="companyName"
-                label="所属公司"
-                min-width="76px"
-                :show-overflow-tooltip="true"
-                align="center"
-            ></el-table-column>
-            <el-table-column
-                prop="projectName"
-                label="项目名称"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="76px"
-            ></el-table-column>
-        <el-table-column label="综合"  align="center">
-            <el-table-column
-                prop="synthesizeTotal"
-                label="总件次"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-            <el-table-column
-                prop="synthesizeComplete"
-                label="完成件次"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="60px"
-            ></el-table-column>
-            <el-table-column
-                prop="synthesizeFinishRate"
-                label="完结率"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
+          label="序号"
+          type="index"
+          width="45"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="45px"
+        ></el-table-column>
+        <el-table-column
+          prop="companyName"
+          label="所属公司"
+          min-width="76px"
+          :show-overflow-tooltip="true"
+          align="center"
+        ></el-table-column>
+        <el-table-column
+          prop="projectName"
+          label="项目名称"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="76px"
+        ></el-table-column>
+        <el-table-column label="综合" align="center">
+          <el-table-column
+            prop="synthesizeTotal"
+            label="总件次"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="synthesizeComplete"
+            label="完成件次"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="60px"
+          ></el-table-column>
+          <el-table-column
+            prop="synthesizeFinishRate"
+            label="完结率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
         </el-table-column>
         <el-table-column label="审核" align="center">
-            <el-table-column
-                prop="auditTotal"
-                label="应审"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-            <el-table-column
-                prop="auditPendingTrial"
-                label="待审"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-                <el-table-column
-                prop="auditRate"
-                label="审核率"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
+          <el-table-column
+            prop="auditTotal"
+            label="应审"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="auditPendingTrial"
+            label="待审"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="auditRate"
+            label="审核率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
         </el-table-column>
         <el-table-column label="派工" align="center">
-            <el-table-column
-                prop="jobTotal"
-                label="应派"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-            <el-table-column
-                prop="jobActual"
-                label="实派"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-                <el-table-column
-                prop="jobRate"
-                label="派工率"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
+          <el-table-column
+            prop="jobTotal"
+            label="应派"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="jobActual"
+            label="实派"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="jobRate"
+            label="派工率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
         </el-table-column>
-        <el-table-column label="完成" align="center" >
-            <el-table-column
-                prop="finishTotal"
-                label="应完成"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-            <el-table-column
-                prop="finishActual"
-                label="实完成"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-                <el-table-column
-                prop="finishRate"
-                label="完成率"
-                :show-overflow-tooltip="true"
-                align="center"
-                min-width="55px"
-            ></el-table-column>
-                
+        <el-table-column label="完成" align="center">
+          <el-table-column
+            prop="finishTotal"
+            label="应完成"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="finishActual"
+            label="实完成"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
+          <el-table-column
+            prop="finishRate"
+            label="完成率"
+            :show-overflow-tooltip="true"
+            align="center"
+            min-width="55px"
+          ></el-table-column>
         </el-table-column>
-
       </el-table>
 
-        <!-- 分页器 -->
+      <!-- 分页器 -->
       <div class="box1">
         <el-pagination
           @size-change="handleSizeChange"
@@ -340,8 +330,8 @@ export default {
         "2001年",
         "2000年"
       ], //-------------------------------年份限制2001年到2020年
-      tablemsg: [],                 //显示的表格数据
-      tablemsgmsg: [],                 //下载的表格数据
+      tablemsg: [], //显示的表格数据
+      tablemsgmsg: [], //下载的表格数据
 
       num: 1,
       totalCount: null, //--------------------------------默认数据总数
@@ -364,19 +354,22 @@ export default {
     this.year = date.getFullYear();
     this.qyid = this.$route.query.qyid; //获取到路由参数 （区域公司的id）
     // 通过区域公司id来获取名称
-    this.axios.get("/api/companIdOrName?companIdOrName="+this.qyid).then((res)=>{
-      // console.log(res.data.data[0])
-      this.projectName=res.data.data[0].companyName
-    })
+    this.axios
+      .get("/api/companIdOrName?companIdOrName=" + this.qyid)
+      .then(res => {
+        // console.log(res.data.data[0])
+        this.projectName = res.data.data[0].companyName;
+      });
 
     // 通过区域公司id和当前的年份来查询数据
-    this.axios.get("/api/proBs01?companyId="+this.qyid+"&year="+this.year).then((res)=>{
+    this.axios
+      .get("/api/proBs01?companyId=" + this.qyid + "&year=" + this.year)
+      .then(res => {
         // console.log(res.data.data)
-        this.tablemsgmsg=res.data.data  //下载数据的表格
-        this.tablemsg=res.data.data      //展示数据的表格
-        this.totalCount=res.data.data.length    //展示数据的总条数
-    })
-
+        this.tablemsgmsg = res.data.data; //下载数据的表格
+        this.tablemsg = res.data.data; //展示数据的表格
+        this.totalCount = res.data.data.length; //展示数据的总条数
+      });
 
     this.getheight();
   },
@@ -389,11 +382,13 @@ export default {
     // 选中的年
     yearchange(yeardefaultdefault) {
       this.year = yeardefaultdefault.slice(0, 4);
-      this.axios.get("/api/proBs01?companyId="+this.qyid+"&year="+this.year).then((res)=>{
-              this.tablemsgmsg=res.data.data  //下载数据的表格
-              this.tablemsg=res.data.data      //展示数据的表格
-              this.totalCount=res.data.data.length    //展示数据的总条数
-          })
+      this.axios
+        .get("/api/proBs01?companyId=" + this.qyid + "&year=" + this.year)
+        .then(res => {
+          this.tablemsgmsg = res.data.data; //下载数据的表格
+          this.tablemsg = res.data.data; //展示数据的表格
+          this.totalCount = res.data.data.length; //展示数据的总条数
+        });
     },
     handleSizeChange(cpage) {
       this.pagesize = cpage;
@@ -403,7 +398,7 @@ export default {
     },
 
     TO() {
-    this.$router.go(-1)
+      this.$router.go(-1);
     },
     exportExcel() {
       this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
@@ -417,10 +412,15 @@ export default {
               type: "success",
               message: "下载成功!"
             });
-            this.axios.get("/api/companIdOrName?companIdOrName=" + this.qyid)
+            this.axios
+              .get("/api/companIdOrName?companIdOrName=" + this.qyid)
               .then(res => {
-                  // console.log(res.data.data[0].companyName)
-                let name =res.data.data[0].companyName+ this.year + "年" + "报事完成率";
+                // console.log(res.data.data[0].companyName)
+                let name =
+                  res.data.data[0].companyName +
+                  this.year +
+                  "年" +
+                  "报事完成率";
                 var wb = XLSX.utils.table_to_book(
                   document.querySelector(".xiazai")
                 );
@@ -436,7 +436,8 @@ export default {
                     name + ".xlsx"
                   );
                 } catch (e) {
-                  if (typeof console !== "undefined") window.console.log(e, wbout);
+                  if (typeof console !== "undefined")
+                    window.console.log(e, wbout);
                 }
                 return wbout;
               });
@@ -449,11 +450,8 @@ export default {
           });
         });
     },
-    // openDetails(row){
-    //    this.$router.push("bswjl?xmid="+row.projectId)
-    // }
-    handleEdit(row){
-    this.$router.push("bswjl?xmid="+row.projectId)
+    handleEdit(row) {
+      this.$router.push("bswjl?xmid=" + row.projectId);
     }
   }
 };
@@ -485,11 +483,11 @@ export default {
   font-size: 12px;
 }
 .boxTitle > h3 {
-    font-size: 20px;
-    color: #666;
-    line-height: 50px;
-    text-align: center;
-    font-weight: 600;
+  font-size: 20px;
+  color: #666;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 600;
 }
 .boxTitle > h2 {
   font-size: 12px;
@@ -497,8 +495,8 @@ export default {
   font-weight: 500;
   /* margin-left: 20px */
   cursor: pointer;
-      height: 35px;
-    line-height: 35px;
+  height: 35px;
+  line-height: 35px;
 }
 .select {
   margin-right: 22px;
@@ -508,35 +506,35 @@ export default {
   background: #fff;
   height: 50px;
 }
-.daochu{
-    border: 1px solid #4ac48b;
-    height: 26px !important;
-    width: 50px !important;
-    line-height: 26px !important;
-    margin-top: 8px;
-    padding: 0 5px;
-    border-radius: 5px;
-    background: #4ac48b;
-    color: #fff !important;
-    position: absolute;
-    top: 15px;
-    text-align: center;
-    right: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    font-size: 12px !important;
+.daochu {
+  border: 1px solid #4ac48b;
+  height: 26px !important;
+  width: 50px !important;
+  line-height: 26px !important;
+  margin-top: 8px;
+  padding: 0 5px;
+  border-radius: 5px;
+  background: #4ac48b;
+  color: #fff !important;
+  position: absolute;
+  top: 15px;
+  text-align: center;
+  right: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-size: 12px !important;
 }
-.daochu:hover{
- border: 1px solid #3c8dbc;
-    box-shadow: none;
+.daochu:hover {
+  border: 1px solid #3c8dbc;
+  box-shadow: none;
 }
-.fhsj{
-    border: 1px solid #4ac48b !important;
-    background: #4ac48b !important;
-    color: #fff !important;
-    border-radius: 5px; 
+.fhsj {
+  border: 1px solid #4ac48b !important;
+  background: #4ac48b !important;
+  color: #fff !important;
+  border-radius: 5px;
 }
-  .box >>> .el-table__header-wrapper{
+.box >>> .el-table__header-wrapper {
   height: 118px !important;
   line-height: 60px !important;
 }
@@ -564,7 +562,7 @@ export default {
 .is-scrolling-right:-webkit-scrollbar {
   display: none;
 }
-  #bsl .has-gutter> tr>th{
-  padding: 0 !important
+#bsl .has-gutter > tr > th {
+  padding: 0 !important;
 }
 </style>

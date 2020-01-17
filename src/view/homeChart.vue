@@ -241,10 +241,10 @@
                     }
                 },this.datetiem)
             },
+            
             //获取区域
             getRegion(){
                 this.axios.get("/api/projectCompanyList").then((res)=>{
-                    // this.list=res.data.data
                     this.options = res.data.data;
                     this.value = res.data.data[0].id;
                     this.getProject();
@@ -292,7 +292,6 @@
                     // 'GardentubeAreaRevenue', //园区方均营收
                     // 'ProfitPeopleRevenue', //人均利润
                     // 'ProfittubeAreaRevenue' //方均利润
-                  
                     let list = [{
                         title: '人均营收（含外包）',
                         arr:[this.barData[1].PeopleRevenue,this.barData[0].PeopleRevenue,this.barData[2].PeopleRevenue]
@@ -800,13 +799,14 @@
 /* 图标特效 */
 
 
- .Effect4{
+.Effect4{
     -webkit-animation-name: scaleDraw; 
     -webkit-animation-timing-function: ease-in-out; 
     -webkit-animation-iteration-count: infinite;  
     -webkit-animation-duration: 5s; 
     -webkit-animation-delay:0s
 }
+
  @keyframes scaleDraw {  
     0%{
         transform: scale(1);  
@@ -820,9 +820,7 @@
     75%{
         transform: scale(1.2);
     }
-    100%{
-        transform: scale(1);
-    }
+
 }
 .iconBook:hover .iconBox{
     -webkit-animation-name: scaleDraw; 

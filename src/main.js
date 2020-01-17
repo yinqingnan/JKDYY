@@ -1,4 +1,4 @@
-//语法兼容
+//语法兼容IE   
 import '@babel/polyfill'
 
 
@@ -39,7 +39,7 @@ Vue.use(ElementUI);
 
 // 引入echarts
 import echarts from "echarts"
-Vue.prototype.$echarts = echarts;
+Vue.prototype.echarts = echarts;
 
 // 注入vuex
 import store from '@/store'
