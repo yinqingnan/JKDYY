@@ -2,6 +2,7 @@
 <template>
   <!-- 项目收入一览表 -->
   <div>
+    
     <div class="box" id="srylb">
       <div class="boxTitle">
         <button @click="TO" class="fhsj">
@@ -138,23 +139,19 @@
           align="center"
           min-width="120px"
         ></el-table-column>
-        <el-table-column prop="yieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px">
+        <el-table-column prop="someYieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px">
            <template slot-scope="scope">
-              <span v-show="scope.row.yieldRate">{{scope.row.yieldRate}}%</span>
-            </template>
-        </el-table-column>
-        <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>
-        <el-table-column prop="someYieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px">
-            <template slot-scope="scope">
               <span v-show="scope.row.someYieldRate">{{scope.row.someYieldRate}}%</span>
             </template>
         </el-table-column>
+        <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>
+        <el-table-column prop="yieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px">
+            <template slot-scope="scope">
+              <span v-show="scope.row.yieldRate">{{scope.row.yieldRate}}%</span>
+            </template>
+        </el-table-column>
       </el-table>
-
-
-
         <!-- 下载表格 -->
-
  <el-table
         :data="tablemsgmsg"
         :style="style"
@@ -163,7 +160,6 @@
         show-summary
         class="xiazai"
         v-show="show"
-         
       >
         <el-table-column
           label="序号"
@@ -272,9 +268,17 @@
           align="center"
           min-width="90px"
         ></el-table-column>
-        <el-table-column prop="yieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px"></el-table-column>
+          <el-table-column prop="someYieldRate" label="目标达成率" :show-overflow-tooltip="true" align="center" min-width="94px">
+           <template slot-scope="scope">
+              <span v-show="scope.row.someYieldRate">{{scope.row.someYieldRate}}%</span>
+            </template>
+        </el-table-column>
         <el-table-column prop="lastYearSome" label="去年同期" :show-overflow-tooltip="true" align="center" min-width="76px"></el-table-column>
-        <el-table-column prop="someYieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px"></el-table-column>
+        <el-table-column prop="yieldRate" label="同期达成率" :show-overflow-tooltip="true" align="center" min-width="90px">
+            <template slot-scope="scope">
+              <span v-show="scope.row.yieldRate">{{scope.row.yieldRate}}%</span>
+            </template>
+        </el-table-column>
       </el-table>
 
         <!-- 分页器 -->
@@ -369,7 +373,7 @@ export default {
           });
       });
 
-
+    
 
     this.getheight();
   },

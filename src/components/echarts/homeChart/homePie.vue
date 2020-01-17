@@ -43,7 +43,7 @@
                     
 
                     series: [{
-                        name: '访问来源',
+                        // name: '访问来源',
                         type: 'pie',
                         radius: '76%',
                         center: ['50%', '50%'],
@@ -54,7 +54,12 @@
                             '#1db7e5',
                             '#fd8d06',
                             '#18b78e',
-                            '#88acff'
+                            '#88acff',
+                            '#f6b37f',
+                            '#0068b7',
+                            '#92b838',
+                            '#048e87',
+                            '#8957a1'
                         ],
                         data: this.list.sort(function(a, b) {
                             return a.value - b.value

@@ -29,16 +29,17 @@ export default {
         // console.log(res.data.data)
         this.title=[]
         this.data1=[]
-
+        this.data2=[]
+        this.data3=[]
 
 
         this.title.push(res.data.data[0].stateType,res.data.data[1].stateType,res.data.data[2].stateType)
-        this.data1.push((res.data.data[0].m1*100).toFixed(2),(res.data.data[0].m2*100).toFixed(2),(res.data.data[0].m3*100).toFixed(2),(res.data.data[0].m4*100).toFixed(2),(res.data.data[0].m5*100).toFixed(2),(res.data.data[0].m6*100).toFixed(2),(res.data.data[0].m7*100).toFixed(2),(res.data.data[0].m7*100).toFixed(2),(res.data.data[0].m8*100).toFixed(2),(res.data.data[0].m9*100).toFixed(2),(res.data.data[0].m10*100).toFixed(2),(res.data.data[0].m11*100).toFixed(2),(res.data.data[0].m12*100).toFixed(2),)
 
+        this.data1.push((res.data.data[0].m1*100).toFixed(2),(res.data.data[0].m2*100).toFixed(2),(res.data.data[0].m3*100).toFixed(2),(res.data.data[0].m4*100).toFixed(2),(res.data.data[0].m5*100).toFixed(2),(res.data.data[0].m6*100).toFixed(2),(res.data.data[0].m7*100).toFixed(2),(res.data.data[0].m8*100).toFixed(2),(res.data.data[0].m9*100).toFixed(2),(res.data.data[0].m10*100).toFixed(2),(res.data.data[0].m11*100).toFixed(2),(res.data.data[0].m12*100).toFixed(2),)
 
-        this.data2.push((res.data.data[1].m1*100).toFixed(2),(res.data.data[1].m2*100).toFixed(2),(res.data.data[1].m3*100).toFixed(2),(res.data.data[1].m4*100).toFixed(2),(res.data.data[1].m5*100).toFixed(2),(res.data.data[1].m6*100).toFixed(2),(res.data.data[1].m7*100).toFixed(2),(res.data.data[1].m7*100).toFixed(2),(res.data.data[1].m8*100).toFixed(2),(res.data.data[1].m9*100).toFixed(2),(res.data.data[1].m10*100).toFixed(2),(res.data.data[1].m11*100).toFixed(2),(res.data.data[1].m12*100).toFixed(2),)
+        this.data2.push((res.data.data[1].m1*100).toFixed(2),(res.data.data[1].m2*100).toFixed(2),(res.data.data[1].m3*100).toFixed(2),(res.data.data[1].m4*100).toFixed(2),(res.data.data[1].m5*100).toFixed(2),(res.data.data[1].m6*100).toFixed(2),(res.data.data[1].m7*100).toFixed(2),(res.data.data[1].m8*100).toFixed(2),(res.data.data[1].m9*100).toFixed(2),(res.data.data[1].m10*100).toFixed(2),(res.data.data[1].m11*100).toFixed(2),(res.data.data[1].m12*100).toFixed(2),)
 
-        this.data3.push((res.data.data[2].m1*100).toFixed(2),(res.data.data[2].m2*100).toFixed(2),(res.data.data[2].m3*100).toFixed(2),(res.data.data[2].m4*100).toFixed(2),(res.data.data[2].m5*100).toFixed(2),(res.data.data[2].m6*100).toFixed(2),(res.data.data[2].m7*100).toFixed(2),(res.data.data[2].m7*100).toFixed(2),(res.data.data[2].m8*100).toFixed(2),(res.data.data[2].m9*100).toFixed(2),(res.data.data[2].m10*100).toFixed(2),(res.data.data[2].m11*100).toFixed(2),(res.data.data[2].m12*100).toFixed(2),)
+        this.data3.push((res.data.data[2].m1*100).toFixed(2),(res.data.data[2].m2*100).toFixed(2),(res.data.data[2].m3*100).toFixed(2),(res.data.data[2].m4*100).toFixed(2),(res.data.data[2].m5*100).toFixed(2),(res.data.data[2].m6*100).toFixed(2),(res.data.data[2].m7*100).toFixed(2),(res.data.data[2].m8*100).toFixed(2),(res.data.data[2].m9*100).toFixed(2),(res.data.data[2].m10*100).toFixed(2),(res.data.data[2].m11*100).toFixed(2),(res.data.data[2].m12*100).toFixed(2),)
  
 
    
@@ -178,8 +179,6 @@ export default {
  
       //自适应屏幕
       window.addEventListener('resize',function() {
-          // console.log(myChart.resize())
-        
         myChart.resize()})
     })
   },

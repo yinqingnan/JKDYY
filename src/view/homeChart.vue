@@ -199,7 +199,8 @@
               nodeCompleted:'',
               iconBoxnum:0,
               time:"",
-              datetiem:2500
+              datetiem:2500,
+              Record:0
           }
         },
         created() {
@@ -225,11 +226,13 @@
                this.iconBoxnum++
             },
             LImouseover(){
-                    this.iconBoxnum=10
+                this.Record=0
+                this.Record=this.iconBoxnum
+                this.iconBoxnum=10
                     clearInterval(this.time)
             },
             LImouseout(){
-                this.iconBoxnum=0
+                this.iconBoxnum=this.Record
                 clearInterval(this.time)
                 this.time=setInterval(()=>{
                     this.animation()
@@ -282,31 +285,32 @@
             setEfficiency(val){
                 this.axios.get("/api/tj002?projectId=" + val).then((res)=>{
                     this.barData = res.data.data;
-                    // window.console.log( res.data.data)
+                    window.console.log( res.data.data)
                     // 'PeopleRevenue', //人均营收
                     // 'tubeAreaRevenue', //方均营收
                     // 'GardenPeopleRevenue', //园区人均营收
                     // 'GardentubeAreaRevenue', //园区方均营收
                     // 'ProfitPeopleRevenue', //人均利润
                     // 'ProfittubeAreaRevenue' //方均利润
+                  
                     let list = [{
                         title: '人均营收（含外包）',
-                        arr:[this.barData[2].PeopleRevenue,this.barData[0].PeopleRevenue,this.barData[1].PeopleRevenue]
+                        arr:[this.barData[1].PeopleRevenue,this.barData[0].PeopleRevenue,this.barData[2].PeopleRevenue]
                     },{
                         title: '方均营收',
-                        arr:[this.barData[2].tubeAreaRevenue,this.barData[0].tubeAreaRevenue,this.barData[1].tubeAreaRevenue]
+                        arr:[this.barData[1].tubeAreaRevenue,this.barData[0].tubeAreaRevenue,this.barData[2].tubeAreaRevenue]
                     },{
                         title: '人均园区营收（含外包）',
-                        arr:[this.barData[2].GardenPeopleRevenue,this.barData[0].GardenPeopleRevenue,this.barData[1].GardenPeopleRevenue]
+                        arr:[this.barData[1].GardenPeopleRevenue,this.barData[0].GardenPeopleRevenue,this.barData[2].GardenPeopleRevenue]
                     },{
                         title: '方均园区营收',
-                        arr:[this.barData[2].GardentubeAreaRevenue,this.barData[0].GardentubeAreaRevenue,this.barData[1].GardentubeAreaRevenue]
+                        arr:[this.barData[1].GardentubeAreaRevenue,this.barData[0].GardentubeAreaRevenue,this.barData[2].GardentubeAreaRevenue]
                     },{
                         title: '人均利润（含外包）',
-                        arr:[this.barData[2].ProfitPeopleRevenue,this.barData[0].ProfitPeopleRevenue,this.barData[1].ProfitPeopleRevenue]
+                        arr:[this.barData[1].ProfitPeopleRevenue,this.barData[0].ProfitPeopleRevenue,this.barData[2].ProfitPeopleRevenue]
                     },{
                         title: '方均利润',
-                        arr:[this.barData[2].ProfittubeAreaRevenue,this.barData[0].ProfittubeAreaRevenue,this.barData[1].ProfittubeAreaRevenue]
+                        arr:[this.barData[1].ProfittubeAreaRevenue,this.barData[0].ProfittubeAreaRevenue,this.barData[2].ProfittubeAreaRevenue]
                     }];
 
                     this.list = list;
