@@ -45,7 +45,6 @@ Vue.prototype.echarts = echarts;
 import store from '@/store'
 
 
-
 // 引入全局变量
 import global_ from "@/api/Global.vue"
 Vue.prototype.GLOBAL = global_//挂载到Vue实例上面

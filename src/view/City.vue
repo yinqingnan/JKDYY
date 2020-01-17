@@ -14,8 +14,6 @@
                   :value="item.provinceName"
                 ></el-option>
               </el-select>
-
-
             <el-select v-model="newid" placeholder="请选择" @change="change(newid)" style="width:120px;marginLeft:10px">
               <el-option
                 v-for="(item,index) in citylist"
@@ -71,7 +69,7 @@
           <div v-if="xs">
             <div class="right">
               <ul class="right_body">
-                <li v-for="(item,index) in defaultlist" v-if="index<10" :key="index">
+                <li v-for="(item,index) in defaultlist" :key="index">
                   <h2>{{item.regulationsName}}</h2>
                   <h3>{{item.keyPolicyInterpretation}}</h3>
                 </li>
@@ -85,25 +83,29 @@
           <div class="">
             <!-- table1 -->
             <h1 class="titlezt">竞品项目物业费备案价</h1>
-            <el-table
-              :data="defaultable2"
-              :row-style="tableRowStyle"
-              :header-cell-style="tableHeaderColor"
-              height="80%"
-              fit:true
-              border
-              style="width: 100%;font-size:10px;min-width:100%;"
-              :show-overflow-tooltip="true"
-            >
-              <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
-              <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
-              <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="businessFee" label="商业" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
-              <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true"></el-table-column>
-            </el-table>
+            <div style="height:100%">
+                <el-table
+                :data="defaultable2"
+                :row-style="tableRowStyle"
+                :header-cell-style="tableHeaderColor"
+                height="80%"
+                fit:true
+                border
+                style="width: 100%;font-size:10px;min-width:100%;"
+                :show-overflow-tooltip="true"
+              >
+                <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
+                <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
+                <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="businessFee" label="商业" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
+                <el-table-column prop="remark" label="备注" min-width="30px" align="center" :show-overflow-tooltip="true" ></el-table-column>
+              </el-table>
+            
+            </div>
+     
           </div>
           <div>
               <h1 class="titlezt">金科自建项目物业费备案价</h1>
@@ -241,7 +243,7 @@ export default {
             .get("/api/cityData07?cityDataId=" + res.data.data[0].id)
             .then(res => {
               this.defaultlist = res.data.data;
-              // console.log(res.data.data)
+              console.log(res.data.data)
             });
             // 城市当地政府物业费指导价上浮说明数据
             this.axios.get("/api/cityDataRemark?id="+this.id).then((res)=>{
@@ -606,6 +608,7 @@ word-break:break-all;
   height: 57px !important;
   line-height: 56px !important
 }
+
 </style>
 <style >
 /* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */
