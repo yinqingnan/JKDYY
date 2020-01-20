@@ -25,10 +25,9 @@ export default {
     },
     methods: {
         btn(Url){
-            // console.log(Url)
+            // window.console.log(Url)
             window.open(Url)
-         
-        } 
+        }
     },
 }
 </script>
@@ -43,10 +42,10 @@ export default {
     box-sizing: border-box;
     overflow-y:auto;
      /* 当IE下溢出，仍然可以滚动*/ 
-        -ms-overflow-style:none;
+    -ms-overflow-style:none;
         /*火狐下隐藏滚动条*/
-        overflow:-moz-scrollbars-none;
-            scrollbar-width: none
+    overflow:-moz-scrollbars-none;
+    scrollbar-width: none
 
 }
 .box::-webkit-scrollbar {display:none}
@@ -57,8 +56,6 @@ export default {
     color: #333;
     line-height: 44px;
     text-indent:10px;
-    /* margin-right: 100px; */
-    text-indent: 10px;
     border-bottom: 1px solid #f0f0f0
 }
 .box>ul{
