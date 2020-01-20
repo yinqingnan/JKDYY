@@ -35,7 +35,7 @@ export default {
         ],
         grid: [{ x: "10%", y: "7%", width: "45%", height: "90%" }],
         tooltip: {
-          formatter: "{b} {c}",
+          formatter: " {c}",
           position: "right"
         },
         xAxis: [
