@@ -9,24 +9,22 @@
 
     export default {
         name: "homeRadar",
-        props:['radarData'],
-        data(){
-            return{
-
-            }
+        props: ['radarData'],
+        data() {
+            return {}
         },
         created() {
             // console.log(this.radarData);
         },
-        methods:{
-            setRadar(){
+        methods: {
+            setRadar() {
                 let myRadar = echarts.init(this.$refs.radar);
                 let option = {
                     backgroundColor: 'transparent',
                     tooltip: {
                         show: true,
-                        padding:[0,15,20,15],     //定义内边距
-                   
+                        padding: [0, 15, 20, 15],     //定义内边距
+
                     },
                     legend: {
                         show: true,
@@ -132,7 +130,7 @@
                         symbol: 'circle',
                         symbolSize: 12,
                         itemStyle: {
-                            normal:{
+                            normal: {
                                 color: '#f9cf67',
                                 borderWidth: 5,
                             },
@@ -157,13 +155,13 @@
                 }
 
                 myRadar.setOption(option);
-                window.addEventListener("resize", function() {
+                window.addEventListener("resize", function () {
                     myRadar.resize();
                 });
             }
         },
-        watch:{
-            radarData:function (n,o) {
+        watch: {
+            radarData: function (n, o) {
                 this.setRadar();
             }
         }
@@ -171,7 +169,7 @@
 </script>
 
 <style scoped>
-    #homeRadar, #radar{
+    #homeRadar, #radar {
         width: 100%;
         height: 100%;
     }

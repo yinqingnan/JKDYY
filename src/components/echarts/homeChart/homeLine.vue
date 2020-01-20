@@ -6,16 +6,15 @@
 
 <script>
     import echarts from "echarts";
+
     export default {
         name: "homeLine",
-        props:['lineData'],
-        data(){
-            return{
-
-            }
+        props: ['lineData'],
+        data() {
+            return {}
         },
-        methods:{
-            setLine(){
+        methods: {
+            setLine() {
                 let myLine = echarts.init(this.$refs.line);
                 let option = {
                     backgroundColor: "transparent",
@@ -26,31 +25,31 @@
                         top: '6%',
                         textStyle: {
                             color: '#fff',
-                            fontSize:"12"
+                            fontSize: "12"
                         }
                     }],
                     tooltip: {
                         trigger: 'axis'
                     },
                     legend: {
-                        icon:'rect',
-                        top:'4%',
-                        right:'10%',
+                        icon: 'rect',
+                        top: '4%',
+                        right: '10%',
                         textStyle: {
                             color: '#becff3',
                         },
-                        fontSize:12,
+                        fontSize: 12,
                         selectedMode: 'single',
                         data: ['地产类', '物业类', '其他'],
                         itemWidth: 12,  // 设置宽度
                         itemHeight: 12, // 设置高度
                         itemGap: 15, // 设置间距
                     },
-                     grid: {
-                            top: "14%",
-                            right: "10%",
-                            left: "16%",
-                            bottom: "14%"
+                    grid: {
+                        top: "14%",
+                        right: "10%",
+                        left: "16%",
+                        bottom: "14%"
                     },
                     toolbox: {
                         "show": false,
@@ -74,8 +73,8 @@
                             }
                         },
                         boundaryGap: false,
-                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月','9月','10月','11月','12月'],
-                        interval:0,
+                        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                        interval: 0,
                     },
                     yAxis: {
                         "axisLine": {
@@ -168,8 +167,8 @@
                 });
             }
         },
-        watch:{
-            lineData:function (nVal,oVal) {
+        watch: {
+            lineData: function (nVal, oVal) {
                 this.setLine();
             }
         }
@@ -177,12 +176,13 @@
 </script>
 
 <style scoped>
-    #homeLine{
+    #homeLine {
         width: 100%;
         /* height: calc(100% - 56px); */
         height: 302px
     }
-    #line{
+
+    #line {
         width: 100%;
         height: 100%;
     }

@@ -7,14 +7,15 @@
 
 <script>
     import echarts from "echarts";
+
     export default {
-        props:['pieData'],
+        props: ['pieData'],
         name: "homePie",
         data() {
             return {
                 dataList: this.pieData,
-                list:[],
-                all:[]
+                list: [],
+                all: []
             };
         },
         created() {
@@ -24,7 +25,7 @@
 
         },
         methods: {
-            setPie(){
+            setPie() {
                 let myPie = echarts.init(this.$refs.pie);
                 let option = {
                     backgroundColor: 'transparent',
@@ -37,10 +38,9 @@
                         show: false,
                         min: 0,
                         max: 100,
-                        inRange: {
-                        }
+                        inRange: {}
                     },
-                    
+
 
                     series: [{
                         // name: '访问来源',
@@ -61,7 +61,7 @@
                             '#048e87',
                             '#8957a1'
                         ],
-                        data: this.list.sort(function(a, b) {
+                        data: this.list.sort(function (a, b) {
                             return a.value - b.value
                         }),
                         // roseType: 'radius',
@@ -73,7 +73,7 @@
                                     c: {
                                         color: '#fff',
                                         fontSize: 15,
-                                        fontWeight:'bold',
+                                        fontWeight: 'bold',
                                         lineHeight: 5
                                     },
                                     b: {
@@ -100,19 +100,19 @@
                 };
 
                 myPie.setOption(option);
-                window.addEventListener("resize", function() {
+                window.addEventListener("resize", function () {
                     myPie.resize();
                 });
             }
         },
-        watch:{
-            'pieData':function(nVal,oVal){
+        watch: {
+            'pieData': function (nVal, oVal) {
                 this.all = nVal.data.data;
                 this.list = [];
                 this.all.forEach(e => {
                     let obj = {
-                        value:e.incomAmount,
-                        name:e.incomType
+                        value: e.incomAmount,
+                        name: e.incomType
                     };
                     this.list.push(obj);
                 });
@@ -123,11 +123,11 @@
 </script>
 
 <style scoped>
-    header{
+    header {
         width: 100%;
         height: 46px;
         line-height: 46px;
-        color:#fff;
+        color: #fff;
         font-weight: 500;
         text-indent: 20px;
         background: url("../../../assets/ima/chart_headr.png");
@@ -135,7 +135,8 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
-    .pie{
+
+    .pie {
         min-height: 300px;
         width: 100%;
     }

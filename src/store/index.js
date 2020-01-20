@@ -1,20 +1,19 @@
-
 // 引入和使用vuex
 import Vue from 'vue';
 import Vuex from 'vuex';
+
 Vue.use(Vuex);
 
 
-
 const store = new Vuex.Store({
-    state:{
-        show0:true,
-        show1:false,
+    state: {
+        show0: true,
+        show1: false,
 
-        number:0
+        number: 0
     },
-    
-    mutations:{
+
+    mutations: {
         // 修改显示权限
         // display(state){
         //     state.show0=false
@@ -26,12 +25,10 @@ const store = new Vuex.Store({
         //     state.show1=false
         //     // location.reload(true)     //强制刷新页面将丢失的数据找回
         // }
-        
+
 
     },
-    actions:{
-        
-    }
+    actions: {}
 });
- 
+
 export default store;
