@@ -23,7 +23,11 @@
                 let myRadar = echarts.init(this.$refs.radar);
                 let option = {
                     backgroundColor: 'transparent',
-                    tooltip: {},
+                    tooltip: {
+                        show: true,
+                        padding:[0,15,20,15],     //定义内边距
+                   
+                    },
                     legend: {
                         show: true,
                         icon: "circle",
@@ -110,7 +114,7 @@
                         }
                     },
                     series: [{
-                        // name: '一级权重分析',
+                        name: '',
                         type: 'radar',
                         areaStyle: {
                             normal: {
