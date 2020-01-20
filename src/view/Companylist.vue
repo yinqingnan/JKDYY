@@ -1,7 +1,6 @@
 <template>
     <!-- 公司详情页面 -->
     <div>
-
         <div class="container" :style="style">
             <div>
                 <div class="container_header">
