@@ -13,7 +13,7 @@
                             <el-option
                                     :value="item.reporting"
                                     v-for="(item,index) in time"
-                                    :key="index"
+                            :key="index"
                                     @click="getindex(item.reportingYear,item.reportingType)"
                             ></el-option>
                         </el-select>

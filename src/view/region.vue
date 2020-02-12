@@ -79,17 +79,21 @@
                     <div>
                         <!-- 关键指标图表1 -->
                         <div>
-                            <h1 v-for="(item,index) in zhsfltitle" :key="index"
-                                style="marginRight:10%;cursor: pointer; color:#49a4d9" @click="zhsfl">
-
+                            <h1
+                                    v-for="(item,index) in zhsfltitle"
+                                    :key="index"
+                                    style="marginRight:10%;cursor: pointer; color:#49a4d9"
+                                    @click="zhsfl"
+                            >
                                 综合收缴率
                                 <span :class="item.state==1? 'Green':'Red'">
-                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>{{item.changeRate.toFixed(2)}}%
+                  <i :class="item.state==1? 'Greensj':'Redsj'"></i>
+                  {{item.changeRate.toFixed(2)}}%
                 </span>
                             </h1>
                             <h2 v-for="(item,index) in zhsfltitle" :key="index+1">
-                                {{item.newRate.toFixed(2)}}<span>%</span>
-
+                                {{item.newRate.toFixed(2)}}
+                                <span>%</span>
                             </h2>
                             <div>
                                 <div style="width:100%">
@@ -116,15 +120,21 @@
 
                         <!-- 关键指标图表2 -->
                         <div>
-                            <h1 v-for="(item,index) in bstitle" :key="index"
-                                style="marginRight:10%; cursor:pointer;color:#49a4d9" @click="bswjl">
+                            <h1
+                                    v-for="(item,index) in bstitle"
+                                    :key="index"
+                                    style="marginRight:10%; cursor:pointer;color:#49a4d9"
+                                    @click="bswjl"
+                            >
                                 报事完结率
                                 <span :class="item.state==1? 'Green':'Red'">
                   <i :class="item.state==1? 'Greensj':'Redsj'"></i>
-                  {{item.changeRate.toFixed(2)}}%</span>
+                  {{item.changeRate.toFixed(2)}}%
+                </span>
                             </h1>
                             <h2 v-for="(item,index) in bstitle" :key="index+1">
-                                {{item.newRate.toFixed(2)}}<span>%</span>
+                                {{item.newRate.toFixed(2)}}
+                                <span>%</span>
                             </h2>
                             <div>
                                 <div style="width:100%">
@@ -150,7 +160,6 @@
                         <!-- 关键指标图表3 -->
 
                         <div>
-
                             <h1 v-for="(item,index) in xcpztitle" :key="index" style="marginRight:10%;">
                                 现场品质
                                 <span :class="item.state==1? 'Green':'Red'">
@@ -158,10 +167,7 @@
                   {{item.changeRate.toFixed(2)}}%
                 </span>
                             </h1>
-                            <h2 v-for="(item,index) in xcpztitle" :key="index+1">
-                                {{item.newScore || 0}}
-
-                            </h2>
+                            <h2 v-for="(item,index) in xcpztitle" :key="index+1">{{item.newScore || 0}}</h2>
                             <div>
                                 <div style="width:100%">
                                     <xcpzsxzzt :xcpzsxzzt="xcpzsxzzt" :xsyf="xsyf" style="width:100%"></xcpzsxzzt>
@@ -189,9 +195,9 @@
                             <div>
                                 <h1>园区经营指标</h1>
                                 <!-- <h2>
-                                  更多
-                                  <span class="iconfont iconpub_right"></span>
-                                </h2> -->
+                                                  更多
+                                                  <span class="iconfont iconpub_right"></span>
+                                </h2>-->
                             </div>
 
                             <!-- 雷达图 -->
@@ -201,11 +207,14 @@
                             <div>
                                 <h1>项目能耗指标</h1>
                                 <!-- <h2>
-                                  更多
-                                  <span class="iconfont iconpub_right"></span>
-                                </h2> -->
+                                                  更多
+                                                  <span class="iconfont iconpub_right"></span>
+                                </h2>-->
                                 <div class="xmnhxq">
-                                    <h2 @click="toxmnhzb">更多 <span class="iconfont iconpub_right"></span></h2>
+                                    <h2 @click="toxmnhzb">
+                                        更多
+                                        <span class="iconfont iconpub_right"></span>
+                                    </h2>
                                 </div>
                             </div>
                             <div class="xmnh">
@@ -220,11 +229,14 @@
                                         </li>
                                     </ul>
                                     <div>
-                                        <xmnhysqn :xmnhysqn="xmnhysqn" v-show="show" :num=num></xmnhysqn>
-                                        <xmnhdyys :xmnhdyys="xmnhdyys" :xmnhdyysname="xmnhdyysname" v-show="show1"
-                                                  :num=num></xmnhdyys>
+                                        <xmnhysqn :xmnhysqn="xmnhysqn" v-show="show" :num="num"></xmnhysqn>
+                                        <xmnhdyys
+                                                :xmnhdyys="xmnhdyys"
+                                                :xmnhdyysname="xmnhdyysname"
+                                                v-show="show1"
+                                                :num="num"
+                                        ></xmnhdyys>
                                     </div>
-
                                 </div>
                                 <div class="xmyd">
                                     <div class="xmyd">
@@ -238,9 +250,13 @@
                                             </li>
                                         </ul>
                                         <div>
-                                            <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" :num1=num1></xmnhydqn>
-                                            <xmnhdyyd v-show="show3" :xmnhyddyname="xmnhyddyname" :xmnhyddy="xmnhyddy"
-                                                      :num1=num1></xmnhdyyd>
+                                            <xmnhydqn :xmnhysqn="xmnhydqn" v-show="show2" :num1="num1"></xmnhydqn>
+                                            <xmnhdyyd
+                                                    v-show="show3"
+                                                    :xmnhyddyname="xmnhyddyname"
+                                                    :xmnhyddy="xmnhyddy"
+                                                    :num1="num1"
+                                            ></xmnhdyyd>
                                         </div>
                                     </div>
                                 </div>
@@ -270,8 +286,12 @@
                     </div>
                     <div class="table3_footer">
                         <ul>
-                            <li v-for="(item,index) in loginxt" :key="index" @click="todlqtxt(item.href)"
-                                :title="item.name">
+                            <li
+                                    v-for="(item,index) in loginxt"
+                                    :key="index"
+                                    @click="todlqtxt(item.href)"
+                                    :title="item.name"
+                            >
                                 <img :src="item.imagehref"/>
                                 <h2>{{item.name}}</h2>
                             </li>
@@ -291,11 +311,11 @@
     // 用水全年图表
     import xmnhysqn from "@/components/echarts/xmnhysqn";
     //用水当月图表
-    import xmnhdyys from "@/components/echarts/xmnhdyys"
+    import xmnhdyys from "@/components/echarts/xmnhdyys";
     // 用电全年图表
     import xmnhydqn from "@/components/echarts/xmnhydqn";
     // 用电当月图表
-    import xmnhdyyd from "@/components/echarts/xmnhdyyd"
+    import xmnhdyyd from "@/components/echarts/xmnhdyyd";
     //项目报事完结率横向柱状图
     import xmbshxzzt from "@/components/echarts/xmbshxzzt";
     //项目报事完结率竖向柱状图
@@ -349,11 +369,11 @@
                 msg: null, // ---------------------------------区域公司切换后的第一个项目id, 用做数据的切换
                 loginxt: [], //--------------------------------登录其他系统数据
                 xmnhysqn: [], //-------------------------------项目能耗用水全年数据
-                xmnhdyys: [],  //-------------------------------项目能耗用水当月
-                xmnhdyysname: [],  //-------------------------------项目能耗用水当月name
+                xmnhdyys: [], //-------------------------------项目能耗用水当月
+                xmnhdyysname: [], //-------------------------------项目能耗用水当月name
                 xmnhydqn: [], //-------------------------------项目能耗用电全年数据
-                xmnhyddy: [],  //-------------------------------项目能耗用电当月
-                xmnhyddyname: [],  //-------------------------------项目能耗用电当月name
+                xmnhyddy: [], //-------------------------------项目能耗用电当月
+                xmnhyddyname: [], //-------------------------------项目能耗用电当月name
                 list3: ["全年用水", "当月用水"],
                 list4: ["全年用电", "当月用电"],
                 bshxzzt: [], //--------------------------------报事  横向柱状图
@@ -370,339 +390,103 @@
                 xcpzhxzzt: [], //------------------------------现场品质横向柱状图
                 xcpzsxzzt: [], //------------------------------现场品质竖向柱状图
                 xcpztitle: [], //------------------------------现场品质title信息
-                xcpzmsg: [],//---------------------------------现场品质提示信息
+                xcpzmsg: [], //---------------------------------现场品质提示信息
                 encry: ""
             };
         },
         methods: {
             // 项目能耗指标
             toxmnhzb() {
-                this.$router.push("/xmnhzb?xmid=" + this.xmid)
+                this.$router.push("/xmnhzb?xmid=" + this.xmid);
             },
             // 跳转到项目总收入页面
             tozsr() {
-                this.$router.push('/xmzhsfl?xmid=' + this.xmid)
+                this.$router.push("/xmzhsfl?xmid=" + this.xmid);
             },
             // 项目综合收费率跳转
             zhsfl() {
-                this.$router.push("zhsjl?xmid=" + this.xmid)
-
+                this.$router.push("zhsjl?xmid=" + this.xmid);
             },
             bswjl() {
-                this.$router.push("bswjl?xmid=" + this.xmid)
+                this.$router.push("bswjl?xmid=" + this.xmid);
             },
-            // // 当月用水详情跳转
+            //当月用水详情跳转
 
             todlqtxt(href) {
-                // console.log(href)
-                window.open(href, "_blank")
+                window.open(href, "_blank");
             },
-// 区域公司切换
+            // 区域公司切换
             selectchange(value) {
-                // console.log(value)
+            //    this.value = value
+            //    window.console.log(this.value)
+                console.log(this.value)
+           
+                
                 //区域公司级下拉菜单选中监听
-                this.value = value;
-                this.axios.get("api/projectBycId?companyId=" + value).then(res => {
-                    // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
-                    // console.log(res.data.data)
+                 this.axios.get("api/projectBycId?companyId=" + value).then(res => {
+                     
+                     console.log(res.data.data)
                     this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
-                    this.value1 = res.data.data[0].projectName;
-                    this.xmid = res.data.data[0].projectId     //切换后使用新id来进行数据的切换
-
-                    this.axios
-                        .get("api/projectInfoById?projectId=" + this.xmid)
-                        .then(res => {
-                            // console.log(res.data.data)
-                            this.titlename = res.data.data;
-                        });
-                    // 获取项目能耗用水数据
-                    this.axios
-                        .get("api/projectWaterrentM?projectId=" + this.xmid)
-                        .then(res => {
-                            // console.log(res.data.data[0])
-                            this.xmnhysqn = [];
-                            this.xmnhysqn.push(
-                                res.data.data[0].m1, res.data.data[0].m2, res.data.data[0].m3, res.data.data[0].m4, res.data.data[0].m5, res.data.data[0].m6, res.data.data[0].m7, res.data.data[0].m8, res.data.data[0].m9, res.data.data[0].m10, res.data.data[0].m11, res.data.data[0].m12
-                            );
-                            // console.log(this.xunhysqn)
-                        });
-                    //项目能耗用水数据月度
-                    this.axios.get("/api/projectWaterMType?projectId=" + this.xmid + "&topcount=2").then((res) => {
-                        // console.log(res.data.data)
-                        let arr = res.data.data
-                        this.xmnhdyys = []
-                        this.xmnhdyysname = []
-                        arr.forEach(element => {
-                            this.xmnhdyysname.push(element.itemName)
-                            this.xmnhdyys.push(element.dosage)
-                        })
-                    })
-
-
-                    // 获取项目能耗用电数据
-                    this.axios
-                        .get("api/projectElectricityM?projectId=" + this.xmid)
-                        .then(res => {
-                            // console.log(res.data.data)
-                            this.xmnhydqn = [];
-                            this.xmnhydqn.push(
-                                res.data.data[0].m1,
-                                res.data.data[0].m2,
-                                res.data.data[0].m3,
-                                res.data.data[0].m4,
-                                res.data.data[0].m5,
-                                res.data.data[0].m6,
-                                res.data.data[0].m7,
-                                res.data.data[0].m8,
-                                res.data.data[0].m9,
-                                res.data.data[0].m10,
-                                res.data.data[0].m11,
-                                res.data.data[0].m12
-                            );
-                        });
-                    this.axios.get("/api/projectElectMType?projectId=" + this.xmid + "&topcount=2").then((res) => {
-                        // console.log(res.data.data)
-                        let arr = res.data.data
-                        this.xmnhyddy = []
-                        this.xmnhyddyname = []
-                        arr.forEach(element => {
-                            this.xmnhyddyname.push(element.itemName)
-                            this.xmnhyddy.push(element.dosage)
-                        })
-                    })
-
-                    // 获取关键指标报事完成率数据 竖向柱状图数据
-                    this.axios
-                        .get("/api/projectMNewPYear?projectId=" + this.xmid)
-                        .then(res => {
-                            // console.log(res.data.data)
-                            this.bssxzzt = []
-                            // console.log(res.data.data[0])
-                            // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                            if (this.date >= 7) {
-                                this.bssxzzt.push(
-                                    res.data.data[0].m7,
-                                    res.data.data[0].m8,
-                                    res.data.data[0].m9,
-                                    res.data.data[0].m10,
-                                    res.data.data[0].m11,
-                                    res.data.data[0].m12
-                                );
-
-                                this.xsyf = 1;
-                            } else {
-                                this.bssxzzt.push(
-                                    res.data.data[0].m1,
-                                    res.data.data[0].m2,
-                                    res.data.data[0].m3,
-                                    res.data.data[0].m4,
-                                    res.data.data[0].m5,
-                                    res.data.data[0].m6
-                                );
-
-                                this.xsyf = 0;
-                            }
-                        });
-
-                    // 获取关键指标报事完成率     横向柱状图数据
-                    this.axios.get("api/projectRateMaxMinVm").then(res => {
-                        // console.log(res.data.data)
-                        let arr = res.data.data;
-                        this.bshxzzt = [];
-                        arr.forEach(element => {
-                            this.bshxzzt.push(element.rate.toFixed(2));
-                        });
-                    });
-
-                    //获取报事完结率   title数据
-                    this.axios
-                        .get("/api/projectTotalRate?projectId=" + this.xmid)
-                        .then(res => {
-                            this.bstitle = res.data.data;
-                        });
-                    // 获取报事完结率   提示信息
-                    this.axios
-                        .get("/api/projectTypeRate?projectId=" + this.xmid)
-                        .then(res => {
-
-                            this.bsmsg = res.data.data;
-                        });
-
-                    // 获取综合收费率  竖向柱状图数据           数据替换
-                    this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
-                        this.zhsflsxzzt = []
-                        if (this.date >= 7) {
-                            this.zhsflsxzzt.push(
-                                res.data.data[0].Rate7.toFixed(2),
-                                res.data.data[0].Rate8.toFixed(2),
-                                res.data.data[0].Rate9.toFixed(2),
-                                res.data.data[0].Rate10.toFixed(2),
-                                res.data.data[0].Rate11.toFixed(2),
-                                res.data.data[0].Rate12.toFixed(2)
-                            );
-
-                            this.xsyf = 1;
-                        } else {
-                            this.zhsflsxzzt.push(
-                                res.data.data[0].Rate1.toFixed(2),
-                                res.data.data[0].Rate2.toFixed(2),
-                                res.data.data[0].Rate3.toFixed(2),
-                                res.data.data[0].Rate4.toFixed(2),
-                                res.data.data[0].Rate5.toFixed(2),
-                                res.data.data[0].Rate6.toFixed(2)
-                            );
-                            this.xsyf = 0;
-                        }
-                    });
-                    // 获取综合收费率  横向柱状图数据
-                    this.axios.get("/api/projectRateAvg?projectId=" + this.xmid).then((res) => {
-                        let arr = res.data.data;
-                        this.zhsflhxzzt = [];
-                        arr.forEach(element => {
-                            this.zhsflhxzzt.push(element.rate.toFixed(2));
-                        });
-                    })
-
-                    // 获取综合收费率 title
-                    this.axios
-                        .get("/api/projectTotalRate2?projectId=" + this.xmid)
-                        .then(res => {
-                            // console.log(res.data.data)
-                            this.zhsfltitle = res.data.data;
-                        });
-                    // 获取综合收费率的提示信息
-                    this.axios
-                        .get("/api/projectCuMRate?projectId=" + this.xmid)
-                        .then(res => {
-                            this.zhsflmsg = res.data.data;
-                        });
-
-                    // 获取品质服务信息数据  雷达图
-                    this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
-                        this.radarmsg = [];
-                        var obj = res.data.data[0];
-                        for (var i in obj) {
-                            this.radarmsg.push(obj[i].toFixed(1));
-                        }
-                    });
-
-                    // 现场品质竖向柱状图
-                    this.axios.get("/api/projectPZYM?projectId=" + this.xmid).then(res => {
-                        this.xcpzsxzzt = [];
-                        if (this.date >= 7) {
-                            this.xcpzsxzzt.push(
-                                res.data.data[0].m7.toFixed(2),
-                                res.data.data[0].m8.toFixed(2),
-                                res.data.data[0].m9.toFixed(2),
-                                res.data.data[0].m10.toFixed(2),
-                                res.data.data[0].m11.toFixed(2),
-                                res.data.data[0].m12.toFixed(2)
-                            );
-                            this.xsyf = 1;
-                        } else {
-                            this.xcpzsxzzt.push(
-                                res.data.data[0].m1.toFixed(2),
-                                res.data.data[0].m2.toFixed(2),
-                                res.data.data[0].m3.toFixed(2),
-                                res.data.data[0].m4.toFixed(2),
-                                res.data.data[0].m5.toFixed(2),
-                                res.data.data[0].m6.toFixed(2)
-                            );
-                            this.xsyf = 0;
-                        }
-                    });
-                    //现场品质横向柱状图
-                    this.axios.get("/api/projectXYPZMM").then(res => {
-                        let arr = res.data.data;
-                        this.xcpzhxzzt = [];
-                        arr.forEach(element => {
-                            this.xcpzhxzzt.push(element.projectscore.toFixed(2));
-                        });
-                    });
-
-                    //现场品质title信息
-                    this.axios.get("api/projectXCPZhj?projectId=" + this.xmid).then(res => {
-                        this.xcpztitle = res.data.data;
-                    });
-                    //现场品质提示信息
-                    this.axios.get("/api/projectXCPZtype?projectId=" + this.xmid).then(res => {
-                        this.xcpzmsg = res.data.data;
-                    });
-                });
+                    // this.value1 = res.data.data[0].projectName;
+                    this.xmid=res.data.data[0].projectId
+                    this.getdata(this.xmid)
+                 })  
             },
-// 项目公司切换
+            // 项目公司切换
             selectchange1(value) {
                 //项目公司下拉菜单监听
+               
                 this.xmid = value;
+                this.getdata(value)
+ 
+            },
+            btn(index) {
+                this.num = index;
+                if (index == 1) {
+                    this.show = false;
+                    this.show1 = true;
+                } else {
+                    this.show = true;
+                    this.show1 = false;
+                }
+            },
+            btn1(index) {
+                this.num1 = index;
+                if (index == 1) {
+                    this.show2 = false;
+                    this.show3 = true;
+                } else {
+                    this.show2 = true;
+                    this.show3 = false;
+                }
+            },
+            getdata(value) {
+                this.xmid=value
+                // 通过项目id来获取到默认显示的项目的名称
+                this.axios
+                    .get("/api/projectInfoName?projectIdName=" + this.xmid)
+                    .then(res => {
+                        this.value1 = res.data.data[0].projectName;
+                    });
 
-                // 获取项目详情数据（根据路由携带的项目id查询数据）
-                this.axios.get("api/projectInfoById?projectId=" + value).then(res => {
+   
+                //获取项目详情数据（根据路由携带的项目id查询数据）
+                this.axios.get("api/projectInfoById?projectId=" + this.xmid).then(res => {
+
                     this.titlename = res.data.data;
                 });
-                // 获取项目能耗用水数据   年度
-                this.axios.get("api/projectWaterrentM?projectId=" + value).then(res => {
-                    this.xmnhysqn = [];
-                    this.xmnhysqn.push(
-                        res.data.data[0].m1,
-                        res.data.data[0].m2,
-                        res.data.data[0].m3,
-                        res.data.data[0].m4,
-                        res.data.data[0].m5,
-                        res.data.data[0].m6,
-                        res.data.data[0].m7,
-                        res.data.data[0].m8,
-                        res.data.data[0].m9,
-                        res.data.data[0].m10,
-                        res.data.data[0].m11,
-                        res.data.data[0].m12
-                    );
-                });
-                //项目能耗用水数据月度
-                this.axios.get("/api/projectWaterMType?projectId=" + value + "&topcount=2").then((res) => {
-                    let arr = res.data.data
-                    this.xmnhdyys = []
-                    this.xmnhdyysname = []
-                    arr.forEach(element => {
-                        this.xmnhdyysname.push(element.itemName)
-                        this.xmnhdyys.push(element.dosage)
-                    })
-                })
-                // 获取项目能耗用电数据
-                this.axios.get("api/projectElectricityM?projectId=" + value).then(res => {
-                    this.xmnhydqn = [];
-                    this.xmnhydqn.push(
-                        res.data.data[0].m1,
-                        res.data.data[0].m2,
-                        res.data.data[0].m3,
-                        res.data.data[0].m4,
-                        res.data.data[0].m5,
-                        res.data.data[0].m6,
-                        res.data.data[0].m7,
-                        res.data.data[0].m8,
-                        res.data.data[0].m9,
-                        res.data.data[0].m10,
-                        res.data.data[0].m11,
-                        res.data.data[0].m12
-                    );
-                });
-
-                // 获取项目能耗用电数据   月度
-                this.axios.get("/api/projectElectMType?projectId=" + value + "&topcount=2").then((res) => {
-                    let arr = res.data.data
-                    this.xmnhyddy = []
-                    this.xmnhyddyname = []
-                    arr.forEach(element => {
-                        this.xmnhyddyname.push(element.itemName)
-                        this.xmnhyddy.push(element.dosage)
-                    })
-                })
-
-                // 获取关键指标报事完成率数据 竖向柱状图数据
-                this.axios.get("/api/projectMNewPYear?projectId=" + value).then(res => {
-                    this.bssxzzt = []
-                    // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                    if (this.date >= 7) {
-                        this.bssxzzt.push(
+                // 获取项目能耗用水数据 年度                                          
+                this.axios
+                    .get("api/projectWaterrentM?projectId=" + this.xmid)
+                    .then(res => {
+                        this.xmnhysqn = [];
+                        this.xmnhysqn.push(
+                            res.data.data[0].m1,
+                            res.data.data[0].m2,
+                            res.data.data[0].m3,
+                            res.data.data[0].m4,
+                            res.data.data[0].m5,
+                            res.data.data[0].m6,
                             res.data.data[0].m7,
                             res.data.data[0].m8,
                             res.data.data[0].m9,
@@ -710,26 +494,84 @@
                             res.data.data[0].m11,
                             res.data.data[0].m12
                         );
-                        this.xsyf = 1;
-                    } else {
-                        this.bssxzzt.push(
+                    });
+                //项目能耗用水数据月度
+                this.axios
+                    .get("/api/projectWaterMType?projectId=" + this.xmid + "&topcount=2")
+                    .then(res => {
+                        let arr = res.data.data;
+                        this.xmnhdyys = [];
+                        this.xmnhdyysname = [];
+                        arr.forEach(element => {
+                            this.xmnhdyysname.push(element.itemName);
+                            this.xmnhdyys.push(element.dosage);
+                        });
+                    });
+
+                // 获取项目能耗用电数据      年度                                          需变更数据
+                this.axios
+                    .get("api/projectElectricityM?projectId=" + this.xmid)
+                    .then(res => {
+                        this.xmnhydqn = [];
+                        this.xmnhydqn.push(
                             res.data.data[0].m1,
                             res.data.data[0].m2,
                             res.data.data[0].m3,
                             res.data.data[0].m4,
                             res.data.data[0].m5,
-                            res.data.data[0].m6
+                            res.data.data[0].m6,
+                            res.data.data[0].m7,
+                            res.data.data[0].m8,
+                            res.data.data[0].m9,
+                            res.data.data[0].m10,
+                            res.data.data[0].m11,
+                            res.data.data[0].m12
                         );
-                        // console.log(this.bshxzzt)
-                        this.xsyf = 0;
-                    }
-                    // console.log(this.bssxzzt)
+                    });
+                // 获取项目能耗用电数据   月度
+                this.axios
+                    .get("/api/projectElectMType?projectId=" + this.xmid + "&topcount=2")
+                    .then(res => {
+                        let arr = res.data.data;
+                        this.xmnhyddy = [];
+                        this.xmnhyddyname = [];
+                        arr.forEach(element => {
+                            this.xmnhyddyname.push(element.itemName);
+                            this.xmnhyddy.push(element.dosage);
+                        });
+                    });
 
-                });
+                // 获取报事完成率数据 竖向柱状图数据            需变更数据
+                this.axios
+                    .get("/api/projectMNewPYear?projectId=" + this.xmid)
+                    .then(res => {
+                        // 通过当前月份进行判断，大于7就取7到12月数据。小于就取1到6月数据
+                        this.bssxzzt = [];
+                        if (this.date >= 7) {
+                            this.bssxzzt.push(
+                                res.data.data[0].m7,
+                                res.data.data[0].m8,
+                                res.data.data[0].m9,
+                                res.data.data[0].m10,
+                                res.data.data[0].m11,
+                                res.data.data[0].m12
+                            );
+                            this.xsyf = 1;
+                        } else {
+                            this.bssxzzt.push(
+                                res.data.data[0].m1,
+                                res.data.data[0].m2,
+                                res.data.data[0].m3,
+                                res.data.data[0].m4,
+                                res.data.data[0].m5,
+                                res.data.data[0].m6
+                            );
+                            this.xsyf = 0;
+                        }
+                    });
 
-                // 获取关键指标报事完成率     横向柱状图数据
+                // 获取报事完成率     横向柱状图数据            需变更数据
                 this.axios.get("api/projectRateMaxMinVm").then(res => {
-                    // console.log(res.data.data)
                     let arr = res.data.data;
                     this.bshxzzt = [];
                     arr.forEach(element => {
@@ -737,22 +579,23 @@
                     });
                 });
 
-                //获取报事完结率   title数据
-                this.axios.get("/api/projectTotalRate?projectId=" + value).then(res => {
-                    // console.log(res.data.data)
-                    this.bstitle = res.data.data;
-                });
-                // 获取报事完结率   提示信息
-                this.axios.get("/api/projectTypeRate?projectId=" + value).then(res => {
-                    // console.log(res.data.data)
-                    this.bsmsg = res.data.data;
-                });
+                //获取报事完结率   title数据                                 需变更数据
+                this.axios
+                    .get("/api/projectTotalRate?projectId=" + this.xmid)
+                    .then(res => {
+ 
+                        this.bstitle = res.data.data;
+                    });
+                // 获取报事完结率   提示信息                                需变更数据
+                this.axios
+                    .get("/api/projectTypeRate?projectId=" + this.xmid)
+                    .then(res => {
 
-                // 获取综合收费率  竖向柱状图数据           数据替换
-                this.axios.get("/api/projectYMRs?projectId=" + value).then(res => {
-                    // console.log(res.data.data[0])
-                    this.zhsflsxzzt = []
+                        this.bsmsg = res.data.data;
+                    });
 
+                // 获取综合收费率  竖向柱状图数据            
+                this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
                     if (this.date >= 7) {
                         this.zhsflsxzzt.push(
                             res.data.data[0].Rate7.toFixed(2),
@@ -762,7 +605,7 @@
                             res.data.data[0].Rate11.toFixed(2),
                             res.data.data[0].Rate12.toFixed(2)
                         );
-                        // console.log(this.bshxzzt)
+            
                         this.xsyf = 1;
                     } else {
                         this.zhsflsxzzt.push(
@@ -773,32 +616,35 @@
                             res.data.data[0].Rate5.toFixed(2),
                             res.data.data[0].Rate6.toFixed(2)
                         );
-                        // console.log(this.bshxzzt)
+              
                         this.xsyf = 0;
                     }
                 });
-                // 获取综合收费率  横向柱状图数据
-                this.axios.get("/api/projectRateAvg?projectId=" + this.xmid).then((res) => {
+                // 获取综合收费率  横向柱状图数据  
+                this.axios.get("/api/projectRateAvg?projectId=" + this.xmid).then(res => {
                     let arr = res.data.data;
                     this.zhsflhxzzt = [];
                     arr.forEach(element => {
                         this.zhsflhxzzt.push(element.rate.toFixed(2));
                     });
-                })
-
-                // 获取综合收费率 title
-                this.axios.get("/api/projectTotalRate2?projectId=" + value).then(res => {
-                    // console.log(res.data.data)
-                    this.zhsfltitle = res.data.data;
                 });
+
+                // 获取综合收费率 title     
+                this.axios
+                    .get("/api/projectTotalRate2?projectId=" + this.xmid)
+                    .then(res => {
+ 
+                        this.zhsfltitle = res.data.data;
+                    });
                 // 获取综合收费率的提示信息
-                this.axios.get("/api/projectCuMRate?projectId=" + value).then(res => {
-                    // console.log(res.data.data)
+                this.axios.get("/api/projectCuMRate?projectId=" + this.xmid).then(res => {
+                    
                     this.zhsflmsg = res.data.data;
                 });
 
                 // 获取品质服务信息数据了  雷达图
-                this.axios.get("/api/ProjectYuqu?projectId=" + value).then(res => {
+                this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
+            
                     this.radarmsg = [];
                     var obj = res.data.data[0];
                     for (var i in obj) {
@@ -806,8 +652,8 @@
                     }
                 });
 
-                // 现场品质竖向柱状图
-                this.axios.get("/api/projectPZYM?projectId=" + value).then(res => {
+                // 现场品质竖向柱状图            
+                this.axios.get("/api/projectPZYM?projectId=" + this.xmid).then(res => {
                     // console.log(res.data.data)
                     this.xcpzsxzzt = [];
                     if (this.date >= 7) {
@@ -819,7 +665,7 @@
                             res.data.data[0].m11.toFixed(2),
                             res.data.data[0].m12.toFixed(2)
                         );
-                        // console.log(this.bshxzzt)
+ 
                         this.xsyf = 1;
                     } else {
                         this.xcpzsxzzt.push(
@@ -830,11 +676,11 @@
                             res.data.data[0].m5.toFixed(2),
                             res.data.data[0].m6.toFixed(2)
                         );
-                        // console.log(this.bshxzzt)
+
                         this.xsyf = 0;
                     }
                 });
-                //现场品质横向柱状图
+                //现场品质横向柱状图       
                 this.axios.get("/api/projectXYPZMM").then(res => {
                     // console.log(res.data.data)
                     let arr = res.data.data;
@@ -844,312 +690,54 @@
                     });
                 });
 
-                //现场品质title信息
-                this.axios.get("api/projectXCPZhj?projectId=" + value).then(res => {
+                //现场品质title信息             
+                this.axios.get("api/projectXCPZhj?projectId=" + this.xmid).then(res => {
                     // console.log(res.data.data)
                     this.xcpztitle = res.data.data;
                 });
-                //现场品质提示信息
+                //现场品质提示信息          
                 this.axios
-                    .get(
-                        "http://222.180.200.126:9045/api/projectXCPZtype?projectId=" + value
-                    )
+                    .get("/api/projectXCPZtype?projectId=" + this.xmid)
                     .then(res => {
                         // console.log(res.data.data)
                         this.xcpzmsg = res.data.data;
                     });
-
             },
-            btn(index) {
-                this.num = index;
-                if (index == 1) {
-                    this.show = false;
-                    this.show1 = true
-                } else {
-                    this.show = true;
-                    this.show1 = false
-                }
-            },
-            btn1(index) {
-                this.num1 = index;
-                if (index == 1) {
-                    this.show2 = false;
-                    this.show3 = true
-                } else {
-                    this.show2 = true;
-                    this.show3 = false
-                }
+            getmsg(){
+                             // 通过路由的区域id获取到默认显示的区域
+                this.axios
+                    .get("api/companIdOrName?companIdOrName=" + this.quid)
+                    .then(res => {
+                        this.value = res.data.data[0].companyName;
+                        this.axios
+                            .get("api/projectBycId?companyId=" + res.data.data[0].companyId)
+                            .then(res => {
+                                this.getregionList = res.data.data;
+                            });
+                    });
+                // 获取区域公司列表
+                this.axios.get("/api/projectCompanyList").then(res => {
+                    this.getProjectList = res.data.data;
+                });
+                //获取登录其它系统的数据
+                this.axios.get("/api/systemDocking01").then(res => {
+                    this.loginxt = res.data.data;
+                });
+                //获取常用报表数据
+                this.axios.get("/api/commonReport").then(res => {
+                    this.Commonreports = res.data.data;
+                });
             }
         },
         mounted() {
-            var date = new Date();
+            let date = new Date();
             this.date = date.getMonth() + 1; //获取到当前的月份信息
             // 通过获取的区域公司id和项目id来显示默认数据
             this.quid = this.$route.query.quid; //区域公司id
             this.xmid = this.$route.query.xmid; //项目id
-            // console.log(this.$route.query)
-            this.encry = this.$route.query.encry
-
-            // 通过项目id来获取到默认显示的项目的名称
-            this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then((res) => {
-                this.value1 = res.data.data[0].projectName
-            })
-
-
-            // 通过路由的区域id获取到默认显示的区域
-            this.axios
-                .get("api/companIdOrName?companIdOrName=" + this.quid)
-                .then(res => {
-
-                    // console.log(res.data.data[0].companyName)
-                    this.value = res.data.data[0].companyName;
-                    this.axios
-                        .get("api/projectBycId?companyId=" + res.data.data[0].companyId)
-                        .then(res => {
-                            this.getregionList = res.data.data;
-                            // this.value1 = res.data.data[0].projectName;
-                        });
-                });
-            // 获取区域公司列表
-            this.axios.get("/api/projectCompanyList").then(res => {
-                // console.log(res.data.data)
-                this.getProjectList = res.data.data;
-            });
-            //获取登录其它系统的数据
-            this.axios.get("/api/systemDocking01").then(res => {
-                this.loginxt = res.data.data;
-            });
-            //获取常用报表数据
-            this.axios.get("/api/commonReport").then(res => {
-                this.Commonreports = res.data.data;
-            });
-            // // 获取项目详情数据（根据路由携带的项目id查询数据）                      需变更数据
-            this.axios.get("api/projectInfoById?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.titlename = res.data.data;
-            });
-            // 获取项目能耗用水数据 年度                                              需变更数据
-            this.axios.get("api/projectWaterrentM?projectId=" + this.xmid).then(res => {
-                // console.log(res)
-                this.xmnhysqn = [];
-                this.xmnhysqn.push(
-                    res.data.data[0].m1,
-                    res.data.data[0].m2,
-                    res.data.data[0].m3,
-                    res.data.data[0].m4,
-                    res.data.data[0].m5,
-                    res.data.data[0].m6,
-                    res.data.data[0].m7,
-                    res.data.data[0].m8,
-                    res.data.data[0].m9,
-                    res.data.data[0].m10,
-                    res.data.data[0].m11,
-                    res.data.data[0].m12
-                );
-            });
-            //项目能耗用水数据月度
-            this.axios.get("/api/projectWaterMType?projectId=" + this.xmid + "&topcount=2").then((res) => {
-                // console.log(res.data.data)
-                let arr = res.data.data
-                this.xmnhdyys = []
-                this.xmnhdyysname = []
-                arr.forEach(element => {
-                    this.xmnhdyysname.push(element.itemName)
-                    this.xmnhdyys.push(element.dosage)
-                })
-            })
-
-            // 获取项目能耗用电数据      年度                                          需变更数据
-            this.axios
-                .get("api/projectElectricityM?projectId=" + this.xmid)
-                .then(res => {
-                    // console.log(res.data.data)
-                    this.xmnhydqn = [];
-                    this.xmnhydqn.push(
-                        res.data.data[0].m1,
-                        res.data.data[0].m2,
-                        res.data.data[0].m3,
-                        res.data.data[0].m4,
-                        res.data.data[0].m5,
-                        res.data.data[0].m6,
-                        res.data.data[0].m7,
-                        res.data.data[0].m8,
-                        res.data.data[0].m9,
-                        res.data.data[0].m10,
-                        res.data.data[0].m11,
-                        res.data.data[0].m12
-                    );
-                });
-            // 获取项目能耗用电数据   月度
-            this.axios.get("/api/projectElectMType?projectId=" + this.xmid + "&topcount=2").then((res) => {
-                // console.log(res.data.data)
-                let arr = res.data.data
-                this.xmnhyddy = []
-                this.xmnhyddyname = []
-                arr.forEach(element => {
-                    this.xmnhyddyname.push(element.itemName)
-                    this.xmnhyddy.push(element.dosage)
-                })
-            })
-
-
-            // 获取报事完成率数据 竖向柱状图数据            需变更数据
-            this.axios.get("/api/projectMNewPYear?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                // console.log(this.date)
-                // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                this.bssxzzt = []
-                if (this.date >= 7) {
-                    this.bssxzzt.push(
-                        res.data.data[0].m7,
-                        res.data.data[0].m8,
-                        res.data.data[0].m9,
-                        res.data.data[0].m10,
-                        res.data.data[0].m11,
-                        res.data.data[0].m12
-                    );
-                    this.xsyf = 1;
-                } else {
-                    this.bssxzzt.push(
-                        res.data.data[0].m1,
-                        res.data.data[0].m2,
-                        res.data.data[0].m3,
-                        res.data.data[0].m4,
-                        res.data.data[0].m5,
-                        res.data.data[0].m6
-                    );
-                    this.xsyf = 0;
-                }
-            });
-
-            // 获取报事完成率     横向柱状图数据            需变更数据
-            this.axios.get("api/projectRateMaxMinVm").then(res => {
-                // console.log(res.data.data)
-                let arr = res.data.data;
-                this.bshxzzt = [];
-                arr.forEach(element => {
-                    this.bshxzzt.push(element.rate.toFixed(2));
-                });
-            });
-
-            //获取报事完结率   title数据                                 需变更数据
-            this.axios.get("/api/projectTotalRate?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.bstitle = res.data.data;
-            });
-            // 获取报事完结率   提示信息                                需变更数据
-            this.axios.get("/api/projectTypeRate?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.bsmsg = res.data.data;
-            });
-
-            // 获取综合收费率  竖向柱状图数据           数据替换
-            this.axios.get("/api/projectYMRs?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data[0])
-                if (this.date >= 7) {
-                    this.zhsflsxzzt.push(
-                        res.data.data[0].Rate7.toFixed(2),
-                        res.data.data[0].Rate8.toFixed(2),
-                        res.data.data[0].Rate9.toFixed(2),
-                        res.data.data[0].Rate10.toFixed(2),
-                        res.data.data[0].Rate11.toFixed(2),
-                        res.data.data[0].Rate12.toFixed(2)
-                    );
-                    // console.log(this.bshxzzt)
-                    this.xsyf = 1;
-                } else {
-                    this.zhsflsxzzt.push(
-                        res.data.data[0].Rate1.toFixed(2),
-                        res.data.data[0].Rate2.toFixed(2),
-                        res.data.data[0].Rate3.toFixed(2),
-                        res.data.data[0].Rate4.toFixed(2),
-                        res.data.data[0].Rate5.toFixed(2),
-                        res.data.data[0].Rate6.toFixed(2)
-                    );
-                    // console.log(this.bshxzzt)
-                    this.xsyf = 0;
-                }
-            });
-            // 获取综合收费率  横向柱状图数据           数据替换
-            this.axios.get("/api/projectRateAvg?projectId=" + this.xmid).then((res) => {
-                let arr = res.data.data;
-                this.zhsflhxzzt = [];
-                arr.forEach(element => {
-                    this.zhsflhxzzt.push(element.rate.toFixed(2));
-                });
-            })
-
-            // 获取综合收费率 title                      数据替换
-            this.axios
-                .get("/api/projectTotalRate2?projectId=" + this.xmid)
-                .then(res => {
-                    // console.log(res.data.data)
-                    this.zhsfltitle = res.data.data;
-                });
-            // 获取综合收费率的提示信息
-            this.axios.get("/api/projectCuMRate?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.zhsflmsg = res.data.data;
-            });
-
-            // // 获取品质服务信息数据了  雷达图   切换数据
-            this.axios.get("/api/ProjectYuqu?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.radarmsg = [];
-                var obj = res.data.data[0];
-                for (var i in obj) {
-                    this.radarmsg.push(obj[i].toFixed(1));
-                }
-            });
-
-            // 现场品质竖向柱状图            数据替换
-            this.axios.get("/api/projectPZYM?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.xcpzsxzzt = [];
-                if (this.date >= 7) {
-                    this.xcpzsxzzt.push(
-                        res.data.data[0].m7.toFixed(2),
-                        res.data.data[0].m8.toFixed(2),
-                        res.data.data[0].m9.toFixed(2),
-                        res.data.data[0].m10.toFixed(2),
-                        res.data.data[0].m11.toFixed(2),
-                        res.data.data[0].m12.toFixed(2)
-                    );
-                    // console.log(this.bshxzzt)
-                    this.xsyf = 1;
-                } else {
-                    this.xcpzsxzzt.push(
-                        res.data.data[0].m1.toFixed(2),
-                        res.data.data[0].m2.toFixed(2),
-                        res.data.data[0].m3.toFixed(2),
-                        res.data.data[0].m4.toFixed(2),
-                        res.data.data[0].m5.toFixed(2),
-                        res.data.data[0].m6.toFixed(2)
-                    );
-                    // console.log(this.bshxzzt)
-                    this.xsyf = 0;
-                }
-            });
-            //现场品质横向柱状图         数据替换
-            this.axios.get("/api/projectXYPZMM").then(res => {
-                // console.log(res.data.data)
-                let arr = res.data.data;
-                this.xcpzhxzzt = [];
-                arr.forEach(element => {
-                    this.xcpzhxzzt.push(element.projectscore.toFixed(2));
-                });
-            });
-
-            //现场品质title信息              数据替换
-            this.axios.get("api/projectXCPZhj?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.xcpztitle = res.data.data;
-            });
-            //现场品质提示信息          数据替换
-            this.axios.get("/api/projectXCPZtype?projectId=" + this.xmid).then(res => {
-                // console.log(res.data.data)
-                this.xcpzmsg = res.data.data;
-            });
+            this.encry = this.$route.query.encry;
+            this.getmsg()
+            this.getdata(this.xmid);
         }
     };
 </script>
@@ -1175,7 +763,7 @@
         right: 20px;
         z-index: 10;
         font-size: 12px;
-        font-weight: 600
+        font-weight: 600;
     }
 
     .xmys > ul > li {
@@ -1197,8 +785,7 @@
         right: 20px;
         z-index: 10;
         font-size: 12px;
-        font-weight: 600
-
+        font-weight: 600;
     }
 
     .xmyd > ul > li:nth-of-type(2) {
@@ -1211,8 +798,8 @@
     }
 
     /* .yq {
-      margin-left: 5px;
-    } */
+          margin-left: 5px;
+        } */
     .yq > ul {
         display: flex;
         margin-top: 26px;
@@ -1229,7 +816,7 @@
     }
 
     .yq > ul > li:nth-of-type(1) {
-        text-align: left
+        text-align: left;
     }
 
     .yq > ul > li > span {
@@ -1278,7 +865,7 @@
 
     .select {
         line-height: 54px;
-        padding-left: 10px
+        padding-left: 10px;
     }
 
     .Downmenu > h1 {
@@ -1366,15 +953,14 @@
 
     .Title > ul:nth-of-type(2) > li > h1 {
         /* font-size: 14px;
-        font-weight: 100;
-        line-height: 1;
-        white-space: nowrap; */
+              font-weight: 100;
+              line-height: 1;
+              white-space: nowrap; */
         font-size: 14px;
         font-weight: 500;
         line-height: 1;
         white-space: nowrap;
         color: #666;
-
     }
 
     .Title > ul:nth-of-type(2) > li > h2 {
@@ -1390,7 +976,7 @@
     }
 
     .Chart {
-        margin-top: 32px
+        margin-top: 32px;
     }
 
     .Chart > div:nth-of-type(1) {
@@ -1404,7 +990,7 @@
         font-size: 16px;
         line-height: 1;
         color: #333;
-        font-weight: 500
+        font-weight: 500;
     }
 
     .Chart > div:nth-of-type(1) > h2 {
@@ -1431,11 +1017,11 @@
         width: 33%;
         height: 340px;
         background: #f0eded;
-        padding: 0 10px
+        padding: 0 10px;
     }
 
     .Chart > div:nth-of-type(2) > div:nth-of-type(2) {
-        margin: 0 15px
+        margin: 0 15px;
     }
 
     .Chart > div:nth-of-type(2) > div > h1 {
@@ -1444,7 +1030,6 @@
         margin: 10px 0 8px 0px;
         line-height: 1;
         font-weight: 100;
-
     }
 
     .Chart > div:nth-of-type(2) > div > h1 > span {
@@ -1461,7 +1046,7 @@
         /* margin-left: 10px; */
         margin-bottom: 54px;
         font-size: 24px;
-        font-weight: 500
+        font-weight: 500;
     }
 
     .Chart > div:nth-of-type(2) > div > div:nth-of-type(1) {
@@ -1566,27 +1151,26 @@
     }
 
     /* .table3_header > h2 {
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      color: #666;
-    } */
+          font-size: 12px;
+          font-weight: 500;
+          cursor: pointer;
+          color: #666;
+        } */
     /* .table3_header > h2 > span {
-      font-size: 12px;
-      font-weight: 500;
-      color: #a0a0a0;
-    } */
+          font-size: 12px;
+          font-weight: 500;
+          color: #a0a0a0;
+        } */
     .table3_footer > ul {
         display: flex;
         justify-content: space-around;
-        padding: 0 20px
-
+        padding: 0 20px;
     }
 
     .table3_footer > ul > li {
         width: 64px;
         cursor: pointer;
-        text-align: center
+        text-align: center;
     }
 
     .table3_footer > ul > li > img {
@@ -1601,9 +1185,7 @@
         margin-top: 8px;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis
-
-
+        text-overflow: ellipsis;
     }
 
     .Chart1 {
@@ -1722,7 +1304,6 @@
 
     .xmnhxq {
         display: flex;
-
     }
 
     .xmnhxq > h2 {
@@ -1731,7 +1312,6 @@
         font-weight: 600;
         color: #49a4d9;
         cursor: pointer;
-
     }
 
     .xmnhxq > h2 > span {
@@ -1740,15 +1320,15 @@
     }
 
     .xmnhxq > h2:nth-of-type(2) {
-        margin-left: 8px
+        margin-left: 8px;
     }
 
     .yq > ul {
-        justify-content: space-between
+        justify-content: space-between;
     }
 
     .yq > ul > li {
-        white-space: nowrap
+        white-space: nowrap;
     }
 
     .xmyd > ul > li {
@@ -1757,7 +1337,6 @@
 </style>
 
 <style>
-
     .selects > div > .el-input__inner {
         border: 0;
     }
@@ -1767,7 +1346,6 @@
     }
 
     .el-input__inner {
-        font-size: 16px !important
-
+        font-size: 16px !important;
     }
 </style>

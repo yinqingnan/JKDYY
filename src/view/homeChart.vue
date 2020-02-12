@@ -278,7 +278,7 @@
             //收入赋值
             setProfit(val) {
                 this.axios.get("/api/tj005?projectId=" + val).then((res) => {
-                    // console.log(res)
+
                     this.pieData = res;
                 })
             },
