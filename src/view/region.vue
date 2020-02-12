@@ -417,15 +417,8 @@
             },
             // 区域公司切换
             selectchange(value) {
-            //    this.value = value
-            //    window.console.log(this.value)
-                console.log(this.value)
-           
-                
                 //区域公司级下拉菜单选中监听
                  this.axios.get("api/projectBycId?companyId=" + value).then(res => {
-                     
-                     console.log(res.data.data)
                     this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
                     // this.value1 = res.data.data[0].projectName;
                     this.xmid=res.data.data[0].projectId
@@ -434,11 +427,8 @@
             },
             // 项目公司切换
             selectchange1(value) {
-                //项目公司下拉菜单监听
-               
                 this.xmid = value;
                 this.getdata(value)
- 
             },
             btn(index) {
                 this.num = index;
