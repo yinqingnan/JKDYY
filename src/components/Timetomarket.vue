@@ -193,8 +193,8 @@
         /* height: 180px; */
         height: auto;
         z-index: 10;
-        padding-top: 20px;
-        max-height: 260px
+        /* padding-top: 20px;
+        max-height: 260px */
     }
 
     /* 鼠标经过事件 */
@@ -205,8 +205,8 @@
         /* height: 180px; */
         z-index: 10;
         padding-top: 20px;
-        height: auto;
-        max-height: 260px
+        /* height: auto; */
+        /* max-height: 260px */
 
     }
 
@@ -217,11 +217,11 @@
 
 
     .fuhezi:nth-child(odd) {
-        top: 36px
+        top: -136px
     }
 
     .fuhezi:nth-child(even) {
-        bottom: 136px
+        bottom: -36px
     }
 
     .Label {
