@@ -20,7 +20,7 @@
                     </li>
                 </ul>
                 <ul v-if="isshow1" style="padding:20px 0 " class="tabul">
-                    <li v-for="(item,index) in list2" :key="index" class="list">
+                    <li v-for="(item,index) in list2" :key="index" class="list listcancel">
                         <h2 :title="item.notice">{{item.notice}}</h2>
                         <h2>{{item.noticeDate.split(" ")[0]}}</h2>
                     </li>
@@ -206,22 +206,13 @@
         margin-left: 10px
     }
 
-    /* .title>li:nth-of-type(1){
-        margin-left: 20px
-    }
-    .title>li:nth-of-type(2){
-        margin-left: 36px
-
-    } */
     .active {
         color: #49a4d9 !important;
         border-bottom: 2px solid #49a4d9
 
     }
 
-    /* .tabCon{
-        padding: 20px 0
-    } */
+
     .tabCon > ul > li > span:nth-of-type(1) {
         text-decoration: underline;
         max-width: 180px;
@@ -232,7 +223,6 @@
     }
 
     .xhx {
-        /* text-decoration:none !important; */
         text-decoration: none;
     }
 
@@ -259,7 +249,13 @@
         /* margin-top: 20px */
 
     }
-
+    .listcancel{
+        cursor: default;
+        text-decoration: none
+    }
+    .listcancel>h2{
+        text-decoration: none !important
+    }
     .list > h2 {
         font-size: 14px;
         text-decoration: underline;

@@ -255,7 +255,6 @@
                     axios
                         .get("/api/cityData08?cityDataId=" + res.data.data[0].id)
                         .then(res => {
-                            // console.log(res.data.data);
                             this.defaultable3 = res.data.data;
                         });
                     // 关键政策解读
@@ -263,7 +262,7 @@
                         .get("/api/cityData07?cityDataId=" + res.data.data[0].id)
                         .then(res => {
                             this.defaultlist = res.data.data;
-                            console.log(res.data.data)
+                            // console.log(res.data.data)
                         });
                     // 城市当地政府物业费指导价上浮说明数据
                     this.axios.get("/api/cityDataRemark?id=" + this.id).then((res) => {

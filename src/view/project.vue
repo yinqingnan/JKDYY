@@ -151,11 +151,11 @@
                                     <h2 style="min-width:60px;text-align:center">{{Realestate}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
-                                    <Qualityservice2 :Realestates="Others" style="width:70%"></Qualityservice2>
+                                    <Qualityservice2 :Others="Others" style="width:70%"></Qualityservice2>
                                     <h2 style="min-width:60px;text-align:center">{{Other}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
-                                    <Qualityservice3 :Realestates="Propertycategorys"
+                                    <Qualityservice3 :Propertycategorys="Propertycategorys"
                                                      style="width:70%"></Qualityservice3>
                                     <h2 style="min-width:60px;text-align:center">{{Propertycategory}}</h2>
                                 </div>
@@ -168,7 +168,7 @@
                             </div>
                             <img src="@/assets/ima/development.png" alt=""
                                  style="margin:0 auto;display: block;marginTop: 66px;">
-                            <h3 style="    text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">
+                            <h3 style="text-align: center;fontWeight:500;fontSize:12px;marginTop: 14px;color:#666">
                                 即将上线</h3>
                         </div>
                         <div>
@@ -466,13 +466,23 @@
                 // 获取品质服务信息数据
                 this.axios.get("/api/companymonthrate?companyId=" + this.id) //使用区域公司名称进行查询
                     .then((res) => {
-                        // console.log(res.data.data)
-                        this.Realestate = res.data.data[0].newspapersCateType         //地产title
-                        this.Other = res.data.data[1].newspapersCateType              //其他title
-                        this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
-                        this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
-                        this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
-                        this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
+                        if(res.data.data.length==3){
+                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                            this.Other = res.data.data[1].newspapersCateType              //其他title
+                            this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
+                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                            this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
+                            this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
+                        }else if(res.data.data.length==2){
+                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                            this.Other = res.data.data[1].newspapersCateType              //其他title
+                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                            this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
+                        }else{
+                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                        }
+
                     })
                 //获取登录其它系统的数据
                 this.axios.get("/api/systemDocking01")

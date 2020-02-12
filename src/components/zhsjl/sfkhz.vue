@@ -59,13 +59,19 @@
                             align="center"
                             min-width="40px"
                     ></el-table-column>
+
                     <el-table-column
                             prop="rate"
                             label="收缴率"
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="40px"
-                    ></el-table-column>
+                    >
+                        <template slot-scope="{row}">
+                            {{row.rate}}.00%
+                        </template>
+
+                    </el-table-column>
                     <el-table-column
                             prop="remark"
                             label="备注"
@@ -84,7 +90,6 @@
                         :default-sort="{prop: 'date', order: 'descending'}"
                         class="xiazai"
                         v-show="show"
-
                 >
                     <el-table-column
                             label="序号"
@@ -135,7 +140,11 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="40px"
-                    ></el-table-column>
+                    >
+                        <template slot-scope="{row}">
+                            {{row.rate}}.00%
+                        </template>
+                    </el-table-column>
                     <el-table-column
                             prop="remark"
                             label="备注"

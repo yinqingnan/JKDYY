@@ -12,9 +12,9 @@
                 <div class="queryParent">
                     <el-input @focus="inputfocus" @keyup.enter.native="search()" v-model="tableDataEnd"
                               style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'"
-                              placeholder="输入合同名称查询" class="sss">
+                              placeholder="输入设备名称查询" class="sss">
                     </el-input>
-                    <img @click="btnbtn" class="query" src="@/assets/ima/search.png"></img>
+                    <img @click="btnbtn" class="query" src="@/assets/ima/search.png">
                 </div>
                 <h2 @click="exportExcel" class="daochu" :class="isShow===true ? 'info1':'success1'">导出</h2>
                 <h2 @click="Backstage" class="Backstage" v-if="isShow">后台管理</h2>
@@ -442,6 +442,7 @@
     .sss >>> .el-input__inner {
         font-size: 14px !important;
         height: 29px;
+        line-height: 29px;
     }
 </style>
 

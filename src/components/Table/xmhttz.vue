@@ -12,7 +12,7 @@
                               style="display: inline-block;width: 200px;" :class="isShow===true ? 'info':'success'"
                               placeholder="输入合同名称查询" class="sss">
                     </el-input>
-                    <img @click="btnbtn" class="query" src="@/assets/ima/search.png"></img>
+                    <img @click="btnbtn" class="query" src="@/assets/ima/search.png">
                 </div>
 
                 <h2 @click="Backstage" class="Backstage" v-if="isShow">后台管理</h2>
@@ -457,6 +457,7 @@
     .sss >>> .el-input__inner {
         font-size: 14px !important;
         height: 29px;
+        line-height: 29px;
     }
 
     .success1 {

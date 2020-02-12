@@ -20,7 +20,7 @@
             };
         },
         watch: {
-            Realestates: {
+            Propertycategorys: {
                 handler(newVal) {
 
                     this.bjData = newVal
@@ -139,7 +139,7 @@
             deep: true, //深度监测
             immediate: true //将立即以表达式的当前值触发回调
         },
-        props: ["Realestates"],
+        props: ["Propertycategorys"],
         mounted() {
             const chartObj = echarts.init(document.getElementById("zxt3"));
             window.addEventListener("resize", () => {
