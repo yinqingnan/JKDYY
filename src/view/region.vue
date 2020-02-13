@@ -786,10 +786,6 @@
         color: #49a4d9 !important;
         border-bottom: 2px solid #49a4d9;
     }
-
-    /* .yq {
-          margin-left: 5px;
-        } */
     .yq > ul {
         display: flex;
         margin-top: 26px;
