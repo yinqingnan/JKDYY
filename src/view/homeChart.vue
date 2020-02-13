@@ -152,11 +152,11 @@
 </template>
 
 <script>
-    import homePie from '../components/echarts/homeChart/homePie'
-    import homeBar from '../components/echarts/homeChart/homeBar'
-    import homeLine from '../components/echarts/homeChart/homeLine'
-    import homeBarX from '../components/echarts/homeChart/homeBarX'
-    import homeRadar from '../components/echarts/homeChart/homeRadar'
+    import homePie from '@/components/echarts/homeChart/homePie'
+    import homeBar from '@/components/echarts/homeChart/homeBar'
+    import homeLine from '@/components/echarts/homeChart/homeLine'
+    import homeBarX from '@/components/echarts/homeChart/homeBarX'
+    import homeRadar from '@/components/echarts/homeChart/homeRadar'
 
 
     export default {
