@@ -34,9 +34,9 @@
                         align="center"
                         min-width="40px"
                 ></el-table-column>
-                <el-table-column prop="contractName" label="合同名称" min-width="90px" :show-overflow-tooltip="true"
-                                 align="center"></el-table-column>
-                <el-table-column prop="partyA" label="甲方单位" :show-overflow-tooltip="true"
+                <el-table-column prop="contractName" label="合同名称" min-width="90px" :show-overflow-tooltip="true" header-align="center"
+                                 align="left"></el-table-column>
+                <el-table-column prop="partyA" label="甲方单位" :show-overflow-tooltip="true" 
                                  align="center"></el-table-column>
                 <el-table-column prop="partyB" label="乙方单位" :show-overflow-tooltip="true"
                                  align="center"></el-table-column>
@@ -153,11 +153,13 @@
             // console.log(this.$route.query.login)
             this.login = this.$route.query.login
             this.xmid = this.$route.query.xmid; //获取到路由参数 （项目的id）
+
+            // console.log(this.xmid)
             // // 通过项目id查询到区域公司的id并查询数据
             this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then(res => {
-                //     //   console.log(res.data.data[0].projectName)
+                    //   console.log(res.data.data[0].projectName)
                 this.projectName = res.data.data[0].projectName
-                this.xmid = this.$route.query.xmid
+                // this.xmid = this.$route.query.xmid
                 this.axios.get("/api/projectContract?projectId=" + this.xmid).then((res) => {
                     // console.log(res.data.data)
                     this.totalCount = res.data.data.length
@@ -167,7 +169,7 @@
             });
 
             this.axios.get("/api/userToProject?staffId=10000&projectId=" + this.xmid).then((res) => {
-                // console.log(res.data.data[0].state)
+                // console.log(res.data.data)
                 if (res.data.data[0].state == 0) {
                     this.isShow = false
                 } else {

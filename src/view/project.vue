@@ -324,25 +324,23 @@
                 // }
                 switch (item.remindType) {
                     case "合同台账":
-                        // console.log(item.projectId)
-                        //  this.$router.push('/xmhttz?xmid='+item.projectId)
+                     
                         this.$router.push({
                             path: "/xmhttz",
                             query: {
-                                xmid: this.id,
+                                xmid: item.projectId,
                                 login: this.encry
                             }
                         })
 
                         break;
                     case "设备维修":
-                        // console.log(item.projectId)
-                        // this.$router.push('/xmsbwx?xmid='+item.projectId)
+                       
                         this.$router.push({
                             path: "/xmsbwx",
                             query: {
-                                xmid: this.id,
-                                login: this.login
+                                xmid:item.projectId,
+                                login: this.encry
                             }
                         })
                         break;
