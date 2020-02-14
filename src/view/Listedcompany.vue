@@ -140,7 +140,7 @@
         },
         methods: {
             btn1() {
-                this.$router.push('/2/acquisition')
+                this.$router.push('/Listingoverview/acquisition')
             },
             chickvalue(msg) {
                 let year = msg.slice(0, 4);

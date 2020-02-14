@@ -76,11 +76,11 @@
             // 查询点击事件
             btnone() {
                 if (this.msg === "") {
-                    this.axios.get("http://222.180.200.126:9045/api/projectinfopage2?companyName=" + encodeURI(this.Selection)).then((res) => {
+                    this.axios.get("/api/projectinfopage2?companyName=" + encodeURI(this.Selection)).then((res) => {
                         this.tablemsg = res.data.data
                     })
                 } else {
-                    this.axios.get("http://222.180.200.126:9045/api/projectinfopage?companyName=" + encodeURI(this.Selection) + "&projectName=" + encodeURI(this.msg))
+                    this.axios.get("/api/projectinfopage?companyName=" + encodeURI(this.Selection) + "&projectName=" + encodeURI(this.msg))
                         .then((res) => {
                             if (res.data.data != undefined) {
                                 this.tablemsg = res.data.data
@@ -106,6 +106,7 @@
             });
             //获取默认显示的table数据
             this.axios.get("/api/projectinfopage2?companyName=" + encodeURI(this.qydefault)).then((res) => {
+                // window.console.log(res.data.data)
                 this.tablemsg = res.data.data;
                 // let obj=res.data.data
                 // obj.map((item=>{

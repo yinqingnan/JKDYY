@@ -6,7 +6,7 @@ import VueRouter from 'vue-router';
 //引入路由匹配成功后显示的组件
 import Project from "@/view/project.vue" //公司项目详情
 import Region from "@/view/region.vue" //公司项目详情
-import Y2 from "@/view/2.vue" //上市公司数据
+import Y2 from "@/view/Listingoverview.vue" //上市公司数据
 import Listedcompany from "@/view/Listedcompany.vue" //上市公司子路由 首页
 import Companylist from "@/view/Companylist.vue" //上市公司子路由    公司页面
 import Acquisition from '@/components/Table/Acquisitiondetails.vue' //收并购信息详情页
@@ -45,11 +45,11 @@ const router = new VueRouter({
         {path: "/region", name: "Region", component: Region},      //区域公司页面   4.0  此路由必须携带数据  默认为金科物业重庆区域公司  // http://localhost:8080/project?name=物业重庆区域公司
         {path: "/project", name: "project", component: Project},      //项目页面    4.0  此路由必须携带数据  默认为金科物业重庆区域公司 和公司名称       http://localhost:8080/region?quid=250&xmid=1085
         {
-            path: "/2", component: Y2, children: [             //上市公司数据 和子路由
-                {path: "/", redirect: '/2/listedcompany'},
-                {path: "/2/listedcompany", component: Listedcompany},     //上市公司数据页
-                {path: "/2/companylist", component: Companylist},          //各公司详情页
-                {path: "/2/acquisition", component: Acquisition},          // 收并购详情页
+            path: "/Listingoverview", component: Y2, children: [             //上市公司数据 和子路由
+                {path: "/", redirect: '/Listingoverview/listedcompany'},
+                {path: "/Listingoverview/listedcompany", component: Listedcompany},     //上市公司数据页
+                {path: "/Listingoverview/companylist", component: Companylist},          //各公司详情页
+                {path: "/Listingoverview/acquisition", component: Acquisition},          // 收并购详情页
             ]
         },
         {path: '/city', name: "City", component: City},            //城市数据详情页面   路由须携带参数指定城市名称   // http://localhost:8080/city?name=重庆

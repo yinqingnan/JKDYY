@@ -96,6 +96,7 @@
                                     border
                                     style="width: 100%;font-size:10px;min-width:100%;"
                                     :show-overflow-tooltip="true"
+                                    ref="configurationTable"
                             >
                                 <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
                                 <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px"
@@ -127,6 +128,7 @@
                                 height="80%"
                                 fit:true
                                 style="font-size:10px;min-width:100%;width:100%"
+                                ref="configurationTable"
                         >
                             <el-table-column prop="itemName" label="项目名称" align="left"></el-table-column>
                             <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px"
@@ -156,6 +158,7 @@
                                 :row-style="tableRowStyle"
                                 :header-cell-style="tableHeaderColor"
                                 style="width: 100%;min-width:100%;font-size:10px"
+                                ref="configurationTable"
                         >
                             <el-table-column prop="propertyClass" label="物业类别" align="left"></el-table-column>
                             <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px"
@@ -210,6 +213,9 @@
             };
         },
         mounted() {
+            this.$nextTick(()=>{
+                this.$refs.configurationTable.doLayout()
+            })
             this.getheight()
             // console.log(this.$route.query.name)
             this.cityname = this.$route.query.name;
@@ -587,7 +593,10 @@
         color: #049d4a;
         padding: 1px 5px;
         border-radius: 5px;
-        margin-right: 20px
+        margin-right: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
     }
 
     .sign > span:nth-of-type(2) {
@@ -600,6 +609,9 @@
         color: #1e8ccc;
         padding: 1px 5px;
         border-radius: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
     }
 
     .center_body > ul {
@@ -703,4 +715,9 @@
     .container {
         min-width: 1100px;
     }
+    .left_body .el-table--border th.gutter:last-of-type {
+        display: block!important;
+        width: 17px!important;
+    }
+    
 </style>

@@ -41,15 +41,8 @@ export default {
     border: 1px solid #f0f0f0;
     /* padding:  10px; */
     box-sizing: border-box;
-    overflow-y:auto;
-     /* 当IE下溢出，仍然可以滚动*/ 
-        -ms-overflow-style:none;
-        /*火狐下隐藏滚动条*/
-        overflow:-moz-scrollbars-none;
-            scrollbar-width: none
-
 }
-.box::-webkit-scrollbar {display:none}
+.box>ul::-webkit-scrollbar {display:none}
 
 .box>h1{
     font-size: 14px;
@@ -63,6 +56,13 @@ export default {
 }
 .box>ul{
     width: 100%;
+    height: 220px;
+     overflow-y:auto;
+     /* 当IE下溢出，仍然可以滚动*/ 
+        -ms-overflow-style:none;
+        /*火狐下隐藏滚动条*/
+        overflow:-moz-scrollbars-none;
+            scrollbar-width: none
 }
 .box>ul>li{
     margin-left: 10px;

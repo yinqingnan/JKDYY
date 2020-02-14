@@ -3,8 +3,8 @@
         <div class="nav">
             <i class="el-icon-d-arrow-left leftbtn" @click="leftbtn"></i>
             <div class="tab" ref="tabs">
-                <router-link to="/2/listedcompany">上市公司首页查询</router-link>
-                <router-link :to="{path:'/2/companylist',query:{id:item.id}}" exact v-for="(item,index) in list"
+                <router-link to="/Listingoverview/listedcompany">上市公司首页查询</router-link>
+                <router-link :to="{path:'/Listingoverview/companylist',query:{id:item.id}}" exact v-for="(item,index) in list"
                              :key="index">{{item.companyName}}
                 </router-link>
             </div>
@@ -24,7 +24,7 @@
 
     export default {
         components: {
-            // Listedcompany,Companylist
+        
         },
         data() {
             return {
