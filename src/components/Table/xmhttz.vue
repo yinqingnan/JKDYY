@@ -51,7 +51,7 @@
                 <el-table-column prop="attachment" label="附件信息" :show-overflow-tooltip="true" align="center"
                                  min-width="90px">
                     <template slot-scope="scope">
-                        <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+                        <el-button @click="download(scope.row.attachment)" type="text" size="small">下载</el-button>
                     </template>
                 </el-table-column>
                 <el-table-column prop="operator" label="经办人" :show-overflow-tooltip="true" align="center"
@@ -92,7 +92,7 @@
                 <el-table-column prop="attachment" label="附件信息" :show-overflow-tooltip="true" align="center"
                                  min-width="90px">
                     <template slot-scope="scope">
-                        <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
+                        {{scope.row.attachment}}
                     </template>
                 </el-table-column>
                 <el-table-column prop="operator" label="经办人" :show-overflow-tooltip="true" align="center"
@@ -181,8 +181,12 @@
         },
         methods: {
             // 附件信息下载
-            download(val) {
-                window.open(val.attachment)
+            download(val){
+                if(val){
+                    const objToStr = JSON.parse(val)
+                    window.open(objToStr.path)
+                }
+                
             },
             getheight() {
                 // 获取当前浏览器的高度赋值给元素
@@ -196,21 +200,9 @@
             },
 
             TO() {
-                //  this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then((res)=>{
-                //           // 跳转回上级
-                //           this.$router.push({
-                //               path:'/region',
-                //               query:{
-                //                   quid:res.data.data[0].companyId,
-                //                   xmid:res.data.data[0].projectId
-                //               }
-                //           })
-                //       })
                 this.$router.go(-1)
-
             },
             Backstage() {
-                // console.log(this.url+"jkData/data/daq/projectContract/index?loginName="+this.login)
                 window.location.href = (this.url + "jkData/data/daq/projectContract/index?loginName=" + this.login + "&token=1")
             },
 

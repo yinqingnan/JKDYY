@@ -93,7 +93,11 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="40px"
-                    ></el-table-column>
+                    >
+                        <template slot-scope="scope">
+                           {{scope.row.rate}}%
+                        </template>
+                    </el-table-column>
                     <el-table-column
                             prop="state"
                             label="状态"
@@ -191,7 +195,11 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="40px"
-                    ></el-table-column>
+                    >
+                     <template slot-scope="scope">
+                           {{scope.row.rate}}%
+                        </template>
+                    </el-table-column>
                     <el-table-column
                             prop="state"
                             label="状态"
@@ -288,11 +296,13 @@
                             });
                             this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid)
                                 .then(res => {
-                                    // console.log(res.data.data)
-                                    let name = res.data.data[0].companyName + this.year + "年" + "客户资源明细表";
+                                    // console.log(res.data.data[0].projectName)
+                                    let name = res.data.data[0].projectName + this.year + "年" + "客户资源明细表";
                                     var wb = XLSX.utils.table_to_book(
                                         document.querySelector(".xiazai")
+                                        
                                     );
+                                    // console.log(wb)
                                     var wbout = XLSX.write(wb, {
                                         bookType: "xlsx",
                                         bookSST: true,

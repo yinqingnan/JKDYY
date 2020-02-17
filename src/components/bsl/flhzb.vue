@@ -4,7 +4,7 @@
             <!-- 分类汇总表 -->
             <div class="box_header">
                 <h1>{{projectName}}分类汇总表</h1>
-                <h2 @click="exportExcel" class="daochu">导出表格</h2>
+                <h2 @click="exportExcel" class="daochu">导出</h2>
             </div>
             <div class="box_body">
                 <!-- 显示表格 -->
@@ -37,14 +37,16 @@
                             prop="bsfl"
                             label="报事分类"
                             :show-overflow-tooltip="true"
-                            align="center"
+                            header-align="center"
+                            align="left"
                             min-width="50px"
                     ></el-table-column>
                     <el-table-column
                             prop="bstj"
                             label="报事途径"
                             :show-overflow-tooltip="true"
-                            align="center"
+                            header-align="center"
+                            align="left"
                             min-width="40px"
                     ></el-table-column>
                     <el-table-column label="综合" align="center">
@@ -55,6 +57,17 @@
                                 align="center"
                                 min-width="50px"
                         ></el-table-column>
+                        <el-table-column
+                                prop="synthesizeTotalALLa"
+                                label="占比率"
+                                :show-overflow-tooltip="true"
+                                align="center"
+                                min-width="50px"
+                        >
+                            <template slot-scope="scope">
+                               {{(scope.row.synthesizeTotalALLa).toFixed(4)}}%
+                            </template>
+                        </el-table-column>
                         <el-table-column
                                 prop="synthesizeComplete"
                                 label="完成件次"
@@ -68,7 +81,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                            <template slot-scope="scope">
+                                {{scope.row.synthesizeFinishRate}}%
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="审核" align="center">
                         <el-table-column
@@ -91,7 +108,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                         <template slot-scope="scope">
+                                {{scope.row.auditRate}}%
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="派工" align="center">
                         <el-table-column
@@ -114,7 +135,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                           <template slot-scope="scope">
+                                {{scope.row.jobRate}}%
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="完成" align="center">
                         <el-table-column
@@ -137,7 +162,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                            <template slot-scope="scope">
+                                {{scope.row.finishRate}}%
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                 </el-table>
 
@@ -189,6 +218,17 @@
                                 align="center"
                                 min-width="50px"
                         ></el-table-column>
+                         <el-table-column
+                                prop="synthesizeTotalALLa"
+                                label="占比率"
+                                :show-overflow-tooltip="true"
+                                align="center"
+                                min-width="50px"
+                        >
+                            <template slot-scope="scope">
+                               {{(scope.row.synthesizeTotalALLa).toFixed(4)}}﹪
+                            </template>
+                        </el-table-column>
                         <el-table-column
                                 prop="synthesizeComplete"
                                 label="完成件次"
@@ -202,7 +242,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                          <template slot-scope="scope">
+                                {{scope.row.synthesizeFinishRate}}﹪
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="审核" align="center">
                         <el-table-column
@@ -225,7 +269,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                         <template slot-scope="scope">
+                                {{scope.row.auditRate}}﹪
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="派工" align="center">
                         <el-table-column
@@ -248,7 +296,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                         <template slot-scope="scope">
+                                {{scope.row.jobRate}}﹪
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                     <el-table-column label="完成" align="center">
                         <el-table-column
@@ -271,7 +323,11 @@
                                 :show-overflow-tooltip="true"
                                 align="center"
                                 min-width="50px"
-                        ></el-table-column>
+                        >
+                         <template slot-scope="scope">
+                                {{scope.row.finishRate}}﹪
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                 </el-table>
 
@@ -490,16 +546,18 @@
                                 return this.number1.toFixed(0) + "件"
                             }
                         }, 0);
-                    } else if (column.property == "synthesizeFinishRate") {
-                        sums[index] = values.reduce(() => {
-                            // return this.number2
-                            if (this.number2 == 0) {
-                                return 0
-                            } else {
-                                return this.number2.toFixed(0) + "%"
-                            }
-                        }, 0);
-                    } else if (column.property == "auditTotal") {
+                    } 
+                    // else if (column.property == "synthesizeFinishRate") {
+                    //     sums[index] = values.reduce(() => {
+                    //         // return this.number2
+                    //         if (this.number2 == 0) {
+                    //             return 0
+                    //         } else {
+                    //             return this.number2.toFixed(0) + "%"
+                    //         }
+                    //     }, 0);
+                    // }
+                     else if (column.property == "auditTotal") {
                         sums[index] = values.reduce(() => {
                             // return this.number2
                             if (this.number3 == 0) {
@@ -517,16 +575,18 @@
                                 return this.number4.toFixed(0) + "件"
                             }
                         }, 0);
-                    } else if (column.property == "auditRate") {
-                        sums[index] = values.reduce(() => {
-                            // return this.number2
-                            if (this.number5 == 0) {
-                                return 0
-                            } else {
-                                return this.number5.toFixed(0) + "%"
-                            }
-                        }, 0);
-                    } else if (column.property == "jobTotal") {
+                    } 
+                    // else if (column.property == "auditRate") {
+                    //     sums[index] = values.reduce(() => {
+                    //         // return this.number2
+                    //         if (this.number5 == 0) {
+                    //             return 0
+                    //         } else {
+                    //             return this.number5.toFixed(0) + "%"
+                    //         }
+                    //     }, 0);
+                    // } 
+                    else if (column.property == "jobTotal") {
                         sums[index] = values.reduce(() => {
                             // return this.number2
                             if (this.number6 == 0) {
@@ -544,16 +604,18 @@
                                 return this.number7.toFixed(0) + "件"
                             }
                         }, 0);
-                    } else if (column.property == "jobRate") {
-                        sums[index] = values.reduce(() => {
-                            // return this.number2
-                            if (this.number8 == 0) {
-                                return 0
-                            } else {
-                                return this.number8.toFixed(0) + "%"
-                            }
-                        }, 0);
-                    } else if (column.property == "finishTotal") {
+                    }
+                    //  else if (column.property == "jobRate") {
+                    //     sums[index] = values.reduce(() => {
+                    //         // return this.number2
+                    //         if (this.number8 == 0) {
+                    //             return 0
+                    //         } else {
+                    //             return this.number8.toFixed(0) + "%"
+                    //         }
+                    //     }, 0);
+                    // }
+                     else if (column.property == "finishTotal") {
                         sums[index] = values.reduce(() => {
                             // return this.number2
                             if (this.number9 == 0) {
@@ -571,16 +633,17 @@
                                 return this.number10.toFixed(0) + "件"
                             }
                         }, 0);
-                    } else if (column.property == "finishRate") {
-                        sums[index] = values.reduce(() => {
-                            // return this.number2
-                            if (this.number11 == 0) {
-                                return 0
-                            } else {
-                                return this.number11.toFixed(0) + "%"
-                            }
-                        }, 0);
-                    }
+                    } 
+                    // else if (column.property == "finishRate") {
+                    //     sums[index] = values.reduce(() => {
+                    //         // return this.number2
+                    //         if (this.number11 == 0) {
+                    //             return 0
+                    //         } else {
+                    //             return this.number11.toFixed(0) + "%"
+                    //         }
+                    //     }, 0);
+                    // }
                 });
 
                 return sums;
