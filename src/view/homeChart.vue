@@ -63,7 +63,7 @@
                 <div class="cbBox">
 
                     <ul class="iconWrap">
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " ref="Effect1" :class=" 0 ===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconshouru "></span>
                             </div>
@@ -72,7 +72,7 @@
                                 <p>{{num1}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " style="background: #88acff" :class="1===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconlirun "></span>
                             </div>
@@ -81,7 +81,7 @@
                                 <p>{{num2}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " style="background: #5bc3d2" :class="2===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconyuanqu "></span>
                             </div>
@@ -90,7 +90,7 @@
                                 <p>{{num3}}<span class="sml">万元</span></p>
                             </div>
                         </li>
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " style="background: #00b7ee" :class="3===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconshoufeishuai "></span>
                             </div>
@@ -99,7 +99,7 @@
                                 <p>{{num4}}<span class="sml">%</span></p>
                             </div>
                         </li>
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " style="background: #fca751" :class="4===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconmubiaoshu "></span>
                             </div>
@@ -108,7 +108,7 @@
                                 <p>{{num5}}<span class="sml"></span></p>
                             </div>
                         </li>
-                        <li class="iconBook" @mouseover="LImouseover" @mouseout="LImouseout">
+                        <li class="iconBook" @onmouseover="LImouseover" @onmouseout="LImouseout">
                             <div class="iconBox " style="background: #c490bf" :class="5===iconBoxnum ? 'Effect4':''">
                                 <span class="iconfont  iconzonghe "></span>
                             </div>
@@ -138,7 +138,15 @@
                 </div>
                 <div class="rbBox">
                     <div class="tHeader">说明内容</div>
-                    <p class="text" :title="text">{{text}}</p>
+                    <p class="text" >
+                         <el-tooltip :content="text" placement="top" enterable popper-class="atooltip">
+                            <h6 class="Explain">
+                                {{text}}
+                            </h6>
+                        </el-tooltip>
+                    </p>
+                    
+                   
                 </div>
             </div>
         </div>
@@ -176,7 +184,7 @@
                     color: '#5bc3d2',
                     txt: '平均值'
                 }],
-                text: '百度（纳斯达克：BIDU），全球最大的中文搜索引擎及最大的中文网站，全球领先的人工智能公司。百度愿景是：成为最懂用户，并能帮助人们成长的全球顶级高科技公司。“百度”二字，来自于八百年前南宋词人辛弃疾的一句词：众里寻他千百度。这...',
+                text: '',
                 options: [],
                 value: '1',
                 options2: [{
@@ -214,7 +222,8 @@
         },
         mounted() {
             this.time = setInterval(() => {
-                this.animation()
+                // this.animation()
+                this.iconBoxnum++
                 if (this.iconBoxnum == 6) {
                     this.iconBoxnum = 0
                 }
@@ -223,10 +232,11 @@
         },
 
         methods: {
-            animation() {
-                this.iconBoxnum++
-            },
+            // animation() {
+            //     this.iconBoxnum++
+            // },
             LImouseover() {
+
                 this.Record = 0
                 this.Record = this.iconBoxnum
                 this.iconBoxnum = 10
@@ -286,7 +296,7 @@
             setEfficiency(val) {
                 this.axios.get("/api/tj002?projectId=" + val).then((res) => {
                     this.barData = res.data.data;
-                    window.console.log(res.data.data)
+                    // window.console.log(res.data.data)
                     // 'PeopleRevenue', //人均营收
                     // 'tubeAreaRevenue', //方均营收
                     // 'GardenPeopleRevenue', //园区人均营收
@@ -579,7 +589,6 @@
         width: 60px;
         display: flex;
         align-items: center;
-        cursor: pointer;
     }
 
     .txt {
@@ -842,14 +851,18 @@
 
 
     /* 图标特效 */
-
-
     .Effect4 {
         -webkit-animation-name: scaleDraw;
         -webkit-animation-timing-function: ease-in-out;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-duration: 5s;
-        -webkit-animation-delay: 0s
+        -webkit-animation-delay: 0s;
+
+        animation-name: scaleDraw;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 5s;
+        animation-delay: 0s
     }
 
     @keyframes scaleDraw {
@@ -873,7 +886,17 @@
         -webkit-animation-timing-function: ease-in-out;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-duration: 5s;
-        -webkit-animation-delay: 0s
+        -webkit-animation-delay: 0s;
+
+        animation-name: scaleDraw;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 5s;
+        animation-delay: 0s;
+    }
+    .Explain{
+        font-size:12px;
+        text-indent:2em;
     }
 
 
@@ -897,4 +920,7 @@
     #homeChart .el-select {
         width: 150px;
     }
+    .atooltip{
+      background: rgba(0,0,0,.5) !important;
+  }
 </style>

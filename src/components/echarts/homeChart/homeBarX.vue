@@ -1,6 +1,7 @@
 <template>
     <div id="homeBarX">
         <div id="bar" class="bar" ref="bar"></div>
+
     </div>
 </template>
 
@@ -31,7 +32,7 @@
                         top: "14%",
                         right: "10%",
                         left: "16%",
-                        bottom: "14%"
+                        bottom: "15%"
                     },
                     legend: {
                         top: '4%',
@@ -65,9 +66,23 @@
                             textStyle: {
                                 color: "#fff"
                             },
+                            rich:{
+                                width:"10px"
+                            },
+                            formatter:function(val){
+                                let valueTxt=""
+                                if(val.length>4){
+                                    valueTxt=val.substring(0,4)+".."
+                                }else{
+                                    valueTxt=val
+                                }
+                                return valueTxt
+                            },
+                            triggerEvent: true,
                             interval: 0,
                             rotate: 40
-                        }
+                        },
+                       
                     },
                     yAxis: {
                         type: 'value',

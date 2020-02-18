@@ -28,6 +28,7 @@
             },
             zhsflsxzzt: {
                 handler(newVal) {
+                    // console.log(newVal)
                     this.bjData = newVal;
                     // 图表设置信息
                     const option = {

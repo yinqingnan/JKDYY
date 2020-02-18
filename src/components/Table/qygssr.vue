@@ -41,14 +41,14 @@
                 </el-table-column>
                 <el-table-column
                         prop="incomAmount"
-                        label="收入金额"
+                        label="收入金额（万元）"
                         :show-overflow-tooltip="true"
                         align="center"
                         min-width="90"
                 ></el-table-column>
                 <el-table-column
                         prop="tubeArea"
-                        label="在管面积"
+                        label="在管面积（万方）"
                         :show-overflow-tooltip="true"
                         align="center"
                         min-width="90px"

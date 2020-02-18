@@ -386,7 +386,7 @@ export default {
           "/api/monthTotalRevenue?year=" + this.year + "&companyID=" + this.qyid
         )
         .then(res => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           this.tablemsg = res.data.data;
           this.tablemsgmsg = res.data.data;
           this.totalCount = res.data.data.length;
