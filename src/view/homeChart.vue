@@ -121,7 +121,7 @@
                     <p class="tip">备注：此得分只做为经营管理参考用，不作为考核使用</p>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
-                </div>
+                </div>  
             </div>
             <div class="rightBox">
                 <div class="rtBox">
@@ -232,11 +232,10 @@
         },
 
         methods: {
-            // animation() {
-            //     this.iconBoxnum++
-            // },
+            animation() {
+                this.iconBoxnum++
+            },
             LImouseover() {
-
                 this.Record = 0
                 this.Record = this.iconBoxnum
                 this.iconBoxnum = 10

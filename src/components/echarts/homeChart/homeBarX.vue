@@ -47,7 +47,7 @@
                         itemHeight: 12,
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(0,104,183,0.8)',
+                        backgroundColor: 'rgba(0,0,0,.4)',
                         formatter: '{b}' + "<br>" + '{c}百万元',
                         trigger: "axis",
                         axisPointer: {
