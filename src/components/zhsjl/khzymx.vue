@@ -266,8 +266,12 @@
             this.axios.get("/api/proChargeRate01?projectId=" + this.xmid).then((res) => {
                 // this.axios.get("/api/proChargeRate01?projectId=101").then((res)=>{
                 // console.log(res.data.data)
-                this.tablemsgmsg = res.data.data  //下载数据的表格
-                this.tablemsg = res.data.data      //展示数据的表格
+                let arr=res.data.data
+                arr.map((item,index)=>{
+                   item.resouresName=item.resouresName.replace(/-/ig,"－")
+                })
+                this.tablemsgmsg = arr  //下载数据的表格
+                this.tablemsg = arr      //展示数据的表格
                 this.totalCount = res.data.data.length    //展示数据的总条数
             })
 

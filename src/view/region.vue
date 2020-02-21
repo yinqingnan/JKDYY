@@ -720,10 +720,10 @@
                             res.data.data[0].m5,
                             res.data.data[0].m6
                         );
-                        // console.log(this.bshxzzt)
+  
                         this.xsyf = 0;
                     }
-                    // console.log(this.bssxzzt)
+
 
                 });
 
