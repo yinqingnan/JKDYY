@@ -147,15 +147,16 @@
                             </div>
                             <div class="Chart1_footer">
                                 <div class="Chart1_footer1">
-                                    <Qualityservice :Realestates="Realestates" style="width:70%"></Qualityservice>
+                                    <Qualityservice :Realestates="Realestates" :Realestate="Realestate" style="width:70%"></Qualityservice>
                                     <h2 style="min-width:60px;text-align:center">{{Realestate}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
-                                    <Qualityservice2 :Others="Others" style="width:70%"></Qualityservice2>
+                                    <Qualityservice2 :Others="Others" :Other="Other" style="width:70%"></Qualityservice2>
                                     <h2 style="min-width:60px;text-align:center">{{Other}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
                                     <Qualityservice3 :Propertycategorys="Propertycategorys"
+                                                     :Propertycategory='Propertycategory'
                                                      style="width:70%"></Qualityservice3>
                                     <h2 style="min-width:60px;text-align:center">{{Propertycategory}}</h2>
                                 </div>
@@ -318,13 +319,8 @@
                 })
             },
             contract(item) {
-                // console.log(item)
-                // if(item.remindType=="合同台账"){
-                //     console.log(item.projectId)
-                // }
                 switch (item.remindType) {
                     case "合同台账":
-                     
                         this.$router.push({
                             path: "/xmhttz",
                             query: {
@@ -332,10 +328,8 @@
                                 login: this.encry
                             }
                         })
-
                         break;
                     case "设备维修":
-                       
                         this.$router.push({
                             path: "/xmsbwx",
                             query: {
@@ -347,6 +341,7 @@
                     default:
                         break;
                 }
+              
             }
         },
         mounted() {
@@ -464,7 +459,9 @@
                 // 获取品质服务信息数据
                 this.axios.get("/api/companymonthrate?companyId=" + this.id) //使用区域公司名称进行查询
                     .then((res) => {
+                        
                         if(res.data.data.length==3){
+                            // console.log(res.data.data)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Other = res.data.data[1].newspapersCateType              //其他title
                             this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
@@ -472,11 +469,13 @@
                             this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
                             this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
                         }else if(res.data.data.length==2){
+                            // console.log(res.data.data)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Other = res.data.data[1].newspapersCateType              //其他title
                             this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
                             this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
                         }else{
+                            // console.log(res.data.data[0].newspapersCateType)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
                         }

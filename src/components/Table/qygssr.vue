@@ -59,7 +59,11 @@
                         :show-overflow-tooltip="true"
                         align="center"
                         min-width="90px"
-                ></el-table-column>
+                >
+                    <template slot-scope="scope">
+                        {{scope.row.nodeRate}}%
+                    </template>
+                </el-table-column>
             </el-table>
             <!-- 分页器 -->
             <div class="box1">

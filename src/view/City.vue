@@ -89,7 +89,7 @@
       </div>
       <div class="left">
         <div class="left_body">
-          <div class>
+          <div>
             <!-- table1 -->
             <h1 class="titlezt">竞品项目物业费备案价</h1>
             <div style="height:100%">
@@ -103,25 +103,50 @@
                 style="width: 100%;font-size:10px;min-width:100%;"
                 :show-overflow-tooltip="true"
                 ref="configurationTable"
+                v-scrollBar:el-table 
               >
                 <el-table-column
                   prop="itemName"
                   label="项目名称"
                   align="left"
-                  width="80px"
+                  min-width="60px"
                   :show-overflow-tooltip="true"
                 ></el-table-column>
-                <el-table-column prop="aFeeSystem" label="是否一费制" min-width="60px" align="center"></el-table-column>
-                <el-table-column prop="highRiseFee" label="高层" min-width="30px" align="center"></el-table-column>
-                <el-table-column prop="westernFee" label="洋房" min-width="30px" align="center"></el-table-column>
-                <el-table-column prop="villaFee" label="别墅" min-width="30px" align="center"></el-table-column>
-                <el-table-column prop="businessFee" label="商业" min-width="30px" align="center"></el-table-column>
-                <el-table-column prop="garageFee" label="车库" min-width="30px" align="center"></el-table-column>
+                <el-table-column
+                  prop="aFeeSystem" 
+                  label="是否一费制"
+                  min-width="60px"
+                  align="center"></el-table-column>
+                <el-table-column 
+                  prop="highRiseFee" 
+                  label="高层" 
+                  min-width="30px"
+                  align="center"></el-table-column>
+                <el-table-column 
+                  prop="westernFee" 
+                  label="洋房" 
+                  min-width="30px"
+                  align="center"></el-table-column>
+                <el-table-column 
+                  rop="villaFee" 
+                  label="别墅" 
+                  min-width="30px"
+                  align="center"></el-table-column>
+                <el-table-column 
+                  prop="businessFee" 
+                  label="商业" 
+                  min-width="30px"
+                  align="center"></el-table-column>
+                <el-table-column 
+                  prop="garageFee" 
+                  label="车库" 
+                  min-width="30px"
+                  align="center"></el-table-column>
                 <el-table-column
                   prop="remark"
                   label="备注"
-                  min-width="30px"
                   align="center"
+                  min-width="30px"
                   :show-overflow-tooltip="true"
                 ></el-table-column>
               </el-table>
@@ -138,6 +163,7 @@
               fit:true
               style="font-size:10px;min-width:100%;width:100%"
               ref="configurationTable"
+               v-scrollBar:el-table 
             >
               <el-table-column
                 prop="itemName"
@@ -208,6 +234,7 @@
               :header-cell-style="tableHeaderColor"
               style="width: 100%;min-width:100%;font-size:10px"
               ref="configurationTable"
+              v-scrollBar:el-table 
             >
               <el-table-column prop="propertyClass" label="物业类别" align="left" width="80px"></el-table-column>
               <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
@@ -258,9 +285,9 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$refs.configurationTable.doLayout();
-    });
+
+
+   
     this.getheight();
     // console.log(this.$route.query.name)
     this.cityname = this.$route.query.name;
@@ -322,6 +349,9 @@ export default {
           });
         }
       });
+       this.$nextTick(() => {
+        this.$refs.configurationTable.doLayout();
+      });
   },
   filters: {
     number: function(data) {
@@ -360,6 +390,7 @@ export default {
     immediate: true //将立即以表达式的当前值触发回调
   },
   methods: {
+    
     getheight() {
       // console.log(window.innerHeight- 130)
       // 获取当前浏览器的高度赋值给元素
@@ -405,6 +436,9 @@ export default {
         // console.log(res.data.data[0].remark)
         this.sfsm = res.data.data[0].remark;
       });
+       setTimeout(()=> {
+        this.$refs.configurationTable.doLayout()
+    },1200)
     },
     control(index) {
       this.num = index;
@@ -764,6 +798,7 @@ export default {
 .container {
   min-width: 1100px;
 }
+
 .left_body >>> .el-table--border th.gutter:last-of-type {
   display: block !important;
   width: 17px !important;
@@ -771,4 +806,13 @@ export default {
 .left_body .el-table .cell, .el-table th div {
     padding-right: 0;
 }
+
+/* 能够解决ie浏览器边缘样式问题 */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .gutter {
+    display: block !important;
+    width: 17px !important;
+  }
+}
+
 </style>

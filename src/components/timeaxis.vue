@@ -48,16 +48,18 @@ export default {
   watch: {
     xmid: {
       handler(newval) {
-        // console.log(newval)
+       
         this.id = newval;
         this.axios.get("/api/projectEvent01?projectid=" + newval).then(res => {
+          // console.log(res.data.data)
           let obj = res.data.data;
           for (let i in obj) {
             if (obj[i].recordTime) {
               obj[i].recordTime = obj[i].recordTime.split(" ")[0];
             }
           }
-          this.list = res.data.data;
+          // this.list = res.data.data;
+          this.list=obj
         });
       }
     },

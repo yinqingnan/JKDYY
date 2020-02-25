@@ -399,15 +399,23 @@
             },
 // 区域公司切换
             selectchange(value) {
+               
+                
+               
                 // console.log(value)
                 //区域公司级下拉菜单选中监听
                 this.value = value;
                 this.axios.get("api/projectBycId?companyId=" + value).then(res => {
-                    // this.msg = res.data.data[0].projectId; //切换后使用新id来进行数据的切换
-                    // console.log(res.data.data)
                     this.getregionList = res.data.data; //区域下拉菜单切换后赋值给项目下来菜单
                     this.value1 = res.data.data[0].projectName;
                     this.xmid = res.data.data[0].projectId     //切换后使用新id来进行数据的切换
+
+                    // 静态修改路由参数
+                    var url=window.location.href
+                    let newurl=url.split('?')[0]
+                    let URL='?'+'quid'+'='+this.value+'&'+'xmid'+'='+this.xmid
+                     history.pushState("", "Title",newurl+URL );
+                    URL=""
 
                     this.axios
                         .get("api/projectInfoById?projectId=" + this.xmid)
@@ -635,6 +643,12 @@
                 //项目公司下拉菜单监听
                 this.xmid = value;
 
+                 // 静态修改路由参数
+                    var url=window.location.href
+                    let newurl=url.split('?')[0]
+                    let URL='?'+'quid'+'='+this.quid+'&'+'xmid'+'='+this.xmid
+                     history.pushState("", "Title",newurl+URL );
+                    URL=""
                 // 获取项目详情数据（根据路由携带的项目id查询数据）
                 this.axios.get("api/projectInfoById?projectId=" + value).then(res => {
                     this.titlename = res.data.data;
@@ -852,7 +866,7 @@
                 //现场品质提示信息
                 this.axios
                     .get(
-                        "http://222.180.200.126:9045/api/projectXCPZtype?projectId=" + value
+                        "/api/projectXCPZtype?projectId=" + value
                     )
                     .then(res => {
                         // console.log(res.data.data)

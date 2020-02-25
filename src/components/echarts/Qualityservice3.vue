@@ -16,10 +16,17 @@
             return {
                 time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 bjData: [],
+                title:""
 
             };
         },
         watch: {
+            Propertycategory:{
+                handler(value){
+                    this.title=value
+                }
+            },
+
             Propertycategorys: {
                 handler(newVal) {
 
@@ -86,7 +93,7 @@
                             show: false
                         }],
                         series: [{
-                            name: '物业类',
+                            name:this.title,
                             type: 'line',
                             smooth: true,
                             color: "#fff",
@@ -139,7 +146,7 @@
             deep: true, //深度监测
             immediate: true //将立即以表达式的当前值触发回调
         },
-        props: ["Propertycategorys"],
+        props: ["Propertycategorys",'Propertycategory'],
         mounted() {
             const chartObj = echarts.init(document.getElementById("zxt3"));
             window.addEventListener("resize", () => {

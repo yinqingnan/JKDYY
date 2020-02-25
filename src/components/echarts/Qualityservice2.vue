@@ -16,10 +16,16 @@
             return {
                 time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 bjData: [],
+                title:""
 
             };
         },
         watch: {
+            Other:{
+                handler(value){
+                    this.title=value
+                }
+            },
             Others: {
                 handler(newVal) {
 
@@ -86,7 +92,7 @@
                             show: false
                         }],
                         series: [{
-                            name: '其他',
+                            name: this.title,
                             type: 'line',
                             smooth: true,
                             color: "#fff",
@@ -140,7 +146,7 @@
             deep: true, //深度监测
             immediate: true //将立即以表达式的当前值触发回调
         },
-        props: ["Others"],
+        props: ["Others",'Other'],
         mounted() {
             const chartObj = echarts.init(document.getElementById("zxt2"));
             window.addEventListener("resize", () => {

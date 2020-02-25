@@ -45,11 +45,11 @@
                         align="center"
                         min-width="90"
                 >
-                    <template slot-scope="scope">
+                    <!-- <template slot-scope="scope">
                <span>
                    {{ scope.row.recordTime.split(" ")[0]}}
                </span>
-                    </template>
+                    </template> -->
                 </el-table-column>
                 <el-table-column
                         prop="recordname"
@@ -122,7 +122,16 @@
                             Object.assign({}, item, {companyName: this.companyName}, {projectName: this.projectName})
                         )
                     })
+                    // console.log(obj)
+                    // console.log(array)
+                     array.map(item=>{
+                        // console.log(item.recordTime)
+                        if(item.recordTime){
+                            item.recordTime=item.recordTime.split(" ")[0]
+                        }
+                    })
                     this.tablemsg = array
+                   
                 })
             });
 

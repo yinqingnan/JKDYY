@@ -18,13 +18,18 @@
             return {
                 time: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 bjData: [],
+                title:""
 
             };
         },
         watch: {
+            Realestate:{
+                handler(value){
+                    this.title=value
+                }
+            },
             Realestates: {
                 handler(newVal) {
-
                     this.bjData = newVal
 
                     // 图表设置信息
@@ -91,7 +96,7 @@
                         }],
                         series: [
                             {
-                                name: '地产类',
+                                name: this.title,
                                 type: 'line',
                                 smooth: true,
                                 color: "#fff",
@@ -146,7 +151,7 @@
             deep: true, //深度监测
             immediate: true //将立即以表达式的当前值触发回调
         },
-        props: ["Realestates"],
+        props: ["Realestates",'Realestate'],
         mounted() {
             const chartObj = echarts.init(document.getElementById("zxt1"));
             window.addEventListener("resize", () => {

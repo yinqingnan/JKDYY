@@ -197,7 +197,7 @@
                             min-width="40px"
                     >
                      <template slot-scope="scope">
-                           {{scope.row.rate}}%
+                           {{scope.row.rate}}﹪
                         </template>
                     </el-table-column>
                     <el-table-column
@@ -331,7 +331,7 @@
                             message: "已取消下载"
                         });
                     });
-            },
+            },  
             handleSizeChange(cpage) {
                 this.pagesize = cpage;
             },

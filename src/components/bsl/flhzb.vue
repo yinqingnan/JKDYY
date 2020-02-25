@@ -411,6 +411,9 @@
                 .get("/api/proBs02?projectId=" + this.xmid + "&year=" + this.year)
                 .then(res => {
                     // console.log(res.data.data)
+                    res.data.data.map(item=>{
+                        console.log(item.bstj)
+                    })
                     this.tablemsgmsg = res.data.data; //下载数据的表格
                     this.tablemsg = res.data.data; //展示数据的表格
                     this.totalCount = res.data.data.length; //展示数据的总条数
