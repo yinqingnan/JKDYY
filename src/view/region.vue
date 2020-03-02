@@ -399,10 +399,6 @@
             },
 // 区域公司切换
             selectchange(value) {
-               
-                
-               
-                // console.log(value)
                 //区域公司级下拉菜单选中监听
                 this.value = value;
                 this.axios.get("api/projectBycId?companyId=" + value).then(res => {
@@ -908,7 +904,6 @@
             this.axios.get("/api/projectInfoName?projectIdName=" + this.xmid).then((res) => {
                 this.value1 = res.data.data[0].projectName
             })
-
 
             // 通过路由的区域id获取到默认显示的区域
             this.axios
