@@ -74,7 +74,6 @@
                 <div class="Chart">
                     <div>
                         <h1>关键指标</h1>
-                        <!-- <h2>更多<span class="iconfont iconpub_right"></span></h2> -->
                     </div>
                     <div>
                         <!-- 关键指标图表1 -->
@@ -96,8 +95,8 @@
                                     <xmzhsflsxzzt :zhsflsxzzt="zhsflsxzzt" :xsyf="xsyf"
                                                   style="width:100%"></xmzhsflsxzzt>
                                 </div>
-                                <div style="width:100%">
-                                    <xmzhsflhxzzt :zhsflhxzzt="zhsflhxzzt" style="width:80%"></xmzhsflhxzzt>
+                                <div style="width:100% " class="spacing">
+                                    <xmzhsflhxzzt :zhsflhxzzt="zhsflhxzzt" style="width:100%"></xmzhsflhxzzt>
                                 </div>
                             </div>
                             <div class="yq">
@@ -130,8 +129,8 @@
                                 <div style="width:100%">
                                     <xmbssxzzt :bssxzzt="bssxzzt" :xsyf="xsyf" style="width:100%"></xmbssxzzt>
                                 </div>
-                                <div style="width:100%">
-                                    <xmbshxzzt :bshxzzt="bshxzzt" style="width:80%"></xmbshxzzt>
+                                <div style="width:100% " class="spacing">
+                                    <xmbshxzzt :bshxzzt="bshxzzt" style="width:100%"></xmbshxzzt>
                                 </div>
                             </div>
                             <div class="yq">
@@ -166,8 +165,8 @@
                                 <div style="width:100%">
                                     <xcpzsxzzt :xcpzsxzzt="xcpzsxzzt" :xsyf="xsyf" style="width:100%"></xcpzsxzzt>
                                 </div>
-                                <div style="width:100%">
-                                    <xcpzhxzzt :xcpzhxzzt="xcpzhxzzt" style="width:80%"></xcpzhxzzt>
+                                <div style="width:100%" class="spacing" >
+                                    <xcpzhxzzt :xcpzhxzzt="xcpzhxzzt" style="width:100%"></xcpzhxzzt>
                                 </div>
                             </div>
                             <div class="yq">
@@ -407,7 +406,7 @@
                     this.xmid = res.data.data[0].projectId     //切换后使用新id来进行数据的切换
 
                     // 静态修改路由参数
-                    var url=window.location.href
+                    let url=window.location.href
                     let newurl=url.split('?')[0]
                     let URL='?'+'quid'+'='+this.value+'&'+'xmid'+'='+this.xmid
                      history.pushState("", "Title",newurl+URL );
@@ -640,11 +639,13 @@
                 this.xmid = value;
 
                  // 静态修改路由参数
-                    var url=window.location.href
-                    let newurl=url.split('?')[0]
-                    let URL='?'+'quid'+'='+this.quid+'&'+'xmid'+'='+this.xmid
-                     history.pushState("", "Title",newurl+URL );
-                    URL=""
+                    let url_1=window.location.href
+                    let newurl=url_1.split('?')[0]
+                    let URL_1='?'+'quid'+'='+this.quid+'&'+'xmid'+'='+this.xmid
+                     history.pushState("", "Title",newurl+URL_1 );
+                    URL_1=""
+
+
                 // 获取项目详情数据（根据路由携带的项目id查询数据）
                 this.axios.get("api/projectInfoById?projectId=" + value).then(res => {
                     this.titlename = res.data.data;
@@ -1440,7 +1441,8 @@
         width: 33%;
         height: 340px;
         background: #f0eded;
-        padding: 0 10px
+        padding: 0 10px;
+        
     }
 
     .Chart > div:nth-of-type(2) > div:nth-of-type(2) {
@@ -1779,4 +1781,13 @@
         font-size: 16px !important
 
     }
+
+
+   /* 只在IE浏览器生效的class */
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .spacing {
+       margin-left: 45px;
+    }
+  
+}
 </style>

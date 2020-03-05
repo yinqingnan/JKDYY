@@ -34,7 +34,6 @@
           </div>
           <div class="sign">
             <h1>物业费指导价</h1>
-
             <span v-show="isshow">{{defaultdata.lumpSumOrSalary}}</span>
             <span v-show="isshow">{{defaultdata.aFeeOrNotAFee}}</span>
           </div>
@@ -109,7 +108,7 @@
                   prop="itemName"
                   label="项目名称"
                   align="left"
-                  min-width="60px"
+                  width="80px"
                   :show-overflow-tooltip="true"
                 ></el-table-column>
                 <el-table-column
@@ -127,8 +126,8 @@
                   label="洋房" 
                   min-width="30px"
                   align="center"></el-table-column>
-                <el-table-column 
-                  rop="villaFee" 
+                  <el-table-column 
+                  prop="villaFee" 
                   label="别墅" 
                   min-width="30px"
                   align="center"></el-table-column>
@@ -239,7 +238,7 @@
               <el-table-column prop="propertyClass" label="物业类别" align="left" width="80px"></el-table-column>
               <el-table-column prop="serviceLevel" label="最高服务等级" min-width="74px" align="center"></el-table-column>
               <el-table-column prop="standardPrice" label="最高基准价" min-width="68px" align="center"></el-table-column>
-              <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>
+              <el-table-column prop="limitedPrive" label="上浮后最高限价" min-width="90px" align="center"></el-table-column>  
             </el-table>
             <div class="Explain">
               <h1>上浮说明</h1>
@@ -285,9 +284,6 @@ export default {
     };
   },
   mounted() {
-
-
-   
     this.getheight();
     // console.log(this.$route.query.name)
     this.cityname = this.$route.query.name;
@@ -327,7 +323,7 @@ export default {
           axios
             .get("/api/cityData06?cityDataId=" + res.data.data[0].id)
             .then(res => {
-              // console.log(res.data.data)
+              console.log(res.data.data)
               this.defaultable2 = res.data.data;
             });
           //获取物业费政府指导价          table3
@@ -761,6 +757,8 @@ export default {
   line-height: 56px !important;
 }
 </style>
+
+
 <style>
 /* 全局修改表格内容太多隐藏后鼠标经过提示框的样式 */
 .el-tooltip__popper {
@@ -807,12 +805,14 @@ export default {
     padding-right: 0;
 }
 
-/* 能够解决ie浏览器边缘样式问题 */
+/* 能够解决表格在ie浏览器滚动条边缘样式问题 */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .gutter {
     display: block !important;
     width: 17px !important;
   }
+  
 }
+
 
 </style>

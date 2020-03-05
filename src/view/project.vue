@@ -70,7 +70,7 @@
                                 <div style="width:100%">
                                     <qugszsr1 :zsrsxzzt1="zsrsxzzt1" :zsrsxzztm="zsrsxzztm"></qugszsr1>
                                 </div>
-                                <div style="width:100%">
+                                <div style="width:100%" class="spacing">
                                     <qugszsr2 :zsrhxzzttitle="zsrhxzzttitle" :zsrhxzzt2="zsrhxzzt2"
                                               style="width:100%"></qugszsr2>
                                 </div>
@@ -114,7 +114,7 @@
                                 <div style="width:100%">
                                     <qygssfl1 :sflsxzzt1="sflsxzzt1" :zsrsxzztm="zsrsxzztm"></qygssfl1>
                                 </div>
-                                <div style="width:100%">
+                                <div style="width:100%" class="spacing">
                                     <qygssfl2 :sflhxzzttitle="sflhxzzttitle" :sflhxzzt2="sflhxzzt2"
                                               style="width:100%"></qygssfl2>
                                 </div>
@@ -1064,4 +1064,11 @@
     .el-input__inner {
         font-size: 16px
     }
+    /* 只在IE浏览器生效的class */
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .spacing {
+        margin-left: 45px;
+        }
+    }
+
 </style>

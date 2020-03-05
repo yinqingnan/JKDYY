@@ -68,7 +68,7 @@
                     <div class="top_right_body">
                         <div>
                             <div class="top_right_body_one" v-if="show">
-                                <topone :topone="topone" :num1="num1"></topone>
+                                <topone :topone="topone" :num1="num1"></topone>  
                             </div>
                             <div class="top_right_body_two" v-if="show1">
                                 <!-- <TOP1 :toptwo="toptwo" :num1="num1"></TOP1> -->
