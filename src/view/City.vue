@@ -323,7 +323,7 @@ export default {
           axios
             .get("/api/cityData06?cityDataId=" + res.data.data[0].id)
             .then(res => {
-              console.log(res.data.data)
+              // console.log(res.data.data)
               this.defaultable2 = res.data.data;
             });
           //获取物业费政府指导价          table3
