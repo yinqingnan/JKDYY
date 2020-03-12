@@ -31,9 +31,16 @@ export default {
           },
           tooltip: {
             show: true,
-            trigger: "item",
-            confine: true,
-            enterable: true //鼠标是否可以移动到tooltip区域内
+            // trigger: "item",
+            // confine: true,
+            enterable: true, //鼠标是否可以移动到tooltip区域内
+            formatter:function(params){
+              // console.log(params)
+              let arr=params.value
+              let str=""
+              str= "家庭生活："+ arr[0] +'<br/>'+ "园区资源："+ arr[1] +'<br/>'+"家 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 居："+ arr[2] +'<br/>'+"金融资产："+ arr[3] +'<br/>'
+              return str
+            }
           },
           radar: {
             shape: "circle",
@@ -100,7 +107,7 @@ export default {
               data: [
                 {
                   value: this.data,
-                  name: "数据",
+                  name: "",
                   itemStyle: {
                     normal: {
                       color: "rgba(5, 128, 242, 0.8)"

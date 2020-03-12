@@ -33,10 +33,15 @@
         },
         methods: {
             TO() {
-                // 返回到项目公司
-                // console.log(this.xmid)
-
-                this.$router.go(-1)
+                // 返回到当前项目公司
+                this.axios.get("/api/projectInfoName?projectIdName="+this.xmid).then(res=>{
+                    var qyid=res.data.data[0].companyId
+                    var xmid=res.data.data[0].projectId
+                   this.$router.push(
+                        {   
+                            path:`/region?quid=${qyid}&xmid=${xmid}`
+                        })
+                })
             },
         }
     }

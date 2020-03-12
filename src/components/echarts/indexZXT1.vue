@@ -33,28 +33,27 @@
                             year
                         ) //正式默认第一条数据
                         .then(res => {
+                                // netProfitMarginOnSales   --- 净利润
+                                // grossProfitMargin        --- 毛利润
+                                // increaserateofbusinessrevenue   --- 营收增长率
+                                // operatingProfitGrowthRate       --- 利润增长率
+                                // returnonequity                  ---- ROE
+                            
                             this.companyName = [];
-                            this.netProfitMarginOnSales = [];
-                            this.grossProfitMargin = [];
-                            this.operatingProfitGrowthRate = [];
-                            this.averagereturnonequity = [];
-                            this.increaserateofbusinessrevenue = [];
+                            this.netProfitMarginOnSales = [];                //净利率
+                            this.grossProfitMargin = [];                     //毛利率
+                            this.operatingProfitGrowthRate = [];            //利润增长率
+                            this.returnonequity = [];                //ROE
+                            this.increaserateofbusinessrevenue = [];        //营收增长率
                             let array = res.data.data;
                             array.forEach(element => {
-                                this.companyName.push(element.companyName);
-                                this.netProfitMarginOnSales.push(
-                                    element.netProfitMarginOnSales.toFixed(2)
-                                );
-                                this.grossProfitMargin.push(element.grossProfitMargin.toFixed(2));
-                                this.operatingProfitGrowthRate.push(
-                                    element.operatingProfitGrowthRate.toFixed(2)
-                                );
-                                this.averagereturnonequity.push(
-                                    element.averagereturnonequity.toFixed(2)
-                                );
-                                this.increaserateofbusinessrevenue.push(
-                                    element.increaserateofbusinessrevenue.toFixed(2)
-                                );
+                                this.companyName.push(element.companyName);   
+                                this.netProfitMarginOnSales.push(element.netProfitMarginOnSales.toFixed(2));                 //净利率
+                                this.grossProfitMargin.push(element.grossProfitMargin.toFixed(2));                           //毛利率
+                                this.increaserateofbusinessrevenue.push(element.increaserateofbusinessrevenue.toFixed(2));  //营收增长率
+                                this.operatingProfitGrowthRate.push(element.operatingProfitGrowthRate.toFixed(2));           //利润增长率
+                                this.averagereturnonequity.push(element.returnonequity.toFixed(2));                          //ROE
+                               
                             });
 
                             // 柱状图表设置信息
@@ -281,7 +280,7 @@
                                                 }
                                             }
                                         },
-                                        data: this.operatingProfitGrowthRate //营收增长率数据入口
+                                        data: this.increaserateofbusinessrevenue //营收增长率数据入口
                                     },
 
                                     {
@@ -309,7 +308,7 @@
                                                 }
                                             }
                                         },
-                                        data: this.averagereturnonequity //利润增长率数据入口
+                                        data: this.operatingProfitGrowthRate //利润增长率数据入口
                                     },
                                     {
                                         name: "ROE",
@@ -336,7 +335,7 @@
                                                 }
                                             }
                                         },
-                                        data: this.increaserateofbusinessrevenue //ROC数据入口
+                                        data: this.returnonequity //ROC数据入口
                                     }
                                 ]
                             };

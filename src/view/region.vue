@@ -513,7 +513,9 @@
                         let arr = res.data.data;
                         this.bshxzzt = [];
                         arr.forEach(element => {
-                            this.bshxzzt.push(element.rate.toFixed(2));
+                            if(element.rate){
+                                this.bshxzzt.push(element.rate.toFixed(2));
+                            }
                         });
                     });
 
@@ -744,10 +746,11 @@
                     let arr = res.data.data;
                     this.bshxzzt = [];
                     arr.forEach(element => {
-                        this.bshxzzt.push(element.rate.toFixed(2));
+                        if(element.rate){
+                            this.bshxzzt.push(element.rate.toFixed(2));
+                        }
                     });
                 });
-
                 //获取报事完结率   title数据
                 this.axios.get("/api/projectTotalRate?projectId=" + value).then(res => {
                     // console.log(res.data.data)
@@ -1034,11 +1037,12 @@
 
             // 获取报事完成率     横向柱状图数据            需变更数据
             this.axios.get("api/projectRateMaxMinVm").then(res => {
-                // console.log(res.data.data)
                 let arr = res.data.data;
                 this.bshxzzt = [];
                 arr.forEach(element => {
-                    this.bshxzzt.push(element.rate.toFixed(2));
+                    if(element.rate){
+                        this.bshxzzt.push(element.rate.toFixed(2));
+                    }
                 });
             });
 

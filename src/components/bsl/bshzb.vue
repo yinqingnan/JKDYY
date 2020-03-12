@@ -193,9 +193,11 @@ export default {
     this.axios
       .get("/api/proBs03?projectId=" + this.xmid + "&year=" + Year)
       .then(res => {
-        // window.console.log(res.data.data)
-        this.projectName = res.data.data[0].projectName;
-        this.tablemsg = res.data.data;
+        if(res.data.data!=""){
+            this.projectName = res.data.data[0].projectName;
+            this.tablemsg = res.data.data;
+        } 
+       
       });
   },
   methods: {}
