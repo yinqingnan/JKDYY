@@ -51,7 +51,7 @@
                 <el-table-column prop="attachment" label="附件信息" :show-overflow-tooltip="true" align="center"
                                  min-width="90px">
                     <template slot-scope="scope">
-                        <el-button @click="download(scope.row.attachment)" type="text" size="small">下载</el-button>
+                        <el-button @click="download(scope.row)" type="text" size="small">下载</el-button>
                     </template>
                 </el-table-column>
                 <el-table-column prop="operator" label="经办人" :show-overflow-tooltip="true" align="center"
@@ -182,10 +182,34 @@
         methods: {
             // 附件信息下载
             download(val){
-                if(val){
-                    const objToStr = JSON.parse(val)
-                    window.open(objToStr.path)
-                }
+                this.$confirm("即将下载该表格, 是否继续下载?", "提示", {
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    type: "warning"
+                }).then(res => {
+                        if ((res = confirm)) {
+                            this.$message({
+                                type: "success",
+                                message: "下载成功!"
+                            });
+                            if(val.attachment!==null & val.attachment!==""){
+                                    const objToStr = JSON.parse(val.attachment)
+                                    window.open(objToStr.path)
+                            }else{
+                                 this.$message({
+                                    type: "error",
+                                    message: "请检查文件路径是否正确"
+                                });
+                            }
+                 
+                        }
+                    })
+                    .catch(() => {
+                        this.$message({
+                            type: "info",
+                            message: "已取消下载"
+                        });
+                    });
                 
             },
             getheight() {

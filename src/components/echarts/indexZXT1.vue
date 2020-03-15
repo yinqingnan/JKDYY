@@ -16,7 +16,7 @@
                 netProfitMarginOnSales: [], //销售净利率
                 grossProfitMargin: [], //毛利率
                 operatingProfitGrowthRate: [], //营业利润增长率
-                averagereturnonequity: [], //净资产收益率%（平均）
+                returnonequity: [], //净资产收益率%（平均）
                 increaserateofbusinessrevenue: [] //营业收入增长率
             };
         },
@@ -33,12 +33,6 @@
                             year
                         ) //正式默认第一条数据
                         .then(res => {
-                                // netProfitMarginOnSales   --- 净利润
-                                // grossProfitMargin        --- 毛利润
-                                // increaserateofbusinessrevenue   --- 营收增长率
-                                // operatingProfitGrowthRate       --- 利润增长率
-                                // returnonequity                  ---- ROE
-                            
                             this.companyName = [];
                             this.netProfitMarginOnSales = [];                //净利率
                             this.grossProfitMargin = [];                     //毛利率
@@ -52,7 +46,7 @@
                                 this.grossProfitMargin.push(element.grossProfitMargin.toFixed(2));                           //毛利率
                                 this.increaserateofbusinessrevenue.push(element.increaserateofbusinessrevenue.toFixed(2));  //营收增长率
                                 this.operatingProfitGrowthRate.push(element.operatingProfitGrowthRate.toFixed(2));           //利润增长率
-                                this.averagereturnonequity.push(element.returnonequity.toFixed(2));                          //ROE
+                                this.returnonequity.push(element.returnonequity.toFixed(2));                          //ROE
                                
                             });
 

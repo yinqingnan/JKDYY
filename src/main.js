@@ -71,7 +71,7 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
  * @param {Element} el - 必填。dom元素
  */
 const el_scrollBar = el => {
-    //在元素上加点私货，名字随便取，确保不会和已有属性重复即可，我取名叫做_ps_
+    //自定义的元素名称    例子：   _ps_
     if (el._ps_ instanceof PerfectScrollbar) {
         el._ps_.update();
     } else {
@@ -124,7 +124,7 @@ Vue.directive("scrollBar", {
         }
     },
 });
-// 在需要使用的表格上添加即可：   v-scrollBar:el-table 
+// 在需要使用的表格上添加即可：    v-scrollBar:el-table 
 
 
 
