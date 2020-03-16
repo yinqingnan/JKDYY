@@ -374,9 +374,8 @@
                 // 获取关键指标总收入数据
                 this.axios.get("/api/companyIncomtoOld?companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data)
                         this.zsr = res.data.data
-                        this.zsrnumber = (res.data.data[0].newReceiptsAll / 1000).toFixed(0)
+                        this.zsrnumber = res.data.data[0].newReceiptsAll
                     })
                 // 获取总收入竖向柱状图数据
 
@@ -399,12 +398,10 @@
                 // 获取总收入横向柱状图数据
                 this.axios.get("api/companyIncomeMaxMin")
                     .then((res) => {
-                        // console.log(res.data.data)
                         let arr = res.data.data
                         this.zsrhxzzttitle = []
                         this.zsrhxzzt2 = []
                         arr.forEach(element => {
-                            // console.log(element.ReceiptsAll)
                             this.zsrhxzzttitle.push(element.state)
                             this.zsrhxzzt2.push((element.ReceiptsAll / 10000).toFixed(2))
                         });
@@ -412,20 +409,17 @@
                 // 获取园区数据
                 this.axios.get("/api/companyTypeMoney?companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data)
                         this.zsryq = res.data.data
                     })
 
                 // 获取综合收费率数据
                 this.axios.get("/api/companyTotalRate?companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data)
                         this.sfl = res.data.data
                     })
                 //综合收费率竖向柱状图
                 this.axios.get("/api/companyRates?year=" + year + "&companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data)
                         if (res.data.data != "") {
                             if (this.date >= 7) {
                                 this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(2), (res.data.data[0].Rates8).toFixed(2), (res.data.data[0].Rates9).toFixed(2), (res.data.data[0].Rates10).toFixed(2), (res.data.data[0].Rates11).toFixed(2), (res.data.data[0].Rates12).toFixed(2))
@@ -439,7 +433,6 @@
                     })
                 // 综合收费率横向柱状图
                 this.axios.get("/api/companyRateMaxMinVm").then((res) => {
-                    // console.log(res.data.data)
                     let arr = res.data.data
                     this.sflhxzzttitle = [];
                     this.sflhxzzt2 = []
@@ -453,7 +446,6 @@
                 //当前收费率
                 this.axios.get("/api/companyCuMonthRate?companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data)
                         this.dqsfl = res.data.data
                     })
                 // 获取品质服务信息数据
@@ -461,7 +453,6 @@
                     .then((res) => {
                         
                         if(res.data.data.length==3){
-                            // console.log(res.data.data)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Other = res.data.data[1].newspapersCateType              //其他title
                             this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
@@ -469,13 +460,11 @@
                             this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
                             this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
                         }else if(res.data.data.length==2){
-                            // console.log(res.data.data)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Other = res.data.data[1].newspapersCateType              //其他title
                             this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
                             this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
                         }else{
-                            // console.log(res.data.data[0].newspapersCateType)
                             this.Realestate = res.data.data[0].newspapersCateType         //地产title
                             this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
                         }
@@ -484,7 +473,6 @@
                 //获取登录其它系统的数据
                 this.axios.get("/api/systemDocking01")
                     .then((res) => {
-                        //   console.log(res.data.data)
                         this.loginxt = res.data.data
                     })
                 //获取常用报表数据
