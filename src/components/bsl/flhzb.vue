@@ -498,7 +498,7 @@
                                             name + ".xlsx"
                                         );
                                     } catch (e) {
-                                        if (typeof console !== "undefined") console.log(e, wbout);
+                                        if (typeof console !== "undefined") window.console.log(e, wbout);
                                     }
                                     return wbout;
                                 });

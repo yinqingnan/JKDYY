@@ -503,7 +503,6 @@
     }
 
     .Right {
-        /* width: 30%; */
         margin: 0 0 0 12px;
         background: #eee;
         width: 292px;
@@ -522,19 +521,17 @@
 
     }
 
-    .Downmenu {
+    .Downmenu {  
         border-bottom: 1px solid #e0dfe8;
         position: relative;
         height: 55px
     }
-
     .select {
         line-height: 55px;
         height: 55px;
         padding-bottom: 1px;
         padding-left: 10px;
     }
-
     .Downmenu > h1 {
         font-size: 16px;
         line-height: 50px;
@@ -546,7 +543,6 @@
         white-space: nowrap;
         cursor: pointer;
     }
-
     .Downmenu > h1 > span {
         font-size: .375rem;
         color: #a0a0a0

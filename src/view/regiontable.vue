@@ -106,17 +106,7 @@
             });
             //获取默认显示的table数据
             this.axios.get("/api/projectinfopage2?companyName=" + encodeURI(this.qydefault)).then((res) => {
-                // window.console.log(res.data.data)
                 this.tablemsg = res.data.data;
-                // let obj=res.data.data
-                // obj.map((item=>{
-                //     if(item.firstApproach != null){
-                //        item.firstApproach.split(" ")[0]
-                //     }
-                //     return item
-                // }))
-                // this.tablemsg=obj;
-
             })
 
         }

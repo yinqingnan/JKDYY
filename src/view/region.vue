@@ -410,6 +410,7 @@
                     let newurl=url.split('?')[0]
                     let URL='?'+'quid'+'='+this.value+'&'+'xmid'+'='+this.xmid
                      history.pushState("", "Title",newurl+URL );
+                    this.quid=this.value
                     URL=""
 
                     this.axios
@@ -639,7 +640,6 @@
             selectchange1(value) {
                 //项目公司下拉菜单监听
                 this.xmid = value;
-
                  // 静态修改路由参数
                     let url_1=window.location.href
                     let newurl=url_1.split('?')[0]

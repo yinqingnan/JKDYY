@@ -16,7 +16,10 @@ module.exports = {
       hotOnly: false,
       proxy: null, // string | Object
       // before: app => {}
+     
     },
+  
+ 
     // build:{
     //   assetsPublicPath:"/"
     // }
