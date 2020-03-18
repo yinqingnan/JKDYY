@@ -53,7 +53,6 @@
                 //   console.log(column)
                 //   console.log(rowIndex)      //--------行
                 //   console.log(columnIndex)   //--------列
-
                 // if(columnIndex === 5){ //指定坐标
                 //     return 'text-align:left'
                 // }else{

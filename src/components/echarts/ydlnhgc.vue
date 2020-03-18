@@ -32,15 +32,10 @@ export default {
     };
   },
   props: ["xmid", "num"],
-  // created(){
-  //   console.log(this.$props)
-  // },
-
   watch: {
     num(newVal, value) {
       const chartObj = echarts.init(document.getElementById("zzt1"));
       chartObj.resize();
-      // console.log(chartObj)
     },
     xmid: {
       handler(newVal) {
@@ -52,13 +47,10 @@ export default {
             this.title = [];
             this.zb = [];
             res.data.data.forEach(element => {
-              // console.log(element.itemName)
-              // console.log(element.dosage)
               this.zb.push(element.companyDosage);
               this.title.push(element.itemName);
               this.nhgc.push(element.dosage);
             });
-
             const option = {
               title: [
                 {
@@ -76,8 +68,7 @@ export default {
                 showContent: true,
                 trigger: "axis",
                 formatter: function(a) {
-                  return a[0].name + ":" + a[0].value + "度";
-                  // console.log(a)
+                  return '项 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;目' + ":" + a[0].value + "度"+'<br/>' +'公司平均'+ ":" + a[1].value + "度";
                 },
                 axisPointer: {
                   type: "shadow", //设置为none为不显示线条，设为 shadow 为柱状图显示阴影   设为cross为 横向虚线基准线
@@ -131,7 +122,6 @@ export default {
               yAxis: [
                 {
                   type: "value",
-                  // name: '总价(万元)',
                   axisLabel: {
                     formatter: "{value}"
                   },
@@ -148,7 +138,6 @@ export default {
               ],
               series: [
                 {
-                  // name: '包租费',
                   type: "bar",
                   barWidth: 16,
                   data: this.nhgc,
@@ -159,7 +148,6 @@ export default {
                   }
                 },
                 {
-                  // name: '包租费',
                   type: "bar",
                   barWidth: 16,
                   data: this.zb,
@@ -174,7 +162,6 @@ export default {
 
             //初始化图表
             const chartObj = echarts.init(document.getElementById("zzt1"));
-
             chartObj.setOption(option, true);
             // 设置自适应
             window.onresize = function() {
@@ -183,7 +170,6 @@ export default {
           });
       }
     },
-
     deep: true, //深度监测
     immediate: true //将立即以表达式的当前值触发回调
   },
@@ -201,7 +187,6 @@ export default {
 <style scoped>
 .ECHARTS {
   width: 100%;
-  /* min-width: 440px; */
   min-width: 420px;
   height: 420px;
 }

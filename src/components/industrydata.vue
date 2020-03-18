@@ -39,7 +39,6 @@ export default {
     height: 265px;
     overflow: hidden;
     border: 1px solid #f0f0f0;
-    /* padding:  10px; */
     box-sizing: border-box;
 }
 .box>ul::-webkit-scrollbar {display:none}

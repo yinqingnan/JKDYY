@@ -147,17 +147,17 @@
                             </div>
                             <div class="Chart1_footer">
                                 <div class="Chart1_footer1">
-                                    <Qualityservice :Realestates="Realestates" :Realestate="Realestate" style="width:70%"></Qualityservice>
+                                    <Qualityservice :Realestates="Realestates" :Realestate="Realestate" style="width:80%"></Qualityservice>
                                     <h2 style="min-width:60px;text-align:center">{{Realestate}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
-                                    <Qualityservice2 :Others="Others" :Other="Other" style="width:70%"></Qualityservice2>
+                                    <Qualityservice2 :Others="Others" :Other="Other" style="width:80%"></Qualityservice2>
                                     <h2 style="min-width:60px;text-align:center">{{Other}}</h2>
                                 </div>
                                 <div class="Chart1_footer1">
                                     <Qualityservice3 :Propertycategorys="Propertycategorys"
                                                      :Propertycategory='Propertycategory'
-                                                     style="width:70%"></Qualityservice3>
+                                                     style="width:80%"></Qualityservice3>
                                     <h2 style="min-width:60px;text-align:center">{{Propertycategory}}</h2>
                                 </div>
                             </div>
@@ -297,8 +297,6 @@
             },
             // 区域公司总收入跳转跳转
             zrh() {
-                // console.log(this.value)
-
                 this.axios.get("/api/companIdOrName?companIdOrName=" + encodeURI(this.value)).then((res) => {
                     //    console.log(res.data.data)
                     this.$router.push("zsr?qyid=" + res.data.data[0].companyId)
@@ -345,10 +343,8 @@
             }
         },
         mounted() {
-            // console.log(this.$route)
             this.value = this.$route.query.name       //获取到路由的参数
             this.encry = this.$route.query.encry
-
             var date = new Date();
             this.date = date.getMonth() + 1    //获取到当前的月份信息
             // console.log(window.location.href)//获取当前的路由
@@ -381,15 +377,40 @@
 
                 this.axios.get("/api/companyReceipts?year=" + year + "&companyId=" + this.id)
                     .then((res) => {
-
-                        // 通过当前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-                        // console.log(res.data.data)
+                        let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
+                        delete obj.companyName 
+                        delete obj.companyId 
+                        delete obj.incomYear;
+                        let objstr=JSON.stringify(obj).replace(/Receipts/g,"")
+                        let strToObj = JSON.parse(objstr)
+                        let  arr=[]   //保存排序好的值
+                        for(let i in strToObj){
+                            arr.push((strToObj[i]/ 10000).toFixed(2))
+                        }
+                        let incomeTop=[] 
+                        let incomeButtom=[]
+                       for(let i=0;i<6;i++){
+                           incomeTop.push(arr[i])
+                       }
+                       for(let i=6;i<arr.length;i++){
+                           incomeButtom.push(arr[i])
+                       }
                         if (res.data.data != "") {
+                        // 通过当   前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
+
                             if (this.date >= 7) {
-                                this.zsrsxzzt1.push((res.data.data[0].Receipts7 / 10000).toFixed(2), (res.data.data[0].Receipts8 / 10000).toFixed(2), (res.data.data[0].Receipts9 / 10000).toFixed(2), (res.data.data[0].Receipts10 / 10000).toFixed(2), (res.data.data[0].Receipts11 / 10000).toFixed(2), (res.data.data[0].Receipts12 / 10000).toFixed(2))
+                                this.zsrsxzzt1=incomeButtom
                                 this.zsrsxzztm = 1
                             } else {
-                                this.zsrsxzzt1.push((res.data.data[0].Receipts1 / 10000).toFixed(2), (res.data.data[0].Receipts2 / 10000).toFixed(2), (res.data.data[0].Receipts3 / 10000).toFixed(2), (res.data.data[0].Receipts4 / 10000).toFixed(2), (res.data.data[0].Receipts5 / 10000).toFixed(2), (res.data.data[0].Receipts6 / 10000).toFixed(2))
+                                 this.zsrsxzzt1=incomeTop
+                                this.zsrsxzztm = 0
+                            }
+                        }else{
+                            this.zsrsxzzt1.push(0.00,0.00,0.00,0.00,0.00,0.00)
+                            if (this.date >= 7) {
+                            
+                                this.zsrsxzztm = 1
+                            } else {
                                 this.zsrsxzztm = 0
                             }
                         }
@@ -420,15 +441,45 @@
                 //综合收费率竖向柱状图
                 this.axios.get("/api/companyRates?year=" + year + "&companyId=" + this.id)
                     .then((res) => {
+                        // console.log(res.data.data[0])
+                        let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
+                        delete obj.companyName 
+                        delete obj.companyId 
+                        delete obj.incomYear;
+                        let objstr=JSON.stringify(obj).replace(/Rates/g,"")
+                        let strToObj = JSON.parse(objstr)
+                        let  arr=[]   //保存排序好的值
+                        for(let i in strToObj){
+                            arr.push(strToObj[i].toFixed(2))
+                        }
+                        let incomeTop=[] 
+                        let incomeButtom=[]
+                       for(let i=0;i<6;i++){
+                           incomeTop.push(arr[i])
+                       }
+                       for(let i=6;i<arr.length;i++){
+                           incomeButtom.push(arr[i])
+                       }
                         if (res.data.data != "") {
                             if (this.date >= 7) {
-                                this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(2), (res.data.data[0].Rates8).toFixed(2), (res.data.data[0].Rates9).toFixed(2), (res.data.data[0].Rates10).toFixed(2), (res.data.data[0].Rates11).toFixed(2), (res.data.data[0].Rates12).toFixed(2))
+                                this.sflsxzzt1=incomeButtom
+                                // this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(2), (res.data.data[0].Rates8).toFixed(2), (res.data.data[0].Rates9).toFixed(2), (res.data.data[0].Rates10).toFixed(2), (res.data.data[0].Rates11).toFixed(2), (res.data.data[0].Rates12).toFixed(2))
                                 this.zsrsxzztm = 1
                             } else {
-                                this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(2), (res.data.data[0].Rates2).toFixed(2), (res.data.data[0].Rates3).toFixed(2), (res.data.data[0].Rates4).toFixed(2), (res.data.data[0].Rates5).toFixed(2), (res.data.data[0].Rates6).toFixed(2))
+                                this.sflsxzzt1=incomeTop
+                                // this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(2), (res.data.data[0].Rates2).toFixed(2), (res.data.data[0].Rates3).toFixed(2), (res.data.data[0].Rates4).toFixed(2), (res.data.data[0].Rates5).toFixed(2), (res.data.data[0].Rates6).toFixed(2))
+                                this.zsrsxzztm = 0
+                            }
+                        }else{
+                            this.sflsxzzt1.push(0.00,0.00,0.00,0.00,0.00,0.00)
+                            if (this.date >= 7) {
+                                this.zsrsxzztm = 1
+                            } else {
                                 this.zsrsxzztm = 0
                             }
                         }
+                           
+                        
 
                     })
                 // 综合收费率横向柱状图
@@ -451,23 +502,25 @@
                 // 获取品质服务信息数据
                 this.axios.get("/api/companymonthrate?companyId=" + this.id) //使用区域公司名称进行查询
                     .then((res) => {
-                        
-                        if(res.data.data.length==3){
-                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
-                            this.Other = res.data.data[1].newspapersCateType              //其他title
-                            this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
-                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
-                            this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
-                            this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
-                        }else if(res.data.data.length==2){
-                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
-                            this.Other = res.data.data[1].newspapersCateType              //其他title
-                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
-                            this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
-                        }else{
-                            this.Realestate = res.data.data[0].newspapersCateType         //地产title
-                            this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                        if(res.data.data!=""){
+                             if(res.data.data.length==3){
+                                this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                                this.Other = res.data.data[1].newspapersCateType              //其他title
+                                this.Propertycategory = res.data.data[2].newspapersCateType   //物业title
+                                this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                                this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
+                                this.Propertycategorys.push(res.data.data[2].m01.toFixed(2), res.data.data[2].m02.toFixed(2), res.data.data[2].m03.toFixed(2), res.data.data[2].m04.toFixed(2), res.data.data[2].m05.toFixed(2), res.data.data[2].m06.toFixed(2), res.data.data[2].m07.toFixed(2), res.data.data[2].m08.toFixed(2), res.data.data[2].m09.toFixed(2), res.data.data[2].m10.toFixed(2), res.data.data[2].m11.toFixed(2), res.data.data[2].m12.toFixed(2))      //物业赋值
+                            }else if(res.data.data.length==2){
+                                this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                                this.Other = res.data.data[1].newspapersCateType              //其他title
+                                this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                                this.Others.push(res.data.data[1].m01.toFixed(2), res.data.data[1].m02.toFixed(2), res.data.data[1].m03.toFixed(2), res.data.data[1].m04.toFixed(2), res.data.data[1].m05.toFixed(2), res.data.data[1].m06.toFixed(2), res.data.data[1].m07.toFixed(2), res.data.data[1].m08.toFixed(2), res.data.data[1].m09.toFixed(2), res.data.data[1].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))            //其他赋值
+                            }else{
+                                this.Realestate = res.data.data[0].newspapersCateType         //地产title
+                                this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
+                            }
                         }
+                       
 
                     })
                 //获取登录其它系统的数据

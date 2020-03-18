@@ -158,8 +158,7 @@
                     :style="style"
                     :default-sort="{prop: 'date', order: 'descending'}"
                     class="xiazai"
-                    v-show="show"
-            >
+                    v-show="show">
                 <el-table-column
                         label="序号"
                         type="index"
@@ -357,7 +356,6 @@
             this.axios
                 .get("/api/companIdOrName?companIdOrName=" + this.qyid)
                 .then(res => {
-                    // console.log(res.data.data[0])
                     this.projectName = res.data.data[0].companyName;
                 });
 
@@ -365,7 +363,6 @@
             this.axios
                 .get("/api/proBs01?companyId=" + this.qyid + "&year=" + this.year)
                 .then(res => {
-                    // console.log(res.data.data)
                     this.tablemsgmsg = res.data.data; //下载数据的表格
                     this.tablemsg = res.data.data; //展示数据的表格
                     this.totalCount = res.data.data.length; //展示数据的总条数
@@ -375,7 +372,6 @@
         },
         methods: {
             getheight() {
-                // console.log(window.innerHeight)
                 // 获取当前浏览器的高度赋值给元素
                 this.style.height = window.innerHeight - 130 + "px";
             },
@@ -415,7 +411,6 @@
                             this.axios
                                 .get("/api/companIdOrName?companIdOrName=" + this.qyid)
                                 .then(res => {
-                                    // console.log(res.data.data[0].companyName)
                                     let name =
                                         res.data.data[0].companyName +
                                         this.year +
@@ -508,7 +503,6 @@
     }
 
     .box1 {
-        /* width: 100% */
         background: #fff;
         height: 50px;
     }

@@ -35,7 +35,7 @@
                     const option = {
                         grid: {
                             left: '0%',
-                            // right: '4%',
+                            right: '2%',
                             // bottom: '3%',
                             containLabel: false
                         },

@@ -20,7 +20,6 @@
         </div>
         <h2 @click="exportExcel" class="daochu">导出</h2>
       </div>
-
       <el-table
         :data="tablemsg.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         :style="style"
@@ -159,8 +158,7 @@
         :summary-method="getSummaries"
         show-summary
         class="xiazai"
-        v-show="show"
-      >
+        v-show="show">
         <el-table-column
           label="序号"
           type="index"
@@ -272,7 +270,6 @@
              <template slot-scope="scope" v-if="scope.row.yieldRate">{{ scope.row.yieldRate}} ﹪</template>
         </el-table-column>
       </el-table>
-
       <div class="box1">
         <el-pagination
           @size-change="handleSizeChange"
@@ -293,7 +290,6 @@
 // 引入导出excel图表的工具
 import FileSaver from "file-saver";
 import XLSX from "xlsx";
-
 export default {
   data() {
     return {
@@ -353,7 +349,6 @@ export default {
         "/api/monthTotalRevenue?year=" + this.year + "&companyID=" + this.qyid
       )
       .then(res => {
-        console.log(res.data.data);
         this.tablemsg = res.data.data; //下载数据的表格
         this.tablemsgmsg = res.data.data; //展示数据的表格
         this.totalCount = res.data.data.length; //展示数据的总条数
@@ -374,7 +369,6 @@ export default {
   },
   methods: {
     getheight() {
-      // console.log(window.innerHeight)
       // 获取当前浏览器的高度赋值给元素
       this.style.height = window.innerHeight - 130 + "px";
     },
@@ -386,7 +380,6 @@ export default {
           "/api/monthTotalRevenue?year=" + this.year + "&companyID=" + this.qyid
         )
         .then(res => {
-          // console.log(res.data.data);
           this.tablemsg = res.data.data;
           this.tablemsgmsg = res.data.data;
           this.totalCount = res.data.data.length;
@@ -425,7 +418,7 @@ export default {
           return;
         }
         const values = data.map(item => Number(item[column.property]));
-        //   判断字段，等于要求和的字段时才求和 其余的数据信息不求和
+        //  判断字段，等于要求和的字段时才求和 其余的数据信息不求和
         if (column.property == "projectCount") {
           sums[index] = values.reduce(() => {
             if (this.number != 0) {
@@ -470,7 +463,7 @@ export default {
                     name + ".xlsx"
                   );
                 } catch (e) {
-                  if (typeof console !== "undefined") console.log(e, wbout);
+                  if (typeof console !== "undefined") window.console.log(e, wbout);
                 }
                 return wbout;
               });

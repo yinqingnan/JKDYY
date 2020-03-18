@@ -67,16 +67,17 @@
             </el-table>
             <!-- 分页器 -->
             <div class="box1">
-                <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="current_change"
-                        :current-page.sync="num"
-                        :page-sizes="[8,16,32,64]"
-                        :page-size="pagesize"
-                        layout="total, prev, pager, next, jumper"
-                        background
-                        :total="totalCount"
-                ></el-pagination>
+               
+                 <el-pagination
+                            @size-change="handleSizeChange"
+                            @current-change="current_change"
+                            :current-page.sync="num"
+                            
+                            :page-size="pagesize"
+                            layout="total, prev, pager, next, jumper"
+                            background
+                            :total="totalCount"
+                    ></el-pagination>
             </div>
         </div>
     </div>
@@ -95,7 +96,7 @@
                 month: null,
                 yeardefaultdefault: "", //------------------默认显示的年份信息
                 tablemsg: [], //显示的表格数据
-                num: 1,
+                num: 0,
                 totalCount: null, //--------------------------------默认数据总数
                 currentPage: 1, //----------------------------------默认开始页面
                 istag: true,
@@ -110,6 +111,8 @@
             // console.log(this.$route.query.xmid)
             this.axios.get("/api/projectCompanyList").then(res => {
                 this.tablemsg = res.data.data;
+                this.totalCount=res.data.data.length
+                // console.log(res.data.data.length)
             });
             this.getheight();
         },

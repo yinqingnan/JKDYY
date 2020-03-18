@@ -47,11 +47,9 @@ export default {
             this.title = [];
             this.zb = [];
             res.data.data.forEach(element => {
-              // console.log(element.itemName)
-              // console.log(element.dosage)
               this.title.push(element.itemName);
               this.nhgc.push(element.dosage);
-              this.zb.push(element.companyDosage);
+              this.zb.push(element.companydosage);
             });
 
             const option = {
@@ -71,8 +69,7 @@ export default {
                 showContent: true,
                 trigger: "axis",
                 formatter: function(a) {
-                  return a[0].name + ":" + a[0].value + "吨";
-                  // console.log(a)
+                  return '项 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;目' + ":" + a[0].value + "吨" +'<br/> '+'公司平均' + ":" + a[1].value+ "吨";
                 },
                 axisPointer: {
                   type: "shadow", //设置为none为不显示线条，设为 shadow 为柱状图显示阴影   设为cross为 横向虚线基准线
@@ -126,7 +123,6 @@ export default {
               yAxis: [
                 {
                   type: "value",
-                  // name: '总价(万元)',
                   axisLabel: {
                     formatter: "{value}"
                   },
@@ -143,7 +139,6 @@ export default {
               ],
               series: [
                 {
-                  name: "包租费",
                   type: "bar",
                   barWidth: 16,
                   data: this.nhgc,
@@ -153,8 +148,7 @@ export default {
                     }
                   }
                 },
-                {
-                  // name: '包租费',
+                 {
                   type: "bar",
                   barWidth: 16,
                   data: this.zb,

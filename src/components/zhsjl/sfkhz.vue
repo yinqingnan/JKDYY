@@ -68,7 +68,7 @@
                             min-width="40px"
                     >
                         <template slot-scope="{row}">
-                            {{row.rate}}.00%
+                            {{row.rate}}%
                         </template>
 
                     </el-table-column>

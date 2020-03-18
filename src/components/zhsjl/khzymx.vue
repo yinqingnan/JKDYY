@@ -14,6 +14,9 @@
                         :default-sort="{prop: 'date', order: 'descending'}"
                         class="table"
                         min-height="600px"
+                        v-loading="loading"
+                        element-loading-text="正在加载中"
+                        element-loading-spinner="el-icon-loading"
                         :header-cell-style="{background:'#f5f7fa',color:'#606266'}"
                 >
                     <el-table-column
@@ -236,6 +239,7 @@
     export default {
         data() {
             return {
+                loading: true,
                 xmid: "",
                 num: 1,
                 show: false,
@@ -265,7 +269,10 @@
             //获取表格数据
             this.axios.get("/api/proChargeRate01?projectId=" + this.xmid).then((res) => {
                 // this.axios.get("/api/proChargeRate01?projectId=101").then((res)=>{
-                // console.log(res.data.data)
+                // console.log(res)
+                if(res.status==200){
+                    this.loading=false
+                }
                 let arr=res.data.data
                 arr.map((item,index)=>{
                    item.resouresName=item.resouresName.replace(/-/ig,"－")
@@ -273,6 +280,7 @@
                 this.tablemsgmsg = arr  //下载数据的表格
                 this.tablemsg = arr      //展示数据的表格
                 this.totalCount = res.data.data.length    //展示数据的总条数
+                
             })
 
             this.getheight();
