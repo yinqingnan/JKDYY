@@ -1,5 +1,3 @@
-// import Vue from 'vue'
-
 //引入路由文件
 import VueRouter from 'vue-router';
 // Vue.use(VueRouter)

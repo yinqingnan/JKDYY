@@ -193,7 +193,7 @@
                 <div class="table1">
                     <h1>重要提醒</h1>
                     <ul>
-                        <li v-for="(item,index) in reminder" :key="index" @click="contract(item)">
+                        <li v-for="(item,index) in reminder" :key="index" @click="contract(item)" :class='["listtwo",item.remindType!="" ? "listone" : ""]'>
                             <h2 :title="item.remindTitle">{{item.remindTitle}}</h2>
                             <h2>{{item.remindTime.split(" ")[0]}}</h2>
                         </li>
@@ -289,30 +289,25 @@
         methods: {
             todlqtxt(href) {
                 window.open(href, "_blank")
-                // console.log(href)
             },
-            selectchange(value) {            //下拉菜单选中监听输出为该区域的名称
-                // console.log(encodeURI(value))
+            selectchange(value) {     
                 window.location.href = window.location.href.split("=")[0] + "=" + encodeURI(value)
             },
             // 区域公司总收入跳转跳转
             zrh() {
                 this.axios.get("/api/companIdOrName?companIdOrName=" + encodeURI(this.value)).then((res) => {
-                    //    console.log(res.data.data)
                     this.$router.push("zsr?qyid=" + res.data.data[0].companyId)
                 })
             },
             // 区域公司综合收缴率跳转
             zhsfl() {
                 this.axios.get("/api/companIdOrName?companIdOrName=" + encodeURI(this.value)).then((res) => {
-                    // console.log(res.data.data[0].companyId)
                     this.$router.push('/qyzhsjl?qyid=' + res.data.data[0].companyId)
                 })
             },
             //跳转报事完结率
             pzfwxx() {
                 this.axios.get("/api/companIdOrName?companIdOrName=" + encodeURI(this.value)).then((res) => {
-                    // console.log(res.data.data[0].companyId)
                     this.$router.push('/qybsl?qyid=' + res.data.data[0].companyId)
                 })
             },
@@ -397,7 +392,6 @@
                        }
                         if (res.data.data != "") {
                         // 通过当   前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
-
                             if (this.date >= 7) {
                                 this.zsrsxzzt1=incomeButtom
                                 this.zsrsxzztm = 1
@@ -414,7 +408,6 @@
                                 this.zsrsxzztm = 0
                             }
                         }
-
                     })
                 // 获取总收入横向柱状图数据
                 this.axios.get("api/companyIncomeMaxMin")
@@ -463,11 +456,9 @@
                         if (res.data.data != "") {
                             if (this.date >= 7) {
                                 this.sflsxzzt1=incomeButtom
-                                // this.sflsxzzt1.push((res.data.data[0].Rates7).toFixed(2), (res.data.data[0].Rates8).toFixed(2), (res.data.data[0].Rates9).toFixed(2), (res.data.data[0].Rates10).toFixed(2), (res.data.data[0].Rates11).toFixed(2), (res.data.data[0].Rates12).toFixed(2))
                                 this.zsrsxzztm = 1
                             } else {
                                 this.sflsxzzt1=incomeTop
-                                // this.sflsxzzt1.push((res.data.data[0].Rates1).toFixed(2), (res.data.data[0].Rates2).toFixed(2), (res.data.data[0].Rates3).toFixed(2), (res.data.data[0].Rates4).toFixed(2), (res.data.data[0].Rates5).toFixed(2), (res.data.data[0].Rates6).toFixed(2))
                                 this.zsrsxzztm = 0
                             }
                         }else{
@@ -530,6 +521,7 @@
                     })
                 //获取常用报表数据
                 this.axios.get("/api/commonReport").then((res) => {
+                    // console.log(res.data.data)
                     this.Commonreports = res.data.data
                 })
             })
@@ -720,7 +712,6 @@
 
     .Chart > div:nth-of-type(2) > div {
         width: 33%;
-        /* flex: 1; */
         height: 324px;
         background: #f0eded;
         min-width: 200px;
@@ -751,8 +742,6 @@
     .Chart > div:nth-of-type(2) > div > h2 {
         font-weight: 600;
         color: #333333;
-        /* margin-left: 10px; */
-        /* margin-bottom: 42px; */
         font-size: 24px;
         height: 70px
 
@@ -819,14 +808,14 @@
         display: flex;
         justify-content: space-between;
         margin: 0 20px;
-        cursor: pointer;
+        /* cursor: pointer; */
         height: 34px;
 
     }
 
     .table1 > ul > li > h2 {
         font-size: 14px;
-        text-decoration: underline;
+        /* text-decoration: underline; */
         min-width: 170px;
         font-weight: 500;
         overflow: hidden;
@@ -872,7 +861,7 @@
 
     .table2 > ul > li > h2 {
         font-size: 14px;
-        text-decoration: underline;
+        /* text-decoration: underline; */
         min-width: 170px;
         font-weight: 500;
         overflow: hidden;
@@ -1084,6 +1073,13 @@
         font-size: 14px;
         color: #666;
         /* text-align: center */
+    }
+    .listone{
+        cursor: pointer !important;
+        text-decoration: underline;
+    }
+    .listtwo{
+        /* cursor: default; */
     }
 
 </style>

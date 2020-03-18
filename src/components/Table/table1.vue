@@ -145,14 +145,49 @@ export default {
       this.currentPage = currentPage;
     },
     downloadbtn(val) {
-        window.open(val.accessoryBasic)
+      // console.log(val.accessoryTenderee.split(".").pop())
+      let ValType = val.accessoryTenderee.split(".").pop();
 
+      if (ValType == "png" || ValType == "jpg" || ValType == "gif") {
+        var a = document.createElement("a");
+        a.download = name || "pic"; // 设置图片地址
+        a.href = val.accessoryBasic;
+        a.target = '_new';
+        a.click();
+
+        // this.downloadIamge(val.accessoryBasic, 'pic')
+      } else {
+        window.open(val.accessoryBasic);
+      }
     },
     formatSex: function(row, colunmn, cellValue) {
       if (cellValue != null) {
         return cellValue.split(" ")[0];
       }
     },
+    downloadIamge (imgsrc, name) { // 下载图片地址和图片名
+    // var src = 'http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png'; //链接地址
+    //     var canvas = document.createElement('canvas');
+    //     var img = document.createElement('img');
+    //     img.onload = function(e) {
+    //         canvas.width = img.width;
+    //         canvas.height = img.height;
+    //         var context = canvas.getContext('2d');
+    //         context.drawImage(img, 0, 0, img.width, img.height);         
+    //         canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+    //         canvas.toBlob((blob)=>{
+    //             let link = document.createElement('a');
+    //             link.href = window.URL.createObjectURL(blob);
+    //             link.download = 'aaa'; 
+    //             link.click();  
+    //         }, "image/jpeg");           
+    //     }
+    //     img.setAttribute("crossOrigin",'Anonymous');
+    //     img.src = src;
+
+    }
+
+
   }
 };
 </script>

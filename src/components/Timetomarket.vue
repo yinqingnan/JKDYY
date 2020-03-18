@@ -217,11 +217,11 @@
 
 
     .fuhezi:nth-child(odd) {
-        top: -136px
+        top:36px
     }
 
     .fuhezi:nth-child(even) {
-        bottom: -36px
+        bottom: 136px
     }
 
     .Label {

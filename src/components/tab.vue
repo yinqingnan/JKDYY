@@ -14,7 +14,7 @@
             <div class="tabCon">
 
                 <ul v-if="isshow" class="isScroll">
-                    <li class="list" v-for="(item,index) in list1" :key="index" @click="liebiao(item.remindType)">
+                    <li  class="list" v-for="(item,index) in list1" :key="index" @click="liebiao(item.remindType)"  :class='["listtwo",item.remindType!="" ? "listone" : ""]'>
                         <h2>{{item.remindTitle}}</h2>
                         <h2>{{item.remindTime.split(" ")[0]}}</h2>
                     </li>
@@ -51,7 +51,8 @@
                 isshow2: false,
                 id: "",
                 list3: ["合同台账", "设备维修台账"],
-                login: ""
+                login: "",
+                listone:false
             }
 
         },
@@ -76,8 +77,6 @@
             liebiao(item) {
                 // 判断type的类型，进行页面跳转
                 if (item == "合同台账") {
-                    // console.log(1)
-                    //  this.$router.push('/xmhttz?xmid='+this.id)
                     this.$router.push({
                         path: "/xmhttz",
                         query: {
@@ -85,9 +84,9 @@
                             login: this.login
                         }
                     })
-                } else if (item == "设施设备") {
-                    // console.log(2)
-                    //  this.$router.push('/xmsbwx?xmid='+this.id)
+
+                } else if (item == "设备维修") {
+                
                     this.$router.push({
                         path: "/xmsbwx",
                         query: {
@@ -100,7 +99,6 @@
             Ledger(index) {
                 switch (index) {
                     case 0:
-                        // this.$router.push('/xmhttz?xmid='+this.id)
                         this.$router.push({
                             path: "/xmhttz",
                             query: {
@@ -110,7 +108,6 @@
                         })
                         break;
                     case 1:
-                        // this.$router.push('/xmsbwx?xmid='+this.id)
                         this.$router.push({
                             path: "/xmsbwx",
                             query: {
@@ -122,6 +119,10 @@
                 }
             }
         },
+        mounted(){
+            
+
+        },
         watch: {
             xmid: {
                 handler(newval) {
@@ -129,10 +130,10 @@
                     this.id = newval
                     this.axios.get("/api/importantReminder02?topcount=10&projectId=" + newval).then((res) => {
                         this.list1 = res.data.data
-
                     })
                     // 获取系统公告
                     this.axios.get("/api/projectNotice?topcount=2").then((res) => {
+                        // console.log(res.data.data)
                         this.list2 = res.data.data
                     })
                 }
@@ -202,17 +203,12 @@
         font-size: 16px;
         color: #333;
         margin-top: 22px;
-        cursor: pointer;
         margin-left: 10px
     }
-
     .active {
         color: #49a4d9 !important;
         border-bottom: 2px solid #49a4d9
-
     }
-
-
     .tabCon > ul > li > span:nth-of-type(1) {
         text-decoration: underline;
         max-width: 180px;
@@ -243,11 +239,7 @@
         -ms-flex-pack: justify;
         justify-content: space-between;
         margin: 0 20px;
-        cursor: pointer;
         overflow: hidden;
-        text-decoration: underline
-        /* margin-top: 20px */
-
     }
     .listcancel{
         cursor: default;
@@ -258,7 +250,6 @@
     }
     .list > h2 {
         font-size: 14px;
-        text-decoration: underline;
         min-width: 170px;
         font-weight: 500;
         overflow: hidden;
@@ -271,5 +262,10 @@
         text-decoration: none;
         text-indent: 5px;
     }
-
+    .listone{
+        cursor: pointer;
+        text-decoration: underline
+    }
+    .listtwo{
+    }
 </style>

@@ -189,7 +189,7 @@
           min-width="90px"
         >
           <template slot-scope="scope">
-            {{modify(scope.row.attachment)}}
+            {{modifymsg(scope.row.attachment)}}
           </template>
         </el-table-column>
         <el-table-column
@@ -227,7 +227,7 @@ export default {
   data() {
     return {
       tableDataEnd: "",
-      show: true,
+      show: false,
       projectName: null,
       xmid: null,
       tablemsg: [], //显示的表格数据
@@ -263,13 +263,6 @@ export default {
         this.axios
           .get("/api/projectContract?projectId=" + this.xmid)
           .then(res => {
-            // for(let i in res.data.data){
-            //     if(res.data.data[i].attachment!="" && res.data.data[i].attachment!=null){
-            //          res.data.data[i].attachment=JSON.parse(res.data.data[i].attachment)
-            //     }
-            // }
-            //   console.log(res.data.data)
-
             this.totalCount = res.data.data.length;
             this.tablemsg = res.data.data;
             this.tablemsgmsg = res.data.data
@@ -423,7 +416,6 @@ export default {
       });
       this.tablemsg = this.filterTableDataEnd;
     },
-
     inputfocus() {
       this.tableDataEnd = "";
       this.axios
@@ -442,7 +434,7 @@ export default {
         });
     },
     //修改下载表格的附件信息
-    modify(data){
+    modifymsg(data){
         let str=''
         if(data){
             str=JSON.parse(data)

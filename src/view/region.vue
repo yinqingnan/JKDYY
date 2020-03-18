@@ -450,7 +450,6 @@ export default {
     // // 当月用水详情跳转
 
     todlqtxt(href) {
-      // console.log(href)
       window.open(href, "_blank");
     },
     // 区域公司切换
@@ -766,7 +765,6 @@ export default {
 
       // 获取关键指标报事完成率     横向柱状图数据
       this.axios.get("api/projectRateMaxMinVm").then(res => {
-        // console.log(res.data.data)
         let arr = res.data.data;
         this.bshxzzt = [];
         arr.forEach(element => {
@@ -777,12 +775,10 @@ export default {
       });
       //获取报事完结率   title数据
       this.axios.get("/api/projectTotalRate?projectId=" + value).then(res => {
-        // console.log(res.data.data)
         this.bstitle = res.data.data;
       });
       // 获取报事完结率   提示信息
       this.axios.get("/api/projectTypeRate?projectId=" + value).then(res => {
-        // console.log(res.data.data)
         this.bsmsg = res.data.data;
       });
 
@@ -1365,10 +1361,6 @@ export default {
 }
 
 .Title > ul:nth-of-type(2) > li > h1 {
-  /* font-size: 14px;
-        font-weight: 100;
-        line-height: 1;
-        white-space: nowrap; */
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
@@ -1511,7 +1503,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 0 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin-top: 20px;
 }
 
@@ -1543,7 +1535,7 @@ export default {
 .table2 > ul > li > h2 {
   color: #666;
   font-size: 14px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   min-width: 170px;
   font-weight: 500;
   overflow: hidden;
