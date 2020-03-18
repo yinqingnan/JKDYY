@@ -469,9 +469,6 @@
                                 this.zsrsxzztm = 0
                             }
                         }
-                           
-                        
-
                     })
                 // 综合收费率横向柱状图
                 this.axios.get("/api/companyRateMaxMinVm").then((res) => {
@@ -483,8 +480,6 @@
                         this.sflhxzzt2.push(element.rate.toFixed(2))
                     })
                 })
-
-
                 //当前收费率
                 this.axios.get("/api/companyCuMonthRate?companyId=" + this.id)
                     .then((res) => {
@@ -511,8 +506,6 @@
                                 this.Realestates.push(res.data.data[0].m01.toFixed(2), res.data.data[0].m02.toFixed(2), res.data.data[0].m03.toFixed(2), res.data.data[0].m04.toFixed(2), res.data.data[0].m05.toFixed(2), res.data.data[0].m06.toFixed(2), res.data.data[0].m07.toFixed(2), res.data.data[0].m08.toFixed(2), res.data.data[0].m09.toFixed(2), res.data.data[0].m10.toFixed(2), res.data.data[0].m11.toFixed(2), res.data.data[0].m12.toFixed(2))          //地产赋值
                             }
                         }
-                       
-
                     })
                 //获取登录其它系统的数据
                 this.axios.get("/api/systemDocking01")
@@ -521,7 +514,6 @@
                     })
                 //获取常用报表数据
                 this.axios.get("/api/commonReport").then((res) => {
-                    // console.log(res.data.data)
                     this.Commonreports = res.data.data
                 })
             })
@@ -536,14 +528,12 @@
         padding: .75rem;
         display: flex;
         justify-content: space-between;
-
     }
 
     .Left {
         border: 1px solid #e0dfe8;
         width: 70%;
         background: #fff;
-        /* height :1150px; */
         flex-grow: 1;
     }
 
