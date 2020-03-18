@@ -61,7 +61,12 @@
               <GLGM :GLGM="GLGM" id="id11" class="boxpic"></GLGM>
               <ZSR :ZSR="ZSR" id="id12" class="boxpic"></ZSR>
 
-              <SRGC :SRGC="SRGC" id="id14" class="boxpic"></SRGC>
+              <SRGC
+                  :SRGC="SRGC"
+                  id="id14"
+                  class="boxpic"
+              >
+              </SRGC>
             </div>
           </div>
         </div>
@@ -73,7 +78,6 @@
 <script>
 // 引入axios
 import axios from "axios";
-// import CS from '@/components/cs'
 // 管理模块组件
 import GLGM from "@/components/echarts/GLGM";
 //总收入/净利润组件
@@ -265,7 +269,7 @@ export default {
 }
 
 .container_header > h1 {
-  font-weight: 510;
+  font-weight:500;
   font-size: 32px;
   color: #000;
   line-height: 55px;
