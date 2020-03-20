@@ -34,6 +34,8 @@ import Qygssr from "@/components/Table/qygssr.vue" //区域公司收入（由总
 import Timeaxis from "@/components/Table/Timeaxis.vue" //项目重大节点表格
 
 
+import Test from "@/view/test.vue"    //临时使用的视图
+ 
 const router = new VueRouter({
     base: '/',
     mode: 'history',  //去掉url中的#
@@ -88,6 +90,8 @@ const router = new VueRouter({
         },
         {path: "/qygssr", name: "qygssr", component: Qygssr},            //区域公司一览表
         {path: "/timeaxis", name: "timeaxis", component: Timeaxis},      //项目重大节点表格
+
+        {path:'/test',name:"test",component:Test}   //临时使用的视图
 
     ]
 })

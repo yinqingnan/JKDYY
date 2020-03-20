@@ -109,6 +109,7 @@
             >
           </template>
         </el-table-column>
+        
         <el-table-column
           prop="operator"
           label="经办人"
@@ -190,6 +191,17 @@
         >
           <template slot-scope="scope">
             {{modifymsg(scope.row.attachment)}}
+          </template>
+        </el-table-column>
+         <el-table-column
+          prop="attachment"
+          label="附件名称"
+          :show-overflow-tooltip="true"
+          align="center"
+          min-width="90px"
+        >
+          <template slot-scope="scope">
+            {{modifyname(scope.row.attachment)}}
           </template>
         </el-table-column>
         <el-table-column
@@ -440,6 +452,13 @@ export default {
             str=JSON.parse(data)
         } 
         return str.path 
+    },
+    modifyname(data){
+       let str=''
+        if(data){
+            str=JSON.parse(data)
+        } 
+        return str.fileName
     }
   },
   computed: {}

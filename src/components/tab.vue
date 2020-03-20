@@ -26,7 +26,7 @@
                     </li>
                 </ul>
                 <ul v-if="isshow2" style="padding:20px 0 " class="tabul">
-                    <li v-for="(item,index) in list3" :key="index" class="list" @click="Ledger(index)">
+                    <li v-for="(item,index) in list3" :key="index" class="list textUnderline" @click="Ledger(index)">
                         {{item}}
                     </li>
                 </ul>
@@ -267,5 +267,9 @@
         text-decoration: underline
     }
     .listtwo{
+    }
+    .textUnderline{
+        cursor: pointer;
+        text-decoration: underline;
     }
 </style>
