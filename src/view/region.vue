@@ -1134,7 +1134,7 @@ export default {
       let arr = res.data.data;
       this.xcpzhxzzt = [];
       arr.forEach(element => {
-        this.xcpzhxzzt.push(element.projectscore.toFixed(2));
+        this.xcpzhxzzt.push(element.projectscore);
       });
     });
 

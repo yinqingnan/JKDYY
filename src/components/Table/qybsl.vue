@@ -78,7 +78,9 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
-                    ></el-table-column>
+                            :formatter="synthesizeFinishRate"
+                    >
+                    </el-table-column>
                 </el-table-column>
                 <el-table-column label="审核" align="center">
                     <el-table-column
@@ -101,6 +103,7 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="auditRate"
                     ></el-table-column>
                 </el-table-column>
                 <el-table-column label="派工" align="center">
@@ -124,6 +127,7 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="jobRate"
                     ></el-table-column>
                 </el-table-column>
                 <el-table-column label="完成" align="center">
@@ -147,6 +151,8 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="finishRate"
+
                     ></el-table-column>
                 </el-table-column>
             </el-table>
@@ -336,7 +342,7 @@
                 totalCount: null, //--------------------------------默认数据总数
                 currentPage: 1, //----------------------------------默认开始页面
                 istag: true,
-                pagesize: 12, //------------------------------------每页显示的数据条数
+                pagesize: 11, //------------------------------------每页显示的数据条数
                 style: {
                     width: "100%",
                     height: ""
@@ -385,6 +391,34 @@
                         this.tablemsg = res.data.data; //展示数据的表格
                         this.totalCount = res.data.data.length; //展示数据的总条数
                     });
+            },
+            synthesizeFinishRate(row){
+                if(row.synthesizeFinishRate== 0){
+                    return 0
+                }else{
+                    return row.synthesizeFinishRate+'%'
+                }
+            },
+            auditRate(row){
+                if(row.auditRate==0){
+                    return 0
+                }else{
+                    return row.auditRate+"%"
+                }
+            },
+            jobRate(row){
+                if(row.jobRate==0){
+                    return 0
+                }else{
+                    return row.jobRate+"%"
+                }
+            },
+            finishRate(row){
+                 if(row.finishRate==0){
+                    return 0
+                }else{
+                    return row.finishRate+"%"
+                }
             },
             handleSizeChange(cpage) {
                 this.pagesize = cpage;

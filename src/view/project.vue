@@ -372,25 +372,26 @@
 
                 this.axios.get("/api/companyReceipts?year=" + year + "&companyId=" + this.id)
                     .then((res) => {
-                        let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
-                        delete obj.companyName 
-                        delete obj.companyId 
-                        delete obj.incomYear;
-                        let objstr=JSON.stringify(obj).replace(/Receipts/g,"")
-                        let strToObj = JSON.parse(objstr)
-                        let  arr=[]   //保存排序好的值
-                        for(let i in strToObj){
-                            arr.push((strToObj[i]/ 10000).toFixed(2))
-                        }
-                        let incomeTop=[] 
-                        let incomeButtom=[]
-                       for(let i=0;i<6;i++){
-                           incomeTop.push(arr[i])
-                       }
-                       for(let i=6;i<arr.length;i++){
-                           incomeButtom.push(arr[i])
-                       }
+                    
                         if (res.data.data != "") {
+                            let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
+                            delete obj.companyName 
+                            delete obj.companyId 
+                            delete obj.incomYear;
+                            let objstr=JSON.stringify(obj).replace(/Receipts/g,"")
+                            let strToObj = JSON.parse(objstr)
+                            let  arr=[]   //保存排序好的值
+                            for(let i in strToObj){
+                                arr.push((strToObj[i]/ 10000).toFixed(2))
+                            }
+                            let incomeTop=[] 
+                            let incomeButtom=[]
+                            for(let i=0;i<6;i++){
+                                incomeTop.push(arr[i])
+                            }
+                            for(let i=6;i<arr.length;i++){
+                                incomeButtom.push(arr[i])
+                            }
                         // 通过当   前月份进行判断，大于7就取7到12月数据。   小于就取1到6月数据
                             if (this.date >= 7) {
                                 this.zsrsxzzt1=incomeButtom
@@ -434,8 +435,8 @@
                 //综合收费率竖向柱状图
                 this.axios.get("/api/companyRates?year=" + year + "&companyId=" + this.id)
                     .then((res) => {
-                        // console.log(res.data.data[0])
-                        let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
+                        if (res.data.data != "") {
+                                 let obj=  JSON.parse(JSON.stringify(res.data.data[0]))
                         delete obj.companyName 
                         delete obj.companyId 
                         delete obj.incomYear;
@@ -453,7 +454,6 @@
                        for(let i=6;i<arr.length;i++){
                            incomeButtom.push(arr[i])
                        }
-                        if (res.data.data != "") {
                             if (this.date >= 7) {
                                 this.sflsxzzt1=incomeButtom
                                 this.zsrsxzztm = 1
