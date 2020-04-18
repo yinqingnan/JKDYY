@@ -128,7 +128,7 @@
                     <div class="tHeader">项目管理</div>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
-                    <homeLine class="echarts" :lineData="lineData"></homeLine>
+                    <homeLine class="echarts" :lineData="lineData" ></homeLine>
                 </div>
                 <div class="rtBox">
                     <div class="tHeader">项目成本分析</div>
@@ -209,7 +209,8 @@
                 iconBoxnum: 0,
                 time: "",
                 datetiem: 2500,
-                Record: 0
+                Record: 0,
+                title:[]
             }
         },
         created() {
@@ -329,8 +330,64 @@
             //管理赋值
             setManage(val) {
                 this.axios.get("/api/tj003?projectId=" + val).then((res) => {
+                    console.log(res.data.data)
                     let data = res.data.data;
-                    let list = {
+                    if(res.data.data.length==0){
+                        this.lineData=[]
+                    }else if(res.data.data.length==1){
+                        let list={list1: [
+                            data[0].m01,
+                            data[0].m02,
+                            data[0].m03,
+                            data[0].m04,
+                            data[0].m05,
+                            data[0].m06,
+                            data[0].m07,
+                            data[0].m08,
+                            data[0].m09,
+                            data[0].m10,
+                            data[0].m11,
+                            data[0].m12,
+                        ],
+                        title:[data[0].newspapersCateType]}
+                        this.lineData = list;
+                    }
+                    else if(res.data.data.length==2){
+                           let list = {
+                        list1: [
+                            data[0].m01,
+                            data[0].m02,
+                            data[0].m03,
+                            data[0].m04,
+                            data[0].m05,
+                            data[0].m06,
+                            data[0].m07,
+                            data[0].m08,
+                            data[0].m09,
+                            data[0].m10,
+                            data[0].m11,
+                            data[0].m12,
+                        ],
+                        list2: [
+                            data[1].m01,
+                            data[1].m02,
+                            data[1].m03,
+                            data[1].m04,
+                            data[1].m05,
+                            data[1].m06,
+                            data[1].m07,
+                            data[1].m08,
+                            data[1].m09,
+                            data[1].m10,
+                            data[1].m11,
+                            data[1].m12,
+                        ],
+                        title:[data[0].newspapersCateType,data[1].newspapersCateType]
+                      
+                    };
+                    this.lineData = list;
+                    }else if(res.data.data.length==3){
+                         let list = {
                         list1: [
                             data[0].m01,
                             data[0].m02,
@@ -372,9 +429,12 @@
                             data[2].m10,
                             data[2].m11,
                             data[2].m12,
-                        ]
+                        ],
+                           title:[data[0].newspapersCateType,data[1].newspapersCateType,data[2].newspapersCateType]
                     };
                     this.lineData = list;
+                    }
+
                 })
             },
             //成本分析

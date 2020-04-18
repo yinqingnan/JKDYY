@@ -4,7 +4,7 @@
     <div>
         <div class="box">
             <h1>上市时间图</h1>
-            <div class="container">
+            <div class="container container_hover">
                 <div class="fuhezi_left"></div>
                 <div class="fuhezi_right"></div>
                 <span class="sjx" @click="rightbtn"></span>
@@ -59,16 +59,19 @@
                 list: [],
                 number: 0,
                 year: [],
+                frequency:false
+
             }
         },
         mounted() {
             //获取上市公司列表数据
             this.axios.get("/api/listedCompany12").then((res) => {
-                // console.log(res.data.data)
+                if(res.data.data.length>7){
+                    this.frequency=true
+                }
                 this.list = res.data.data
                 this.year = []
                 res.data.data.forEach(element => {
-                    // console.log(element.companyName.split(","))
                     this.year.push(element.year)
                 });
 
@@ -76,23 +79,19 @@
         },
         methods: {
             leftbtn() {
-                // this.number++
-                //  this.number++
-                // if(this.number>=0){
-                //       this.$refs.tabs.style="left:0px"
-                // }else if(this.number<0){
-                //     this.$refs.tabs.style.left=(this.number*80)+"px"
-                // }
                 this.number = 0
                 this.$refs.tabs.style.left = 0 + "px"
             },
             rightbtn() {
-                this.number--
-                if (this.number >= -8) {
-                    this.$refs.tabs.style.left = (this.number * 90) + "px"
-                } else {
-                    this.number = -8
+                if(this.frequency==true){
+                    this.number--
+                    if (this.number >= -3) {
+                        this.$refs.tabs.style.left = (this.number * 90) + "px"
+                    } else {
+                        this.number = -3
+                    }
                 }
+           
             }
         }
     }
@@ -101,22 +100,23 @@
     .box {
         background: #fff;
         position: relative;
-        height: 400px;
-        border: 1px solid #e5e5e5;
+        height: 300px;
+        /* border: 1px solid #e5e5e5; */
         overflow: hidden;
     }
 
     .box > h1 {
+        color: #333;
         font-size: 14px;
         line-height: 50px;
         text-align: center;
         background: #fff;
         color: #333;
-        font-weight: 500;
+        font-weight: 600;
         text-align: left;
         text-indent: 10px;
-        padding: 0 6px;
-        border-bottom: 1px solid #e0dfe8
+        padding: 0 17px;
+        /* border-bottom: 1px solid #e0dfe8 */
     }
 
     .container {
@@ -129,12 +129,12 @@
     }
 
     .Line {
-        width: 90%;
+        width: 96%;
         border-bottom: 1px dashed #999;
         position: absolute;
         height: 1px;
         top: 53%;
-        left: 5%;
+        left: 3%;
         right: 0;
         bottom: 0;
         /* margin: auto */
@@ -142,79 +142,60 @@
     }
 
     .sjx {
-        border: 10px solid #999;
+        border: 16px solid #999;
         position: absolute;
         border-top-color: transparent;
         border-right: transparent;
         border-bottom-color: transparent;
-        right: 23px;
-        top: 203px;
+        /* right: 54px; */
+        right: -12px;
+        top:145px;
         z-index: 2;
         cursor: pointer;
-        transition: all 0.5s
+        transition: all 0.4s
     }
 
     .sjx1 {
-        border: 10px solid #999;
+        border: 16px solid #999;
         position: absolute;
         border-top-color: transparent;
         border-left: transparent;
         border-bottom-color: transparent;
-        left: 23px;
-        top: 203px;
+        left: 18px;
+        top: 145px;
         z-index: 2;
         cursor: pointer;
-        transition: all 0.1s
+        transition: all 0.4s
     }
-
-    /* .sjx1:hover{
-        border: 13px solid #999;
-         border-top-color: transparent;
-        border-left: transparent;
-        border-bottom-color: transparent;
-        top: 165px
+    .container_hover:hover .sjx1{
+        left: 42px;
     }
-    .sjx:hover{
-        border: 13px solid #999;
-        border-top-color: transparent;
-        border-right: transparent;
-        border-bottom-color: transparent;
-        top: 165px
-    } */
-
+    .container_hover:hover .sjx{
+        right: 25px;
+    }
     .fuhezi {
         position: relative;
-        width: 110px
+        width: 110px;
+        margin:0 20px;
+        
     }
 
     /* 鼠标经过事件 */
     .fuhezi:nth-child(odd) > .Label:hover {
         position: absolute;
-        /* height: 180px; */
         height: auto;
+        min-height: 89px;
         z-index: 10;
-        /* padding-top: 20px;
-        max-height: 260px */
     }
 
     /* 鼠标经过事件 */
     .fuhezi:nth-child(even) > .Label:hover {
-
         position: absolute;
         bottom: 0px;
-        /* height: 180px; */
         z-index: 10;
-        padding-top: 20px;
-        /* height: auto; */
-        /* max-height: 260px */
-
+        top: -34px;
+        min-height: 89px;
     }
-
-    /* 鼠标经过事件 */
-    .fuhezi:nth-child(odd) > .Label:hover > li {
-        margin-top: 6px
-    }
-
 
     .fuhezi:nth-child(odd) {
         top:36px
@@ -250,7 +231,6 @@
         width: 100%;
         font-size: 14px;
         color: #333;
-        /* text-indent: 24px; */
         text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -304,11 +284,13 @@
 
     /* 最大向左-860px */
     .assembly {
-        width: 1000px;
+        /* width: 1000px; */
+        /* width: 90%; */
         position: absolute;
         transition: all 0.5s;
         display: flex;
         top: 21px;
+        left: 85px;
     }
 
     /* 向上的尖角 */
@@ -393,11 +375,11 @@
     }
 
     .fuhezi_left {
-        width: 22px;
+        width: 34px;
         background: #fff;
         height: 100%;
         position: absolute;
-        left: 0;
+        left: 00px;
         z-index: 10;
     }
 

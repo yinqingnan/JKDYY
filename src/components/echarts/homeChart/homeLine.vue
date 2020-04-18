@@ -9,9 +9,11 @@
 
     export default {
         name: "homeLine",
-        props: ['lineData'],
+        props: ['lineData','title'],
         data() {
-            return {}
+            return {
+                titlename:[]
+            }
         },
         methods: {
             setLine() {
@@ -40,7 +42,7 @@
                         },
                         fontSize: 12,
                         selectedMode: 'single',
-                        data: ['地产类', '物业类', '其他'],
+                        data: this.lineData.title,
                         itemWidth: 12,  // 设置宽度
                         itemHeight: 12, // 设置高度
                         itemGap: 15, // 设置间距
@@ -99,7 +101,7 @@
                         type: 'value'
                     },
                     series: [{
-                        name: '地产类',
+                        name: this.lineData.title[0],
                         smooth: true,
                         type: 'line',
                         symbolSize: 8,
@@ -119,7 +121,7 @@
                             }
                         },
                     }, {
-                        name: '物业类',
+                        name: this.lineData.title[1],
                         smooth: true,
                         type: 'line',
                         symbolSize: 8,
@@ -139,7 +141,7 @@
                             }
                         },
                     }, {
-                        name: '其他',
+                        name: this.lineData.title[2],
                         smooth: true,
                         type: 'line',
                         symbolSize: 8,
@@ -169,7 +171,13 @@
         },
         watch: {
             lineData: function (nVal, oVal) {
+                if(nVal.title=="" || nVal.title==undefined){
+                    nVal.title=['','','']
+                } 
                 this.setLine();
+            },
+            title:function(val,oVal){
+                this.titlename=val
             }
         }
     }

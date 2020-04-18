@@ -195,17 +195,18 @@ export default {
   width: 22%;
   text-align: center;
 }
-
+.Today img{
+  width: 20px;
+}
 .Today > b {
   position: relative;
 }
-
 .Today > b > span {
-  display: inline-block;
-  width: 32px;
-  position: absolute;
-  bottom: -13px;
-  left: 0;
+    display: inline-block;
+    width: 32px;
+    position: absolute;
+    bottom: -22px;
+    left: -5px;
 }
 
 .yc {

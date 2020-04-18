@@ -21,7 +21,6 @@
         watch: {
             ZSR: {
                 handler(newVal) {
-                    // console.log(newVal)
                     this.reportingYear = [];
                     this.generalIncome = [];
                     this.netProfitMarginOnSales = []
@@ -74,11 +73,6 @@
                             itemWidth: 9, // 设置宽度
                             itemHeight: 9 // 设置高度
                         },
-                        // toolbox: {
-                        //   feature: {
-                        //     saveAsImage: {}
-                        //   }
-                        // },
                         grid: {
                             top: "26%",
                             right: "8%",
@@ -192,7 +186,7 @@
                                 itemStyle: {
                                     normal: {
                                         label: {show: false}, //拐点显示数据
-                                        color: "#FFA500", //小圆点的颜色
+                                        color: "rgba(0,0,0,0)", //小圆点的颜色
                                         lineStyle: {
                                             color: "#FFA500", //折线的颜色
                                             width: 0, //宽度

@@ -33,13 +33,20 @@
             </el-select>
           </div>
           <div class="sign">
-            <h1>物业费指导价</h1>
-            <span v-show="isshow">{{defaultdata.lumpSumOrSalary}}</span>
-            <span v-show="isshow">{{defaultdata.aFeeOrNotAFee}}</span>
+            <div>
+                <h1>物业费建议参考价</h1>
+                <h2>(原则上不低于建议参考价)</h2>
+            </div>
+            <span v-show="isshow" :title="defaultdata.lumpSumOrSalary">{{defaultdata.lumpSumOrSalary}}</span>
+            <span v-show="isshow" :title="defaultdata.aFeeOrNotAFee">{{defaultdata.aFeeOrNotAFee}}</span>
           </div>
         </div>
         <div class="left_header">
           <div>
+            <div>
+               <h1>时间</h1>
+              <h2>{{defaultdata.year}}</h2>
+            </div>
             <div>
               <h1>高层</h1>
               <h2>{{defaultdata.highRiseFee | number}}元/m²/月</h2>
@@ -273,7 +280,8 @@ export default {
       defaultable2: [], //竞品项目物业费备案价
       defaultable3: [], //物业费政府指导价
       defaultlist: [], //关键政策解读列表
-      tablelist: ["地图价格", "关键政策解读"], //切换列表
+      tablelist: ["地图价格"], //切换列表
+      // tablelist: ["地图价格", "关键政策解读"], //切换列表
       num: 0,
       xs: false,
       xs1: true,
@@ -309,7 +317,7 @@ export default {
           //
         } else {
           axios.get("/api/cityData04?id=" + res.data.data[0].id).then(res => {
-            // console.log(res.data.data)
+            console.log(res.data.data)
             this.defaultdata = res.data.data[0];
 
             // console.log(res.data.data[0])
@@ -502,8 +510,8 @@ export default {
 
 .left_header > div > div {
   border: 2px solid #e5e5e5;
-  width: 18%;
-  min-width: 95px;
+  width: 15%;
+  min-width: 84px;
   border-radius: 5px;
   height: 48px;
   text-align: center;
@@ -653,15 +661,28 @@ export default {
   display: flex;
   width: 50%;
   margin-left: 5%;
+  overflow: hidden;
 }
-
-.sign > h1 {
+.sign >div{
+  line-height: 58px;
+  padding-top: 17px;
+}
+.sign >div> h1 {
   font-size: 14px;
   font-weight: 600;
   margin-right: 30px;
   white-space: nowrap;
+  line-height: 1;
+  text-align: center;
 }
-
+.sign >div> h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 30px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
 .sign > span:nth-of-type(1) {
   font-size: 14px;
   background: #b3d9c0;

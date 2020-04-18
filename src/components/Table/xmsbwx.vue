@@ -198,7 +198,7 @@
 
             },
             Backstage() {
-                window.location.href = (this.url + "jkData/data/daq/projectContract/index?loginName=" + this.login + "&token=1")
+                window.location.href = (this.url + "jkData/data/daq/projectEquipment/index?loginName=" + this.login + "&token=1")
             },
 
 

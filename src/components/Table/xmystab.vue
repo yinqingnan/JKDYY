@@ -162,8 +162,7 @@
             this.xmid = this.$route.query.xmid    //获取到路由参数 （项目的id）
 
             if (this.$route.query.Month == "") {
-                this.axios.get("/api/projectElectricity01?projectId=" + this.xmid + "&year=" + this.year + "&month=" + this.month).then((res) => {
-                    // console.log(res.data.data)
+                this.axios.get("/api/projectWaterrent01?projectId=" + this.xmid + "&year=" + this.year + "&month=" + this.month).then((res) => {
                     this.tablemsg = res.data.data
                     this.totalCount = res.data.data.length
                     this.number1 = 0

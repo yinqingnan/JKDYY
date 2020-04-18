@@ -208,6 +208,7 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="DownloadsynthesizeFinishRate"
                     ></el-table-column>
                 </el-table-column>
                 <el-table-column label="审核" align="center">
@@ -231,6 +232,7 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="DownloadauditRate"
                     ></el-table-column>
                 </el-table-column>
                 <el-table-column label="派工" align="center">
@@ -254,6 +256,8 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="DownloadjobRate"
+
                     ></el-table-column>
                 </el-table-column>
                 <el-table-column label="完成" align="center">
@@ -277,6 +281,8 @@
                             :show-overflow-tooltip="true"
                             align="center"
                             min-width="55px"
+                            :formatter="DownloadfinishRate"
+
                     ></el-table-column>
                 </el-table-column>
             </el-table>
@@ -369,6 +375,7 @@
             this.axios
                 .get("/api/proBs01?companyId=" + this.qyid + "&year=" + this.year)
                 .then(res => {
+                    console.log(res)
                     this.tablemsgmsg = res.data.data; //下载数据的表格
                     this.tablemsg = res.data.data; //展示数据的表格
                     this.totalCount = res.data.data.length; //展示数据的总条数
@@ -391,6 +398,35 @@
                         this.tablemsg = res.data.data; //展示数据的表格
                         this.totalCount = res.data.data.length; //展示数据的总条数
                     });
+            },
+            //修改下载表格显示的百分比
+            DownloadsynthesizeFinishRate(row){
+                  if(row.synthesizeFinishRate== 0){
+                    return 0
+                }else{
+                    return row.synthesizeFinishRate+'﹪'
+                }
+            },
+                DownloadauditRate(row){
+                if(row.auditRate==0){
+                    return 0
+                }else{
+                    return row.auditRate+"﹪"
+                }
+            },
+            DownloadjobRate(row){
+                if(row.jobRate==0){
+                    return 0
+                }else{
+                    return row.jobRate+"﹪"
+                }
+            },
+            DownloadfinishRate(row){
+                 if(row.finishRate==0){
+                    return 0
+                }else{
+                    return row.finishRate+"﹪"
+                }
             },
             synthesizeFinishRate(row){
                 if(row.synthesizeFinishRate== 0){
