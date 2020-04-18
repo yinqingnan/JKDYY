@@ -9,16 +9,22 @@
                     <h1>金科服务在中国</h1>
                     <div>
                         <div>
-                            <h1>省份</h1>
-                            <h2>{{msg.provinceCount}}</h2>
+                            <h1 class="_text">省份</h1>
+                            <div style="display:flex;padding-left:52px">
+                               <h2 v-for="(item,index) in sf" :key="index" class="textstyle"> {{item}}</h2>
+                            </div>
                         </div>
                         <div>
-                            <h1>地级市</h1>
-                            <h2>{{msg.cityCount}}</h2>
+                            <h1 class="_text">地级市</h1>
+                             <div style="display:flex;padding-left:52px">
+                               <h2 v-for="(item,index) in djs" :key="index" class="textstyle"> {{item}}</h2>
+                            </div>
                         </div>
                         <div>
-                            <h1>县级市</h1>
-                            <h2>{{msg.prefectureCount}}</h2>
+                            <h1 class="_text">县级市</h1>
+                             <div style="display:flex;padding-left:52px">
+                               <h2 v-for="(item,index) in xjs" :key="index" class="textstyle"> {{item}}</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,7 +61,10 @@
             return {
                 list: [],
                 msg: [],
-                visible: false
+                visible: false,
+                sf:"",
+                djs:"",
+                xjs:""
             }
         },
         components: {
@@ -71,8 +80,11 @@
             })
             // 获取左侧服务展示数据
             this.axios.get("/api/cityData02").then((res) => {
-                // console.log(res.data.data[0])
-                this.msg = res.data.data[0]
+          
+                this.sf=(res.data.data[0].provinceCount+"").split("")
+                this.djs=(res.data.data[0].prefectureCount+"").split("")
+                this.xjs=(res.data.data[0].cityCount+"").split("")
+                
             })
 
             document.addEventListener('click', () => {
@@ -124,27 +136,30 @@
     }
 
     .positionbox {
+        background: url("../assets/ima/data_bj.png") no-repeat 0 0;
+        background-size: 100% 100%;
+        width: 250px;height: 365px;
         position: absolute;
         right: 4%;
-        top: 50%;
+        top: 30%;
         z-index: 10;
-        background: transparent;
-        width: 260px;
+        /* background: transparent; */
         text-align: center;
 
     }
 
     .positionbox > h1 {
         text-align: left;
-        font-size: 18px;
-        color: #333;
+        font-size: 20px;
+        color: #fff;
         margin-bottom: 20px;
-        font-weight: 500
+        font-weight: 500;
+        text-align: center;
+        margin: 35px 0;
     }
 
-    .positionbox > div {
-        display: flex;
-        justify-content: space-around
+    .positionbox > div>div {
+        
 
     }
 
@@ -222,28 +237,13 @@
         text-decoration: underline;
 
     }
-
-    .positionbox > div > div {
-        border: 1px solid #a0a0a0;
-        border-radius: 5px;
-        /* width: 100px; */
-        width: 80px;
-        padding: 12px 0
-    }
-
-    .positionbox > div > div:nth-of-type(2) {
-        margin: 0 10px
-    }
-
-    .positionbox > div > div > h1 {
+    ._text{
         font-size: 14px;
-        color: #666
+        color: #fff;
+        text-align: left;
+        text-indent: 52px;
     }
 
-    .positionbox > div > div > h2 {
-        font-size: 18px;
-        color: #333
-    }
 
     .echarts {
         height: 100vh;
@@ -252,5 +252,17 @@
     .el-icon-arrow-left {
         line-height: 40px
     }
-
+    .textstyle{
+        height:42px ;
+        width: 40px;
+        font-size: 36px;
+        color: #2ab1ea;
+        background: #354474;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        margin-top: 6px;
+    }
+    .positionbox>div>div>div>h2:nth-of-type(2){
+        margin: 6px 8px 0 8px;
+    }
 </style>
