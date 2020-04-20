@@ -31,22 +31,17 @@ router.beforeEach((to, from, next) => {
 // import "normalize.css"
 
 
-// 引入elementUI  
+// 引入elementUI
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
-
 // 引入echarts
 import echarts from "echarts"
-
 Vue.prototype.echarts = echarts;
-
 // 注入vuex
 import store from '@/store'
-
-
 // 引入全局变量
 import global_ from "@/api/Global.vue"
 
@@ -124,7 +119,7 @@ Vue.directive("scrollBar", {
         }
     },
 });
-// 在需要使用的表格上添加即可：    v-scrollBar:el-table 
+// 在需要使用的表格上添加即可：    v-scrollBar:el-table
 
 
 

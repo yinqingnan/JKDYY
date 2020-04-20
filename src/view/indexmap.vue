@@ -80,11 +80,11 @@
             })
             // 获取左侧服务展示数据
             this.axios.get("/api/cityData02").then((res) => {
-          
+
                 this.sf=(res.data.data[0].provinceCount+"").split("")
                 this.djs=(res.data.data[0].prefectureCount+"").split("")
                 this.xjs=(res.data.data[0].cityCount+"").split("")
-                
+
             })
 
             document.addEventListener('click', () => {
@@ -158,11 +158,6 @@
         margin: 35px 0;
     }
 
-    .positionbox > div>div {
-        
-
-    }
-
     .right {
         width: 300px;
         padding: 12px;
@@ -170,8 +165,7 @@
         position: absolute;
         top: 20px;
         right: 10px;
-        z-index: 10
-
+        z-index: 10;
     }
 
     .right > div {
@@ -261,6 +255,7 @@
         border-radius: 5px;
         margin-bottom: 20px;
         margin-top: 6px;
+        overflow: hidden;
     }
     .positionbox>div>div>div>h2:nth-of-type(2){
         margin: 6px 8px 0 8px;

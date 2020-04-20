@@ -91,7 +91,7 @@
                         this.number = -3
                     }
                 }
-           
+
             }
         }
     }
@@ -100,8 +100,7 @@
     .box {
         background: #fff;
         position: relative;
-        height: 300px;
-        /* border: 1px solid #e5e5e5; */
+        height: 373px;
         overflow: hidden;
     }
 
@@ -116,14 +115,11 @@
         text-align: left;
         text-indent: 10px;
         padding: 0 17px;
-        /* border-bottom: 1px solid #e0dfe8 */
     }
 
     .container {
         height: 352px;
         width: 100%;
-        /* background: seashell; */
-        /* position: relative; */
         overflow: hidden;
 
     }
@@ -137,8 +133,6 @@
         left: 3%;
         right: 0;
         bottom: 0;
-        /* margin: auto */
-        /* overflow: hidden; */
     }
 
     .sjx {
@@ -147,14 +141,12 @@
         border-top-color: transparent;
         border-right: transparent;
         border-bottom-color: transparent;
-        /* right: 54px; */
         right: -12px;
-        top:145px;
+        top:184px;
         z-index: 2;
         cursor: pointer;
         transition: all 0.4s
     }
-
     .sjx1 {
         border: 16px solid #999;
         position: absolute;
@@ -162,24 +154,22 @@
         border-left: transparent;
         border-bottom-color: transparent;
         left: 18px;
-        top: 145px;
+        top: 184px;
         z-index: 2;
         cursor: pointer;
         transition: all 0.4s
     }
     .container_hover:hover .sjx1{
-        left: 42px;
+        left: 36px;
     }
     .container_hover:hover .sjx{
-        right: 25px;
+        right: 22px;
     }
     .fuhezi {
         position: relative;
         width: 110px;
         margin:0 20px;
-        
     }
-
     /* 鼠标经过事件 */
     .fuhezi:nth-child(odd) > .Label:hover {
         position: absolute;
@@ -187,7 +177,6 @@
         min-height: 89px;
         z-index: 10;
     }
-
     /* 鼠标经过事件 */
     .fuhezi:nth-child(even) > .Label:hover {
         position: absolute;
@@ -206,7 +195,6 @@
     }
 
     .Label {
-        /* transition: all 0.5s; */
         width: 110px;
         height: 56px;
         background: #fff;
@@ -228,7 +216,7 @@
 
     .Label > li {
         line-height: 23px;
-        width: 100%;
+        width:100%;
         font-size: 14px;
         color: #333;
         text-align: center;
