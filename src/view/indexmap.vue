@@ -74,17 +74,13 @@
 
             // 获取到右侧数据报表数据
             this.axios.get("/api/cityData09").then((res) => {
-                // console.log(res.data.data)
                 this.list = res.data.data
-
             })
             // 获取左侧服务展示数据
             this.axios.get("/api/cityData02").then((res) => {
-
-                this.sf=(res.data.data[0].provinceCount+"").split("")
-                this.djs=(res.data.data[0].prefectureCount+"").split("")
+                this.sf=(res.data.data[0].provinceCount+"").split("");
+                this.djs=(res.data.data[0].prefectureCount+"").split("");
                 this.xjs=(res.data.data[0].cityCount+"").split("")
-
             })
 
             document.addEventListener('click', () => {
