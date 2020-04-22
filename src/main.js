@@ -1,11 +1,11 @@
 //语法兼容IE
-import '@babel/polyfill'
+import '@babel/polyfill';
 
 
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 // 引人VueRouter
@@ -18,7 +18,7 @@ import VueRouter from 'vue-router'
 //   return originalPush.call(this, location).catch(err => err)
 // }
 // 引入自定义的路由配置
-import router from './router';
+import router from '@/router';
 /* 路由发生变化修改页面title */
 router.beforeEach((to, from, next) => {
     if (to.meta.title) {
@@ -26,9 +26,6 @@ router.beforeEach((to, from, next) => {
     }
     next()
 })
-
-// 清除默认样式
-// import "normalize.css"
 
 
 // 引入elementUI
@@ -39,6 +36,7 @@ Vue.use(ElementUI);
 
 // 引入echarts
 import echarts from "echarts"
+
 Vue.prototype.echarts = echarts;
 // 注入vuex
 import store from '@/store'
@@ -53,7 +51,6 @@ import VueAxios from 'vue-axios'
 
 // axios.defaults.baseURL="http://222.180.200.126:9045"          //   上线后统一更换自用
 axios.defaults.baseURL = "http://219.153.109.174:9045"            //  金科内部使用
-
 
 
 // 滚动条优化
@@ -76,7 +73,7 @@ const el_scrollBar = el => {
 };
 Vue.directive("scrollBar", {
     inserted(el, binding, vnode) {
-        const { arg } = binding;
+        const {arg} = binding;
         if (arg === "el-table") {
             el = el.querySelector(".el-table__body-wrapper");
             !el && console.warn("未发现className为el-table__body-wrapper的dom");
@@ -104,7 +101,7 @@ Vue.directive("scrollBar", {
         el_scrollBar(el);
     },
     componentUpdated(el, binding, vnode, oldVnode) {
-        const { arg } = binding;
+        const {arg} = binding;
         if (arg === "el-table") {
             el = el.querySelector(".el-table__body-wrapper");
             !el && console.warn("未发现className为el-table__body-wrapper的dom");
@@ -120,15 +117,6 @@ Vue.directive("scrollBar", {
     },
 });
 // 在需要使用的表格上添加即可：    v-scrollBar:el-table
-
-
-
-
-
-
-
-
-
 
 
 Vue.prototype.axios = axios         //将axios配置到Vue原型中

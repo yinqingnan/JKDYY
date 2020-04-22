@@ -121,7 +121,7 @@
                     <p class="tip">备注：此得分只做为经营管理参考用，不作为考核使用</p>
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconL iconP">
                     <img src="@/assets/ima/chart_chat.png" alt="" class="iconR iconP">
-                </div>  
+                </div>
             </div>
             <div class="rightBox">
                 <div class="rtBox">
@@ -145,8 +145,8 @@
                             </h6>
                         </el-tooltip>
                     </p>
-                    
-                   
+
+
                 </div>
             </div>
         </div>
@@ -383,7 +383,7 @@
                             data[1].m12,
                         ],
                         title:[data[0].newspapersCateType,data[1].newspapersCateType]
-                      
+
                     };
                     this.lineData = list;
                     }else if(res.data.data.length==3){
@@ -772,11 +772,9 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
     }
-
     .echarts1 {
         width: 50%;
     }
-
     /* 流星效果start */
     .star {
         display: block;

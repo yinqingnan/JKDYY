@@ -135,9 +135,7 @@
 
 <script>
 // 行业数据资料
-import industrydata from "@/components/industrydata";
-// // 引入vuex的数据
-// import { mapState, mapMutations } from "vuex";
+// import industrydata from "@/components/industrydata";
 // 引入首页柱状图
 import indexZZT from "@/components/echarts/indexZZT";
 //引入首页折线图1
@@ -150,7 +148,7 @@ import Timetomarket from "@/components/Timetomarket";
 export default {
   components: {
     // Acquisitiondetails,
-    industrydata,
+    // industrydata,
     indexZZT,
     indexZXT1,
     indexZXT2,
@@ -177,7 +175,6 @@ export default {
     chickvalue(msg) {
       let year = msg.slice(0, 4);
       let id = encodeURI(msg.slice(4));
-
       this.region = year + msg.slice(4);
       this.getindex(msg);
       // 点击后再次赋值关键财务数据
@@ -216,13 +213,11 @@ export default {
   mounted() {
     // 获取收并购信息
     this.axios.get("/api/listedCompany07?topcount=7").then((res) => {
-      // console.log(res.data.data)
       this.Merger = res.data.data;
     });
 
     // 获取时间列表
     this.axios.get("/api/listedCompany10").then((res) => {
-      // console.log(res.data.data)
       this.time = res.data.data;
       this.region = res.data.data[0].reporting; //获取数据第一条数据
       this.getindex(this.region);

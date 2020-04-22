@@ -15,18 +15,18 @@ export default {
     return {
       name:"净利率",      //记录每一次点击的图例名称
       srqk:[],                      //收入情况
-      // TODO  每一项单独的数据
+      //   每一项单独的数据
       netProfitMarginOnSales: [], //销售净利率
       grossProfitMargin: [], //毛利率
       operatingProfitGrowthRate: [], //营业利润增长率
       returnonequity: [], //净资产收益率%（平均） ROE
       increaserateofbusinessrevenue: [], //营业收入增长率
-      // TODO 单独排名name
+      //  单独排名name
       companyName: [],                                //净利率排名
-      grossProfitMarginname:[],                       //毛利率排名  
-      operatingProfitGrowthRatename:[],               //利润增长率排名  
+      grossProfitMarginname:[],                       //毛利率排名
+      operatingProfitGrowthRatename:[],               //利润增长率排名
       returnonequityname:[],                          //净资产收益率排名  ROE
-      increaserateofbusinessrevenuename:[],           //营业收入增长率排名  
+      increaserateofbusinessrevenuename:[],           //营业收入增长率排名
     };
   },
   watch: {
@@ -217,11 +217,11 @@ export default {
                           return false;
                         }
                       }else if(that.name=="营收增长率"){
-            
+
                         if (
                           options.series[2].data[options.series[2].data.length - 1] < options.series[2].data[0]
                         ) {
-                        
+
                           options.series[2].data = that.increaserateofbusinessrevenue.reverse();
                           options.xAxis[0].data = that.increaserateofbusinessrevenuename.reverse();
                           chartObj.setOption(options, true);
@@ -539,8 +539,8 @@ export default {
             // 图例点击事件
             chartObj.on('legendselectchanged',obj=>{
                 var options=chartObj.getOption();
-                let data=that.srqk
-                that.name=obj.name
+                let data=that.srqk;
+                that.name=obj.name;
                 if(obj.name=="净利率"){
                   // that.name=obj.name
                 }else if(obj.name=="毛利率"){
@@ -550,9 +550,9 @@ export default {
                     let value2 = b[val];
                     return value1 - value2;
                   };
-                }; 
-                that.grossProfitMargin=[]
-                that.grossProfitMarginname=[]
+                };
+                that.grossProfitMargin=[];
+                that.grossProfitMarginname=[];
                 let newobj = data.sort(compare("grossProfitMargin"));
                  newobj.forEach(element => {
                   that.grossProfitMarginname.push(element.companyName);
@@ -568,7 +568,7 @@ export default {
                     let value2 = b[val];
                     return value1 - value2;
                   };
-                }; 
+                };
                   that.increaserateofbusinessrevenue=[]
                   that.increaserateofbusinessrevenuename=[]
                   let newobj = data.sort(compare("increaserateofbusinessrevenue"));
@@ -586,7 +586,7 @@ export default {
                     let value2 = b[val];
                     return value1 - value2;
                   };
-                }; 
+                };
                   that.operatingProfitGrowthRate=[]
                   that.operatingProfitGrowthRatename=[]
                   let newobj = data.sort(compare("operatingProfitGrowthRate"));
@@ -605,7 +605,7 @@ export default {
                     let value2 = b[val];
                     return value1 - value2;
                   };
-                }; 
+                };
                   that.returnonequity=[]
                   that.returnonequityname=[]
                   let newobj = data.sort(compare("returnonequity"));
