@@ -47,7 +47,7 @@ export default {
             return function(a, b) {
               let value1 = a[property];
               let value2 = b[property];
-              return value1 - value2;
+              return value2 - value1;
             };
           }
          let newobj=obj.sort(yscompare("generalIncome"));   //总营收升序
@@ -76,7 +76,7 @@ export default {
                   },
                 },
                 {
-                  text: "收入情况",
+                  text: "营收、利润",
                   x: 20,
                   // padding: [0, 0, 0, "20px"], //上右下左
                   y: 2,
@@ -343,7 +343,7 @@ export default {
                     return function(a, b) {
                       let value1 = a[val];
                       let value2 = b[val];
-                      return value1 - value2;
+                      return value2 - value1;
                     };
                   }
                   let newobj=data.sort(compare("netProfitMargin")); 
@@ -364,7 +364,7 @@ export default {
                     return function(a, b) {
                       let value1 = a[val];
                       let value2 = b[val];
-                      return value1 - value2;
+                      return value2 - value1;
                     };
                   }
                   let newobj=data.sort(compare("generalIncome")); 

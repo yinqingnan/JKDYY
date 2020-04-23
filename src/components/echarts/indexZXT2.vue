@@ -44,7 +44,7 @@ export default {
               return function(a, b) {
                 let value1 = a[property];
                 let value2 = b[property];
-                return value1 - value2;
+                return value2 - value1;
               };
             };
             let newobj = obj.sort(yscompare("contractArea"));
@@ -77,7 +77,7 @@ export default {
                   }
                 },
                 {
-                  text: "上市公司规模数据",
+                  text: "管理规模",
                   x: 20,
                   // padding: [0, 0, 0, "20px"], //上右下左
                   y: 2,
@@ -380,7 +380,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                 let newobj = data.sort(compare("contractProjectNumber"));
@@ -404,7 +404,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                 let newobj = data.sort(compare("contractArea"));

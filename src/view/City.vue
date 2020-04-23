@@ -119,7 +119,9 @@
                                         align="left"
                                         width="80px"
                                         :show-overflow-tooltip="true"
-                                ></el-table-column>
+                                >
+                               
+                                </el-table-column>
                                 <el-table-column
                                         prop="aFeeSystem"
                                         label="是否一费制"
@@ -129,28 +131,49 @@
                                         prop="highRiseFee"
                                         label="高层"
                                         min-width="30px"
-                                        align="center"></el-table-column>
+                                        align="center">
+                                    <template slot-scope="{row}">
+                                        {{ row.highRiseFee== 0 ? "-":row.highRiseFee}}
+                                    </template>
+                                        </el-table-column>
                                 <el-table-column
                                         prop="westernFee"
                                         label="洋房"
                                         min-width="30px"
                                         align="center"
-                                ></el-table-column>
+                                >
+                                    <template slot-scope="{row}">
+                                        {{ row.westernFee== 0 ? "-":row.westernFee}}
+                                    </template>
+                                </el-table-column>
                                 <el-table-column
                                         prop="villaFee"
                                         label="别墅"
                                         min-width="30px"
-                                        align="center"></el-table-column>
+                                        align="center">
+                                        
+                                    <template slot-scope="{row}">
+                                        {{ row.villaFee== 0 ? "-" : row.villaFee}}
+                                    </template>
+                                </el-table-column>
                                 <el-table-column
                                         prop="businessFee"
                                         label="商业"
                                         min-width="30px"
-                                        align="center"></el-table-column>
+                                        align="center">
+                                    <template slot-scope="{row}">
+                                        {{ row.businessFee== 0 ? "-" : row.businessFee}}
+                                    </template>
+                                        </el-table-column>
                                 <el-table-column
                                         prop="garageFee"
                                         label="车库"
                                         min-width="30px"
-                                        align="center"></el-table-column>
+                                        align="center">
+                                    <template slot-scope="{row}">
+                                        {{ row.garageFee== 0 ? "-" : row.garageFee}}
+                                    </template>
+                                        </el-table-column>
                                 <el-table-column
                                         prop="remark"
                                         label="备注"
@@ -194,35 +217,55 @@
                                     min-width="30px"
                                     align="center"
                                     :show-overflow-tooltip="true"
-                            ></el-table-column>
+                            >
+                                 <template slot-scope="{row}">
+                                        {{ row.highRiseFee== 0 ? "-" : row.highRiseFee}}
+                                </template>
+                            </el-table-column>
                             <el-table-column
                                     prop="westernFee"
                                     label="洋房"
                                     min-width="30px"
                                     align="center"
                                     :show-overflow-tooltip="true"
-                            ></el-table-column>
+                            >
+                                <template slot-scope="{row}">
+                                        {{ row.westernFee== 0 ? "-" : row.westernFee}}
+                                </template>
+                            </el-table-column>
                             <el-table-column
                                     prop="villaFee"
                                     label="别墅"
                                     min-width="30px"
                                     align="center"
                                     :show-overflow-tooltip="true"
-                            ></el-table-column>
+                            >
+                                 <template slot-scope="{row}">
+                                        {{ row.villaFee== 0 ? "-" : row.villaFee}}
+                                </template>
+                            </el-table-column>
                             <el-table-column
                                     prop="businessFee"
                                     min-width="30px"
                                     label="商业"
                                     align="center"
                                     :show-overflow-tooltip="true"
-                            ></el-table-column>
+                            >
+                                 <template slot-scope="{row}">
+                                        {{ row.businessFee== 0 ? "-" : row.businessFee}}
+                                </template>
+                            </el-table-column>
                             <el-table-column
                                     prop="garageFee"
                                     label="车库"
                                     min-width="30px"
                                     align="center"
                                     :show-overflow-tooltip="true"
-                            ></el-table-column>
+                            >
+                                <template slot-scope="{row}">
+                                        {{ row.garageFee== 0 ? "-" : row.garageFee}}
+                                </template>
+                            </el-table-column>
                             <el-table-column
                                     prop="remark"
                                     label="备注"

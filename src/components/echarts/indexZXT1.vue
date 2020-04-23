@@ -55,7 +55,7 @@ export default {
               return function(a, b) {
                 let value1 = a[property];
                 let value2 = b[property];
-                return value1 - value2;
+                return value2 - value1;
               };
             };
             let newobj = obj.sort(yscompare("netProfitMarginOnSales"));
@@ -78,7 +78,7 @@ export default {
             const option = {
               title: [
                 {
-                  text: "收入情况百分比",
+                  text: "盈利能力",
                   x: 20,
                   // padding: [0, 0, 0, "20px"], //上右下左
                   y: 2,
@@ -548,7 +548,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                 that.grossProfitMargin=[];
@@ -566,7 +566,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                   that.increaserateofbusinessrevenue=[]
@@ -584,7 +584,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                   that.operatingProfitGrowthRate=[]
@@ -603,7 +603,7 @@ export default {
                   return function(a, b) {
                     let value1 = a[val];
                     let value2 = b[val];
-                    return value1 - value2;
+                    return value2 - value1;
                   };
                 };
                   that.returnonequity=[]
