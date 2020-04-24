@@ -60,13 +60,7 @@
             <div class="container_body_right_body">
               <GLGM :GLGM="GLGM" id="id11" class="boxpic"></GLGM>
               <ZSR :ZSR="ZSR" id="id12" class="boxpic"></ZSR>
-
-              <SRGC
-                  :SRGC="SRGC"
-                  id="id14"
-                  class="boxpic"
-              >
-              </SRGC>
+              <SRGC :SRGC="SRGC" id="id14" class="boxpic"></SRGC>
             </div>
           </div>
         </div>
@@ -122,6 +116,7 @@ export default {
   watch: {
     $route: {
       handler(newVal) {
+        this.num=0
         //获取公司信息数据
         axios.get("/api/listedCompany02?id=" + newVal.query.id).then(res => {
           if(res.data.data[0].companyprofile!=undefined&&res.data.data[0].companyprofile!=""){
@@ -135,7 +130,7 @@ export default {
         });
         // 请求管理模块图表数据
         axios.get("/api/listedCompany03?id=" + newVal.query.id).then(res => {
-           console.log(res.data.data)
+          //  console.log(res.data.data)
           this.glgmqn = res.data.data.filter(item =>
             item.reportingType.indexOf("半年")
           ); //全年数据
@@ -175,14 +170,14 @@ export default {
     },
     btn(index) {
       this.num = index;
-      if (index == 0) {
+      if (this.num == 0) {
         //半年
         this.GLGM = this.glgmbn; //管理规模半年赋值
         this.ZSR = this.zsrbn; //总收入半年赋值
         this.JLR = this.jlrbn; //规模构成半年数据
         this.SRGC = this.srgcbn; //收入构成半年数据
       } else {
-        //半年
+        //全年
         this.GLGM = this.glgmqn; //管理规模全年赋值
         this.ZSR = this.zsrqn; //总收入半年赋值
         this.JLR = this.jlrqn; //规模构成全年数据
@@ -193,8 +188,14 @@ export default {
       this.style.height = window.innerHeight - 64 + "px";
     }
   },
+  created(){
+    // this.num=0
+   
+  },
   mounted() {
+    
     this.getheight();
+
     axios.get("/api/listedCompany02?id=" + this.$route.query.id).then(res => {
       if(res.data.data[0].companyprofile!=undefined&& res.data.data[0].companyprofile!=""){
         this.html = res.data.data[0].companyprofile.replace(
