@@ -722,12 +722,13 @@
     }
 
     .sign > div > h2 {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 400;
         margin-right: 30px;
         line-height: 1;
         text-align: center;
         white-space: nowrap;
+        transform: scale(0.9);
     }
 
     .sign > span:nth-of-type(1) {
